@@ -1,0 +1,33 @@
+- job:
+    name: otcdocstheme-tox-pep8
+    parent: tox-pep8
+    description: |
+      Run pep8 check
+
+- job:
+    name: otcdocstheme-tox-buildpdf
+    parent: tox
+    description: |
+      Run buildpdf target
+    vars:
+      tox_envlist: buildpdf
+
+- job:
+    name: otcdocstheme-tox-html
+    parent: tox
+    description: |
+      Run html target
+    vars:
+      tox_envlist: html
+
+- project:
+    check:
+      jobs:
+        - otcdocstheme-tox-buildpdf
+        - otcdocstheme-tox-pep8
+        - otcdocstheme-tox-html
+    gate:
+      jobs:
+        - otcdocstheme-tox-buildpdf
+        - otcdocstheme-tox-pep8
+        - otcdocstheme-tox-html
