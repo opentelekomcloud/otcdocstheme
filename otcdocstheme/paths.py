@@ -32,5 +32,5 @@ def get_pdf_theme_path():
 
 def get_otc_logo_path():
     """Return the directory containing telekom logo for local builds."""
-    args = ['theme', 'otcdocs_pdf', 'deutsche-telekom-logo.svg']
+    args = ['theme', 'otcdocs_pdf', 'deutsche-telekom-logo.png']
     return os.path.join(get_pkg_path(), *args)
