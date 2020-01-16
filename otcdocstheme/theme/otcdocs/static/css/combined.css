@@ -834,7 +834,7 @@ nav.navbar {
   min-width: 135px; }
 
 a.navbar-brand {
-  background: url('https://opentelekomcloud.github.io/techblog/images/deutsche-telekom-logo.svg') left no-repeat;
+  background: url('../images/deutsche-telekom-logo.svg') left no-repeat;
   height: 35px;
   width: 135px; }
 
@@ -844,7 +844,7 @@ a.navbar-brand {
     min-width: 75px;
     margin-top: 0; }
   a.navbar-brand {
-    background: url('https://opentelekomcloud.github.io/techblog/images/deutsche-telekom-logo.svg') left no-repeat;
+    background: url('../images/deutsche-telekom-logo.svg') left no-repeat;
     margin-left: 0px !important;
     height: 54px;
     width: 59px; } }
