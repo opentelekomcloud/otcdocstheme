@@ -1,4 +1,7 @@
 sudo: false
+addons:
+  apt:
+    packages: fonts-lmodern inkscape latexmk libxml2-utils python3-all python3-all-dev texlive-fonts-recommended texlive-latex-base texlive-latex-extra texlive-xetex
 language: python
 cache: pip
 matrix:
