@@ -52,8 +52,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'OpenTelekomClouddocstheme Release Notes'
-copyright = u'2018, OpenTelekomCloud Documentation team'
+project = u'Open Telekom Cloud, Doctheme Release Notes'
+copyright = u'Copyright (c) 2018 - 2020, Open Telekom Cloud, T-Systems International GmbH'
 
 # Release notes are version independent.
 # The full version, including alpha/beta/rc tags.
@@ -204,7 +204,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     ('index', 'OpenTelekomClouddocstheme-ReleaseNotes.tex',
-     u'OpenTelekomClouddocstheme Release Notes Documentation',
+     u'Open Telekom Cloud Docs Theme Release Notes Documentation',
      u'Documentation Team', 'manual'),
 ]
 
@@ -250,8 +250,8 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     ('index', 'OpenTelekomCloudDocsTheme-ReleaseNotes',
-     u'OpenTelekomCloudDocsTheme Release Notes Documentation',
-     u'Documentation Team', 'OpenTelekomCloudDocsTheme-ReleaseNotes',
+     u'Open Telekom Cloud Docs Theme Release Notes Documentation',
+     u'Documentation Team', 'Open Telekom Cloud Docs Theme-ReleaseNotes',
      'One line description of project.',
      'Miscellaneous'),
 ]

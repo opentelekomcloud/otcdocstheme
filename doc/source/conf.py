@@ -19,7 +19,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-copyright = u'2017-2018, OpenTelekomCloud Contributors'
+copyright = u'Copyright (c) 2017-2020, Open Telekom Cloud, T-Systems International GmbH'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -59,5 +59,5 @@ html_static_path = ['_static/css']
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
   ('index', 'os-doc-demo.tex', u'os-doc-demo Documentation',
-   u'OpenTelekomCloud Contributors', 'manual'),
+   u'Open Telekom Cloud Contributors', 'manual'),
 ]

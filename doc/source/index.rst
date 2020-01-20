@@ -1,19 +1,20 @@
-=====================================================
- OpenTelekomCloud docs.otc.t-systems.com Sphinx theme
-=====================================================
+ Open Telekom Cloud Sphinx theme
+================================
 
 *otcdocstheme* is a theme and extension support for Sphinx documentation
-that is published to readthemanuals.org.
+that is published to https://readthedocs.org/
 
-It is intended for use by OpenTelekomCloud projects.
+It is intended for use by Open Telekom Cloud projects.
 
 Using the theme
 ---------------
 
 .. note::
 
-   Prior to using this theme, ensure your project can use the OpenTelekomCloud brand
-   by referring to the brand guidelines at https://cloud.telekom.de/en/imprint/.
+   Prior to using this theme, ensure your project can use the Open
+   Telekom Cloud brand by referring to the brand guidelines at
+   https://open-telekom-cloud.com/en/imprint/. It is limited to
+   companies that are subsidaries or licencees of Deutsche Telekom AG.
 
 .. note::
 

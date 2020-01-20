@@ -49,7 +49,7 @@ master_doc = 'index'
 # It's used by the "log-a-bug" button on each page
 # and should ultimately be set automatically by the build process
 project = u'Test API Reference'
-copyright = u'2016, OpenTelekomCloud Contributors'
+copyright = u'Copyright (c) 2016 - 2020 Open Telekom Cloud, T-Systems International GmbH'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
