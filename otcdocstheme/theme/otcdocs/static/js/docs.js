@@ -62,7 +62,7 @@ $(document).ready(function() {
     // Bind event listener
     $(window).resize(checkWidth);
     while(document.getElementsByClassName("documentation-table").length > 0){
-        document.getElementsByClassName("documentation-table")[0].className = "table";
+        document.getElementsByClassName("documentation-table")[0].className = "table table-bordered";
     }
 });
 
