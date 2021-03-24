@@ -61,6 +61,15 @@ $(document).ready(function() {
     checkWidth();
     // Bind event listener
     $(window).resize(checkWidth);
+
+    // Fix Tables on the page by changing class and setting correct padding
+    while(document.getElementsByClassName("documentation-table").length > 0){
+        document.getElementsByClassName("documentation-table")[0].className = "table table-bordered";
+    }
+    let listwronguls = document.querySelectorAll('tbody > tr > td > ul');
+    listwronguls.forEach(element => {
+        element.style.padding="10%"
+    });
 });
 
 // Bootstrap stuff
