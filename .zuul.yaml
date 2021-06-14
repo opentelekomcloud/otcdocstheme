@@ -6,15 +6,15 @@
 
 - job:
     name: otcdocstheme-tox-buildpdf
-    parent: tox
+    parent: otc-tox
     description: |
       Run buildpdf target
     vars:
-      tox_envlist: buildpdf
+      tox_envlist: pdf-docs
 
 - job:
     name: otcdocstheme-tox-html
-    parent: tox
+    parent: otc-tox
     description: |
       Run html target
     vars:
@@ -26,11 +26,11 @@
       - publish-to-pypi
     check:
       jobs:
+        - otc-tox-pep8
         - otcdocstheme-tox-buildpdf
-        - otcdocstheme-tox-pep8
         - otcdocstheme-tox-html
     gate:
       jobs:
+        - otc-tox-pep8
         - otcdocstheme-tox-buildpdf
-        - otcdocstheme-tox-pep8
         - otcdocstheme-tox-html

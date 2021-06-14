@@ -12,26 +12,41 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-try:
-    import configparser
-except ImportError:
-    import ConfigParser as configparser
+import configparser
 import os
 import subprocess
+import textwrap
 
 import dulwich.repo
 from pbr import packaging
+import sphinx
 from sphinx.ext import extlinks
 from sphinx.util import logging
 
+from . import version
 from otcdocstheme import paths
 
 _series = None
 _project = None
-_giturl = 'https://github.com/{}/{}'
+_giturl = 'https://github.com/opentelekomcloud/{}/src/{}'
 _html_context_data = None
 
 logger = logging.getLogger(__name__)
+
+
+def _has_stable_branches():
+    try:
+        repo = dulwich.repo.Repo.discover()
+    except dulwich.repo.NotGitRepository:
+        return False
+
+    refs = repo.get_refs()
+    for ref in refs.keys():
+        ref = ref.decode('utf-8')
+        if ref.startswith('refs/remotes/origin/stable'):
+            return True
+
+    return False
 
 
 def _get_other_versions(app):
@@ -69,9 +84,9 @@ def _get_other_versions(app):
         interesting_series = all_series
 
     # Reverse the list because we want the most recent to appear at
-    # the top of the dropdown. The "latest" release is added to the
-    # front of the list by the theme so we do not need to add it
-    # here.
+    # the top of the dropdown. Add the "latest" release to the
+    # front of the list.
+    interesting_series.append("latest")
     interesting_series.reverse()
     return interesting_series
 
@@ -87,63 +102,184 @@ def _get_doc_path(app):
     if doc_parts[1] == 'source':
         return '/'.join(doc_parts)
 
-    logger.info('Cannot identify project\'s root directory.')
+    logger.info(
+        "[otcdocstheme] cannot identify project's root directory."
+    )
     return
 
 
 def _html_page_context(app, pagename, templatename, context, doctree):
     global _html_context_data
     if _html_context_data is None:
+        logger.debug('[otcdocstheme] building html context')
+
+        if app.config.repository_name is not None:
+            logger.info(
+                "[otcdocstheme] "
+                "the 'repository_name' config option has been deprecated and "
+                "replaced by the 'otcdocs_repo_name' option; support "
+                "for the former will be dropped in a future release")
+            app.config.otcdocs_repo_name = app.config.repository_name
+
+        if app.config.bug_project is not None:
+            logger.info(
+                "[otcdocstheme] "
+                "the 'bug_project' config option has been deprecated and "
+                "replaced by the 'otcdocs_bug_project' option; support "
+                "for the former will be dropped in a future release")
+            app.config.otcdocs_bug_project = app.config.bug_project
+
+        if app.config.bug_tag is not None:
+            logger.info(
+                "[otcdocstheme] "
+                "the 'bug_tag' config option has been deprecated and "
+                "replaced by the 'otcdocs_bug_tag' option; support "
+                "for the former will be dropped in a future release")
+            app.config.otcdocs_bug_project = app.config.bug_project
+
         _html_context_data = {}
         try:
             _html_context_data['gitsha'] = subprocess.check_output(
                 ['git', 'rev-parse', 'HEAD'],
             ).decode('utf-8').strip()
-        except Exception as e:
-            logger.warning('Cannot get gitsha from git repository: %s.'
-                           % str(e))
+        except Exception:
+            logger.warning(
+                '[otcdocstheme] cannot get gitsha from git repository'
+            )
             _html_context_data['gitsha'] = 'unknown'
 
         doc_path = _get_doc_path(app)
-        repo_name = app.config.repository_name
+        repo_name = app.config.otcdocs_repo_name
+        _html_context_data['repository_name'] = repo_name
+        logger.debug('[otcdocstheme] repository_name %r', repo_name)
         if repo_name and doc_path:
             _html_context_data['giturl'] = _giturl.format(repo_name, doc_path)
-        bug_project = app.config.bug_project
+            logger.debug(
+                '[otcdocstheme] giturl %r', _html_context_data['giturl'],
+            )
+
+        bug_project = app.config.otcdocs_bug_project
+        if bug_project:
+            logger.debug(
+                '[otcdocstheme] bug_project (from user) %r', bug_project,
+            )
+
         if bug_project:
             _html_context_data['bug_project'] = bug_project
-        if bug_project and bug_project.isdigit():
-            _html_context_data['use_storyboard'] = True
-        bug_tag = app.config.bug_tag
+
+        bug_tag = app.config.otcdocs_bug_tag
         if bug_tag:
             _html_context_data['bug_tag'] = bug_tag
+            logger.debug('[otcdocstheme] bug_tag %r', bug_tag)
+
+        _html_context_data['pdf_link'] = app.config.otcdocs_pdf_link
+        logger.debug(
+            '[otcdocstheme] pdf_link %r', _html_context_data['pdf_link'],
+        )
+
+        if app.config.otcdocs_pdf_filename:
+            _html_context_data['pdf_filename'] = (
+                app.config.otcdocs_pdf_filename)
+        else:
+            short_repo_name = repo_name.split('/')[-1]
+            _html_context_data['pdf_filename'] = f'doc-{short_repo_name}.pdf'
+
+        if _html_context_data['pdf_link']:
+            logger.debug(
+                '[otcdocstheme] pdf_filename %r',
+                _html_context_data['pdf_filename'],
+            )
+
+        _html_context_data['series'] = _get_series_name()
+        logger.debug(
+            '[otcdocstheme] series %r', _html_context_data['series'],
+        )
+
+        # Do not show the badge in these cases:
+        # - display_badge is false
+        # - repo has no stable/ branches
+        # - directory is named api-guide, api-ref, or releasenotes
+        if not app.config.html_theme_options.get('display_badge', True):
+            _html_context_data['display_badge'] = False
+            logger.debug(
+                '[otcdocstheme] display_badge False (configured by user)'
+            )
+        elif _has_stable_branches():
+            doc_parts = os.path.abspath(app.srcdir).split(os.sep)[-2:]
+            if doc_parts[0] in ('api-guide', 'api-ref', 'releasenotes'):
+                _html_context_data['display_badge'] = False
+                logger.debug(
+                    '[otcdocstheme] display_badge False (doc name '
+                    'contains %r)',
+                    doc_parts[0],
+                )
+            else:
+                _html_context_data['display_badge'] = True
+                logger.debug(
+                    '[otcdocstheme] display_badge True (stable branches)'
+                )
+        else:
+            _html_context_data['display_badge'] = False
+            logger.debug(
+                '[otcdocstheme] display_badge False (no stable branches)'
+            )
 
     context.update(_html_context_data)
     context['other_versions'] = _get_other_versions(app)
+    logger.debug(
+        '[otcdocstheme] other_versions %s', context['other_versions'],
+    )
 
 
 def _get_series_name():
     "Return string name of release series, or 'latest'"
     global _series
     if _series is None:
+        try:
+            git_root_dir = subprocess.check_output(
+                ['git', 'rev-parse', '--show-toplevel'],
+            ).decode('utf-8').strip()
+        except Exception:
+            logger.info(
+                '[otcdocstheme] cannot find git top directory, '
+                'assuming "."'
+            )
+            git_root_dir = '.'
+
         parser = configparser.ConfigParser()
-        parser.read('.gitreview')
+        in_file = os.path.join(git_root_dir, '.gitreview')
+        parsed = parser.read(in_file)
+        if not parsed:
+            logger.info('[otcdocstheme] no %s found', in_file)
+
         try:
             branch = parser.get('gerrit', 'defaultbranch')
         except configparser.Error:
             _series = 'latest'
         else:
             _series = branch.rpartition('/')[-1]
+
     return _series
 
 
 def _setup_link_roles(app):
     series = _get_series_name()
-    for project_name in app.config.otc_projects:
-        url = 'https://docs.otc.org/{}/{}/%s'.format(
+    for project_name in app.config.otcdocs_projects:
+        url = 'https://docs.otc-service.com/{}/{}/%s'.format(
             project_name, series)
         role_name = '{}-doc'.format(project_name)
-        logger.info('adding role %s to link to %s', role_name, url)
-        app.add_role(role_name, extlinks.make_link_role(url, project_name))
+        logger.debug(
+            '[otcdocstheme] adding role %s to link to %s',
+            role_name,
+            url,
+        )
+
+        if sphinx.version_info >= (4, 0, 0):
+            role = extlinks.make_link_role(project_name, url, project_name)
+        else:
+            role = extlinks.make_link_role(url, project_name)
+
+        app.add_role(role_name, role)
 
 
 def _find_setup_cfg(srcdir):
@@ -179,83 +315,172 @@ def _get_project_name(srcdir):
 
         path = _find_setup_cfg(srcdir)
         if not path or not parser.read(path):
-            logger.info('Could not find a setup.cfg to extract project name '
-                        'from')
+            logger.info(
+                '[otcdocstheme] could not find a setup.cfg to extract '
+                'project name from'
+            )
             return None
 
         try:
             # for project name we use the name in setup.cfg, but if the
-            # length is longer then 32 we use summary. Otherwise thAe
-            # menu rendering looks brolen
+            # length is longer then 32 we use summary. Otherwise the
+            # menu rendering looks broken
             project = parser.get('metadata', 'name')
             if len(project.split()) == 1 and len(project) > 32:
                 project = parser.get('metadata', 'summary')
         except configparser.Error:
-            logger.info('Could not extract project metadata from setup.cfg')
+            logger.info(
+                '[otcdocstheme] could not extract project metadata from '
+                'setup.cfg'
+            )
             return None
         _project = project
     return _project
 
 
+def _config_inited(app, config):
+
+    # we only override configuration if the theme has been configured, meaning
+    # users are using these features
+    if config.html_theme not in ['otcdocs']:
+        return
+
+    if config.otcdocs_auto_name:
+        project_name = _get_project_name(app.srcdir)
+
+        if config.project and project_name:
+            logger.info(
+                "[otcdocstheme] "
+                "overriding configured project name (%s) with name extracted "
+                "from the package (%s); you can disable this behavior with "
+                "the 'otcdocs_auto_name' option",
+                config.project, project_name,
+            )
+
+        if project_name:
+            config.project = project_name
+
+    config.html_last_updated_fmt = '%Y-%m-%d %H:%M'
+
+    if config.otcdocs_auto_version is False:
+        logger.debug(
+            '[otcdocstheme] auto-versioning disabled (configured by '
+            'user)'
+        )
+        auto_version = False
+    elif config.otcdocs_auto_version is True:
+        logger.debug(
+            '[otcdocstheme] auto-versioning enabled (configured by user)'
+        )
+        auto_version = True
+    else:  # None
+        doc_parts = os.path.abspath(app.srcdir).split(os.sep)[-2:]
+        if doc_parts[0] in ('api-guide', 'api-ref', 'releasenotes'):
+            logger.debug(
+                f'[otcdocstheme] auto-versioning disabled (doc name '
+                f'contains {doc_parts[0]}'
+            )
+            auto_version = False
+        else:
+            logger.debug(
+                '[otcdocstheme] auto-versioning enabled (default)'
+            )
+            auto_version = True
+
+    if auto_version:
+        real_project_name = _get_project_name(app.srcdir)
+        try:
+            project_version = packaging.get_version(real_project_name)
+        except Exception:
+            project_version = ''
+
+        if not project_version:
+            logger.warning(
+                '[otcdocstheme] could not extract version from '
+                'project; defaulting to unversioned'
+            )
+
+        config.version = project_version
+        config.release = project_version
+
+
 def _builder_inited(app):
+
     theme_dir = paths.get_html_theme_path()
-    logger.info('Using otcdocstheme Sphinx theme from %s' % theme_dir)
+    logger.info('[otcdocstheme] using theme from %s', theme_dir)
+
     _setup_link_roles(app)
 
     # we only override configuration if the theme has been configured, meaning
     # users are using these features
-    if app.config.html_theme != 'otcdocs':
+    if app.config.html_theme not in ['otcdocs']:
         return
 
-    # TODO(stephenfin): Once Sphinx 1.8 is released, we should move the below
-    # to a 'config-inited' handler
-
-    project_name = _get_project_name(app.srcdir)
-    try:
-        version = packaging.get_version(project_name)
-    except Exception:
-        version = None
-
-    # NOTE(stephenfin): Chances are that whatever's in 'conf.py' is probably
-    # wrong/outdated so, if we can, we intentionally overwrite it...
-    if project_name:
-        app.config.project = project_name
-
-    app.config.html_last_updated_fmt = '%Y-%m-%d %H:%M'
-
-    # ...except for version/release which, if blank, should remain that way to
-    # cater for unversioned documents
-    if app.config.version != '' and version:
-        app.config.version = version
-        app.config.release = version
-
-    otc_logo = paths.get_otc_logo_path()
-    pdf_theme_path = paths.get_pdf_theme_path()
-
+    # Override default setting
     app.config.latex_engine = 'xelatex'
-    app.config.latex_elements = {
+
+    theme_logo = paths.get_theme_logo_path(app.config.html_theme)
+    pdf_theme_path = paths.get_pdf_theme_path(app.config.html_theme)
+    latex_elements = {
         'papersize': 'a4paper',
         'pointsize': '11pt',
         'figure_align': 'H',
         'classoptions': ',openany',
-        'preamble': r"""
-\usepackage{""" + pdf_theme_path + """}
-\\newcommand{\otclogo}{""" + otc_logo + """}
-"""}
+    }
+
+    if app.config.latex_elements:
+        latex_elements.update(app.config.latex_elements)
+
+    preamble = textwrap.dedent(
+        r"""
+        \usepackage{%s}
+        \\newcommand{\openstacklogo}{%s}
+        """
+    ) % (pdf_theme_path, theme_logo)
+
+    if 'preamble' in latex_elements:
+        preamble += latex_elements['preamble']
+
+    latex_elements['preamble'] = preamble
+
+    app.config.latex_elements = latex_elements
 
 
 def setup(app):
-    logger.info('connecting events for otcdocstheme')
+    logger.info(
+        '[otcdocstheme] version: %s',
+        version.version_info.version_string(),
+    )
+    logger.debug('[otcdocstheme] connecting events')
+
+    # extensions
+    app.connect('config-inited', _config_inited)
     app.connect('builder-inited', _builder_inited)
     app.connect('html-page-context', _html_page_context)
-    app.add_config_value('repository_name', '', 'env')
-    app.add_config_value('bug_project', '', 'env')
-    app.add_config_value('bug_tag', '', 'env')
-    app.add_config_value('otc_projects', [], 'env')
+
+    # config options
+    app.add_config_value('otcdocs_repo_name', '', 'env')
+    app.add_config_value('otcdocs_bug_project', '', 'env')
+    app.add_config_value('otcdocs_bug_tag', '', 'env')
+    app.add_config_value('otcdocs_projects', [], 'env')
+    app.add_config_value('otcdocs_auto_version', None, 'env')
+    app.add_config_value('otcdocs_auto_name', True, 'env')
+    app.add_config_value('otcdocs_pdf_link', False, 'env')
+    app.add_config_value('otcdocs_pdf_filename', None, 'env')
+
+    # legacy config options
+    app.add_config_value('repository_name', None, 'env')
+    app.add_config_value('bug_project', None, 'env')
+    app.add_config_value('bug_tag', None, 'env')
+
+    # themes
     app.add_html_theme(
         'otcdocs',
         os.path.abspath(os.path.dirname(__file__)) + '/theme/otcdocs',
     )
+
     return {
         'parallel_read_safe': True,
+        'parallel_write_safe': True,
+        'version': version.version_info.version_string(),
     }
