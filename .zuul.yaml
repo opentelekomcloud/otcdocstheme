@@ -1,6 +1,6 @@
 - job:
     name: otcdocstheme-tox-pep8
-    parent: tox-pep8
+    parent: otc-tox-pep8
     description: |
       Run pep8 check
 
@@ -21,6 +21,9 @@
       tox_envlist: html
 
 - project:
+    merge-mode: squash-merge
+    templates:
+      - publish-to-pypi
     check:
       jobs:
         - otcdocstheme-tox-buildpdf
