@@ -53,7 +53,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'OpenTelekomClouddocstheme Release Notes'
-copyright = u'2018, OpenTelekomCloud Documentation team'
+copyright = u'2021, OpenTelekomCloud Documentation team'
 
 # Release notes are version independent.
 # The full version, including alpha/beta/rc tags.

@@ -10,7 +10,7 @@
 extensions = ['otcdocstheme']
 
 # openstackdocstheme options
-repository_name = 'opentelekomcloud/otcdocstheme'
+otcdocs_repo_name = 'opentelekomcloud/otcdocstheme'
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -19,7 +19,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-copyright = u'2017-2018, OpenTelekomCloud Contributors'
+copyright = u'2017-2021, OpenTelekomCloud Contributors'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.

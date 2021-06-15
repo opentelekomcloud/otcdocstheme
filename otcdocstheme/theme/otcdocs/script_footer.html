@@ -62,11 +62,7 @@
         var bugTitle = "{{ title }} in {{ project }}";
     {%- endif %}
     var fieldTags = "{{ bug_tag }}";
-    {%- if use_storyboard %}
-        var useStoryboard = "{{ use_storyboard }}";
-    {%- else %}
-        var useStoryboard = "";
-    {%- endif %}
+    var useStoryboard = "";
 
 
     /* "last_updated" is the build date and time. It relies on the

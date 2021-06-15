@@ -1,6 +1,6 @@
-=====================================================
- OpenTelekomCloud docs.otc.t-systems.com Sphinx theme
-=====================================================
+==============================
+ OpenTelekomCloud Sphinx theme
+==============================
 
 *otcdocstheme* is a theme and extension support for Sphinx documentation
 that is published to readthemanuals.org.
@@ -38,36 +38,22 @@ Using the theme
          # ...
      ]
 
-     html_theme = 'opentelekomclouddocs'
+     html_theme = 'otcdocs'
 
 #. Set the options to link to the git repository and bug tracker.
 
-   ``repository_name``
+   ``otcdocs_repo_name``
        The prefix and repo name. For example,
        ``'opentelekomcloud/python-otcextensions'``.
 
-   ``bug_project``
+   ``otcdocs_bug_project``
        The project name or ID. For launchpad, it's a string like
        ``python-otcextensions``. If your project uses
        ``storyboard.otc.t-systems.org``, use the project number instead like
        ``901``. If unspecified, the "Report a bug" links are not shown.
 
-   ``bug_tag``
+   ``otcdocs_bug_tag``
       Launchpad bug tag. If unspecified, no tag is set.  The default is empty.
-
-   One example for a project using launchpad::
-
-      # otcdocstheme options
-      repository_name = 'opentelekomcloud/python-otcextensions'
-      bug_project = 'python-otcextensions'
-      bug_tag = ''
-
-   One example for a project using storyboard::
-
-      # otcdocstheme options
-      repository_name = 'openstack-infra/infra-manual'
-      bug_project = '721'
-      bug_tag = ''
 
 #. Remove the options that will be automatically configured by the theme.
 
