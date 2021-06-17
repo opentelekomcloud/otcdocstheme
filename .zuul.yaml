@@ -24,6 +24,7 @@
     merge-mode: squash-merge
     templates:
       - publish-to-pypi
+      - publish-otc-docs-pti
     check:
       jobs:
         - otc-tox-pep8
