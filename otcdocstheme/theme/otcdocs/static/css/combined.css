@@ -4651,6 +4651,10 @@ table.highlighttable {
   display: none;
 }
 
+.docs-body section h1 {
+  display: none;
+}
+
 img.align-left, .figure.align-left {
   display: table;
   margin-left: 0;
