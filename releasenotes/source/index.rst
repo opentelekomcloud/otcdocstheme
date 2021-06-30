@@ -1,9 +1,5 @@
-==========================================
- OpenTelekomCloud Docs Theme Release Notes
-==========================================
+=========================================
+OpenTelekomCloud Docs Theme Release Notes
+=========================================
 
-.. toctree::
-   :maxdepth: 1
-
-   current
-   historic
+.. release-notes::

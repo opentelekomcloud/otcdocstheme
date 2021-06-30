@@ -113,30 +113,6 @@ def _html_page_context(app, pagename, templatename, context, doctree):
     if _html_context_data is None:
         logger.debug('[otcdocstheme] building html context')
 
-        if app.config.repository_name is not None:
-            logger.info(
-                "[otcdocstheme] "
-                "the 'repository_name' config option has been deprecated and "
-                "replaced by the 'otcdocs_repo_name' option; support "
-                "for the former will be dropped in a future release")
-            app.config.otcdocs_repo_name = app.config.repository_name
-
-        if app.config.bug_project is not None:
-            logger.info(
-                "[otcdocstheme] "
-                "the 'bug_project' config option has been deprecated and "
-                "replaced by the 'otcdocs_bug_project' option; support "
-                "for the former will be dropped in a future release")
-            app.config.otcdocs_bug_project = app.config.bug_project
-
-        if app.config.bug_tag is not None:
-            logger.info(
-                "[otcdocstheme] "
-                "the 'bug_tag' config option has been deprecated and "
-                "replaced by the 'otcdocs_bug_tag' option; support "
-                "for the former will be dropped in a future release")
-            app.config.otcdocs_bug_project = app.config.bug_project
-
         _html_context_data = {}
         try:
             _html_context_data['gitsha'] = subprocess.check_output(
@@ -166,11 +142,6 @@ def _html_page_context(app, pagename, templatename, context, doctree):
 
         if bug_project:
             _html_context_data['bug_project'] = bug_project
-
-        bug_tag = app.config.otcdocs_bug_tag
-        if bug_tag:
-            _html_context_data['bug_tag'] = bug_tag
-            logger.debug('[otcdocstheme] bug_tag %r', bug_tag)
 
         _html_context_data['pdf_link'] = app.config.otcdocs_pdf_link
         logger.debug(
@@ -461,17 +432,11 @@ def setup(app):
     # config options
     app.add_config_value('otcdocs_repo_name', '', 'env')
     app.add_config_value('otcdocs_bug_project', '', 'env')
-    app.add_config_value('otcdocs_bug_tag', '', 'env')
     app.add_config_value('otcdocs_projects', [], 'env')
     app.add_config_value('otcdocs_auto_version', None, 'env')
     app.add_config_value('otcdocs_auto_name', True, 'env')
     app.add_config_value('otcdocs_pdf_link', False, 'env')
     app.add_config_value('otcdocs_pdf_filename', None, 'env')
-
-    # legacy config options
-    app.add_config_value('repository_name', None, 'env')
-    app.add_config_value('bug_project', None, 'env')
-    app.add_config_value('bug_tag', None, 'env')
 
     # themes
     app.add_html_theme(

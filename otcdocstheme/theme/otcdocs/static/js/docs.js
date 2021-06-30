@@ -47,7 +47,7 @@ $('div.versionadded > p').prepend('<div class="fa fa-fw fa-plus-circle">&nbsp;</
 $('div.versionchanged > p').prepend('<div class="fa fa-fw fa-info-circle">&nbsp;</div>');
 $('div.deprecated > p').prepend('<div class="fa fa-fw fa-minus-circle">&nbsp;</div>');
 
-function logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName, useStoryboard) {
+function logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName) {
     /* Gives the log a bug icon the information it needs to generate the bug in
      * Launchpad with pre-filled information such as git SHA, opendev.org
      * source URL, published document URL and tag.
@@ -60,18 +60,13 @@ function logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName, 
         "- [ ] This doc is inaccurate in this way: ______" + lineFeed +
         "- [ ] This is a doc addition request." + lineFeed +
         "- [ ] I have a fix to the document that I can paste below including example: " +
-        "input and output. " + lineFeed + lineFeed +
-        "If you have a troubleshooting or support issue, use the following " +
-        " resources:" + lineFeed + lineFeed +
-        " - The mailing list: https://lists.openstack.org" + lineFeed +
-        " - IRC: 'openstack' channel on OFTC"+ lineFeed;
+        "input and output. " + lineFeed + lineFeed;
 
-    var urlBase = "https://bugs.launchpad.net/" + bugProject + "/+filebug?field.title=";
+    var urlBase = "https://github.com/" + bugProject + "/issues/new?title=";
     var currentURL = "URL: " + window.location.href;
     var bugLink = "";
     bugLink = urlBase  + encodeURIComponent(bugTitle) +
-    "&field.tags=" + fieldTags +
-    "&field.comment=" + lineFeed + lineFeed +  lineFeed +
+    "&body=" + lineFeed + lineFeed +  lineFeed +
     bugChecklist + lineFeed + "-----------------------------------" + lineFeed + fieldComment +
     lineFeed + currentURL;
     document.getElementById("logABugLink1").href = bugLink;

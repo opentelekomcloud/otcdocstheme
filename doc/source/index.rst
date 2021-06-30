@@ -1,6 +1,6 @@
-==============================
- OpenTelekomCloud Sphinx theme
-==============================
+===============================
+Open Telekom Cloud Sphinx theme
+===============================
 
 *otcdocstheme* is a theme and extension support for Sphinx documentation
 that is published to readthemanuals.org.
@@ -22,12 +22,7 @@ Using the theme
    changed.
 
 #. Update the requirements list for your project to include
-   ``otcdocstheme`` (usually in ``test-requirements.txt``).
-
-#. If your project previously used the *oslosphinx* theme (without modifying
-   the header navigation), remove ``oslosphinx`` from your requirements list,
-   and then in your ``conf.py`` you can remove the import statement and
-   extension listing for *oslosphinx*.
+   ``otcdocstheme`` (usually in ``test-requirements.txt`` or ``doc/requirements.txt``).
 
 #. Once done, you should add ``'otcdocstheme'`` to the list of extensions
    Sphinx needs to initialize and configure the theme::
@@ -47,13 +42,7 @@ Using the theme
        ``'opentelekomcloud/python-otcextensions'``.
 
    ``otcdocs_bug_project``
-       The project name or ID. For launchpad, it's a string like
-       ``python-otcextensions``. If your project uses
-       ``storyboard.otc.t-systems.org``, use the project number instead like
-       ``901``. If unspecified, the "Report a bug" links are not shown.
-
-   ``otcdocs_bug_tag``
-      Launchpad bug tag. If unspecified, no tag is set.  The default is empty.
+       The project name (github organization_name/project_name).
 
 #. Remove the options that will be automatically configured by the theme.
 
@@ -67,14 +56,6 @@ Using the theme
 
    - ``version``
    - ``release``
-
-.. versionchanged:: 1.20
-
-   In older versions of *otcdocstheme*, it was necessary to manually
-   configure the ``html_last_updated_fmt`` option for HTML output and the
-   ``latex_engine`` and ``latex_elements`` options if you required PDF output.
-   This is no longer the case as these attributes are now configured
-   automatically.
 
 
 Additional Configuration
