@@ -11,6 +11,7 @@ extensions = ['otcdocstheme']
 
 # openstackdocstheme options
 otcdocs_repo_name = 'opentelekomcloud/otcdocstheme'
+otcdocs_bug_project = 'opentelekomcloud/otcdocstheme'
 
 # The suffix of source filenames.
 source_suffix = '.rst'
