@@ -1,0 +1,5 @@
+---
+fixes:
+  - |
+    Sphinx4 is using "section" element vs <div class="section"> as previous
+    release. Add css hiding of the double title.
