@@ -1,0 +1,4 @@
+---
+fixes:
+  - |
+    Brand logo link is replaced to be a relative link to the root of the project.
