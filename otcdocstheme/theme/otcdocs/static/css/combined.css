@@ -7,10 +7,21 @@ table {
   margin-bottom: 10px; }
 
 table.docutils th {
-  padding: 2px; }
+  border-collapse: collapse; }
+
+table.docutils th,
+table.docutils td {
+  padding: 8px; }
+
+table.docutils th {
+  background-color: #2a4e68;
+  color: #edf2f7; }
 
 table.docutils td {
-  padding: 2px; }
+  border: 1px solid #ddd; }
+
+table.docutils tr.row-odd {
+  background-color: #eee; }
 
 table.docutils caption {
   font-weight: bold; }
