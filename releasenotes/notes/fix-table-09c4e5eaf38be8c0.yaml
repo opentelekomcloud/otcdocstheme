@@ -1,0 +1,4 @@
+---
+fixes:
+  - |
+    Fix the table css by setting borders color.
