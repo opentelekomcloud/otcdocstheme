@@ -94,7 +94,6 @@ function pdfLink(currentSourceFile, pdfFileName) {
 }
 
 function changeSidebar() {
-    // var sections = document.getElementsByClassName('docs-sidebar-section')
     var toctree2 = document.querySelectorAll('div.docs-sidebar-section > ul > li.toctree-l1 > ul > li.toctree-l2')
     toctree2.forEach(element => {
         var newElement = document.createElement('scale-sidebar-nav-item')
@@ -120,11 +119,40 @@ function changeSidebar() {
         label.remove()
     });
 
-    var sectionsPage = document.querySelectorAll('div.docs-sidebar-section > ul > li > ul > li')
+    const deepSectionLength = document.querySelectorAll('div.docs-sidebar-section > ul > li > ul > li > ul > li').length
+
+    var sectionsPage = document.querySelectorAll('div.docs-sidebar-section > ul > li > ul > li > ul > li')
     sectionsPage.forEach(element => {
         var newElement = document.createElement('scale-sidebar-nav-item')
         newElement.innerHTML = element.innerHTML
         element.parentNode.replaceChild(newElement, element)
+        if (deepSectionLength != 0) {
+            newElement.setAttribute("nesting-level", "2")
+        }
+    });
+
+    var sectionsPageUl = document.querySelectorAll('div.docs-sidebar-section > ul > li > ul > li > ul')
+    sectionsPageUl.forEach(element => {
+        var newElement = document.createElement('scale-sidebar-nav')
+        newElement.innerHTML = element.innerHTML
+        element.parentNode.replaceChild(newElement, element)
+    });
+
+    var sectionsPage = document.querySelectorAll('div.docs-sidebar-section > ul > li > ul > li')
+    sectionsPage.forEach(element => {
+        if (deepSectionLength === 0) {
+            var newElement = document.createElement('scale-sidebar-nav-item')
+            newElement.innerHTML = element.innerHTML
+            element.parentNode.replaceChild(newElement, element)
+        }
+        else {
+            var newElement = document.createElement('scale-sidebar-nav-collapsible')
+            newElement.innerHTML = element.innerHTML
+            element.parentNode.replaceChild(newElement, element)
+            var label = newElement.firstChild
+            newElement.setAttribute("label", label.innerHTML)
+            label.remove()
+        }
     });
 
     var sectionsPageUl = document.querySelectorAll('div.docs-sidebar-section > ul > li > ul')

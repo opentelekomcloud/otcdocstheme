@@ -10,3 +10,7 @@ body {
     color: var(--scl-color-primary-active) !important;
     
 }
+
+scale-sidebar-nav {
+    --max-width: 100rem !important;
+}
