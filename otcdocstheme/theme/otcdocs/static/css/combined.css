@@ -29,12 +29,12 @@ table.docutils caption {
 hr {
   height: 1px !important; }
 
-/* a, a:visited {
+a, a:visited {
   color: #bc1518;
-  text-decoration: none; } */
+  text-decoration: none; }
 
-/* a:hover {
-  text-decoration: underline; } */
+a:hover {
+  text-decoration: underline; }
 
 ol.arabic ol {
   list-style-type: lower-alpha; }
@@ -818,8 +818,8 @@ h1, h2, h3, h4, h5 {
   font-weight: lighter;
 }
 
-/* a, a:visited {
-  color: #30739C; } */
+a, a:visited {
+  color: #30739C; }
 
 .lead {
   font-size: 18px;
@@ -2218,9 +2218,9 @@ img.icehouse-video {
   margin: 0 8px;
   border-radius: 4px; }
 
-/* .documentation a:hover {
+.documentation a:hover {
   text-decoration: none;
-  background: #2A4E68; } */
+  background: #2A4E68; }
 
 @media (max-width: 767px) {
   .documentation a {

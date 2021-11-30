@@ -2,15 +2,110 @@
 body {
 --scl-radius-12: 0 !important;
 }
-.hydrated > a {
-    color: black !important;
-    
-}
-.hydrated > a:hover {
-    color: var(--scl-color-primary-active) !important;
-    
+
+.docs-sidebar-toc {
+    color: white !important;
+    background: white !important;
 }
 
-scale-sidebar-nav {
-    --max-width: 100rem !important;
+.toctree-l3 {
+    color: black !important;
+    margin: 10px !important;
+    font-weight: normal;
+    font-size: 14px;
+    text-decoration-line: none;
+}
+
+.toctree-l3 > a {
+    color: black !important;
+}
+
+.toctree-l3 > a:hover {
+    color: var(--scl-color-primary-active) !important;
+} 
+
+.toctree-l2 {
+    color: black !important;
+    margin: 10px !important;
+    font-weight: normal;
+    font-size: 16px;
+    text-decoration-line: none;
+}
+
+.toctree-l2 > a {
+    color: black !important;
+}
+
+.current > a {
+    color: black !important;
+}
+
+.toctree-l2 > a:hover {
+    color: var(--scl-color-primary-active) !important;
+} 
+
+.toctree-l1 > a {
+    color: black !important;
+}
+
+.toctree-l1 > a:hover {
+    color: var(--scl-color-primary-active) !important;
+}
+
+.toctree-l1 {
+    margin-bottom: 10px !important;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration-line: none;
+}
+
+#local-table-of-contents > ul > li > ul > li {
+    margin-bottom: 10px !important;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#local-table-of-contents > ul > li > a {
+    color: black
+}
+
+#local-table-of-contents > ul > li > a:hover {
+    color: var(--scl-color-primary-active) !important;
+}
+
+#local-table-of-contents > ul > li > ul > li {
+    margin-bottom: 10px !important;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#local-table-of-contents > ul > li > ul > li > a {
+    color: black
+}
+
+#local-table-of-contents > ul > li > ul > li > ul > li {
+    color: black !important;
+    margin: 10px !important;
+    font-weight: normal;
+    font-size: 16px;
+}
+
+#local-table-of-contents > ul > li > ul > li > a:hover {
+    color: var(--scl-color-primary-active) !important;
+}
+
+#local-table-of-contents > ul > li > ul > li > ul > li > a {
+    color: black
+}
+
+#local-table-of-contents > ul > li > ul > li > ul > li > a:hover {
+    color: var(--scl-color-primary-active) !important;
+}
+
+.docs-body a {
+    text-decoration-line: none;
+}
+
+.docs-body a:hover {
+    text-decoration-line: underline;
 }

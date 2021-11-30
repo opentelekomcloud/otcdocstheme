@@ -4,9 +4,6 @@ $(".docs-sidebar-section-title").click(function () {
     $(this).closest('.docs-sidebar-section').toggleClass('active');
 });
 
-// Change the sidebar
-changeSidebar()
-
 // Bootstrap stuff
 $('.docs-actions i').tooltip();
 $('.docs-sidebar-home').tooltip();
@@ -91,98 +88,4 @@ function pdfLink(currentSourceFile, pdfFileName) {
     var pdfLink = currentLink.replace(file, pdfFileName);
     document.getElementById("pdfLink1").href = pdfLink;
     document.getElementById("pdfLink2").href = pdfLink;
-}
-
-function changeSidebar() {
-    var toctree2 = document.querySelectorAll('div.docs-sidebar-section > ul > li.toctree-l1 > ul > li.toctree-l2')
-    toctree2.forEach(element => {
-        var newElement = document.createElement('scale-sidebar-nav-item')
-        newElement.innerHTML = element.innerHTML
-        element.parentNode.replaceChild(newElement, element)
-        newElement.setAttribute("nesting-level", "2")
-    });
-
-    var toctree1Ul = document.querySelectorAll('div.docs-sidebar-section > ul > li.toctree-l1 > ul')
-    toctree1Ul.forEach(element => {
-        var newElement = document.createElement('scale-sidebar-nav')
-        newElement.innerHTML = element.innerHTML
-        element.parentNode.replaceChild(newElement, element)
-    });
-
-    var toctree1 = document.querySelectorAll('div.docs-sidebar-section > ul > li.toctree-l1.current')
-    toctree1.forEach(element => {
-        var newElement = document.createElement('scale-sidebar-nav-collapsible')
-        newElement.innerHTML = element.innerHTML
-        element.parentNode.replaceChild(newElement, element)
-        var label = newElement.firstChild
-        newElement.setAttribute("label", label.innerHTML)
-        label.remove()
-    });
-
-    const deepSectionLength = document.querySelectorAll('div.docs-sidebar-section > ul > li > ul > li > ul > li').length
-
-    var sectionsPage = document.querySelectorAll('div.docs-sidebar-section > ul > li > ul > li > ul > li')
-    sectionsPage.forEach(element => {
-        var newElement = document.createElement('scale-sidebar-nav-item')
-        newElement.innerHTML = element.innerHTML
-        element.parentNode.replaceChild(newElement, element)
-        if (deepSectionLength != 0) {
-            newElement.setAttribute("nesting-level", "2")
-        }
-    });
-
-    var sectionsPageUl = document.querySelectorAll('div.docs-sidebar-section > ul > li > ul > li > ul')
-    sectionsPageUl.forEach(element => {
-        var newElement = document.createElement('scale-sidebar-nav')
-        newElement.innerHTML = element.innerHTML
-        element.parentNode.replaceChild(newElement, element)
-    });
-
-    var sectionsPage = document.querySelectorAll('div.docs-sidebar-section > ul > li > ul > li')
-    sectionsPage.forEach(element => {
-        if (deepSectionLength === 0) {
-            var newElement = document.createElement('scale-sidebar-nav-item')
-            newElement.innerHTML = element.innerHTML
-            element.parentNode.replaceChild(newElement, element)
-        }
-        else {
-            var newElement = document.createElement('scale-sidebar-nav-collapsible')
-            newElement.innerHTML = element.innerHTML
-            element.parentNode.replaceChild(newElement, element)
-            var label = newElement.firstChild
-            newElement.setAttribute("label", label.innerHTML)
-            label.remove()
-        }
-    });
-
-    var sectionsPageUl = document.querySelectorAll('div.docs-sidebar-section > ul > li > ul')
-    sectionsPageUl.forEach(element => {
-        var newElement = document.createElement('scale-sidebar-nav')
-        newElement.innerHTML = element.innerHTML
-        element.parentNode.replaceChild(newElement, element)
-    });
-
-    var sections = document.querySelectorAll('div.docs-sidebar-section > ul > li')
-    sections.forEach(element => {
-        var newElement = document.createElement('scale-sidebar-nav-item')
-        newElement.innerHTML = element.innerHTML
-        element.parentNode.replaceChild(newElement, element)
-    });
-
-    var oldUl = document.querySelectorAll('div.docs-sidebar-section > ul')
-    oldUl.forEach(element => {
-        var newElement = document.createElement('scale-sidebar-nav')
-        newElement.innerHTML = element.innerHTML
-        element.parentNode.replaceChild(newElement, element)
-    })
-
-    var docsSidebarSection = document.querySelectorAll('div.docs-sidebar-toc > div.docs-sidebar-section')
-    docsSidebarSection.forEach(element => {
-        element.classList.remove('docs-sidebar-section')
-    });
-
-    var docsSidebarToc = document.querySelectorAll('div.docs-sidebar-toc')
-    docsSidebarToc.forEach(element => {
-        element.classList.remove('docs-sidebar-toc')
-    });
 }
