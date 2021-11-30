@@ -1,7 +1,12 @@
-/* body {
-    background-color: springgreen !important;
-} */
 
 body {
 --scl-radius-12: 0 !important;
+}
+.hydrated > a {
+    color: black !important;
+    
+}
+.hydrated > a:hover {
+    color: var(--scl-color-primary-active) !important;
+    
 }
