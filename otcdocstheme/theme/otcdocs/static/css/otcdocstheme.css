@@ -60,6 +60,11 @@ body {
     font-weight: normal;
     font-size: 16px;
     text-decoration-line: none;
+    
+    /* Hide text-overflow for long headlines */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
 }
 
 .toctree-l2 > a {
@@ -87,6 +92,11 @@ body {
     font-weight: bold;
     font-size: 16px;
     text-decoration-line: none;
+
+    /* Hide text-overflow for long headlines */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
 }
 
 #local-table-of-contents > ul > li > ul > li {
