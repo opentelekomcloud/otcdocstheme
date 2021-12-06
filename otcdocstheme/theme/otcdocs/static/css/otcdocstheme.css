@@ -19,6 +19,20 @@ body {
     --scl-font-size-14: 1.3rem !important;
 }
 
+/* Make the container larger on XXL Screens */
+@media (min-width: 1800px) {
+    .container {
+        width: 1770px;
+    }
+}
+
+@media (min-width: 2000px) {
+    .container {
+        width: 1870px;
+    }
+}
+
+
 .docs-sidebar-toc {
     color: white !important;
     background: white !important;
@@ -102,7 +116,7 @@ body {
 #local-table-of-contents > ul > li > ul > li > ul > li {
     color: black !important;
     margin: 10px !important;
-    padding-left: 20px;
+    padding-left: 10px;
     font-weight: normal;
     font-size: 16px;
 }
