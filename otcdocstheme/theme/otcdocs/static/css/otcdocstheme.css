@@ -1,6 +1,22 @@
 
 body {
---scl-radius-12: 0 !important;
+    /* Removes rounded corners */
+    --scl-radius-12: 0 !important;
+
+    /* Sets Font Family to Telekom Font */
+    font-family: var(--scl-font-weight-medium);
+
+    /* One Font size for whole body */
+    font-size: 16px;
+
+    /* Changes Font Size for the Navbar */
+    --scl-font-variant-body-large-size: 1.7rem !important;
+
+    /* Changes Font Size for the Dropdown Menu of the Navbar */
+    --scl-font-size-16: 1.5rem !important;
+
+    /* Changes the Font Size of Footer */
+    --scl-font-size-14: 1.3rem !important;
 }
 
 .docs-sidebar-toc {
@@ -55,14 +71,14 @@ body {
 .toctree-l1 {
     margin-bottom: 10px !important;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
     text-decoration-line: none;
 }
 
 #local-table-of-contents > ul > li > ul > li {
     margin-bottom: 10px !important;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 #local-table-of-contents > ul > li > a {
@@ -76,7 +92,7 @@ body {
 #local-table-of-contents > ul > li > ul > li {
     margin-bottom: 10px !important;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 #local-table-of-contents > ul > li > ul > li > a {
@@ -116,5 +132,5 @@ body {
 }
 
 #local-table-of-contents.docs-sidebar-section ul:first-of-type {
-    padding-left: 20px;
+    padding-left: 10px;
 }
