@@ -162,7 +162,8 @@ h5 {
 }
 
 #local-table-of-contents > ul > li > ul > li > ul > li > a {
-    color: #191919
+    color: #191919;
+    text-decoration: none;
 }
 
 #local-table-of-contents > ul > li > ul > li > ul > li > a:hover {
@@ -195,4 +196,32 @@ h5 {
     font-size: 2.2rem;
     font-weight: 400;
     color: #191919;
+}
+
+#table-of-contents > ul > li {
+    font-size: 14px;
+    color: #191919
+}
+
+#table-of-contents > ul > li > a {
+    color: #191919;
+}
+
+#table-of-contents > ul > li > a:hover {
+    color: var(--scl-color-primary-active) !important;
+    text-decoration: none;
+}
+
+#table-of-contents > ul > li > ul > li {
+    list-style-type: none;
+    margin: 10px;
+}
+
+#table-of-contents > ul > li > ul > li > a {
+    color: #191919;
+}
+
+#table-of-contents > ul > li > ul > li > a:hover {
+    color: var(--scl-color-primary-active) !important;
+    text-decoration: none;
 }
