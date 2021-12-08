@@ -12,12 +12,18 @@ body {
     /* Changes the Font Size of Footer */
     --scl-font-size-14: 1.2rem !important;
 
+    /* Default Text colour */
     color: #191919;
 
+    /* Change to a proper font */
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
     /* Font Weigth for Navbar */
     --scl-font-weight-extrabold: 700 !important;
+
+    /* Change size of Brand logo in Footer */
+    --scl-spacing-24: 2em
+    
 }
 
 h1 {
