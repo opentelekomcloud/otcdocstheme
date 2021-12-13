@@ -1,0 +1,233 @@
+
+body {
+    /* Removes rounded corners */
+    --scl-radius-12: 0 !important;
+
+    /* Changes Font Size for the Navbar */
+    --scl-font-variant-body-large-size: 1.5rem !important;
+
+    /* Changes Font Size for the Dropdown Menu of the Navbar */
+    --scl-font-size-16: 1.4rem !important;
+
+    /* Changes the Font Size of Footer */
+    --scl-font-size-14: 1.2rem !important;
+
+    /* Default Text colour */
+    color: #191919;
+
+    /* Change to a proper font */
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+    /* Font Weigth for Navbar */
+    --scl-font-weight-extrabold: 700 !important;
+
+    /* Change size of Brand logo in Footer */
+    --scl-spacing-24: 2em
+
+}
+
+h1 {
+    font-size: 2em;
+    color: #191919;
+}
+
+h2 {
+    font-size: 1.7em;
+    color: #191919;
+}
+
+h3 {
+    color: #191919;
+}
+
+h4 {
+    color: #191919;
+}
+
+h5 {
+    color: #191919;
+}
+
+/* Make the container larger on XXL Screens */
+@media (min-width: 1600px) {
+    .container {
+        width: 1570px;
+    }
+}
+
+@media (min-width: 1800px) {
+    .container {
+        width: 1770px;
+    }
+}
+
+@media (min-width: 2000px) {
+    .container {
+        width: 1870px;
+    }
+}
+
+
+.docs-sidebar-toc {
+    color: white !important;
+    background: white !important;
+}
+
+.toctree-l3 {
+    color: #191919 !important;
+    margin: 10px !important;
+    font-weight: normal;
+    text-decoration-line: none;
+}
+
+.toctree-l3 > a {
+    color: #191919 !important;
+}
+
+.toctree-l3 > a:hover {
+    color: var(--scl-color-primary-active) !important;
+}
+
+.toctree-l2 {
+    color: #191919 !important;
+    margin: 10px !important;
+    font-weight: normal;
+    text-decoration-line: none;
+
+    /* Hide text-overflow for long headlines */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.toctree-l2 > a {
+    color: #191919 !important;
+    text-decoration-line: none;
+}
+
+.current > a {
+    color: #191919 !important;
+}
+
+.toctree-l2 > a:hover {
+    color: var(--scl-color-primary-active) !important;
+}
+
+.toctree-l1 > a {
+    color: #191919 !important;
+    text-decoration-line: none;
+}
+
+.toctree-l1 > a:hover {
+    color: var(--scl-color-primary-active) !important;
+}
+
+.toctree-l1 {
+    margin-bottom: 10px !important;
+    font-weight: 600;
+    text-decoration-line: none;
+
+    /* Hide text-overflow for long headlines */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+#local-table-of-contents > ul > li > ul > li {
+    margin-bottom: 10px !important;
+    font-weight: 600;
+}
+
+#local-table-of-contents > ul > li > a {
+    color: #191919
+}
+
+#local-table-of-contents > ul > li > a:hover {
+    color: var(--scl-color-primary-active) !important;
+}
+
+#local-table-of-contents > ul > li > ul > li {
+    margin-bottom: 10px !important;
+    font-weight: 600;
+}
+
+#local-table-of-contents > ul > li > ul > li > a {
+    color: #191919;
+    text-decoration-line: none;
+}
+
+#local-table-of-contents > ul > li > ul > li > ul > li {
+    color: #191919 !important;
+    margin: 10px !important;
+    padding-left: 10px;
+    font-weight: normal;
+}
+
+#local-table-of-contents > ul > li > ul > li > a:hover {
+    color: var(--scl-color-primary-active) !important;
+}
+
+#local-table-of-contents > ul > li > ul > li > ul > li > a {
+    color: #191919;
+    text-decoration: none;
+}
+
+#local-table-of-contents > ul > li > ul > li > ul > li > a:hover {
+    color: var(--scl-color-primary-active) !important;
+}
+
+.docs-body a {
+    text-decoration-line: none;
+}
+
+.docs-body a:hover {
+    text-decoration-line: underline;
+}
+
+.docs-sidebar-section ul ul {
+    margin-left: 0 !important;
+}
+
+#local-table-of-contents.docs-sidebar-section ul:first-of-type {
+    padding-left: 10px;
+}
+
+.docs-sidebar-section-title > h4 {
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #191919;
+}
+
+.docs-sidebar-section-title {
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: #191919;
+}
+
+#table-of-contents > ul > li {
+    font-size: 14px;
+    color: #191919
+}
+
+#table-of-contents > ul > li > a {
+    color: #191919;
+}
+
+#table-of-contents > ul > li > a:hover {
+    color: var(--scl-color-primary-active) !important;
+    text-decoration: none;
+}
+
+#table-of-contents > ul > li > ul > li {
+    list-style-type: none;
+    margin: 10px;
+}
+
+#table-of-contents > ul > li > ul > li > a {
+    color: #191919;
+}
+
+#table-of-contents > ul > li > ul > li > a:hover {
+    color: var(--scl-color-primary-active) !important;
+    text-decoration: none;
+}

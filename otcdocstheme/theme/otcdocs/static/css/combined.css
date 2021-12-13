@@ -120,10 +120,6 @@ div.docs-body span.guilabel, div.docs-body span.menuselection {
   width: 177px;
   margin-left: -10px; }
 
-#header {
-  margin-bottom: 0px;
-  margin-top: 20px; }
-
 /* @end */
 /* @group Tabs */
 .tabContentHidden {
@@ -779,9 +775,6 @@ p.message.bad {
 
 .topMessage p {
   margin-bottom: 0px; }
-
-#header {
-  margin-top: 40px; }
 
 span.message {
   font-weight: bold;

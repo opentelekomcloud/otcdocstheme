@@ -1,38 +1,6 @@
-<footer>
-  <div class="container">
-    <div class="row footer-links">
-      <div class="col-lg-2 col-sm-2">
-        <div class="brand-wrapper">
-          <a class="navbar-brand" href="https://open-telekom-cloud.com/"></a>
-        </div>
-      </div>
-      <div class="col-lg-2 col-sm-2">
-        <h3>OpenTelekomCloud</h3>
-        <ul>
-          <li><a href="https://github.com/opentelekomcloud">GitHub Projects</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-2 col-sm-2">
-        <h3>Documentation</h3>
-        <ul>
-          <li><a href="http://docs.otc.t-systems.com">Official OpenTelekomCloud Documentation</a></li>
-          <li><a href="http://docs.otc-service.com">Alternative OpenTelekomCloud 3rd-party software Documentation</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-2 col-sm-2">
-        <h3>Branding & Legal</h3>
-        <ul>
-          <li><a href="https://cloud.telekom.de/en/imprint-adress">Imprint</a></li>
-          <li><a href="https://cloud.telekom.de/en/contact/">Contact</a></li>
-          <li><a href="https://cloud.telekom.de/en/data-protection">Data Privacy</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-4 col-sm-4">
-        <h3>Stay In Touch</h3>
-        <p class="fine-print">
-          © 2021 Deutsche Telekom AG.
-        </p>
-      </div>
-    </div>
-  </div>
-</footer>
+</scale-app-shell>
+<scale-app-footer id="footer-shell" variant="standard" claim-lang="en">
+</scale-app-footer>
+<script>
+  const footer_shell = document.getElementById("footer-shell");
+  footer_shell.footerNavigation = [{"name":"Contact","id":"Contact","href":"https://cloud.telekom.de/en/contact/"},{"name":"Legal notice","id":"Legal notice","href":"https://cloud.telekom.de/en/imprint-adress"},{"name":"Data privacy","id":"Data privacy","href":"https://open-telekom-cloud.com/en/data-protection","icon":"alert-imprint-dataprivacy"}]</script>

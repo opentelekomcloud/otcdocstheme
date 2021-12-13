@@ -2,6 +2,8 @@ _build/
 /AUTHORS
 /ChangeLog
 /dist/
+/build/
+build/*
 /otcdocstheme.egg-info/
 .DS_Store
 *.pyc
