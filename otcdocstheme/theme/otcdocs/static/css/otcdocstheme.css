@@ -265,4 +265,9 @@ h5 {
     box-shadow: 0px 2px 15px 1px rgba(0,0,0,0.2);;
 }
 
+.startpage-container a:hover {
+    text-decoration: none;
+}
+
+
 /* Cards END */
