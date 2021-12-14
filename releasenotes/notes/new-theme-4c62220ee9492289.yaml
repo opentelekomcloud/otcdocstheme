@@ -1,0 +1,7 @@
+---
+prelude: >
+    For the new Helpcenter Release 3.0 we offer a new design of our current
+    documentation. For this purpose the last PR was done.
+features:
+  - |
+    Integration of Scale and Card design of the landing page.
