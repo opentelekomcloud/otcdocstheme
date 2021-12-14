@@ -231,3 +231,50 @@ h5 {
     color: var(--scl-color-primary-active) !important;
     text-decoration: none;
 }
+
+/* Cards */
+
+.startpage-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+.startpage-item {
+    padding: 10px;
+    margin: 10px;
+    background: white;
+    width: 300px;
+    height: 200px;
+    color: #191919;
+    text-align: center;
+    box-shadow: 0px 2px 10px 1px rgba(0,0,0,0.2);
+    transition: transform .2s;
+  }
+
+.startpage-item p {
+    text-align: justify;
+}
+
+.startpage-item h3 {
+    margin-top: 10px;
+}
+
+.startpage-item img {
+    height: 4em;
+}
+
+.startpage-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 2px 15px 1px rgba(0,0,0,0.2);;
+}
+
+.startpage-container a:hover {
+    text-decoration: none;
+}
+
+/* Cards END */
