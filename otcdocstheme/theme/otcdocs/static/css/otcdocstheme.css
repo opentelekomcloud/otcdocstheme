@@ -28,7 +28,8 @@ body {
 
 h1 {
     font-size: 2em;
-    color: #191919;
+    color: #e20074;
+    font-weight: bold;
 }
 
 h2 {
@@ -231,6 +232,21 @@ h5 {
     color: var(--scl-color-primary-active) !important;
     text-decoration: none;
 }
+
+div.docs-sidebar-toc > div > ul > li {
+    list-style-type: none;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+ /* Tables */
+
+table.docutils th {
+    background-color: #768491 !important;
+    color: rgb(255, 255, 255) !important;
+}
+
+ /* Tables END */
 
 /* Cards */
 
