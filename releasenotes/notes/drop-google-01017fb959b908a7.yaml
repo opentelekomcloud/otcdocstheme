@@ -1,0 +1,6 @@
+---
+prelude: >
+    Drop Google Tracking.
+other:
+  - |
+    Delete Google tracking entry in layout.html
