@@ -1,44 +1,40 @@
-
 body {
     /* Removes rounded corners */
     --scl-radius-12: 0 !important;
-
     /* Changes Font Size for the Navbar */
     --scl-font-variant-body-large-size: 1.5rem !important;
-
     /* Changes Font Size for the Dropdown Menu of the Navbar */
     --scl-font-size-16: 1.4rem !important;
-
     /* Changes the Font Size of Footer */
     --scl-font-size-14: 1.2rem !important;
-
     /* Default Text colour */
     color: #191919;
-
     /* Change to a proper font */
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-
     /* Font Weigth for Navbar */
     --scl-font-weight-extrabold: 700 !important;
-
     /* Change size of Brand logo in Footer */
     --scl-spacing-24: 2em
-
 }
 
 h1 {
     font-size: 2em;
-    color: #e20074;
-    font-weight: bold;
+    color: #191919;
+    margin-top: 0;
 }
 
 h2 {
     font-size: 1.7em;
     color: #191919;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
 }
 
 h3 {
+    font-size: 1.5em;
     color: #191919;
+    margin-top: 1em;
+    margin-bottom: 0.8em;
 }
 
 h4 {
@@ -49,7 +45,10 @@ h5 {
     color: #191919;
 }
 
+/* CONTAINER */
+
 /* Make the container larger on XXL Screens */
+
 @media (min-width: 1600px) {
     .container {
         width: 1570px;
@@ -68,6 +67,9 @@ h5 {
     }
 }
 
+/* CONTAINER END */
+
+/* SIDEBAR */
 
 .docs-sidebar-toc {
     color: white !important;
@@ -81,11 +83,11 @@ h5 {
     text-decoration-line: none;
 }
 
-.toctree-l3 > a {
+.toctree-l3>a {
     color: #191919 !important;
 }
 
-.toctree-l3 > a:hover {
+.toctree-l3>a:hover {
     color: var(--scl-color-primary-active) !important;
 }
 
@@ -94,32 +96,31 @@ h5 {
     margin: 10px !important;
     font-weight: normal;
     text-decoration-line: none;
-
     /* Hide text-overflow for long headlines */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis
 }
 
-.toctree-l2 > a {
+.toctree-l2>a {
     color: #191919 !important;
     text-decoration-line: none;
 }
 
-.current > a {
+.current>a {
     color: #191919 !important;
 }
 
-.toctree-l2 > a:hover {
+.toctree-l2>a:hover {
     color: var(--scl-color-primary-active) !important;
 }
 
-.toctree-l1 > a {
+.toctree-l1>a {
     color: #191919 !important;
     text-decoration-line: none;
 }
 
-.toctree-l1 > a:hover {
+.toctree-l1>a:hover {
     color: var(--scl-color-primary-active) !important;
 }
 
@@ -127,62 +128,53 @@ h5 {
     margin-bottom: 10px !important;
     font-weight: 600;
     text-decoration-line: none;
-
     /* Hide text-overflow for long headlines */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis
 }
 
-#local-table-of-contents > ul > li > ul > li {
+#local-table-of-contents>ul>li>ul>li {
     margin-bottom: 10px !important;
     font-weight: 600;
 }
 
-#local-table-of-contents > ul > li > a {
+#local-table-of-contents>ul>li>a {
     color: #191919
 }
 
-#local-table-of-contents > ul > li > a:hover {
+#local-table-of-contents>ul>li>a:hover {
     color: var(--scl-color-primary-active) !important;
 }
 
-#local-table-of-contents > ul > li > ul > li {
+#local-table-of-contents>ul>li>ul>li {
     margin-bottom: 10px !important;
     font-weight: 600;
 }
 
-#local-table-of-contents > ul > li > ul > li > a {
+#local-table-of-contents>ul>li>ul>li>a {
     color: #191919;
     text-decoration-line: none;
 }
 
-#local-table-of-contents > ul > li > ul > li > ul > li {
+#local-table-of-contents>ul>li>ul>li>ul>li {
     color: #191919 !important;
     margin: 10px !important;
     padding-left: 10px;
     font-weight: normal;
 }
 
-#local-table-of-contents > ul > li > ul > li > a:hover {
+#local-table-of-contents>ul>li>ul>li>a:hover {
     color: var(--scl-color-primary-active) !important;
 }
 
-#local-table-of-contents > ul > li > ul > li > ul > li > a {
+#local-table-of-contents>ul>li>ul>li>ul>li>a {
     color: #191919;
     text-decoration: none;
 }
 
-#local-table-of-contents > ul > li > ul > li > ul > li > a:hover {
+#local-table-of-contents>ul>li>ul>li>ul>li>a:hover {
     color: var(--scl-color-primary-active) !important;
-}
-
-.docs-body a {
-    text-decoration-line: none;
-}
-
-.docs-body a:hover {
-    text-decoration-line: underline;
 }
 
 .docs-sidebar-section ul ul {
@@ -193,7 +185,7 @@ h5 {
     padding-left: 10px;
 }
 
-.docs-sidebar-section-title > h4 {
+.docs-sidebar-section-title>h4 {
     font-size: 2.2rem;
     font-weight: 400;
     color: #191919;
@@ -205,50 +197,74 @@ h5 {
     color: #191919;
 }
 
-#table-of-contents > ul > li {
+#table-of-contents>ul>li {
     font-size: 14px;
     color: #191919
 }
 
-#table-of-contents > ul > li > a {
+#table-of-contents>ul>li>a {
     color: #191919;
 }
 
-#table-of-contents > ul > li > a:hover {
+#table-of-contents>ul>li>a:hover {
     color: var(--scl-color-primary-active) !important;
     text-decoration: none;
 }
 
-#table-of-contents > ul > li > ul > li {
+#table-of-contents>ul>li>ul>li {
     list-style-type: none;
     margin: 10px;
 }
 
-#table-of-contents > ul > li > ul > li > a {
+#table-of-contents>ul>li>ul>li>a {
     color: #191919;
 }
 
-#table-of-contents > ul > li > ul > li > a:hover {
+#table-of-contents>ul>li>ul>li>a:hover {
     color: var(--scl-color-primary-active) !important;
     text-decoration: none;
 }
 
-div.docs-sidebar-toc > div > ul > li {
+div.docs-sidebar-toc>div>ul>li {
     list-style-type: none;
     font-size: 14px;
     font-weight: bold;
 }
 
- /* Tables */
+/* SIDEBAR END */
+
+/* CONTENT */
+
+.docs-body a {
+    text-decoration-line: none;
+    color: #0d39df;
+}
+
+.docs-body a:hover {
+    text-decoration-line: underline;
+}
 
 table.docutils th {
     background-color: #768491 !important;
     color: rgb(255, 255, 255) !important;
 }
 
- /* Tables END */
+/* Formats the client command options to a propper styling */
+dt.sig-object {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
 
-/* Cards */
+/* Formats inline code snippets */
+code.docutils.literal.notranslate {
+    font-size: 100%;
+    font-weight: 600;
+    background-color: #ffffff;
+    color: #191919;
+}
+
+/* CONTENT END */
+
+/* CARDS (DEPRECATED) */
 
 .startpage-container {
     display: flex;
@@ -258,7 +274,7 @@ table.docutils th {
     padding: 0;
     margin: 0;
     list-style: none;
-  }
+}
 
 .startpage-item {
     padding: 10px;
@@ -268,9 +284,9 @@ table.docutils th {
     height: 200px;
     color: #191919;
     text-align: center;
-    box-shadow: 0px 2px 10px 1px rgba(0,0,0,0.2);
+    box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.2);
     transition: transform .2s;
-  }
+}
 
 .startpage-item p {
     text-align: justify;
@@ -286,11 +302,12 @@ table.docutils th {
 
 .startpage-item:hover {
     transform: scale(1.05);
-    box-shadow: 0px 2px 15px 1px rgba(0,0,0,0.2);;
+    box-shadow: 0px 2px 15px 1px rgba(0, 0, 0, 0.2);
+    ;
 }
 
 .startpage-container a:hover {
     text-decoration: none;
 }
 
-/* Cards END */
+/* CARDS END */
