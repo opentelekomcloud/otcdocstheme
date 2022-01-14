@@ -237,6 +237,9 @@ div.docs-sidebar-toc>div>ul>li {
 
 .docs-body a {
     text-decoration-line: none;
+}
+
+a.reference {
     color: #0d39df;
 }
 
@@ -244,17 +247,71 @@ div.docs-sidebar-toc>div>ul>li {
     text-decoration-line: underline;
 }
 
-table.docutils th {
-    background-color: #768491 !important;
-    color: rgb(255, 255, 255) !important;
+table.docutils thead {
+    border: 1px solid #666666;
 }
 
+th {
+    font-weight: 600;
+}
+
+th.head>p {
+    margin-bottom: 0px;
+}
+
+table.docutils th {
+    color: #ffffff !important;
+    background-color: #666666;
+    border-bottom-color: #666666;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+/* Rounded corner for first table-header element */
+
+table th:first-child {
+    border-radius: 0 0 0 0;
+}
+
+/* Rounded corner for last table-header element */
+
+table th:last-child {
+    border-radius: 0 0 0 0;
+}
+
+/* Reset borders from previous css files */
+
+table.docutils td {
+    border: 0;
+}
+
+table.docutils td {
+    border-color: #e5e5e5;
+    border-style: solid;
+    border-width: 1px;
+}
+
+table.docutils tr.row-odd {
+    background-color: #f9f9f9;
+}
+
+tbody>tr:nth-child(odd)>td, tbody>tr:nth-child(odd)>th {
+    background-color: #ffffff;
+}
+
+table.docutils tr.row-even {
+    background-color: white;
+}
+
+
 /* Formats the client command options to a propper styling */
+
 dt.sig-object {
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 /* Formats inline code snippets */
+
 code.docutils.literal.notranslate {
     font-size: 100%;
     font-weight: 600;
