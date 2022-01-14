@@ -20,6 +20,14 @@
     vars:
       tox_envlist: html
 
+- job:
+    name: otcdocstheme-tox-api-ref
+    parent: otc-tox
+    description: |
+      Run api-ref target
+    vars:
+      tox_envlist: api-ref
+
 - project:
     merge-mode: squash-merge
     templates:
@@ -31,6 +39,7 @@
         - otc-tox-pep8
         - otcdocstheme-tox-buildpdf
         - otcdocstheme-tox-html
+        - otcdocstheme-tox-api-ref
     gate:
       jobs:
         - otc-tox-pep8
