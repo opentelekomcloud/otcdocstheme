@@ -31,6 +31,7 @@
         - otc-tox-pep8
         - otcdocstheme-tox-buildpdf
         - otcdocstheme-tox-html
+        - build-otc-api-ref
     gate:
       jobs:
         - otc-tox-pep8
