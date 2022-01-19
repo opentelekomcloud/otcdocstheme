@@ -13,8 +13,7 @@ body {
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     /* Font Weigth for Navbar */
     --scl-font-weight-extrabold: 700 !important;
-    /* Change size of Brand logo in Footer */
-    --scl-spacing-24: 2em
+    /* ToDO: Change size of Brand logo in Footer */
 }
 
 h1 {
@@ -46,6 +45,14 @@ h5 {
 }
 
 /* CONTAINER */
+
+/* Sizing */
+
+.docs-book-wrapper {
+    width: 100% !important;
+}
+
+/* End Sizing */
 
 /* Make the container larger on XXL Screens */
 
