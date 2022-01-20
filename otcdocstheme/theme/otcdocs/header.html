@@ -18,61 +18,235 @@
   'app-shell');
   app_shell.mainNavigation = [
     {
-      "name": "Software",
-      "id": "Software",
+      "name": "User Manuals",
+      "id": "User Manuals",
       "children": [
         {
-          "name": "Automation",
-          "id": "Automation",
+          "name": "Compute",
+          "id": "Compute_UMN",
           "children": [
             {
-              "name": "Terraform OTC Driver",
-              "id": "Terraform OTC Driver",
-              "href": "https://docs.otc-service.com/terraform-provider-opentelekomcloud"
+              "name": "ECS",
+              "id": "ECS_UMN",
+              "href": "#third-level"
             },
-                      {
-              "name": "Ansible Collection Cloud",
-              "id": "Ansible Collection Cloud",
-              "href": "https://docs.otc-service.com/ansible-collection-cloud"
+            {
+              "name": "CCE",
+              "id": "CCE_UMN",
+              "href": "#third-level"
             },
+            {
+              "name": "AS",
+              "id": "AS_UMN",
+              "href": "#third-level"
+            }
           ]
         },
         {
-          "name": "Client Tools",
-          "id": "Client Tools",
+          "name": "Storage",
+          "id": "Storage_UMN",
           "children": [
             {
-              "name": "OTC Extensions",
-              "id": "OTC Extensions",
-              "href": "https://docs.otc-service.com/python-otcextensions"
+              "name": "EVS",
+              "id": "EVS_UMN",
+              "href": "#third-level"
+            },
+            {
+              "name": "OBS_UMN",
+              "id": "Third Level 12",
+              "href": "#third-level"
+            }
+          ]
+        },
+        {
+          "name": "Network",
+          "id": "Network_UMN",
+          "children": [
+            {
+              "name": "VPC",
+              "id": "VPC_UMN",
+              "href": "#third-level"
+            },
+            {
+              "name": "EIP",
+              "id": "EIP_UMN",
+              "href": "#third-level"
             }
           ]
         }
       ]
     },
     {
-      "name": "Release Notes",
-      "id": "Release Notes",
+      "name": "API",
+      "id": "API",
+      "children": [
+        {
+          "name": "Compute",
+          "id": "Compute_API",
+          "children": [
+            {
+              "name": "ECS",
+              "id": "ECS_API",
+              "href": "#third-level"
+            },
+            {
+              "name": "CCE",
+              "id": "ECS_API",
+              "href": "#third-level"
+            },
+            {
+              "name": "AS",
+              "id": "AS_API",
+              "href": "#third-level"
+            }
+          ]
+        },
+        {
+          "name": "Storage",
+          "id": "Storage_API",
+          "children": [
+            {
+              "name": "EVS",
+              "id": "EVS_API",
+              "href": "#third-level"
+            },
+            {
+              "name": "OBS",
+              "id": "OBS_API",
+              "href": "#third-level"
+            }
+          ]
+        },
+        {
+          "name": "Network",
+          "id": "NETWORK_API",
+          "children": [
+            {
+              "name": "VPC",
+              "id": "VPC_API",
+              "href": "#third-level"
+            },
+            {
+              "name": "EIP",
+              "id": "EIP_API",
+              "href": "#third-level"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Community Portal",
+      "id": "Community_Portal",
+      "href": "#third-level"
+    },
+    {
+      "name": "Open Telekom Cloud Website",
+      "id": "OTC_Web",
+      "href": "#third-level"
+    },
+    {
+      "name": "Console",
+      "id": "OTC_Console",
+      "href": "#third-level"
+    },
+    {
+      "name": "Developer Resources",
+      "id": "dev_res",
       "children": [
         {
           "name": "Automation",
           "id": "Automation",
           "children": [
             {
-              "name": "Terraform OTC Driver",
-              "id": "Terraform OTC Driver",
-              "href": "https://docs.otc-service.com/releasenotes/terraform-provider-opentelekomcloud"
+              "name": "Terraform",
+              "id": "Terraform",
+              "href": "#third-level"
+            },
+            {
+              "name": "Ansible",
+              "id": "Ansible",
+              "href": "#third-level"
             }
           ]
         },
         {
-          "name": "Client Tools",
-          "id": "Client Tools",
+          "name": "Software Development Kits",
+          "id": "SDK",
           "children": [
             {
+              "name": "OpenStack SDK",
+              "id": "openstack_sdk",
+              "href": "#third-level"
+            },
+            {
               "name": "OTC Extensions",
-              "id": "OTC Extensions",
-              "href": "https://docs.otc-service.com/releasenotes/python-otcextensions"
+              "id": "otc_extensions",
+              "href": "#third-level"
+            },
+            {
+              "name": "Gophercloud",
+              "id": "gophercloud",
+              "href": "#third-level"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Operations Resources",
+      "id": "ops_res",
+      "children": [
+        {
+          "name": "Dashboards",
+          "id": "dashboards",
+          "children": [
+            {
+              "name": "APIMon",
+              "id": "apimon",
+              "href": "#third-level"
+            },
+            {
+              "name": "Health Dashboard",
+              "id": "health_dash",
+              "href": "#third-level"
+            },
+            {
+              "name": "Enterprise Dashboard",
+              "id": "enterprise_dash",
+              "href": "#third-level"
+            }
+          ]
+        },
+        {
+          "name": "Tools & Maintenance",
+          "id": "tools_and_maintenance",
+          "children": [
+            {
+              "name": "MyWorkplace",
+              "id": "myworkplace",
+              "href": "#third-level"
+            },
+            {
+              "name": "Console",
+              "id": "console_twice",
+              "href": "#third-level"
+            }
+          ]
+        },
+        {
+          "name": "Blueprints",
+          "id": "blueprints",
+          "children": [
+            {
+              "name": "Blueprint 1",
+              "id": "blueprint_1",
+              "href": "#third-level"
+            },
+            {
+              "name": "Blueprint 2",
+              "id": "blueprint_2",
+              "href": "#third-level"
             }
           ]
         }
