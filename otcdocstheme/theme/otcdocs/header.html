@@ -17,405 +17,439 @@
   const app_shell = document.getElementById(
   'app-shell');
   app_shell.mainNavigation = [
-    {
-      "name": "User Manuals",
-      "id": "User Manuals",
-      "children": [
-        {
-          "name": "Compute",
-          "id": "Compute_UMN",
-          "children": [
-            {
-              "name": "ECS",
-              "id": "ECS_UMN",
-              "href": "#third-level"
-            },
-            {
-              "name": "CCE",
-              "id": "CCE_UMN",
-              "href": "#third-level"
-            },
-            {
-              "name": "AS",
-              "id": "AS_UMN",
-              "href": "#third-level"
-            }
-          ]
-        },
-        {
-          "name": "Storage",
-          "id": "Storage_UMN",
-          "children": [
-            {
-              "name": "EVS",
-              "id": "EVS_UMN",
-              "href": "#third-level"
-            },
-            {
-              "name": "OBS_UMN",
-              "id": "Third Level 12",
-              "href": "#third-level"
-            }
-          ]
-        },
-        {
-          "name": "Network",
-          "id": "Network_UMN",
-          "children": [
-            {
-              "name": "Content Delivery Network",
-              "id": "cdn",
-              "href": "#third-level"
-            },
-            {
-              "name": "Direct Connect",
-              "id": "direct_connent",
-              "href": "#third-level"
-            },
-            {
-              "name": "Domain Name Service",
-              "id": "Dns",
-              "href": "#third-level"
-            },
-            {
-              "name": "Elastic Load Balancing",
-              "id": "elb",
-              "href": "#third-level"
-            },
-            {
-              "name": "NAT Gateway",
-              "id": "nat",
-              "href": "#third-level"
-            },
-            {
-              "name": "Private Link Access Service",
-              "id": "VPC_UMN",
-              "href": "#third-level"
-            },
-            {
-              "name": "Private Link Access Service",
-              "id": "VPC_UMN",
-              "href": "#third-level"
-            },
-            {
-              "name": "VPC",
-              "id": "VPC_UMN",
-              "href": "#third-level"
-            },
-            {
-              "name": "EIP",
-              "id": "EIP_UMN",
-              "href": "#third-level"
-            },
-            {
-              "name": "VPC Endpoint",
-              "id": "vpc_ep",
-              "href": "#third-level"
-            },
-            {
-              "name": "Virtual Private Network",
-              "id": "vpn",
-              "href": "#third-level"
-            }
-          ]
-        },
-        {
-          "name": "Management and Deployment",
-          "id": "m_and_d",
-          "children": [
-            {
-              "name": "Cloudeye",
-              "id": "cloudeye",
-              "href": "#third-level"
-            },
-            {
-              "name": "Cloud Trace Service",
-              "id": "cts",
-              "href": "#third-level"
-            },
-            {
-              "name": "IAM",
-              "id": "iam",
-              "href": "#third-level"
-            }
-          ]
-        },
-        {
-          "name": "Security",
-          "id": "security",
-          "children": [
-            {
-              "name": "AntiDDoS",
-              "id": "antiddos",
-              "href": "#third-level"
-            },
-            {
-              "name": "Key Management Service",
-              "id": "kms",
-              "href": "#third-level"
-            },
-            {
-              "name": "Vulnerability Database",
-              "id": "v_db",
-              "href": "#third-level"
-            }
-          ]
-        },
-        {
-          "name": "Application Services",
-          "id": "app_services",
-          "children": [
-            {
-              "name": "Application Operations Management",
-              "id": "aom",
-              "href": "#third-level"
-            },
-            {
-              "name": "Distributed Message Services",
-              "id": "dms",
-              "href": "#third-level"
-            },
-            {
-              "name": "Simple Message Notification",
-              "id": "smn",
-              "href": "#third-level"
-            },
-            {
-              "name": "Software Repository for Container",
-              "id": "swr",
-              "href": "#third-level"
-            }
-          ]
-        },
-        {
-          "name": "Database",
-          "id": "database",
-          "children": [
-            {
-              "name": "Distributed Cache Service",
-              "id": "dcs",
-              "href": "#third-level"
-            },
-            {
-              "name": "Document Database Service",
-              "id": "dds",
-              "href": "#third-level"
-            },
-            {
-              "name": "Relational Database Service",
-              "id": "rds",
-              "href": "#third-level"
-            }
-          ]
-        },
-        {
-          "name": "Data Analysis",
-          "id": "data_analysis",
-          "children": [
-            {
-              "name": "Cloud Search Service",
-              "id": "css",
-              "href": "#third-level"
-            },
-            {
-              "name": "Data Ingestion Service",
-              "id": "dis",
-              "href": "#third-level"
-            },
-            {
-              "name": "Data Warehouse Service",
-              "id": "dws",
-              "href": "#third-level"
-            },
-            {
-              "name": "Map Reduce Service",
-              "id": "mrs",
-              "href": "#third-level"
-            },
-            {
-              "name": "Modal Arts",
-              "id": "mars",
-              "href": "#third-level"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "API",
-      "id": "API",
-      "children": [
-        {
-          "name": "Compute",
-          "id": "Compute_API",
-          "children": [
-            {
-              "name": "ECS",
-              "id": "ECS_API",
-              "href": "#third-level"
-            },
-            {
-              "name": "CCE",
-              "id": "ECS_API",
-              "href": "#third-level"
-            },
-            {
-              "name": "AS",
-              "id": "AS_API",
-              "href": "#third-level"
-            }
-          ]
-        },
-        {
-          "name": "Storage",
-          "id": "Storage_API",
-          "children": [
-            {
-              "name": "EVS",
-              "id": "EVS_API",
-              "href": "#third-level"
-            },
-            {
-              "name": "OBS",
-              "id": "OBS_API",
-              "href": "#third-level"
-            }
-          ]
-        },
-        {
-          "name": "Network",
-          "id": "NETWORK_API",
-          "children": [
-            {
-              "name": "VPC",
-              "id": "VPC_API",
-              "href": "#third-level"
-            },
-            {
-              "name": "EIP",
-              "id": "EIP_API",
-              "href": "#third-level"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Developer Resources",
-      "id": "dev_res",
-      "children": [
-        {
-          "name": "Automation",
-          "id": "Automation",
-          "children": [
-            {
-              "name": "Terraform",
-              "id": "Terraform",
-              "href": "#third-level"
-            },
-            {
-              "name": "Ansible",
-              "id": "Ansible",
-              "href": "#third-level"
-            }
-          ]
-        },
-        {
-          "name": "Software Development Kits",
-          "id": "SDK",
-          "children": [
-            {
-              "name": "OpenStack SDK",
-              "id": "openstack_sdk",
-              "href": "#third-level"
-            },
-            {
-              "name": "OTC Extensions",
-              "id": "otc_extensions",
-              "href": "#third-level"
-            },
-            {
-              "name": "Gophercloud",
-              "id": "gophercloud",
-              "href": "#third-level"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Operations Resources",
-      "id": "ops_res",
-      "children": [
-        {
-          "name": "Dashboards",
-          "id": "dashboards",
-          "children": [
-            {
-              "name": "APIMon",
-              "id": "apimon",
-              "href": "#third-level"
-            },
-            {
-              "name": "Health Dashboard",
-              "id": "health_dash",
-              "href": "#third-level"
-            },
-            {
-              "name": "Enterprise Dashboard",
-              "id": "enterprise_dash",
-              "href": "#third-level"
-            }
-          ]
-        },
-        {
-          "name": "Tools & Maintenance",
-          "id": "tools_and_maintenance",
-          "children": [
-            {
-              "name": "MyWorkplace",
-              "id": "myworkplace",
-              "href": "#third-level"
-            },
-            {
-              "name": "Console",
-              "id": "console_twice",
-              "href": "#third-level"
-            }
-          ]
-        },
-        {
-          "name": "Blueprints",
-          "id": "blueprints",
-          "children": [
-            {
-              "name": "Blueprint 1",
-              "id": "blueprint_1",
-              "href": "#third-level"
-            },
-            {
-              "name": "Blueprint 2",
-              "id": "blueprint_2",
-              "href": "#third-level"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Community Portal",
-      "id": "Community_Portal",
-      "href": "#third-level"
-    },
-    {
-      "name": "Homepage",
-      "id": "OTC_Web",
-      "href": "#third-level"
-    },
-    {
-      "name": "Console",
-      "id": "OTC_Console",
-      "href": "#third-level"
-    }
-  ];
+	{
+		"name": "User Manuals",
+		"id": "User Manuals",
+		"children": [
+			{
+				"name": "Compute",
+				"id": "Compute_UMN",
+				"children": [
+					{
+						"name": "Elastic Cloud Server",
+						"id": "ECS_UMN",
+						"href": "#third-level"
+					},
+					{
+						"name": "Cloud Container Engine",
+						"id": "CCE_UMN",
+						"href": "#third-level"
+					},
+					{
+						"name": "Autoscaling",
+						"id": "AS_UMN",
+						"href": "#third-level"
+					},
+					{
+						"name": "Bare Metal Service",
+						"id": "bms",
+						"href": "#third-level"
+					},
+					{
+						"name": "Dedicated Host",
+						"id": "Deh",
+						"href": "#third-level"
+					},
+					{
+						"name": "Image Management Service",
+						"id": "ims",
+						"href": "#third-level"
+					}
+				]
+			},
+			{
+				"name": "Storage",
+				"id": "Storage_UMN",
+				"children": [
+					{
+						"name": "Cloud Backup and Recover",
+						"id": "cbr",
+						"href": "#third-level"
+					},
+					{
+						"name": "Cloud Server Backup Service",
+						"id": "csbs",
+						"href": "#third-level"
+					},
+					{
+						"name": "Elastic Volume Service",
+						"id": "evs",
+						"href": "#third-level"
+					},
+					{
+						"name": "Object Storage Service",
+						"id": "obs",
+						"href": "#third-level"
+					},
+					{
+						"name": "Storage Disaster Recovery Service",
+						"id": "Sdrs",
+						"href": "#third-level"
+					},
+					{
+						"name": "Scalable File Service",
+						"id": "sfs",
+						"href": "#third-level"
+					},
+					{
+						"name": "Volume Backup Service",
+						"id": "vbs",
+						"href": "#third-level"
+					}
+				]
+			},
+			{
+				"name": "Network",
+				"id": "Network_UMN",
+				"children": [
+					{
+						"name": "Content Delivery Network",
+						"id": "cdn",
+						"href": "#third-level"
+					},
+					{
+						"name": "Direct Connect",
+						"id": "direct_connent",
+						"href": "#third-level"
+					},
+					{
+						"name": "Domain Name Service",
+						"id": "Dns",
+						"href": "#third-level"
+					},
+					{
+						"name": "Elastic Load Balancing",
+						"id": "elb",
+						"href": "#third-level"
+					},
+					{
+						"name": "NAT Gateway",
+						"id": "nat",
+						"href": "#third-level"
+					},
+					{
+						"name": "Private Link Access Service",
+						"id": "VPC_UMN",
+						"href": "#third-level"
+					},
+					{
+						"name": "Private Link Access Service",
+						"id": "VPC_UMN",
+						"href": "#third-level"
+					},
+					{
+						"name": "VPC",
+						"id": "VPC_UMN",
+						"href": "#third-level"
+					},
+					{
+						"name": "EIP",
+						"id": "EIP_UMN",
+						"href": "#third-level"
+					},
+					{
+						"name": "VPC Endpoint",
+						"id": "vpc_ep",
+						"href": "#third-level"
+					},
+					{
+						"name": "Virtual Private Network",
+						"id": "vpn",
+						"href": "#third-level"
+					}
+				]
+			},
+			{
+				"name": "Management and Deployment",
+				"id": "m_and_d",
+				"children": [
+					{
+						"name": "Cloudeye",
+						"id": "cloudeye",
+						"href": "#third-level"
+					},
+					{
+						"name": "Cloud Trace Service",
+						"id": "cts",
+						"href": "#third-level"
+					},
+					{
+						"name": "IAM",
+						"id": "iam",
+						"href": "#third-level"
+					}
+				]
+			},
+			{
+				"name": "Security",
+				"id": "security",
+				"children": [
+					{
+						"name": "AntiDDoS",
+						"id": "antiddos",
+						"href": "#third-level"
+					},
+					{
+						"name": "Key Management Service",
+						"id": "kms",
+						"href": "#third-level"
+					},
+					{
+						"name": "Vulnerability Database",
+						"id": "v_db",
+						"href": "#third-level"
+					}
+				]
+			},
+			{
+				"name": "Application Services",
+				"id": "app_services",
+				"children": [
+					{
+						"name": "Application Operations Management",
+						"id": "aom",
+						"href": "#third-level"
+					},
+					{
+						"name": "Distributed Message Services",
+						"id": "dms",
+						"href": "#third-level"
+					},
+					{
+						"name": "Simple Message Notification",
+						"id": "smn",
+						"href": "#third-level"
+					},
+					{
+						"name": "Software Repository for Container",
+						"id": "swr",
+						"href": "#third-level"
+					}
+				]
+			},
+			{
+				"name": "Database",
+				"id": "database",
+				"children": [
+					{
+						"name": "Distributed Cache Service",
+						"id": "dcs",
+						"href": "#third-level"
+					},
+					{
+						"name": "Document Database Service",
+						"id": "dds",
+						"href": "#third-level"
+					},
+					{
+						"name": "Relational Database Service",
+						"id": "rds",
+						"href": "#third-level"
+					}
+				]
+			},
+			{
+				"name": "Data Analysis",
+				"id": "data_analysis",
+				"children": [
+					{
+						"name": "Cloud Search Service",
+						"id": "css",
+						"href": "#third-level"
+					},
+					{
+						"name": "Data Ingestion Service",
+						"id": "dis",
+						"href": "#third-level"
+					},
+					{
+						"name": "Data Warehouse Service",
+						"id": "dws",
+						"href": "#third-level"
+					},
+					{
+						"name": "Map Reduce Service",
+						"id": "mrs",
+						"href": "#third-level"
+					},
+					{
+						"name": "Modal Arts",
+						"id": "mars",
+						"href": "#third-level"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "API",
+		"id": "API",
+		"children": [
+			{
+				"name": "Compute",
+				"id": "Compute_API",
+				"children": [
+					{
+						"name": "ECS",
+						"id": "ECS_API",
+						"href": "#third-level"
+					},
+					{
+						"name": "CCE",
+						"id": "ECS_API",
+						"href": "#third-level"
+					},
+					{
+						"name": "AS",
+						"id": "AS_API",
+						"href": "#third-level"
+					}
+				]
+			},
+			{
+				"name": "Storage",
+				"id": "Storage_API",
+				"children": [
+					{
+						"name": "EVS",
+						"id": "EVS_API",
+						"href": "#third-level"
+					},
+					{
+						"name": "OBS",
+						"id": "OBS_API",
+						"href": "#third-level"
+					}
+				]
+			},
+			{
+				"name": "Network",
+				"id": "NETWORK_API",
+				"children": [
+					{
+						"name": "VPC",
+						"id": "VPC_API",
+						"href": "#third-level"
+					},
+					{
+						"name": "EIP",
+						"id": "EIP_API",
+						"href": "#third-level"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "DevOps",
+		"id": "devops",
+		"children": [
+			{
+				"name": "Automation",
+				"id": "Automation",
+				"children": [
+					{
+						"name": "Terraform",
+						"id": "Terraform",
+						"href": "#third-level"
+					},
+					{
+						"name": "Ansible",
+						"id": "Ansible",
+						"href": "#third-level"
+					}
+				]
+			},
+			{
+				"name": "Software Development Kits",
+				"id": "SDK",
+				"children": [
+					{
+						"name": "OpenStack SDK",
+						"id": "openstack_sdk",
+						"href": "#third-level"
+					},
+					{
+						"name": "OTC Extensions",
+						"id": "otc_extensions",
+						"href": "#third-level"
+					},
+					{
+						"name": "Gophercloud",
+						"id": "gophercloud",
+						"href": "#third-level"
+					}
+				]
+			},
+			{
+				"name": "Dashboards",
+				"id": "dashboards",
+				"children": [
+					{
+						"name": "APIMon",
+						"id": "apimon",
+						"href": "#third-level"
+					},
+					{
+						"name": "Health Dashboard",
+						"id": "health_dash",
+						"href": "#third-level"
+					},
+					{
+						"name": "Enterprise Dashboard",
+						"id": "enterprise_dash",
+						"href": "#third-level"
+					}
+				]
+			},
+			{
+				"name": "Tools & Maintenance",
+				"id": "tools_and_maintenance",
+				"children": [
+					{
+						"name": "MyWorkplace",
+						"id": "myworkplace",
+						"href": "#third-level"
+					},
+					{
+						"name": "Console",
+						"id": "console_twice",
+						"href": "#third-level"
+					}
+				]
+			},
+			{
+				"name": "Blueprints",
+				"id": "blueprints",
+				"children": [
+					{
+						"name": "Blueprint 1",
+						"id": "blueprint_1",
+						"href": "#third-level"
+					},
+					{
+						"name": "Blueprint 2",
+						"id": "blueprint_2",
+						"href": "#third-level"
+					}
+				]
+			}
+		]
+	},
+	{
+		"name": "Community",
+		"id": "community",
+		"href": "#third-level"
+	},
+	{
+		"name": "Console",
+		"id": "OTC_Console",
+		"href": "#third-level"
+	},
+	{
+		"name": "Homepage",
+		"id": "OTC_Web",
+		"href": "#third-level"
+	}
+];
 </script>
