@@ -9,6 +9,7 @@
   claim-lang="en"
   logo-title="PAGENAME"
   logo-href="/"
+  iconNavigation='{"name":"Search","id":"Search35","href":"#search","icon":"action-search"}]'
 >
 
 
@@ -16,6 +17,14 @@
 <script>
   const app_shell = document.getElementById(
   'app-shell');
+  app_shell.iconNavigation = [
+    {
+      "name":"",
+      "id":"Search35",
+      "href":"#search",
+      "icon":"action-search"
+    }
+  ];
   app_shell.mainNavigation = [
 	{
 		"name": "User Manuals",
@@ -125,11 +134,6 @@
 					{
 						"name": "NAT Gateway",
 						"id": "nat",
-						"href": "#third-level"
-					},
-					{
-						"name": "Private Link Access Service",
-						"id": "VPC_UMN",
 						"href": "#third-level"
 					},
 					{
@@ -437,19 +441,56 @@
 		]
 	},
 	{
+		"name": "OpenStack",
+		"id": "openstack",
+		"children": [
+			{
+				"name": "External Resources",
+				"id": "ext_res",
+				"children": [
+					{
+						"name": "Upstream Documentation",
+						"id": "up_doc",
+						"href": "#third-level"
+					},
+					{
+						"name": "Superuser Magazine",
+						"id": "sup_mag",
+						"href": "#third-level"
+					},
+					{
+						"name": "Events",
+						"id": "events",
+						"href": "#third-level"
+					},
+					{
+						"name": "Zuul",
+						"id": "zuul",
+						"href": "#third-level"
+					},
+					{
+						"name": "Project Governance",
+						"id": "proj_gov",
+						"href": "#third-level"
+					}
+				]
+			}
+		]
+	},
+	{
 		"name": "Community",
 		"id": "community",
-		"href": "#third-level"
+		"href": "https://community.open-telekom-cloud.com/"
 	},
 	{
 		"name": "Console",
 		"id": "OTC_Console",
-		"href": "#third-level"
+		"href": "https://console.otc.t-systems.com/"
 	},
 	{
 		"name": "Homepage",
 		"id": "OTC_Web",
-		"href": "#third-level"
+		"href": "https://open-telekom-cloud.com/"
 	}
 ];
 </script>
