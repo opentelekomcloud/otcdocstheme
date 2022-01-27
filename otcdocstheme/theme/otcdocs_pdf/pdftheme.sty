@@ -1,19 +1,7 @@
 \makeatletter
 
-% Do not print release information if empty
-% Note: Sphinx does support version variable in conf.py to latex yet
-\def \ifempty#1{\def\temp{#1} \ifx\temp\empty }
-\renewcommand{\release}[1]{
-   \ifempty{#1}
-     \newcommand{\osreleasetitle}{}
-     \newcommand{\osreleaseheader}{}
-   \else
-     \newcommand{\osreleasetitle}{\LARGE Release Version: #1\newline}
-     \newcommand{\osreleaseheader}{\space\small\nouppercase{(Release Version: #1)}}
-   \fi
-}
-
 \usepackage[multidot]{grffile}
+\usepackage{longtable}
 
 % Defines title page
 \renewcommand{\maketitle}{
@@ -51,7 +39,7 @@
   \fancyhf{}
   \fancyfoot[LE,RO]{{\py@HeaderFamily\thepage}}
   \fancyfoot[RE,LO]{{\py@HeaderFamily\nouppercase\rightmark}}
-  \fancyhead[LE,RO]{{\py@HeaderFamily\@title\osreleaseheader}}
+  \fancyhead[LE,RO]{{\py@HeaderFamily\@title}}
   \fancyhead[RE,LO]{{\py@HeaderFamily\includegraphics[width=1.6cm, height=0.8cm]{\otclogo}}}
 }
 
@@ -64,6 +52,3 @@
 % Font selection (English)
 \usepackage{fontspec}
 \defaultfontfeatures{Scale=MatchLowercase}
-\setmainfont{Liberation Serif}
-\setsansfont{Liberation Sans}
-\setmonofont[SmallCapsFont={Liberation Mono}]{Liberation Mono}
