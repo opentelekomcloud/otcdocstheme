@@ -404,8 +404,8 @@ def _builder_inited(app):
 
     preamble = textwrap.dedent(
         r"""
-        \usepackage{%s}
-        \\newcommand{\openstacklogo}{%s}
+        \input{%s.sty}
+        \newcommand{\otclogo}{%s}
         """
     ) % (pdf_theme_path, theme_logo)
 
@@ -415,6 +415,12 @@ def _builder_inited(app):
     latex_elements['preamble'] = preamble
 
     app.config.latex_elements = latex_elements
+    app.config.latex_additional_files = [f'{pdf_theme_path}.sty']
+
+    # This hook is invoked when latex builder is already initialized. We loose
+    # preamble if we only set it to the config
+    if hasattr(app.builder, 'context') and 'preamble' in app.builder.context:
+        app.builder.context['preamble'] = preamble
 
 
 def setup(app):

@@ -5,14 +5,6 @@
       Run pep8 check
 
 - job:
-    name: otcdocstheme-tox-buildpdf
-    parent: otc-tox
-    description: |
-      Run buildpdf target
-    vars:
-      tox_envlist: pdf-docs
-
-- job:
     name: otcdocstheme-tox-html
     parent: otc-tox
     description: |
@@ -29,11 +21,9 @@
     check:
       jobs:
         - otc-tox-pep8
-        - otcdocstheme-tox-buildpdf
         - otcdocstheme-tox-html
         - build-otc-api-ref
     gate:
       jobs:
         - otc-tox-pep8
-        - otcdocstheme-tox-buildpdf
         - otcdocstheme-tox-html

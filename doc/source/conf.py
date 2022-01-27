@@ -59,6 +59,6 @@ html_static_path = ['_static/css']
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'os-doc-demo.tex', u'os-doc-demo Documentation',
+  ('index', 'doc-otcdocstheme.tex', u'Open Telekom Cloud Theme  Documentation',
    u'OpenTelekomCloud Contributors', 'manual'),
 ]
