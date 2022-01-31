@@ -24,7 +24,7 @@ Display problem with one Cyrillic character solved.
 
 ##V1.31 – 15.01.2021
 - Optimization vertical alignment of web fonts for cross-browser compatibility.
-- Updated only: TeleNeoWeb and TeleNeoVariableWeb 
+- Updated only: TeleNeoWeb and TeleNeoVariableWeb
 
 ##V1.31 – 04.03.2021
 - Optimization TeleNeo Office Kerning
