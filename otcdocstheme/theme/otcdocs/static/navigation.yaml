@@ -1,0 +1,50 @@
+---
+level_1:
+  devops:
+    title: "DevOps"
+    level_2:
+      automation:
+        title: "Automation"
+        level_3:
+          terraform:
+            title: Terraform
+            url: "http://elsewhere"
+          ansible:
+            title: Ansible
+            url: "http://somewhereelse"
+      sdk:
+        title: "Software Development Kit"
+        level_3:
+          openstack_sdk:
+            title: "Openstack SDK"
+            url: "http://bla"
+          otc_extensions:
+            title: "OTC Extensions"
+            url: "http://blubb"
+  openstack:
+    title: "OpenStack"
+    level_2:
+      project_governance:
+        title: "Project Governance"
+        level_3:
+          terraform:
+            title: Terraform
+            url: "http://elsewhere"
+          ansible:
+            title: Ansible
+            url: "http://somewhereelse"
+      external_resources:
+        title: "External Resources"
+        level_3:
+          openstack_sdk:
+            title: "Openstack SDK"
+            url: "http://bla"
+          otc_extensions:
+            title: "OTC Extensions"
+            url: "http://blubb"
+  business:
+    title: "Business"
+    url: "http://busi"
+  community:
+    title: "Community"
+    url: "http://com"
