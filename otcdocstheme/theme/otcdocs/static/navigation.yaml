@@ -8,43 +8,109 @@ level_1:
         level_3:
           terraform:
             title: Terraform
-            url: "http://elsewhere"
+            url: "#"
           ansible:
             title: Ansible
-            url: "http://somewhereelse"
+            url: "#"
       sdk:
         title: "Software Development Kit"
         level_3:
           openstack_sdk:
             title: "Openstack SDK"
-            url: "http://bla"
+            url: "#"
           otc_extensions:
             title: "OTC Extensions"
-            url: "http://blubb"
+            url: "#"
+          gophercloud:
+            title: "Gophercloud"
+            url: "#"
+      dashboards:
+        title: "Dashboards"
+        level_3:
+          apimon:
+            title: "APIMon"
+            url: "#"
+          health_dash:
+            title: "Health Dashboard"
+            url: "#"
+          enterprise_dash:
+            title: "Enterprise Dashboard"
+            url: "#"
+      tools_and_maintenance:
+        title: "Tools & Maintenance"
+        level_3:
+          myworkplace:
+            title: "MyWorkplace"
+            url: "#"
+          console_twice:
+            title: "Console"
+            url: "#"
+      blueprints:
+        title: "Blueprints"
+        level_3:
+          blueprint_1:
+            title: "Blueprint 1"
+            url: "#"
+          blueprint_2:
+            title: "Blueprint 2"
+            url: "#"
   openstack:
     title: "OpenStack"
     level_2:
       project_governance:
         title: "Project Governance"
         level_3:
-          terraform:
-            title: Terraform
-            url: "http://elsewhere"
-          ansible:
-            title: Ansible
-            url: "http://somewhereelse"
+          refstack_cert:
+            title: "RefStack Certification"
+            url: "#"
+          up_doc:
+            title: "Upstream Documentation"
+            url: "#"
+          proj_team_gathering:
+            title: "Project Team Gathering"
+            url: "#"
+          opendev:
+            title: "OpenStack Git"
+            url: "#"
+          gh_org:
+            title: "GitHub Organization"
+            url: "#"
       external_resources:
         title: "External Resources"
         level_3:
-          openstack_sdk:
-            title: "Openstack SDK"
-            url: "http://bla"
-          otc_extensions:
-            title: "OTC Extensions"
-            url: "http://blubb"
+          os_foundation:
+            title: "Openstack Foundation"
+            url: "#"
+          sup_mag:
+            title: "Superuser Magazine"
+            url: "#"
+          events:
+            title: "Events"
+            url: "#"
+          zuul:
+            title: "Zuul"
+            url: "#"
   business:
     title: "Business"
-    url: "http://busi"
+    level_2:
+      com_res:
+        title: "Commercial Ressources"
+        level_3:
+          prod_website:
+            title: "Product Website"
+            url: "#"
+          price_calc:
+            title: "Price Calculator"
+            url: "#"
+          svc_description:
+            title: "Service Description"
+            url: "#"
+          release_notes:
+            title: "Release Notes"
+            url: "#"
+          training_services:
+            title: "Training Services"
+            url: '#'
   community:
     title: "Community"
-    url: "http://com"
+    url: "#"

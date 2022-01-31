@@ -95,7 +95,7 @@ const generateNavigationJson = (yamlfile) => {
             if (!value_child_lvl1['url'] || value_child_lvl1['url'] === '' || value_child_lvl1['url'] === '#') {
                 console.warn('Empty link found in id ' + child_lvl1)
             }
-    
+
             children_lvl1.push({
                 'name': value_child_lvl1['title'],
                 'id': child_lvl1,
@@ -138,7 +138,7 @@ const main = async () => {
     switch (sessionStorage.getItem('navigation_json')) {
         case null:
             getNavigationJson()
-        
+
         default:
             // In case one YAML could not be fetched correctly retry on next page load
             if (JSON.parse(sessionStorage.getItem('navigation_json')).length !== navbar_items_amount) {
@@ -149,7 +149,7 @@ const main = async () => {
             else {
                 write_navigation(sessionStorage.getItem('navigation_json'));
             }
-            
+
     }
 }
 
