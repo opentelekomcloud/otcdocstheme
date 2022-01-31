@@ -1,6 +1,11 @@
 const fetchYaml = async path => {
     const response = await fetch(path);
-    return response.text();
+    if (response.status !== 200) {
+        console.error('Required YAML file for navigation could not be fetched. URL: ' + path)
+    }
+    else {
+        return response.text();
+    }
 };
 
 const generateServiceJson = (yamlfile, doc_type) => {
@@ -16,6 +21,9 @@ const generateServiceJson = (yamlfile, doc_type) => {
         for (child in doc['service_categories'][category]['services']) {
             let valueschild = doc['service_categories'][category]['services'][child]
 
+            if (!valueschild[doc_type] || valueschild[doc_type] === '' || valueschild[doc_type] === '#') {
+                console.warn('Empty link found in id ' + child + '_' + doc_type)
+            }
             children.push({
                 "name": valueschild['title'],
                 "id": (child + '_' + doc_type),
@@ -65,12 +73,15 @@ const generateNavigationJson = (yamlfile) => {
             for (child_lvl3 in doc['level_1'][child_lvl1]['level_2'][child_lvl2]['level_3']) {
                 let value_child_lvl3 = doc['level_1'][child_lvl1]['level_2'][child_lvl2]['level_3'][child_lvl3]
 
+                if (!value_child_lvl3['url'] || value_child_lvl3['url'] === '' || value_child_lvl3['url'] === '#') {
+                    console.warn('Empty link found in id ' + child_lvl3)
+                }
+
                 children_lvl3.push({
                     'name': value_child_lvl3['title'],
                     'id': child_lvl3,
                     'href': value_child_lvl3['url']
                 });
-
 
             }
             children_lvl2.push({
@@ -79,9 +90,12 @@ const generateNavigationJson = (yamlfile) => {
                 'children': children_lvl3
             })
 
-
         }
         if (children_lvl2.length == 0) {
+            if (!value_child_lvl1['url'] || value_child_lvl1['url'] === '' || value_child_lvl1['url'] === '#') {
+                console.warn('Empty link found in id ' + child_lvl1)
+            }
+    
             children_lvl1.push({
                 'name': value_child_lvl1['title'],
                 'id': child_lvl1,
@@ -108,20 +122,34 @@ const write_navigation = (nav_elements) => {
 
 url_service = 'https://raw.githubusercontent.com/opentelekomcloud-docs/docsportal/main/doc/source/services.yaml';
 path = '_static/navigation.yaml';
+navbar_items_amount = 6
 
 const main = async () => {
     var navigation_json = []
+    const getNavigationJson = async () => {
+        const data_all = await Promise.all([fetchYaml(url_service), fetchYaml(path)]);
+        navigation_json.push(generateServiceJson(data_all[0], 'umn'));
+        navigation_json.push(generateServiceJson(data_all[0], 'api'));
+        navigation_json = navigation_json.concat(generateNavigationJson(data_all[1]));
+        sessionStorage.setItem('navigation_json', JSON.stringify(navigation_json))
+        write_navigation(JSON.stringify(navigation_json));
+    }
+
     switch (sessionStorage.getItem('navigation_json')) {
         case null:
-            const data_all = await Promise.all([fetchYaml(url_service), fetchYaml(path)]);
-            navigation_json.push(generateServiceJson(data_all[0], 'umn'));
-            navigation_json.push(generateServiceJson(data_all[0], 'api'));
-            navigation_json = navigation_json.concat(generateNavigationJson(data_all[1]));
-            sessionStorage.setItem('navigation_json', JSON.stringify(navigation_json))
-            write_navigation(JSON.stringify(navigation_json));
+            getNavigationJson()
         
         default:
-            write_navigation(sessionStorage.getItem('navigation_json'));
+            // In case one YAML could not be fetched correctly retry on next page load
+            if (JSON.parse(sessionStorage.getItem('navigation_json')).length !== navbar_items_amount) {
+                navigation_json.length = 0
+                sessionStorage.removeItem('navigation_json')
+                getNavigationJson()
+            }
+            else {
+                write_navigation(sessionStorage.getItem('navigation_json'));
+            }
+            
     }
 }
 
