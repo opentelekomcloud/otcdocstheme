@@ -70,7 +70,7 @@ function logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName) 
     bugChecklist + lineFeed + "-----------------------------------" + lineFeed + fieldComment +
     lineFeed + currentURL;
     document.getElementById("logABugLink1").href = bugLink;
-    document.getElementById("logABugLink2").href = bugLink;
+//    document.getElementById("logABugLink2").href = bugLink;
     document.getElementById("logABugLink3").href = bugLink;
 }
 

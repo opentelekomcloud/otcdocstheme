@@ -78,4 +78,10 @@
 
     logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName);
 {%- endif %}
+
+{%- if pdf_link %}
+    var currentSourceFile = "{{ pagename }}";
+    var pdfFileName = "{{ pdf_filename }}";
+    pdfLink(currentSourceFile, pdfFileName);
+{%- endif %}
 </script>
