@@ -28,7 +28,8 @@ from otcdocstheme import paths
 
 _series = None
 _project = None
-_giturl = 'https://github.com/opentelekomcloud/{}/src/{}'
+_giturl = 'https://github.com/{}/src/{}'
+_giturl_edit = 'https://github.com/{}/edit/main/{}'
 _html_context_data = None
 
 logger = logging.getLogger(__name__)
@@ -129,7 +130,10 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         _html_context_data['repository_name'] = repo_name
         logger.debug('[otcdocstheme] repository_name %r', repo_name)
         if repo_name and doc_path:
-            _html_context_data['giturl'] = _giturl.format(repo_name, doc_path)
+            _html_context_data['giturl'] = _giturl.format(
+                repo_name, doc_path)
+            _html_context_data['giturl_edit'] = _giturl_edit.format(
+                repo_name, doc_path)
             logger.debug(
                 '[otcdocstheme] giturl %r', _html_context_data['giturl'],
             )

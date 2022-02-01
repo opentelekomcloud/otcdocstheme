@@ -1,35 +1,5 @@
-// Toggle main sections
-$(".docs-sidebar-section-title").click(function () {
-    $('.docs-sidebar-section').not(this).closest('.docs-sidebar-section').removeClass('active');
-    $(this).closest('.docs-sidebar-section').toggleClass('active');
-});
-
-// Bootstrap stuff
-$('.docs-actions i').tooltip();
-$('.docs-sidebar-home').tooltip();
-
-// webui popover
-$(document).ready(function() {
-    function checkWidth() {
-        var windowSize = $(window).width();
-
-        if (windowSize <= 767) {
-            $('.gloss').webuiPopover({placement:'auto',trigger:'click'});
-        }
-        else if (windowSize >= 768) {
-            $('.gloss').webuiPopover({placement:'auto',trigger:'hover'});
-        }
-    }
-
-    // Execute on load
-    checkWidth();
-    // Bind event listener
-    $(window).resize(checkWidth);
-});
-
-/* BB 150310
- *
- * openstackdocstheme provides three types of admonitions, important, note
+/*
+ * otcdocstheme provides three types of admonitions, important, note
  * and warning. We decorate their title paragraphs with Font Awesome icons
  * by adding the appropriate FA classes.
  *
@@ -37,7 +7,7 @@ $(document).ready(function() {
  * ("Note", "Warning", "Important" or their i18n equivalents). This could be
  * done with a single clause - $('p.admonition-title').... - affecting all
  * types of admonitions. I play it safe here and explicitly work on the three
- * openstackdocstheme admonitions.
+ * otcdocstheme admonitions.
  */
 $('div.important > p.admonition-title').prepend('<div class="fa fa-fw fa-check-circle">&nbsp;</div>');
 $('div.note > p.admonition-title').prepend('<div class="fa fa-fw fa-check-circle">&nbsp;</div>');
@@ -69,9 +39,9 @@ function logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName) 
     "&body=" + lineFeed + lineFeed +  lineFeed +
     bugChecklist + lineFeed + "-----------------------------------" + lineFeed + fieldComment +
     lineFeed + currentURL;
-    document.getElementById("logABugLink1").href = bugLink;
-    document.getElementById("logABugLink2").href = bugLink;
-    document.getElementById("logABugLink3").href = bugLink;
+//    document.getElementById("logABugLink1").href = bugLink;
+//    document.getElementById("logABugLink2").href = bugLink;
+//    document.getElementById("logABugLink3").href = bugLink;
 }
 
 function pdfLink(currentSourceFile, pdfFileName) {
@@ -87,5 +57,5 @@ function pdfLink(currentSourceFile, pdfFileName) {
     var file = currentSourceFile + ".html";
     var pdfLink = currentLink.replace(file, pdfFileName);
     document.getElementById("pdfLink1").href = pdfLink;
-    document.getElementById("pdfLink2").href = pdfLink;
+    //document.getElementById("pdfLink2").href = pdfLink;
 }

@@ -29,7 +29,7 @@
 # ones.
 
 extensions = [
-    'os_api_ref',
+    'otc_api_ref',
     'otcdocstheme'
 ]
 
