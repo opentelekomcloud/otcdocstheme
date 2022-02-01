@@ -255,7 +255,6 @@ body {
     position: sticky;
     top: 10px;
     display: block !important;
-    /*height: calc(100vh - 7rem);*/
     overflow-y: auto;
     border-top: 1px solid var(--dt-color-grey-0);
   }
