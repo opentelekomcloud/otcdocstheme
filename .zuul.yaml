@@ -12,6 +12,15 @@
     vars:
       tox_envlist: html
 
+- job:
+    name: otcdocstheme-apiref-src
+    parent: build-otc-api-ref
+    description: |
+      Run tox -e api-ref with src otc-api-ref
+    required-projects:
+      - opentelekomcloud/otcdocstheme
+      - opentelekomcloud-infra/otc-api-ref
+
 - project:
     merge-mode: squash-merge
     templates:
@@ -21,7 +30,7 @@
     check:
       jobs:
         - otc-tox-pep8
-        - otcdocstheme-tox-html
+        - otcdocstheme-apiref-src
         - build-otc-api-ref
     gate:
       jobs:
