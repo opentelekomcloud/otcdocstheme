@@ -33,18 +33,17 @@
 {%- if theme_sidebar_mode == 'toctree' and theme_display_toc and display_toc %}
         <main class="docs-main col-12 col-xl-9" role="main">
 {% else %}
-        <main class="docs-main col-12" role="main">
+        <main class="docs-main col-12 col-xl-11" role="main">
 {% endif %}
           <div class="docs-content ps-lg-4">
             {% block body %}{% endblock %}
+            {% if next %}
+  	  <h2 id="what-s-next">Whats next</h2>
+  	    <ul>
+  		    <li><a href="{{ next.link|e }}" title="Next: {{ next.title|striptags }}">{{ next.title }}</a></li>
+              </ul>
+            {% endif %}
           </div>
-          {% if next %}
-	  <h2 id="what-s-next">Whats next</h2>
-	    <ul>
-		    <li><a href="{{ next.link|e }}" title="Next: {{ next.title|striptags }}">{{ next.title }}</a></li>
-            </ul>
-          {% endif %}
-
 
 	  <div class="row docs-byline bottom">
             <div class="docs-updated">last updated: {{ last_updated }}</div>

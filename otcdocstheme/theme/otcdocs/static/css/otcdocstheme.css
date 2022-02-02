@@ -178,7 +178,7 @@ body {
 .docs-navbar {
   padding: 0.75rem 0;
   background: var(--dt-color-magenta);
-  //display: flex;
+  /*display: flex;*/
   height: 72px;
   max-width: unset;
   top: -68px;
@@ -229,6 +229,7 @@ body {
     max-width: unset;
     display: grid;
     grid-template-areas: "sidebar main";
+    grid-template-columns: 1fr 5fr;
     gap: 1.5rem;
   }
 }
@@ -254,9 +255,9 @@ body {
     position: sticky;
     top: 10px;
     display: block !important;
-    height: calc(100vh - 7rem);
+    /*height: calc(100vh - 7rem);*/
     overflow-y: auto;
-    border-top: 1px solid #edf2f7;
+    border-top: 1px solid var(--dt-color-grey-0);
   }
 }
 
@@ -523,7 +524,7 @@ p.sidebar-title {
 pre {
   background-color: var(--dt-color-grey-0);
   border: 1px solid var(--dt-color-grey-10);
-  color: var(--dt-color-text-normal);
+  color: var(--dt-color-text-standard);
   overflow: auto;
   margin: 0 0 10px;
   padding: 20px 30px;
@@ -636,6 +637,29 @@ pre .cl {
 
 .deprecated {
   color: var(--dt-color-red-70);
+}
+
+/* override pygments due to the conflict with DT default colors */
+.highlight .l {
+  color: var(--dt-color-grey-50);
+}
+.highlight .nt {
+  color: var(--dt-color-green-70);
+}
+.highlight .no {
+  color: var(--dt-color-teal-80);
+}
+.highlight .gh {
+  color: var(--dt-color-text-additional);
+}
+.highlight .ow {
+  color: var(--dt-color-green-90);
+}
+.highlight .p, .highlight .n, .highlight .o {
+  color: var(--dt-color-grey-90);
+}
+.highlight .hll {
+  background-color: transparent;
 }
 
 /* BB: added the adminition-title rule to bolden the adminition title */

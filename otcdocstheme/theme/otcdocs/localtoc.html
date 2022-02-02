@@ -1,11 +1,11 @@
 {%- if theme_sidebar_mode == 'toctree' and theme_display_toc and display_toc %}
 <div class="d-none d-xl-block col-xl-3 docs-toc d-print-none">
   <div class="docs-toc-meta ms-2 pb-1 pt-2 mb-0">
-    {% if giturl_edit %}
+    {%- if giturl_edit %}
     <a href="{{giturl_edit}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa fa-edit fa-fw"></i>Edit page</a>
     {% endif %}
-    {% if giturl %}
-    <a href="https://github.com/{{ repository_name }}/issues/new?title={{title}}&body=Issue on page: {{giturl}}//{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa fa-github fa-fw"></i>Report Bug</a>
+    {%- if giturl %}
+    <a href="https://github.com/{{ repository_name }}/issues/new?title={{title}}&body=Issue on page: {{giturl}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa fa-github fa-fw"></i>Report Bug</a>
     {% endif %}
 	  {%- if pdf_link %}
     <a id="pdfLink1" href="" target="_blank" title="Download PDF"><i class="fa fa-file-pdf-o fa-fw"></i>Download PDF</a>

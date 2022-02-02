@@ -7,6 +7,7 @@
     check:
       jobs:
         - otc-tox-pep8
+        - build-otc-api-ref
     gate:
       jobs:
         - otc-tox-pep8
