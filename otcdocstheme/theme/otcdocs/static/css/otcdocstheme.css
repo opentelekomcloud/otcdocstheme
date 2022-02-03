@@ -216,9 +216,30 @@ body {
 
 /* When in offcanvas mode tune nav */
 @media screen and (max-width: 767.98px) {
-  .docs-navbar a {
-/*    color: var(--dt-color-white) !important;*/
+  #navbarNav .navbar-nav li a:hover {
+    /* light box around link on hover for informativity */
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+  #navbarNav .navbar-nav > li > a {
     font-weight: 700;
+  }
+
+  #navbarNav {
+  }
+
+  .navbar-nav hr {
+     color: var(--dt-color-grey-10);
+  }
+
+  .navbar-nav {
+  #  background-color: white;
+  }
+
+  #navbarNav .navbar-nav a {
+    color: var(--dt-color-white);
+    text-decoration: underline;
+/*    color: var(--dt-color-white) !important;*/
+/*    font-weight: 700;*/
   }
 
   .docs-navbar .dropdown-menu {
@@ -227,6 +248,9 @@ body {
     border: none;
     border-bottom: solid 1px var(--dt-color-grey-20);
     border-radius: 0;
+  }
+  .docs-navbar .dropdown-item:hover {
+    background-color: unset;
   }
 }
 
