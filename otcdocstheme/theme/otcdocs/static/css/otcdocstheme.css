@@ -217,12 +217,12 @@ body {
 /* When in offcanvas mode tune nav */
 @media screen and (max-width: 767.98px) {
   .docs-navbar a {
-    color: var(--dt-color-text-standard) !important;
+/*    color: var(--dt-color-white) !important;*/
     font-weight: 700;
   }
 
   .docs-navbar .dropdown-menu {
-    background-color: white;
+    background-color: transparent;
     padding-left: 0.75rem;
     border: none;
     border-bottom: solid 1px var(--dt-color-grey-20);
