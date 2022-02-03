@@ -28,7 +28,9 @@ from otcdocstheme import paths
 
 _series = None
 _project = None
-_giturl = 'https://github.com/opentelekomcloud/{}/src/{}'
+_giturl = 'https://github.com/{}/blob/{}/{}'
+_git_branch = 'main'
+_giturl_edit = 'https://github.com/{}/edit/{}/{}'
 _html_context_data = None
 
 logger = logging.getLogger(__name__)
@@ -123,25 +125,29 @@ def _html_page_context(app, pagename, templatename, context, doctree):
                 '[otcdocstheme] cannot get gitsha from git repository'
             )
             _html_context_data['gitsha'] = 'unknown'
+        try:
+            gitbranch = subprocess.check_output(
+                ['git', 'symbolic-ref', '--short', 'HEAD'],
+            ).decode('utf-8').strip('')
+        except Exception:
+            gitbranch = 'main'
+            logger.warning(
+                '[otcdocstheme] cannot get branch name from git repository. '
+                f'Using {gitbranch}'
+            )
 
         doc_path = _get_doc_path(app)
         repo_name = app.config.otcdocs_repo_name
         _html_context_data['repository_name'] = repo_name
         logger.debug('[otcdocstheme] repository_name %r', repo_name)
         if repo_name and doc_path:
-            _html_context_data['giturl'] = _giturl.format(repo_name, doc_path)
+            _html_context_data['giturl'] = _giturl.format(
+                repo_name, gitbranch, doc_path)
+            _html_context_data['giturl_edit'] = _giturl_edit.format(
+                repo_name, gitbranch, doc_path)
             logger.debug(
                 '[otcdocstheme] giturl %r', _html_context_data['giturl'],
             )
-
-        bug_project = app.config.otcdocs_bug_project
-        if bug_project:
-            logger.debug(
-                '[otcdocstheme] bug_project (from user) %r', bug_project,
-            )
-
-        if bug_project:
-            _html_context_data['bug_project'] = bug_project
 
         _html_context_data['pdf_link'] = app.config.otcdocs_pdf_link
         logger.debug(
@@ -437,7 +443,6 @@ def setup(app):
 
     # config options
     app.add_config_value('otcdocs_repo_name', '', 'env')
-    app.add_config_value('otcdocs_bug_project', '', 'env')
     app.add_config_value('otcdocs_projects', [], 'env')
     app.add_config_value('otcdocs_auto_version', None, 'env')
     app.add_config_value('otcdocs_auto_name', True, 'env')

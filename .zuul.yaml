@@ -1,17 +1,3 @@
-- job:
-    name: otcdocstheme-tox-pep8
-    parent: otc-tox-pep8
-    description: |
-      Run pep8 check
-
-- job:
-    name: otcdocstheme-tox-html
-    parent: otc-tox
-    description: |
-      Run html target
-    vars:
-      tox_envlist: html
-
 - project:
     merge-mode: squash-merge
     templates:
@@ -21,9 +7,7 @@
     check:
       jobs:
         - otc-tox-pep8
-        - otcdocstheme-tox-html
         - build-otc-api-ref
     gate:
       jobs:
         - otc-tox-pep8
-        - otcdocstheme-tox-html

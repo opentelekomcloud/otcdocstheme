@@ -1,20 +1,8 @@
-<!-- jQuery -->
-<script type="text/javascript" src="{{pathto('_static/js/jquery-3.2.1.min.js', 1)}}"></script>
-
 <!-- Bootstrap JavaScript -->
-<script type="text/javascript" src="{{pathto('_static/js/bootstrap.min.js', 1)}}"></script>
-
-<!-- Telekom Scale -->
-<script type="module" src="{{pathto('_static/scale/scale-components.esm.js', 1)}}"></script>
-
-<!-- The rest of the JS -->
-<script type="text/javascript" src="{{pathto('_static/js/navigation.js', 1)}}"></script>
+<script type="text/javascript" src="{{pathto('_static/js/bootstrap.bundle.min.js', 1)}}"></script>
 
 <!-- Docs JS -->
 <script type="text/javascript" src="{{pathto('_static/js/docs.js', 1)}}"></script>
-
-<!-- Popovers -->
-<script type="text/javascript" src="{{pathto('_static/js/webui-popover.js', 1)}}"></script>
 
 <!-- standard sphinx include libraries, which allow search highlighting -->
 <script type="text/javascript" src="{{pathto('_static/underscore.js', 1)}}"></script>
@@ -77,5 +65,11 @@
                        lineFeed + encodeURI(gitURL) ;
 
     logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName);
+{%- endif %}
+
+{%- if pdf_link %}
+    var currentSourceFile = "{{ pagename }}";
+    var pdfFileName = "{{ pdf_filename }}";
+    pdfLink(currentSourceFile, pdfFileName);
 {%- endif %}
 </script>

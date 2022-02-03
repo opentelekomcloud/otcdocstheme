@@ -1,0 +1,7 @@
+---
+features:
+  - |
+    Switch to bootstrap5. Doing this drop unused css/js/etc.
+upgrade:
+  - |
+    This version breaks both os-api-ref and otc-api-ref compatibility.
