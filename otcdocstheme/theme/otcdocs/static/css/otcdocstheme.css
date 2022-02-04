@@ -190,8 +190,18 @@ body {
   top: -68px;*/
 }
 
+#navbarNav {
+  flex-grow: unset;
+}
+
+.docs-title {
+  color: var(--dt-color-white);
+  font-size: 1.5rem;
+  text-align: center;
+  flex-grow: 1;
+}
+
 .navbar-brand {
-  //height: 72px;
   max-width: 250px;
   display: flex;
 }
@@ -202,44 +212,50 @@ body {
   width: 100%;
 }
 
+/* claim logo on, narrow - off */
+.brand-wide {
+  display: flex;
+}
+.brand-narrow {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
   #navbarNav .navbar-nav > li > a.nav-link {
-    color: var(--dt-color-white);
-    font-weight: 700;
+    color: var(--dt-color-grey-10);
+    font-weight: 300;
+    font-size: 1.2rem;
   }
 }
 
-/* Make "close" offcanvas go to right */
-.offcanvas-header {
-  justify-content: flex-end;
-}
-
-/* When in offcanvas mode tune nav */
+/* When in narrow mode tune nav */
 @media screen and (max-width: 767.98px) {
+  /* swap logos */
+  .brand-wide {
+    display: none;
+  }
+  .brand-narrow {
+    display: block;
+  }
+  /* make site name smaller */
+  .docs-title {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  /* make nav links bigger and white */
+  #navbarNav .navbar-nav a {
+    color: var(--dt-color-white);
+    font-size: 1.2rem;
+  }
+
   #navbarNav .navbar-nav li a:hover {
     /* light box around link on hover for informativity */
     background-color: rgba(255, 255, 255, 0.3);
   }
-  #navbarNav .navbar-nav > li > a {
-    font-weight: 700;
-  }
-
-  #navbarNav {
-  }
 
   .navbar-nav hr {
      color: var(--dt-color-grey-10);
-  }
-
-  .navbar-nav {
-  #  background-color: white;
-  }
-
-  #navbarNav .navbar-nav a {
-    color: var(--dt-color-white);
-    text-decoration: underline;
-/*    color: var(--dt-color-white) !important;*/
-/*    font-weight: 700;*/
   }
 
   .docs-navbar .dropdown-menu {

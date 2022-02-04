@@ -10,10 +10,16 @@
     class="navbar container-xxl flex-wrap flex-md-nowrap navbar-light"
     aria-label="Main navigation"
   >
-    <div class="container-fluid">
-      <a class="navbar-brand p-0 md-2" href="#" aria-label="Open Telekom Cloud">
+    <div class="container-fluid pe-2">
+      <a class="navbar-brand brand-wide p-0 md-2" href="#" aria-label="Open Telekom Cloud">
         <img src="{{pathto('_static/images/dt.svg', 1)}}" />
       </a>
+      <a class="navbar-brand brand-narrow p-0 md-2" href="#" aria-label="Open Telekom Cloud">
+        <img src="{{pathto('_static/images/deutsche-telekom-logo.svg', 1)}}" />
+      </a>
+      {% if theme_site_name %}
+      <div class="docs-title justify-content-center">{{ theme_site_name }}</div>
+      {% endif %}
       <button
         class="navbar-toggler"
         type="button"
@@ -25,7 +31,7 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <hr class="d-md-none text-white">
         <ul class="navbar-nav flex-row flex-wrap docs-navbar-nav pt-2 py-md-0">
           <li class="nav-item dropdown col-12 col-md-auto me-2">
