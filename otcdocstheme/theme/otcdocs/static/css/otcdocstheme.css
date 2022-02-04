@@ -175,38 +175,107 @@ body {
 /* CONTAINER END */
 
 /* NAVBAR */
+/* tiny magenta line sticks to the top */
+.skippy {
+  background-color: var(--dt-color-magenta);
+  height: 4px;
+}
+
 .docs-navbar {
-  padding: 0.75rem 0;
+  padding: 0 0 0.75rem 0;
   background: var(--dt-color-magenta);
   /*display: flex;*/
-  height: 72px;
+  /*height: 72px;
   max-width: unset;
-  top: -68px;
+  top: -68px;*/
+}
+
+#navbarNav {
+  flex-grow: unset;
+}
+
+.docs-title {
+  color: var(--dt-color-white);
+  font-size: 1.5rem;
+  text-align: center;
+  flex-grow: 1;
 }
 
 .navbar-brand {
-  //height: 72px;
-  max-width: 300px;
+  max-width: 250px;
   display: flex;
 }
 
-/* Chrome is not applying img to svg */
-/*.navbar-brand svg {
-  height: auto;
-  max-width: 300px;
-  width: 100%;
-}*/
 .navbar-brand img {
   height: 38px;
   max-width: 300px;
   width: 100%;
 }
+
+/* claim logo on, narrow - off */
+.brand-wide {
+  display: flex;
+}
+.brand-narrow {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  #navbarNav .navbar-nav > li > a.nav-link {
+    color: var(--dt-color-grey-10);
+    font-weight: 300;
+    font-size: 1.2rem;
+  }
+}
+
+/* When in narrow mode tune nav */
+@media screen and (max-width: 767.98px) {
+  /* swap logos */
+  .brand-wide {
+    display: none;
+  }
+  .brand-narrow {
+    display: block;
+  }
+  /* make site name smaller */
+  .docs-title {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  /* make nav links bigger and white */
+  #navbarNav .navbar-nav a {
+    color: var(--dt-color-white);
+    font-size: 1.2rem;
+  }
+
+  #navbarNav .navbar-nav li a:hover {
+    /* light box around link on hover for informativity */
+    background-color: rgba(255, 255, 255, 0.3);
+  }
+
+  .navbar-nav hr {
+     color: var(--dt-color-grey-10);
+  }
+
+  .docs-navbar .dropdown-menu {
+    background-color: transparent;
+    padding-left: 0.75rem;
+    border: none;
+    border-bottom: solid 1px var(--dt-color-grey-20);
+    border-radius: 0;
+  }
+  .docs-navbar .dropdown-item:hover {
+    background-color: unset;
+  }
+}
+
 /* End NAVBAR */
 
 /* subnavbar */
 .docs-subnavbar {
   position: relative;
-  z-index: 1020;
+  /*#  z-index: 1020;*/
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05),
     inset 0 -1px 0 rgba(0, 0, 0, 0.15);
@@ -255,7 +324,6 @@ body {
     position: sticky;
     top: 10px;
     display: block !important;
-    /*height: calc(100vh - 7rem);*/
     overflow-y: auto;
     border-top: 1px solid var(--dt-color-grey-0);
   }
@@ -418,13 +486,6 @@ code.docutils.literal.notranslate {
   color: var(--main-body-color);
 }
 
-/*Docs Book View*/
-/*
-a, a:visited {
-  color: #30739C;
-}
-*/
-
 /* Main body */
 .docs-main {
   grid-area: main;
@@ -432,6 +493,12 @@ a, a:visited {
 
 @media (min-width: 992px) {
   .docs-main {
+    /*
+     * those comments are from a successful attempt to use grid layout
+     * it is now dropped in favor of columns, which are easier to do truly flexible,
+     * but anytime can come back
+     * */
+
     /*grid-template-areas: "title toc" "content toc" "footer toc";
     grid-template-columns: var(--docs-grid-columns);
     grid-template-rows: auto 1fr;*/
@@ -447,7 +514,6 @@ a, a:visited {
 
 .docs-toc {
   /*grid-area: toc;*/
-  /*color: #191919;*/
   font-weigth: 300;
   color: var(--dt-color-grey-60);
 }
@@ -501,7 +567,7 @@ a, a:visited {
   display: block;
   font-weight: 300;
   text-decoration: none;
-  padding-bottom: .25rem;
+  padding-bottom: 0.25rem;
 }
 
 .docs-title {
@@ -514,7 +580,7 @@ a, a:visited {
 
 /* Make body title disappear - it is included in titlerow */
 .docs-body h1 {
-/*  display: none;*/
+  /*  display: none;*/
 }
 
 p.sidebar-title {
@@ -588,9 +654,6 @@ pre .cl {
   color: #2a4e68;
 }
 
-/* BB: The following eight rules, four "important" and four "warning",
-   originally had names "docs-important" and "docs-warning" */
-
 .admonition.important {
   background: var(--dt-color-orange-0);
   border-color: #2a4e68;
@@ -655,7 +718,9 @@ pre .cl {
 .highlight .ow {
   color: var(--dt-color-green-90);
 }
-.highlight .p, .highlight .n, .highlight .o {
+.highlight .p,
+.highlight .n,
+.highlight .o {
   color: var(--dt-color-grey-90);
 }
 .highlight .hll {
@@ -748,15 +813,6 @@ pre .cl {
   color: #9a201d;
 }
 
-// Hide doc title in the body. We have in in the titlerow already
-.docs-content .section h1 {
-  /*display: none;*/
-}
-
-.docs-content section h1 {
-/*  display: none;*/
-}
-
 .docs-byline {
   border-top: 1px solid #edf2f7;
   border-bottom: 1px solid #edf2f7;
@@ -778,7 +834,6 @@ pre .cl {
 /* End Main body */
 
 /* Page footer */
-
 .docs-footer {
   background: var(--dt-color-grey-90);
   display: flex;
