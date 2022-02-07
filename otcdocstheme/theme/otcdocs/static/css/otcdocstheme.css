@@ -313,10 +313,10 @@ body {
 }
 .docs-sidebar-toc a {
   text-decoration: none;
-  color: var(--main-body-color);
+  color: var(--dt-color-black);
 }
 .docs-sidebar-toc a:hover {
-  color: var(--dt-color-blue-50);
+  color: var(--dt-color-primary-hover);
 }
 
 @media (min-width: 768px) {
@@ -368,6 +368,9 @@ div.docs-sidebar-toc li.toctree-l1 > a {
   display: block;
   width: 100%;
   padding: 10px 20px;
+}
+.docs-sidebar-section-title a:hover {
+  color: var(--dt-color-primary-hover)
 }
 #table-of-contents.docs-sidebar-section {
   background-color: transparent;
