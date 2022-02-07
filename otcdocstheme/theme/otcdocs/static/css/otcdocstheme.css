@@ -384,7 +384,11 @@ div.docs-sidebar-toc li.toctree-l1 > a {
 /* CONTENT */
 /* Chapters include normally invisible (P) symbol */
 a {
-  color: var(--dt-color-blue-60);
+  color: var(--dt-color-text-link);
+}
+
+a:hover {
+  color: var(--dt-color-text-link-hover);
 }
 
 a.headerlink {
@@ -392,7 +396,7 @@ a.headerlink {
 }
 
 a.headerlink:hover {
-  color: var(--dt-color-blue-60);
+  color: var(--dt-color-text-link-hover);
 }
 
 h1,
