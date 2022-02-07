@@ -128,7 +128,7 @@
   </nav>
 </header>
 
-<nav class="docs-subnavbar py-2" aria-label="Secondary navigation">
+<!-- <nav class="docs-subnavbar py-2" aria-label="Secondary navigation">
   <div class="container-xxl d-flex align-items-md-center">
     <button
       class="btn docs-sidebar-toggle d-md-none py-0 px-1 ms-3 order-3 navbar-toggler collapsed"
@@ -169,4 +169,15 @@
       </svg>
     </button>
   </div>
-</nav>
+</nav> -->
+<div class="docs-toc-meta ms-2 pb-1 pt-2 mb-0 d-flex flex-row-reverse">
+  {%- if giturl_edit %}
+  <a class="m-2 text-dt-black-hover" href="{{giturl_edit}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa fa-edit fa-fw"></i>Edit page</a>
+  {% endif %}
+  {%- if giturl %}
+  <a class="m-2 text-dt-black-hover" href="https://github.com/{{ repository_name }}/issues/new?title={{title}}&body=Issue on page: {{giturl}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa fa-github fa-fw"></i>Report Bug</a>
+  {% endif %}
+  {%- if pdf_link %}
+  <a class="m-2 text-dt-black-hover" id="pdfLink1" href="" target="_blank" title="Download PDF"><i class="fa fa-file-pdf-o fa-fw"></i>Download PDF</a>
+  {% endif %}
+</div>

@@ -879,3 +879,11 @@ pre .cl {
 .btn-info {
   background-color: var(--dt-color-teal-30);
 }
+
+.text-dt-black-hover:hover {
+  color: var(--dt-color-primary-hover);
+}
+
+.text-dt-black-hover {
+  color: var(--dt-color-black);
+}
