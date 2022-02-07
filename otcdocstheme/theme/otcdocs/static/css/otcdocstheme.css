@@ -565,7 +565,7 @@ code.docutils.literal.notranslate {
 
 .docs-toc-meta a {
   display: block;
-  font-weight: 300;
+  font-size: 0.9rem;
   text-decoration: none;
   padding-bottom: 0.25rem;
 }
@@ -880,10 +880,10 @@ pre .cl {
   background-color: var(--dt-color-teal-30);
 }
 
-.text-dt-black-hover:hover {
-  color: var(--dt-color-primary-hover);
+.text-dt-link:hover {
+  color: var(--dt-color-text-link-hover);
 }
 
-.text-dt-black-hover {
-  color: var(--dt-color-black);
+.text-dt-link {
+  color: var(--dt-color-text-link);
 }
