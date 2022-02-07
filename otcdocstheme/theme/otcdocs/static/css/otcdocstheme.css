@@ -190,13 +190,14 @@ body {
   top: -68px;*/
 }
 
-/* Open Dropdown Navbar on Hover */
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
-/* Arrow when hovering NavBar Items */
 @media (min-width: 768px) {
+
+  /* Open Dropdown Navbar on Hover */
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  /* Arrow when hovering NavBar Items */
   .dropdown-menu:after {
     position: absolute;
     top: -11px;
@@ -207,6 +208,7 @@ body {
     border-left: 13px solid transparent;
     content: '';
   }
+
 }
 
 #navbarNav {
