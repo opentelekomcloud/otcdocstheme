@@ -368,8 +368,11 @@ div.docs-sidebar-toc li.toctree-l1 > a {
   width: 100%;
   padding: 10px 20px;
 }
-.docs-sidebar-section-title a:hover {
+.docs-sidebar-section-title h4:hover {
   color: var(--dt-color-primary-hover)
+}
+.docs-sidebar-section-title > h4 {
+  font-weight: 400;
 }
 #table-of-contents.docs-sidebar-section {
   background-color: transparent;
@@ -402,7 +405,7 @@ h2,
 h3,
 h4,
 h5 {
-  color: var(--main-body-color);
+  color: var(--dt-color-text-standard);
   font-weight: lighter;
 }
 
@@ -560,9 +563,10 @@ code.docutils.literal.notranslate {
 
 .docs-toc nav a {
   color: inherit;
-}
-.docs-toc nav a:not(:hover) {
   text-decoration: none;
+}
+.docs-toc nav a:hover {
+  color: var(--dt-color-primary-hover);
 }
 
 .docs-toc-meta a {
