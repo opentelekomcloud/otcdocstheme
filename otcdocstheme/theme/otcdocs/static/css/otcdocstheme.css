@@ -161,6 +161,10 @@ body {
   --dt-color-functional-blue: hsl(227.39999999999998, 89%, 46.3%);
 }
 
+body {
+  color: var(--dt-color-text-standard);
+}
+
 /* CONTAINER */
 /* Sizing */
 /* force using full screen */
@@ -355,14 +359,9 @@ body {
   display: none;
 }
 
-.docs-sidebar li.toctree-l1 > a {
-  font-size: 14px;
-  font-weight: bold;
-}
-
 /* make l1 of the toctree bold */
 div.docs-sidebar-toc li.toctree-l1 > a {
-  font-weight: bold;
+  font-weight: 400;
 }
 .docs-sidebar-section-title {
   display: block;
