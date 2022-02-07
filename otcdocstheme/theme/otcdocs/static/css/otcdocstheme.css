@@ -222,8 +222,8 @@ body {
 
 @media screen and (min-width: 768px) {
   #navbarNav .navbar-nav > li > a.nav-link {
-    color: var(--dt-color-grey-10);
-    font-weight: 300;
+    color: var(--dt-color-white);
+    font-weight: 400;
     font-size: 1.2rem;
   }
 }
@@ -878,4 +878,9 @@ pre .cl {
 /* End Page footer */
 .btn-info {
   background-color: var(--dt-color-teal-30);
+}
+
+/* Open Dropdown on Hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
 }
