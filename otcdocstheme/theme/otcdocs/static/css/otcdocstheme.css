@@ -395,13 +395,24 @@ a.headerlink:hover {
   color: var(--dt-color-blue-60);
 }
 
-h1,
+h1 {
+  font-weight: 400;
+}
+
 h2,
 h3,
 h4,
 h5 {
   color: var(--main-body-color);
   font-weight: lighter;
+}
+
+h1, h2, h3 {
+  margin-bottom: 1rem;
+}
+
+.docs-content h2, h3, h4 {
+  margin-top: 3rem;
 }
 
 .docs-body a {
