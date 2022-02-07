@@ -190,6 +190,25 @@ body {
   top: -68px;*/
 }
 
+/* Open Dropdown Navbar on Hover */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Arrow when hovering NavBar Items */
+@media (min-width: 768px) {
+  .dropdown-menu:after {
+    position: absolute;
+    top: -11px;
+    left: 18px; /* Example: right:10px; */
+    display: inline-block;
+    border-right: 13px solid transparent;
+    border-bottom: 13px solid #ffffff;
+    border-left: 13px solid transparent;
+    content: '';
+  }
+}
+
 #navbarNav {
   flex-grow: unset;
 }
@@ -880,21 +899,4 @@ pre .cl {
   background-color: var(--dt-color-teal-30);
 }
 
-/* Open Dropdown on Hover */
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
 
-/* Arrow when hovering NavBar Items */
-@media (min-width: 768px) {
-  .dropdown-menu:after {
-    position: absolute;
-    top: -11px;
-    left: 18px; /* Example: right:10px; */
-    display: inline-block;
-    border-right: 13px solid transparent;
-    border-bottom: 13px solid #ffffff;
-    border-left: 13px solid transparent;
-    content: '';
-  }
-}
