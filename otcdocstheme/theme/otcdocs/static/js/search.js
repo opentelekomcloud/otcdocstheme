@@ -33,15 +33,10 @@ function Search() {
                     setResults((prevEntry) => [
                         ...prevEntry,
                         [
-                            <a href={"https://python-otcextensions.readthedocs.io/en/latest/" + hit._source.current_page_name + ".html"} className="side-nav-result-item">
-                                <div className="side-nav-result-heading">
-                                    {hit._source.current_page_name}
-                                </div>
-                                <div className="side-nav-result-detail">
-                                    {hit.highlight.body[0]}
-                                </div>
-                            </a>
-
+                            React.createElement('a', {href: ('https://python-otcextensions.readthedocs.io/en/latest/' + hit._source.current_page_name + '.html')},
+                                React.createElement('div', null, hit._source.current_page_name),
+                                React.createElement('div', null, hit.highlight.body[0]),
+                            )
                         ]
                     ])
                 ));
@@ -53,18 +48,12 @@ function Search() {
     }, [search])
 
     return (
-        <div className="side-nav-header-wrapper">
-            <input type="text" className="form-control" placeholder="Type here to search" onChange={handleSearchChange}></input>
-            <section className="side-nav-results-wrapper">
-                <div className="side-nav-results">
-                    {Results}
-                </div>
-            </section>
-        </div>
+        React.createElement('input', {type: 'text', class: 'form-control', placeholder: 'Type here to search', onChange: handleSearchChange})
+        // React.createElement('div', {class: }, Results)
     );
 }
 
 ReactDOM.render(
-    <Search />,
+    React.createElement(Search),
     document.getElementById('searchInput')
 )
