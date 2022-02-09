@@ -25,8 +25,10 @@ function Search() {
                     }
                 }
             }
-            axios.post('https://search.schreiber-ling.de/test-index/_search', requestjson)
-            .then((response) => {
+            fetch('https://search.schreiber-ling.de/test-index/_search', {
+                method: 'post',
+                body: requestjson
+            }).then((response) => {
                 const responsedata = response.data.hits.hits
                 console.log(response)
                 const res = response.data.hits.hits.map((hit) => (
