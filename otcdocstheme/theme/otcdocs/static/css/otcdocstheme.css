@@ -192,11 +192,6 @@ body {
 
 @media (min-width: 768px) {
 
-  /* Open Dropdown Navbar on Hover */
-  .dropdown:hover .dropdown-menu {
-    display: block;
-  }
-
   /* Arrow when hovering NavBar Items */
   .dropdown-menu:after {
     position: absolute;
@@ -213,6 +208,11 @@ body {
 
 #navbarNav {
   flex-grow: unset;
+}
+
+/* light box around link on hover for informativity */
+#navbarNav .navbar-nav li a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .docs-title {
@@ -270,10 +270,7 @@ body {
     font-size: 1.2rem;
   }
 
-  #navbarNav .navbar-nav li a:hover {
-    /* light box around link on hover for informativity */
-    background-color: rgba(255, 255, 255, 0.3);
-  }
+
 
   .navbar-nav hr {
      color: var(--dt-color-grey-10);
