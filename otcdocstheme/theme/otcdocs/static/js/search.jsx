@@ -25,10 +25,8 @@ function Search() {
                     }
                 }
             }
-            fetch('https://search.schreiber-ling.de/test-index/_search', {
-                method: 'post',
-                body: requestjson
-            }).then((response) => {
+            axios.post('https://search.schreiber-ling.de/test-index/_search', requestjson)
+            .then((response) => {
                 const responsedata = response.data.hits.hits
                 console.log(response)
                 const res = response.data.hits.hits.map((hit) => (
@@ -49,7 +47,7 @@ function Search() {
                 ));
             })
             .catch((reason) => {
-                alert("mist")
+                alert("Search request fails: " + reason)
             })
         }
     }, [search])
