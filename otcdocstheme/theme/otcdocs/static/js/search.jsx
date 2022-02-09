@@ -25,12 +25,7 @@ function Search() {
                     }
                 }
             }
-            axios.post('https://opensearch.sphinxsearch.schreiber-ling.de/test-index/_search', requestjson, {
-                auth: {
-                    username: 'searchuser',
-                    password: 'geheim321'
-                }
-            })
+            axios.post('https://search.schreiber-ling.de/test-index/_search', requestjson)
             .then((response) => {
                 const responsedata = response.data.hits.hits
                 console.log(response)
