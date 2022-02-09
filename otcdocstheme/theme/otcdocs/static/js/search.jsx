@@ -11,14 +11,14 @@ function Search() {
             setResults([])
             const requestjson = {
                 "from" : 0, "size" : 3,
-                "_source": ["highlight", "current_page_name"], 
+                "_source": ["highlight", "current_page_name"],
                 "query": {
                   "match": {
                     "body": `${search}`
                   }
                 },
                 "highlight": {
-                    "number_of_fragments": 1, 
+                    "number_of_fragments": 1,
                     "fragment_size":100,
                     "fields":{
                        "body":{ "pre_tags": [""], "post_tags": [""]}
@@ -32,7 +32,7 @@ function Search() {
                 const res = response.data.hits.hits.map((hit) => (
                     setResults((prevEntry) => [
                         ...prevEntry,
-                        [   
+                        [
                             <a href={"https://python-otcextensions.readthedocs.io/en/latest/" + hit._source.current_page_name + ".html"} className="side-nav-result-item">
                                 <div className="side-nav-result-heading">
                                     {hit._source.current_page_name}
@@ -41,7 +41,7 @@ function Search() {
                                     {hit.highlight.body[0]}
                                 </div>
                             </a>
-                            
+
                         ]
                     ])
                 ));
