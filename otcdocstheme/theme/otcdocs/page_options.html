@@ -1,0 +1,9 @@
+{%- if giturl_edit %}
+<a class="py-1 px-2 text-dt-link" href="{{giturl_edit}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa fa-edit fa-fw"></i>Edit page</a>
+{% endif %}
+{%- if giturl %}
+<a class="py-1 px-2 text-dt-link" href="https://github.com/{{ repository_name }}/issues/new?title={{title}}&body=Issue on page: {{giturl}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa fa-github fa-fw"></i>Report Bug</a>
+{% endif %}
+{%- if pdf_link %}
+<a class="py-1 px-2 text-dt-link" id="pdfLink1" href="" target="_blank" title="Download PDF"><i class="fa fa-file-pdf-o fa-fw"></i>Download PDF</a>
+{% endif %}

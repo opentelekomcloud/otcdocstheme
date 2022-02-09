@@ -880,10 +880,6 @@ pre .cl {
   background-color: var(--dt-color-teal-30);
 }
 
-.text-dt-link:hover {
-  color: var(--dt-color-text-link-hover);
-}
-
 .text-dt-link {
-  color: var(--dt-color-text-link);
+  color: var(--dt-color-blue-60);
 }

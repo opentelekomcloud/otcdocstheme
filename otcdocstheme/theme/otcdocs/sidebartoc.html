@@ -12,14 +12,7 @@
   {%- endif %}
   </div>
 </aside>
-<div class="docs-toc-meta ms-2 pb-1 pt-2 mb-0 d-flex flex-row-reverse d-md-none">
-  {%- if giturl_edit %}
-  <a class="py-1 px-2 text-dt-link" href="{{giturl_edit}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa fa-edit fa-fw"></i>Edit page</a>
-  {% endif %}
-  {%- if giturl %}
-  <a class="py-1 px-2 text-dt-link" href="https://github.com/{{ repository_name }}/issues/new?title={{title}}&body=Issue on page: {{giturl}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa fa-github fa-fw"></i>Report Bug</a>
-  {% endif %}
-  {%- if pdf_link %}
-  <a class="py-1 px-2 text-dt-link" id="pdfLink1" href="" target="_blank" title="Download PDF"><i class="fa fa-file-pdf-o fa-fw"></i>Download PDF</a>
-  {% endif %}
+<!-- Page options for small screens -->
+<div class="docs-toc-meta ms-2 pb-1 pt-2 mb-0 d-flex flex-row-reverse d-md-none d-print-none">
+  {% include 'page_options.html' %}
 </div>
