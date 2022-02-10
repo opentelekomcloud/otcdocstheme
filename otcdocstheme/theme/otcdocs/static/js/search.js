@@ -1,5 +1,5 @@
 function Search() {
-    const [Results, setResults] = React.useState([])
+    const [Results, setResults] = React.useState([]);
     const [search, setSearch] = React.useState('');
     const handleSearchChange = event => {
         setSearch(event.target.value)
@@ -30,10 +30,10 @@ function Search() {
                 const responsedata = response.data.hits.hits
                 console.log(response)
                 if (responsedata.length !== 0) {
-                    document.getElementById('searchDropdown').classList.add('show')
+                    document.getElementById('searchDropdown').classList.add('show');
                 }
                 else {
-                    document.getElementById('searchDropdown').classList.remove('show')
+                    document.getElementById('searchDropdown').classList.remove('show');
                 }
                 const res = response.data.hits.hits.map((hit) => (
                     setResults((prevEntry) => [
@@ -54,10 +54,13 @@ function Search() {
             })
             
         }
+        else {
+            document.getElementById('searchDropdown').classList.remove('show');
+        }
     }, [search])
 
     return (
-        React.createElement('div', {className: "blabla"},
+        React.createElement('div', null,
             React.createElement('input', {type: 'text', className: 'form-control', placeholder: 'Type here to search', onChange: handleSearchChange}),
             React.createElement('ul', {className: "dropdown-menu", id: 'searchDropdown'},
                     Results
