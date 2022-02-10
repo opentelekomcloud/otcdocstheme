@@ -1,5 +1,6 @@
 - project:
     merge-mode: squash-merge
+    default-branch: main
     templates:
       - publish-to-pypi
       - publish-otc-docs-hc-pti
