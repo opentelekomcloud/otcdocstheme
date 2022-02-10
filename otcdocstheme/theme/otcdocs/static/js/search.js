@@ -33,9 +33,11 @@ function Search() {
                     setResults((prevEntry) => [
                         ...prevEntry,
                         [
-                            React.createElement('a', {href: ('https://python-otcextensions.readthedocs.io/en/latest/' + hit._source.current_page_name + '.html')},
-                                React.createElement('div', null, hit._source.current_page_name),
-                                React.createElement('div', null, hit.highlight.body[0]),
+                            React.createElement('li', null,
+                                React.createElement('a', {className: "dropdown-item", href: ('https://python-otcextensions.readthedocs.io/en/latest/' + hit._source.current_page_name + '.html')},
+                                    React.createElement('div', {className: "fw-bolder"}, hit._source.current_page_name),
+                                    React.createElement('div', null, hit.highlight.body[0])
+                                )
                             )
                         ]
                     ])
@@ -48,8 +50,12 @@ function Search() {
     }, [search])
 
     return (
-        React.createElement('input', {type: 'text', class: 'form-control', placeholder: 'Type here to search', onChange: handleSearchChange})
-        // React.createElement('div', {class: }, Results)
+        React.createElement('div', {className: "blabla"},
+            React.createElement('input', {type: 'text', className: 'form-control', placeholder: 'Type here to search', onChange: handleSearchChange}),
+            React.createElement('ul', {className: "dropdown-menu show"},
+                    Results
+            )
+        )
     );
 }
 
