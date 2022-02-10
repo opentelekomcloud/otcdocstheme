@@ -29,6 +29,12 @@ function Search() {
             .then((response) => {
                 const responsedata = response.data.hits.hits
                 console.log(response)
+                if (responsedata.length !== 0) {
+                    document.getElementById('searchDropdown').classList.add('show')
+                }
+                else {
+                    document.getElementById('searchDropdown').classList.remove('show')
+                }
                 const res = response.data.hits.hits.map((hit) => (
                     setResults((prevEntry) => [
                         ...prevEntry,
@@ -46,13 +52,14 @@ function Search() {
             .catch((reason) => {
                 alert("Search request fails: " + reason)
             })
+            
         }
     }, [search])
 
     return (
         React.createElement('div', {className: "blabla"},
             React.createElement('input', {type: 'text', className: 'form-control', placeholder: 'Type here to search', onChange: handleSearchChange}),
-            React.createElement('ul', {className: "dropdown-menu show"},
+            React.createElement('ul', {className: "dropdown-menu", id: 'searchDropdown'},
                     Results
             )
         )
