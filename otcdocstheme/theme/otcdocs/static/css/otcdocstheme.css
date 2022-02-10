@@ -161,6 +161,10 @@ body {
   --dt-color-functional-blue: hsl(227.39999999999998, 89%, 46.3%);
 }
 
+body {
+  color: var(--dt-color-text-standard);
+}
+
 /* CONTAINER */
 /* Sizing */
 /* force using full screen */
@@ -190,8 +194,29 @@ body {
   top: -68px;*/
 }
 
+@media (min-width: 768px) {
+
+  /* Arrow when hovering NavBar Items */
+  .dropdown-menu:after {
+    position: absolute;
+    top: -11px;
+    left: 18px; /* Example: right:10px; */
+    display: inline-block;
+    border-right: 13px solid transparent;
+    border-bottom: 13px solid #ffffff;
+    border-left: 13px solid transparent;
+    content: '';
+  }
+
+}
+
 #navbarNav {
   flex-grow: unset;
+}
+
+/* light box around link on hover for informativity */
+#navbarNav .navbar-nav li a:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .docs-title {
@@ -222,8 +247,8 @@ body {
 
 @media screen and (min-width: 768px) {
   #navbarNav .navbar-nav > li > a.nav-link {
-    color: var(--dt-color-grey-10);
-    font-weight: 300;
+    color: var(--dt-color-white);
+    font-weight: 400;
     font-size: 1.2rem;
   }
 }
@@ -249,10 +274,7 @@ body {
     font-size: 1.2rem;
   }
 
-  #navbarNav .navbar-nav li a:hover {
-    /* light box around link on hover for informativity */
-    background-color: rgba(255, 255, 255, 0.3);
-  }
+
 
   .navbar-nav hr {
      color: var(--dt-color-grey-10);
@@ -313,10 +335,10 @@ body {
 }
 .docs-sidebar-toc a {
   text-decoration: none;
-  color: var(--main-body-color);
+  color: var(--dt-color-black);
 }
 .docs-sidebar-toc a:hover {
-  color: var(--dt-color-blue-50);
+  color: var(--dt-color-primary-hover);
 }
 
 @media (min-width: 768px) {
@@ -355,19 +377,20 @@ body {
   display: none;
 }
 
-.docs-sidebar li.toctree-l1 > a {
-  font-size: 14px;
-  font-weight: bold;
-}
-
 /* make l1 of the toctree bold */
 div.docs-sidebar-toc li.toctree-l1 > a {
-  font-weight: bold;
+  font-weight: 400;
 }
 .docs-sidebar-section-title {
   display: block;
   width: 100%;
   padding: 10px 20px;
+}
+.docs-sidebar-section-title h4:hover {
+  color: var(--dt-color-primary-hover)
+}
+.docs-sidebar-section-title > h4 {
+  font-weight: 400;
 }
 #table-of-contents.docs-sidebar-section {
   background-color: transparent;
@@ -403,7 +426,7 @@ h2,
 h3,
 h4,
 h5 {
-  color: var(--main-body-color);
+  color: var(--dt-color-text-standard);
   font-weight: lighter;
 }
 
@@ -569,9 +592,10 @@ code.docutils.literal.notranslate {
 
 .docs-toc nav a {
   color: inherit;
-}
-.docs-toc nav a:not(:hover) {
   text-decoration: none;
+}
+.docs-toc nav a:hover {
+  color: var(--dt-color-primary-hover);
 }
 
 .docs-toc-meta a {
@@ -890,3 +914,5 @@ pre .cl {
 .btn-info {
   background-color: var(--dt-color-teal-30);
 }
+
+
