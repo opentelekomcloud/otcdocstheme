@@ -11,7 +11,7 @@ function Search() {
             setResults([])
             const requestjson = {
                 "from" : 0, "size" : 3,
-                "_source": ["highlight", "current_page_name", "base_url", "doc_url"],
+                "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url"],
                 "query": {
                   "match": {
                     "body": `${search}`
@@ -41,7 +41,7 @@ function Search() {
                         [
                             React.createElement('li', null,
                                 React.createElement('a', {className: "dropdown-item", href: (hit._source.base_url + hit._source.doc_url + hit._source.current_page_name + '.html')},
-                                    React.createElement('div', {className: "fw-bolder"}, hit._source.current_page_name),
+                                    React.createElement('div', {className: "fw-bolder"}, hit._source.title),
                                     React.createElement('div', null, hit.highlight.body[0])
                                 )
                             )
