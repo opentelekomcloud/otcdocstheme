@@ -1,6 +1,8 @@
 - project:
     merge-mode: squash-merge
     default-branch: main
+    vars:
+      sphinx_install_package: true
     templates:
       - publish-to-pypi
       - publish-otc-docs-hc-pti
