@@ -335,10 +335,14 @@ body {
 }
 .docs-sidebar-toc a {
   text-decoration: none;
-  color: var(--dt-color-black);
+  color: var(--dt-color-grey-80);
 }
 .docs-sidebar-toc a:hover {
   color: var(--dt-color-primary-hover);
+}
+
+.docs-sidebar-toc h4 {
+  color: var(--dt-color-grey-70);
 }
 
 @media (min-width: 768px) {
