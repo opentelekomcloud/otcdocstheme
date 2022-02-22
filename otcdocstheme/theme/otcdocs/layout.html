@@ -13,23 +13,42 @@
   {%- block relbar1 %}{% endblock %}
 
   {%- block content %}
-      <div class="container-xxl my-md-4 docs-book-wrapper">
+    <div class="container-xxl my-md-4 docs-book-wrapper">
 	{% include 'sidebartoc.html' %}
-	<div class="row">
-{%- if theme_sidebar_mode == 'toctree' and theme_display_toc and display_toc %}
-        <main class="docs-main col-12 col-xl-9" role="main">
-{% else %}
-        <main class="docs-main col-12 col-xl-11" role="main">
-{% endif %}
-          <div class="docs-content ps-lg-4">
-            {% block body %}{% endblock %}
-            {% if next %}
-  	  <h2 id="what-s-next">Whats next</h2>
-  	    <ul>
-  		    <li><a href="{{ next.link|e }}" title="Next: {{ next.title|striptags }}">{{ next.title }}</a></li>
-              </ul>
-            {% endif %}
-          </div>
+	  <div class="row">
+  {%- if theme_sidebar_mode == 'toctree' and theme_display_toc and display_toc %}
+    <main class="docs-main col-12 col-xl-9" role="main">
+  {% else %}
+    <main class="docs-main col-12 col-xl-11" role="main">
+  {% endif %}
+    <div class="docs-content ps-lg-4">
+  {% block body %}{% endblock %}
+    <div id="bottom-navigation" class="py-5">
+      <nav>
+        <ul class="pagination justify-content-center">
+        {% if prev %}
+          <li class="page-item">
+            <a class="page-link" href="{{ prev.link|e }}">Previous Page</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link">Previous Page</a>
+          </li>
+        {% endif %}
+        {% if next %}
+          <li class="page-item">
+            <a class="page-link" href="{{ next.link|e }}">Next Page</a>
+          </li>
+        {% else %}
+          <li class="page-item disabled">
+            <a class="page-link">Next Page</a>
+          </li>
+        {% endif %}
+        </ul>
+      </nav>
+    </div>
+  
+    </div>
 
 	  <div class="row docs-byline bottom">
             <div class="docs-updated">last updated: {{ last_updated }}</div>

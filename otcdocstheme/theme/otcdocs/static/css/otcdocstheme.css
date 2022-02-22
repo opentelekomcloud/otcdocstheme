@@ -868,6 +868,18 @@ pre .cl {
 
 /* End Main body */
 
+/* Start Bottom Navigation */
+
+.page-link {
+  color: var(--dt-color-black);
+}
+
+.page-link:hover {
+  color: var(--dt-color-magenta);
+}
+
+/* End Bottom Navigation */
+
 /* Page footer */
 .docs-footer {
   background: var(--dt-color-grey-90);
