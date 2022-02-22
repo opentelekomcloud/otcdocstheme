@@ -343,7 +343,6 @@ body {
 
 @media (min-width: 768px) {
   .docs-sidebar-toc {
-    position: sticky;
     top: 10px;
     display: block !important;
     overflow-y: auto;
