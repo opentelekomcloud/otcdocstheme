@@ -419,7 +419,8 @@ a.headerlink:hover {
 }
 
 h1 {
-  font-weight: lighter;
+  font-weight: 400;
+  color: var(--dt-color-grey-70);
 }
 
 h2,
