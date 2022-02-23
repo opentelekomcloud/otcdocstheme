@@ -420,15 +420,17 @@ a.headerlink:hover {
 
 h1 {
   font-weight: 400;
-  color: var(--dt-color-grey-70);
 }
 
 h2,
 h3,
 h4,
 h5 {
-  color: var(--dt-color-text-standard);
   font-weight: lighter;
+}
+
+main h1, h2, h3, h4, h5 {
+  color: var(--dt-color-grey-70);
 }
 
 h1, h2, h3 {
