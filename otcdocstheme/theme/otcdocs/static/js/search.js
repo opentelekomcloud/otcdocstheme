@@ -113,15 +113,16 @@ function timer(el) {
 };
 
 const returnValue = async (event) => {
+    clearTimeout(id);
+    el = document.getElementById('txtbox');
+    timer(el);
+};
+
+async function onEnter(event) {
     // keyCode 13 === Enter
     if (event.which == 13 || event.keyCode == 13) {
         console.log('Pressed enter')
         let response = await searchRequest(el.value);
         createMainResult(response)
-    }
-    else {
-        clearTimeout(id);
-        el = document.getElementById('txtbox');
-        timer(el);
     }
 };
