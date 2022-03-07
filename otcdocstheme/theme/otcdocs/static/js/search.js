@@ -36,6 +36,10 @@ function createResultList(response) {
     if (response.hits.hits.length > 0) {
         ul.classList.add('show');
         for (index in response.hits.hits) {
+            // Only show top-5 search results
+            if (index > 4) {
+                break
+            }
             let hit = response.hits.hits[index];
 
             // Create li, a, div elements
@@ -67,6 +71,7 @@ function timer(el) {
     id = setTimeout(async () => {
         if (el.value) {
             let response = await searchRequest(el.value);
+            console.log(response)
             createResultList(response);
         } else {
             document.getElementById('searchDropdown').classList.remove('show');
@@ -74,7 +79,11 @@ function timer(el) {
     }, 250);
 };
 
-function returnValue() {
+function returnValue(event) {
+    // keyCode 13 === Enter
+    if (event.which == 13 || event.keyCode == 13) {
+        console.log('Pressed enter')
+    }
     clearTimeout(id);
     el = document.getElementById('txtbox');
     timer(el);
