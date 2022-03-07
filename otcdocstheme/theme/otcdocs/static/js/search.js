@@ -17,18 +17,26 @@ async function searchRequest(val) {
             }
         }
     };
-    let response = await axios.post('https://search.dev.schreiber-ling.de/test-index/_search', requestjson);
-    return response;
+    let response = await fetch('https://search.dev.schreiber-ling.de/test-index/_search', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestjson)
+    })
+    const responsedata = await response.json()
+    return responsedata;
 };
 
 function createResultList(response) {
     let ul = document.getElementById('searchDropdown');
     // Remove older search results
     ul.textContent = "";
-    if (response.data.hits.hits.length > 0) {
+    if (response.hits.hits.length > 0) {
         ul.classList.add('show');
-        for (index in response.data.hits.hits) {
-            let hit = response.data.hits.hits[index];
+        for (index in response.hits.hits) {
+            let hit = response.hits.hits[index];
 
             // Create li, a, div elements
             let li = document.createElement('li');
@@ -58,9 +66,7 @@ function createResultList(response) {
 function timer(el) {
     id = setTimeout(async () => {
         if (el.value) {
-            console.log(el.value);
             let response = await searchRequest(el.value);
-            console.log(response);
             createResultList(response);
         } else {
             document.getElementById('searchDropdown').classList.remove('show');
