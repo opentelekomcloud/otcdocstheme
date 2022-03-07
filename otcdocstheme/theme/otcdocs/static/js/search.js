@@ -67,6 +67,39 @@ function createResultList(response) {
     }
 };
 
+const createMainResult = (response) => {
+    // Remove search as you type results
+    document.getElementById('searchDropdown').classList.remove('show');
+
+    let div = document.getElementById('searchResultsEnter')
+    div.textContent = ""
+    if (response.hits.hits.length > 0) {
+        for (index in response.hits.hits) {
+            let hit = response.hits.hits[index];
+
+            // Create li, a, div elements
+            let li = document.createElement('li');
+            let a = document.createElement('a');
+            let div_1 = document.createElement('div');
+            let div_2 = document.createElement('div');
+
+            // Add text and classes
+            a.setAttribute('href', hit._source.base_url + hit._source.doc_url + hit._source.current_page_name + '.html');
+            a.classList.add("dropdown-item");
+            li.classList.add("nobullets")
+            div_1.classList.add("fw-bolder");
+            div_1.innerHTML = hit._source.title;
+            div_2.innerHTML = hit.highlight.body[0];
+
+            // Append as childs to structure ul > li > a > div/div
+            a.appendChild(div_1);
+            a.appendChild(div_2);
+            li.appendChild(a);
+            div.appendChild(li);
+        }
+    }
+}
+
 function timer(el) {
     id = setTimeout(async () => {
         if (el.value) {
@@ -79,12 +112,16 @@ function timer(el) {
     }, 250);
 };
 
-function returnValue(event) {
+const returnValue = async (event) => {
     // keyCode 13 === Enter
     if (event.which == 13 || event.keyCode == 13) {
         console.log('Pressed enter')
+        let response = await searchRequest(el.value);
+        createMainResult(response)
     }
-    clearTimeout(id);
-    el = document.getElementById('txtbox');
-    timer(el);
+    else {
+        clearTimeout(id);
+        el = document.getElementById('txtbox');
+        timer(el);
+    }
 };

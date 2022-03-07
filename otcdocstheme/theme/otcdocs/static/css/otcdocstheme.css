@@ -308,6 +308,10 @@ body {
 }
 /* end subnavbar */
 
+.nobullets {
+  list-style-type: none;
+}
+
 /* SIDEBAR */
 .docs-sidebar {
   grid-area: sidebar;
