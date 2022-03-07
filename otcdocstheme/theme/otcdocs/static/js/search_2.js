@@ -18,18 +18,30 @@ async function searchRequest(val) {
         }
     };
     let response = await axios.post('https://search.dev.schreiber-ling.de/test-index/_search', requestjson);
-    return response.data.hits.hits;
+    return response;
 };
 
-function createResultList(hits) {
-    if (hits.length > 0) {
-        let ul = document.getElementById('searchDropdown');
+function createResultList(response) {
+    let ul = document.getElementById('searchDropdown');
+    ul.textContent = "";
+    if (response.data.hits.hits.length > 0) {
         ul.classList.add('show');
-        for (let el in hits) {
+        for (index in response.data.hits.hits) {
+            let hit = response.data.hits.hits[index];
             let li = document.createElement('li');
             let a = document.createElement('a');
-            // ul.appendChild
-        };
+            a.setAttribute('href', hit._source.base_url + hit._source.doc_url + hit._source.current_page_name + '.html');
+            a.classList.add("dropdown-item");
+            let div_1 = document.createElement('div');
+            let div_2 = document.createElement('div');
+            div_1.classList.add("fw-bolder");
+            div_1.innerHTML = hit._source.title;
+            div_2.innerHTML = hit.highlight.body[0];
+            a.appendChild(div_1);            
+            a.appendChild(div_2);
+            li.appendChild(a);
+            ul.appendChild(li);
+        }
     }
     else {
         document.getElementById('searchDropdown').classList.remove('show');
@@ -42,11 +54,14 @@ function timer(el) {
             console.log(el.value);
             let response = await searchRequest(el.value);
             console.log(response);
+            createResultList(response);
+        } else {
+            document.getElementById('searchDropdown').classList.remove('show');
         };    
-    }, 1000);
+    }, 500);
 };
 
-function returnvalue() {
+function returnValue() {
     clearTimeout(id);
     el = document.getElementById('txtbox');
     timer(el);
