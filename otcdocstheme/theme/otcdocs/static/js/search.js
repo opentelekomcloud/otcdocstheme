@@ -1,75 +1,75 @@
-function Search() {
-    const [Results, setResults] = React.useState([]);
-    const [search, setSearch] = React.useState('');
-    const handleSearchChange = event => {
-        setSearch(event.target.value)
-    };
+var id = 0;
 
-    React.useEffect(() => {
-
-        if (search !== "") {
-            setResults([])
-            const requestjson = {
-                "from" : 0, "size" : 3,
-                "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url"],
-                "query": {
-                  "match": {
-                    "body": `${search}`
-                  }
-                },
-                "highlight": {
-                    "number_of_fragments": 1,
-                    "fragment_size":100,
-                    "fields":{
-                       "body":{ "pre_tags": [""], "post_tags": [""]}
-                    }
-                }
+async function searchRequest(val) {
+    const requestjson = {
+        "from" : 0, "size" : 10,
+        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url"],
+        "query": {
+          "match": {
+            "body": val
+          }
+        },
+        "highlight": {
+            "number_of_fragments": 1,
+            "fragment_size":100,
+            "fields":{
+               "body":{ "pre_tags": [""], "post_tags": [""]}
             }
-            axios.post('https://search.dev.schreiber-ling.de/test-index/_search', requestjson)
-            .then((response) => {
-                const responsedata = response.data.hits.hits
-                console.log(response)
-                if (responsedata.length !== 0) {
-                    document.getElementById('searchDropdown').classList.add('show');
-                }
-                else {
-                    document.getElementById('searchDropdown').classList.remove('show');
-                }
-                const res = response.data.hits.hits.map((hit) => (
-                    setResults((prevEntry) => [
-                        ...prevEntry,
-                        [
-                            React.createElement('li', null,
-                                React.createElement('a', {className: "dropdown-item", href: (hit._source.base_url + hit._source.doc_url + hit._source.current_page_name + '.html')},
-                                    React.createElement('div', {className: "fw-bolder"}, hit._source.title),
-                                    React.createElement('div', null, hit.highlight.body[0])
-                                )
-                            )
-                        ]
-                    ])
-                ));
-            })
-            .catch((reason) => {
-                alert("Search request fails: " + reason)
-            })
-
         }
-        else {
+    };
+    let response = await axios.post('https://search.dev.schreiber-ling.de/test-index/_search', requestjson);
+    return response;
+};
+
+function createResultList(response) {
+    let ul = document.getElementById('searchDropdown');
+    // Remove older search results
+    ul.textContent = "";
+    if (response.data.hits.hits.length > 0) {
+        ul.classList.add('show');
+        for (index in response.data.hits.hits) {
+            let hit = response.data.hits.hits[index];
+
+            // Create li, a, div elements
+            let li = document.createElement('li');
+            let a = document.createElement('a');
+            let div_1 = document.createElement('div');
+            let div_2 = document.createElement('div');
+
+            // Add text and classes
+            a.setAttribute('href', hit._source.base_url + hit._source.doc_url + hit._source.current_page_name + '.html');
+            a.classList.add("dropdown-item");
+            div_1.classList.add("fw-bolder");
+            div_1.innerHTML = hit._source.title;
+            div_2.innerHTML = hit.highlight.body[0];
+
+            // Append as childs to structure ul > li > a > div/div
+            a.appendChild(div_1);
+            a.appendChild(div_2);
+            li.appendChild(a);
+            ul.appendChild(li);
+        }
+    }
+    else {
+        document.getElementById('searchDropdown').classList.remove('show');
+    }
+};
+
+function timer(el) {
+    id = setTimeout(async () => {
+        if (el.value) {
+            console.log(el.value);
+            let response = await searchRequest(el.value);
+            console.log(response);
+            createResultList(response);
+        } else {
             document.getElementById('searchDropdown').classList.remove('show');
-        }
-    }, [search])
+        };
+    }, 250);
+};
 
-    return (
-        React.createElement('div', null,
-            React.createElement('input', {type: 'text', className: 'form-control', placeholder: 'Type here to search', onChange: handleSearchChange}),
-            React.createElement('ul', {className: "dropdown-menu", id: 'searchDropdown'},
-                    Results
-            )
-        )
-    );
-}
-
-ReactDOM.render(
-    React.createElement(Search),
-    document.getElementById('searchInput')
-)
+function returnValue() {
+    clearTimeout(id);
+    el = document.getElementById('txtbox');
+    timer(el);
+};
