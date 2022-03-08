@@ -307,7 +307,7 @@ body {
   justify-content: flex-end;
 }
 /* end subnavbar */
-
+/* No bullets for lists */
 .nobullets {
   list-style-type: none;
 }
