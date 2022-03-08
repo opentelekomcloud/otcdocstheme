@@ -72,10 +72,15 @@ const createMainResult = (response) => {
     // Remove search as you type results
     document.getElementById('searchDropdown').classList.remove('show');
 
+    // Switch search field to the middle
+    document.getElementById('docs-subnavbar').classList.remove('justify-content-between')
+    document.getElementById('docs-subnavbar').classList.add('justify-content-center')
+
     let div = document.getElementById('searchResultsEnter')
     // Check whether the searchResultsEnter div already exists
     if (typeof(div)!= 'undefined' && div != null) {
         div = document.getElementById('searchResultsEnter')
+
     }
     // If it does not exist create it
     else {
@@ -128,6 +133,9 @@ function timer(el) {
             let div = document.getElementById('searchResultsEnter')
             div.parentNode.removeChild(div)
             document.getElementById('docs-content').classList.remove('nodisplay');
+            document.getElementById('docs-subnavbar').classList.remove('justify-content-center')
+            document.getElementById('docs-subnavbar').classList.remove('justify-content-between')
+            document.getElementById('docs-subnavbar').classList.add('justify-content-between')
         };
     }, 250);
 };
