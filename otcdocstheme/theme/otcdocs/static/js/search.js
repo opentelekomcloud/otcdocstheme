@@ -73,8 +73,8 @@ const createMainResult = (response) => {
     document.getElementById('searchDropdown').classList.remove('show');
 
     // Switch search field to the middle
-    document.getElementById('docs-subnavbar').classList.remove('justify-content-between')
-    document.getElementById('docs-subnavbar').classList.add('justify-content-center')
+    // document.getElementById('docs-subnavbar').classList.remove('justify-content-between')
+    // document.getElementById('docs-subnavbar').classList.add('justify-content-center')
 
     let div = document.getElementById('searchResultsEnter')
     // Check whether the searchResultsEnter div already exists
@@ -93,6 +93,17 @@ const createMainResult = (response) => {
 
     // Remove old search results
     div.textContent = ""
+
+    // Create Headline
+    let h1 = document.createElement('h1')
+    h1.innerHTML = "Search Results: " + response.hits.hits.length
+    h1.setAttribute('style', 'font-size: 1.5rem')
+    h1.classList.add('ps-3')
+    div.appendChild(h1)
+
+    let ul = document.createElement('ul')
+    ul.classList.add('p-0')
+    div.appendChild(ul)
 
     if (response.hits.hits.length > 0) {
         for (index in response.hits.hits) {
@@ -117,7 +128,7 @@ const createMainResult = (response) => {
             a.appendChild(div_1);
             a.appendChild(div_2);
             li.appendChild(a);
-            div.appendChild(li);
+            ul.appendChild(li);
         }
     }
 }
@@ -133,9 +144,8 @@ function timer(el) {
             let div = document.getElementById('searchResultsEnter')
             div.parentNode.removeChild(div)
             document.getElementById('docs-content').classList.remove('nodisplay');
-            document.getElementById('docs-subnavbar').classList.remove('justify-content-center')
-            document.getElementById('docs-subnavbar').classList.remove('justify-content-between')
-            document.getElementById('docs-subnavbar').classList.add('justify-content-between')
+            // document.getElementById('docs-subnavbar').classList.remove('justify-content-center')
+            // document.getElementById('docs-subnavbar').classList.add('justify-content-between')
         };
     }, 250);
 };
