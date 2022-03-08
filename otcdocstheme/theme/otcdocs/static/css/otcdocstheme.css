@@ -307,7 +307,8 @@ body {
   justify-content: flex-end;
 }
 /* end subnavbar */
-/* No bullets for lists */
+
+/* SEARCH */
 .nobullets {
   list-style-type: none;
 }
@@ -319,6 +320,13 @@ body {
 .overflow-hidden {
   overflow: hidden;
 }
+
+.fa-close:hover {
+  color: var(--dt-color-primary-hover);
+  cursor: pointer;
+}
+
+/* end search */
 
 /* SIDEBAR */
 .docs-sidebar {
