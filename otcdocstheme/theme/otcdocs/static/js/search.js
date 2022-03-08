@@ -86,7 +86,7 @@ const createMainResult = (response) => {
     else {
         // Search for content div, hide it and add search results
         let contentDiv = document.getElementById('docs-content')
-        contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter'></div>");
+        contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter' class='overflow-hidden'></div>");
         contentDiv.classList.add('nodisplay')
         div = document.getElementById('searchResultsEnter')
     }

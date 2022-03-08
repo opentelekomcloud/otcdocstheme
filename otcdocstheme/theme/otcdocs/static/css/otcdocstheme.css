@@ -316,6 +316,10 @@ body {
   display: none;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 /* SIDEBAR */
 .docs-sidebar {
   grid-area: sidebar;
