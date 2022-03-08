@@ -312,6 +312,14 @@ body {
   list-style-type: none;
 }
 
+.nodisplay {
+  display: none;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
 /* SIDEBAR */
 .docs-sidebar {
   grid-area: sidebar;
