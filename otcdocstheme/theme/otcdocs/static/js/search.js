@@ -72,10 +72,6 @@ const createMainResult = (response) => {
     // Remove search as you type results
     document.getElementById('searchDropdown').classList.remove('show');
 
-    // Switch search field to the middle
-    // document.getElementById('docs-subnavbar').classList.remove('justify-content-between')
-    // document.getElementById('docs-subnavbar').classList.add('justify-content-center')
-
     let div = document.getElementById('searchResultsEnter')
     // Check whether the searchResultsEnter div already exists
     if (typeof(div)!= 'undefined' && div != null) {
@@ -160,21 +156,22 @@ const deleteEnterResults = () => {
     let div = document.getElementById('searchResultsEnter')
     div.parentNode.removeChild(div)
     document.getElementById('docs-content').classList.remove('nodisplay');
-    // document.getElementById('docs-subnavbar').classList.remove('justify-content-center')
-    // document.getElementById('docs-subnavbar').classList.add('justify-content-between')
 }
 
 const returnValue = async (event) => {
     clearTimeout(id);
-    el = document.getElementById('txtbox');
+    const el = document.getElementById('txtbox');
     timer(el);
 };
 
 async function onEnter(event) {
     // keyCode 13 === Enter
     if (event.which == 13 || event.keyCode == 13) {
-        console.log('Pressed enter')
-        let response = await searchRequest(el.value);
-        createMainResult(response)
+        searchMainResult()
     }
 };
+
+const searchMainResult = async () => {
+    let response = await searchRequest(document.getElementById('txtbox').value);
+    createMainResult(response)
+}
