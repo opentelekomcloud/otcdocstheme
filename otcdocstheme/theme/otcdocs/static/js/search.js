@@ -51,6 +51,7 @@ function createResultList(response) {
             // Add text and classes
             a.setAttribute('href', hit._source.base_url + hit._source.doc_url + hit._source.current_page_name + '.html');
             a.classList.add("dropdown-item");
+            li.classList.add("border-bottom")
             div_1.classList.add("fw-bolder");
             div_1.innerHTML = hit._source.title;
             div_2.innerHTML = hit.highlight.body[0];
@@ -71,8 +72,23 @@ const createMainResult = (response) => {
     // Remove search as you type results
     document.getElementById('searchDropdown').classList.remove('show');
 
-    let ul = document.getElementById('searchResultsEnter')
-    ul.textContent = ""
+    let div = document.getElementById('searchResultsEnter')
+    // Check whether the searchResultsEnter div already exists
+    if (typeof(div)!= 'undefined' && div != null) {
+        div = document.getElementById('searchResultsEnter')
+    }
+    // If it does not exist create it
+    else {
+        // Search for content div, hide it and add search results
+        let contentDiv = document.getElementById('docs-content')
+        contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter'></div>");
+        contentDiv.classList.add('nodisplay')
+        div = document.getElementById('searchResultsEnter')
+    }
+    
+    // Remove old search results
+    div.textContent = ""
+
     if (response.hits.hits.length > 0) {
         for (index in response.hits.hits) {
             let hit = response.hits.hits[index];
@@ -87,6 +103,7 @@ const createMainResult = (response) => {
             a.setAttribute('href', hit._source.base_url + hit._source.doc_url + hit._source.current_page_name + '.html');
             a.classList.add("dropdown-item");
             li.classList.add("nobullets")
+            li.classList.add("border-bottom")
             div_1.classList.add("fw-bolder");
             div_1.innerHTML = hit._source.title;
             div_2.innerHTML = hit.highlight.body[0];
@@ -95,7 +112,7 @@ const createMainResult = (response) => {
             a.appendChild(div_1);
             a.appendChild(div_2);
             li.appendChild(a);
-            ul.appendChild(li);
+            div.appendChild(li);
         }
     }
 }
@@ -108,7 +125,9 @@ function timer(el) {
             createResultList(response);
         } else {
             document.getElementById('searchDropdown').classList.remove('show');
-            document.getElementById('searchResultsEnter').textContent = ""
+            let div = document.getElementById('searchResultsEnter')
+            div.parentNode.removeChild(div)
+            document.getElementById('docs-content').classList.remove('nodisplay');
         };
     }, 250);
 };

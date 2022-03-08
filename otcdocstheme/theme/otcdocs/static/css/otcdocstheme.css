@@ -312,6 +312,10 @@ body {
   list-style-type: none;
 }
 
+.nodisplay {
+  display: none;
+}
+
 /* SIDEBAR */
 .docs-sidebar {
   grid-area: sidebar;
