@@ -108,6 +108,7 @@ function timer(el) {
             createResultList(response);
         } else {
             document.getElementById('searchDropdown').classList.remove('show');
+            document.getElementById('searchResultsEnter').textContent = ""
         };
     }, 250);
 };
