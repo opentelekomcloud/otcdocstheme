@@ -2,7 +2,7 @@ var id = 0;
 
 async function searchRequest(val) {
     const requestjson = {
-        "from" : 0, "size" : 10,
+        "from" : 0, "size" : 50,
         "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url"],
         "query": {
           "match": {
@@ -99,6 +99,15 @@ const createMainResult = (response) => {
     h1.innerHTML = "Search Results: " + response.hits.hits.length
     h1.setAttribute('style', 'font-size: 1.5rem')
     h1.classList.add('ps-3')
+    h1.classList.add('d-flex')
+    h1.classList.add('justify-content-between')
+
+    let i = document.createElement('i')
+    i.classList.add('fa')
+    i.classList.add('fa-close')
+    i.setAttribute('onclick', 'deleteEnterResults()')
+    h1.appendChild(i)
+
     div.appendChild(h1)
 
     let ul = document.createElement('ul')
@@ -140,15 +149,20 @@ function timer(el) {
             console.log(response)
             createResultList(response);
         } else {
-            document.getElementById('searchDropdown').classList.remove('show');
-            let div = document.getElementById('searchResultsEnter')
-            div.parentNode.removeChild(div)
-            document.getElementById('docs-content').classList.remove('nodisplay');
-            // document.getElementById('docs-subnavbar').classList.remove('justify-content-center')
-            // document.getElementById('docs-subnavbar').classList.add('justify-content-between')
+            deleteEnterResults()
         };
     }, 250);
 };
+
+const deleteEnterResults = () => {
+    document.getElementById('txtbox').value = ""
+    document.getElementById('searchDropdown').classList.remove('show');
+    let div = document.getElementById('searchResultsEnter')
+    div.parentNode.removeChild(div)
+    document.getElementById('docs-content').classList.remove('nodisplay');
+    // document.getElementById('docs-subnavbar').classList.remove('justify-content-center')
+    // document.getElementById('docs-subnavbar').classList.add('justify-content-between')
+}
 
 const returnValue = async (event) => {
     clearTimeout(id);
