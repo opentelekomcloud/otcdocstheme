@@ -321,7 +321,7 @@ body {
   overflow: hidden;
 }
 
-.fa-close:hover {
+.fa-close:hover, .fa-search:hover {
   color: var(--dt-color-primary-hover);
   cursor: pointer;
 }
