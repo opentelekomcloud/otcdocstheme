@@ -85,7 +85,7 @@ const createMainResult = (response) => {
         contentDiv.classList.add('nodisplay')
         div = document.getElementById('searchResultsEnter')
     }
-    
+
     // Remove old search results
     div.textContent = ""
 
