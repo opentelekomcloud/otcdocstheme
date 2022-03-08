@@ -12,8 +12,14 @@ async function searchRequest(val) {
         "highlight": {
             "number_of_fragments": 1,
             "fragment_size":100,
+            "pre_tags": [
+                "<span style='color: var(--dt-color-magenta)'>"
+            ],
+            "post_tags": [
+                "</span>"
+            ],
             "fields":{
-               "body":{ "pre_tags": [""], "post_tags": [""]}
+               "body":{}
             }
         }
     };
