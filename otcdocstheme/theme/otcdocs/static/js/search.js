@@ -71,8 +71,8 @@ const createMainResult = (response) => {
     // Remove search as you type results
     document.getElementById('searchDropdown').classList.remove('show');
 
-    let div = document.getElementById('searchResultsEnter')
-    div.textContent = ""
+    let ul = document.getElementById('searchResultsEnter')
+    ul.textContent = ""
     if (response.hits.hits.length > 0) {
         for (index in response.hits.hits) {
             let hit = response.hits.hits[index];
@@ -95,7 +95,7 @@ const createMainResult = (response) => {
             a.appendChild(div_1);
             a.appendChild(div_2);
             li.appendChild(a);
-            div.appendChild(li);
+            ul.appendChild(li);
         }
     }
 }
