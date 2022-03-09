@@ -147,18 +147,22 @@ const createMainResult = (response) => {
         let a = document.createElement('a');
         let div_1 = document.createElement('div');
         let div_2 = document.createElement('div');
+        let div_url = document.createElement('div');
 
         // Add text and classes
         a.setAttribute('href', hit._source.base_url + hit._source.doc_url + hit._source.current_page_name + '.html');
         a.classList.add("dropdown-item");
         li.classList.add("nobullets")
         li.classList.add("border-bottom")
-        div_1.classList.add("fw-bolder");
+        div_1.classList.add("search-title");
+        div_url.classList.add("path-green");
         div_1.innerHTML = hit._source.title;
+        div_url.innerHTML = hit._source.doc_url + hit._source.current_page_name;
         div_2.innerHTML = cleanupString(hit.highlight.body[0]);
 
         // Append as childs to structure ul > li > a > div/div
         a.appendChild(div_1);
+        a.appendChild(div_url);
         a.appendChild(div_2);
         li.appendChild(a);
         ul.appendChild(li);

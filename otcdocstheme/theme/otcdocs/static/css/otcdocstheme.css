@@ -309,6 +309,16 @@ body {
 /* end subnavbar */
 
 /* SEARCH */
+
+.search-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.path-green {
+  color: var(--dt-color-olive-80);
+}
+
 .nobullets {
   list-style-type: none;
 }
