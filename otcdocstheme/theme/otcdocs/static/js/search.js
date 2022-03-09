@@ -164,10 +164,11 @@ const createMainResult = (response) => {
     if (ul_index > 0) {
         let nav = document.createElement('nav');
         let ul_pagination = document.createElement('ul');
+        ul_pagination.setAttribute('id', 'ul-pagination');
         ul_pagination.classList.add("pagination", "pagination-sm", "justify-content-center");
         for (let i = 0; i < ul_index; i++) {
-            console.log(i)
             let li_pagination = document.createElement('li');
+            li_pagination.setAttribute('onclick', 'pagination(this)');
             if (i == 0) {
                 li_pagination.classList.add("page-item", "active");
             } else {
@@ -189,7 +190,6 @@ function timer(el) {
     id = setTimeout(async () => {
         if (el.value) {
             let response = await searchRequest(el.value);
-            console.log(response)
             createResultList(response);
         } else {
             deleteEnterResults()
@@ -221,4 +221,15 @@ async function onEnter(event) {
 const searchMainResult = async () => {
     let response = await searchRequest(document.getElementById('txtbox').value);
     createMainResult(response)
+}
+
+const pagination = (element) => {
+    let ul = document.getElementById('ul-pagination');
+    let el = element;
+    let children = ul.children;
+    console.log(children.length);
+    for (let i = 0; i < children.length; i++) {
+        children[i].classList.remove('active');
+    }
+    el.classList.add('active');
 }
