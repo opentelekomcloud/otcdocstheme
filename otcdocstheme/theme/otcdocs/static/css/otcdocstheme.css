@@ -326,6 +326,19 @@ body {
   cursor: pointer;
 }
 
+.page-item.active .page-link {
+  background-color: var(--dt-color-primary-active);
+  border-color: var(--dt-color-primary-active);
+}
+
+.page-link {
+  color: var(--dt-color-magenta);
+}
+
+.page-link:hover {
+  color: var(--dt-color-primary-hover)
+}
+
 /* end search */
 
 /* SIDEBAR */

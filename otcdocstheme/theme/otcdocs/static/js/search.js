@@ -2,7 +2,7 @@ var id = 0;
 
 async function searchRequest(val) {
     const requestjson = {
-        "from" : 0, "size" : 50,
+        "from" : 0, "size" : 100,
         "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url"],
         "query": {
           "match": {
@@ -121,8 +121,8 @@ const createMainResult = (response) => {
     // number of results per page
     let pagination_size = 10;
     while (hit_length > 0) {
-        // Create list pages        
-        
+        // Create list pages
+
         if ((index % pagination_size) == 0) {
             ul_index = ul_index + 1;
             ul = document.createElement('ul');
@@ -160,12 +160,15 @@ const createMainResult = (response) => {
         index = index + 1
         hit_length = hit_length - 1
     }
-    
+
     if (ul_index > 0) {
+        // Create Pagination
         let nav = document.createElement('nav');
         let ul_pagination = document.createElement('ul');
         ul_pagination.setAttribute('id', 'ul-pagination');
         ul_pagination.classList.add("pagination", "pagination-sm", "justify-content-center");
+
+        // Add pagination sites / li's
         for (let i = 0; i < ul_index; i++) {
             let li_pagination = document.createElement('li');
             li_pagination.setAttribute('onclick', 'pagination(this)');
@@ -176,7 +179,7 @@ const createMainResult = (response) => {
             }
             let a_pagination = document.createElement("a");
             a_pagination.classList.add("page-link");
-            a_pagination.setAttribute('href', '#');
+            a_pagination.setAttribute('href', '#searchResultsEnter');
             a_pagination.innerHTML = (i + 1).toString()
             li_pagination.appendChild(a_pagination);
             ul_pagination.appendChild(li_pagination);
@@ -224,12 +227,31 @@ const searchMainResult = async () => {
 }
 
 const pagination = (element) => {
+    // Get pagination ul element and it's children
     let ul = document.getElementById('ul-pagination');
-    let el = element;
     let children = ul.children;
-    console.log(children.length);
+
+    // el = clicked page
+    let el = element;
+
+    // Remove the active state from every pagination element
     for (let i = 0; i < children.length; i++) {
         children[i].classList.remove('active');
     }
+    // Add the active state to the clicked one
     el.classList.add('active');
+
+    // Get clicked pagination number
+    const page_number = el.firstChild.innerHTML
+
+    // pages = number of pages
+    let pages = children.length
+
+    // Hide all pages
+    for (let i = 0; i < pages; i++) {
+        let ul = document.getElementById('ul_' + (i+1).toString())
+        ul.classList.add('nodisplay')
+    }
+    // Unhide the selected page
+    document.getElementById('ul_' + page_number.toString()).classList.remove('nodisplay')
 }
