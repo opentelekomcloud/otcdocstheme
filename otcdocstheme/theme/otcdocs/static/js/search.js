@@ -75,6 +75,7 @@ function createResultList(response) {
 };
 
 const createMainResult = (response) => {
+    // Function to generate result list on main content
     // Remove search as you type results
     document.getElementById('searchDropdown').classList.remove('show');
 
@@ -96,7 +97,7 @@ const createMainResult = (response) => {
     // Remove old search results
     div.textContent = ""
 
-    // Create Headline
+    // Create Results Headline
     let h1 = document.createElement('h1')
     h1.innerHTML = "Search Results: " + response.hits.hits.length
     h1.setAttribute('style', 'font-size: 1.5rem')
@@ -104,43 +105,83 @@ const createMainResult = (response) => {
     h1.classList.add('d-flex')
     h1.classList.add('justify-content-between')
 
+    // Search Results Close Button
     let i = document.createElement('i')
     i.classList.add('fa')
     i.classList.add('fa-close')
     i.setAttribute('onclick', 'deleteEnterResults()')
     h1.appendChild(i)
-
     div.appendChild(h1)
 
-    let ul = document.createElement('ul')
-    ul.classList.add('p-0')
-    div.appendChild(ul)
-
-    if (response.hits.hits.length > 0) {
-        for (index in response.hits.hits) {
-            let hit = response.hits.hits[index];
-
-            // Create li, a, div elements
-            let li = document.createElement('li');
-            let a = document.createElement('a');
-            let div_1 = document.createElement('div');
-            let div_2 = document.createElement('div');
-
-            // Add text and classes
-            a.setAttribute('href', hit._source.base_url + hit._source.doc_url + hit._source.current_page_name + '.html');
-            a.classList.add("dropdown-item");
-            li.classList.add("nobullets")
-            li.classList.add("border-bottom")
-            div_1.classList.add("fw-bolder");
-            div_1.innerHTML = hit._source.title;
-            div_2.innerHTML = hit.highlight.body[0];
-
-            // Append as childs to structure ul > li > a > div/div
-            a.appendChild(div_1);
-            a.appendChild(div_2);
-            li.appendChild(a);
-            ul.appendChild(li);
+    // Create Result-List
+    let index = 0
+    let ul_index = 0
+    let hit_length = response.hits.hits.length
+    let ul;
+    // number of results per page
+    let pagination_size = 10;
+    while (hit_length > 0) {
+        // Create list pages        
+        
+        if ((index % pagination_size) == 0) {
+            ul_index = ul_index + 1;
+            ul = document.createElement('ul');
         }
+        if (ul_index > 1) {
+            ul.classList.add('nodisplay')
+        }
+        ul.classList.add('p-0')
+        ul.setAttribute('id', "ul_" + ul_index)
+        div.appendChild(ul)
+
+        let hit = response.hits.hits[index];
+
+        // Create li, a, div elements
+        let li = document.createElement('li');
+        let a = document.createElement('a');
+        let div_1 = document.createElement('div');
+        let div_2 = document.createElement('div');
+
+        // Add text and classes
+        a.setAttribute('href', hit._source.base_url + hit._source.doc_url + hit._source.current_page_name + '.html');
+        a.classList.add("dropdown-item");
+        li.classList.add("nobullets")
+        li.classList.add("border-bottom")
+        div_1.classList.add("fw-bolder");
+        div_1.innerHTML = hit._source.title;
+        div_2.innerHTML = hit.highlight.body[0];
+
+        // Append as childs to structure ul > li > a > div/div
+        a.appendChild(div_1);
+        a.appendChild(div_2);
+        li.appendChild(a);
+        ul.appendChild(li);
+
+        index = index + 1
+        hit_length = hit_length - 1
+    }
+    
+    if (ul_index > 0) {
+        let nav = document.createElement('nav');
+        let ul_pagination = document.createElement('ul');
+        ul_pagination.classList.add("pagination", "pagination-sm", "justify-content-center");
+        for (let i = 0; i < ul_index; i++) {
+            console.log(i)
+            let li_pagination = document.createElement('li');
+            if (i == 0) {
+                li_pagination.classList.add("page-item", "active");
+            } else {
+                li_pagination.classList.add("page-item");
+            }
+            let a_pagination = document.createElement("a");
+            a_pagination.classList.add("page-link");
+            a_pagination.setAttribute('href', '#');
+            a_pagination.innerHTML = (i + 1).toString()
+            li_pagination.appendChild(a_pagination);
+            ul_pagination.appendChild(li_pagination);
+        }
+        nav.appendChild(ul_pagination);
+        div.appendChild(nav);
     }
 }
 
