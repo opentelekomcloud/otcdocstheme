@@ -1,5 +1,11 @@
 var id = 0;
 
+const cleanupString = (text) => {
+    text = text.replace(/¶/, " ");
+    text = text.replace(/¶/, " ");
+    return text;
+}
+
 async function searchRequest(val) {
     const requestjson = {
         "from" : 0, "size" : 100,
@@ -60,7 +66,7 @@ function createResultList(response) {
             li.classList.add("border-bottom")
             div_1.classList.add("fw-bolder");
             div_1.innerHTML = hit._source.title;
-            div_2.innerHTML = hit.highlight.body[0];
+            div_2.innerHTML = cleanupString(hit.highlight.body[0]);
 
             // Append as childs to structure ul > li > a > div/div
             a.appendChild(div_1);
@@ -149,7 +155,7 @@ const createMainResult = (response) => {
         li.classList.add("border-bottom")
         div_1.classList.add("fw-bolder");
         div_1.innerHTML = hit._source.title;
-        div_2.innerHTML = hit.highlight.body[0];
+        div_2.innerHTML = cleanupString(hit.highlight.body[0]);
 
         // Append as childs to structure ul > li > a > div/div
         a.appendChild(div_1);
@@ -179,7 +185,7 @@ const createMainResult = (response) => {
             }
             let a_pagination = document.createElement("a");
             a_pagination.classList.add("page-link");
-            a_pagination.setAttribute('href', '#searchResultsEnter');
+            a_pagination.setAttribute('href', '#');
             a_pagination.innerHTML = (i + 1).toString()
             li_pagination.appendChild(a_pagination);
             ul_pagination.appendChild(li_pagination);
@@ -201,7 +207,7 @@ function timer(el) {
 };
 
 const deleteEnterResults = () => {
-    document.getElementById('txtbox').value = ""
+    document.getElementById('searchbox').value = ""
     document.getElementById('searchDropdown').classList.remove('show');
     let div = document.getElementById('searchResultsEnter')
     div.parentNode.removeChild(div)
@@ -210,7 +216,7 @@ const deleteEnterResults = () => {
 
 const returnValue = async (event) => {
     clearTimeout(id);
-    const el = document.getElementById('txtbox');
+    const el = document.getElementById('searchbox');
     timer(el);
 };
 
@@ -222,7 +228,7 @@ async function onEnter(event) {
 };
 
 const searchMainResult = async () => {
-    let response = await searchRequest(document.getElementById('txtbox').value);
+    let response = await searchRequest(document.getElementById('searchbox').value);
     createMainResult(response)
 }
 
