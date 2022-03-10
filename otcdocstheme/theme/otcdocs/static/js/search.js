@@ -29,7 +29,7 @@ async function searchRequest(val) {
             }
         }
     };
-    let response = await fetch('https://search.dev.schreiber-ling.de/test-index/_search', {
+    let response = await fetch('https://opensearch-stg.eco.tsi-dev.otc-service.com/test-index/_search', {
         method: 'POST',
         mode: 'cors',
         headers: {
