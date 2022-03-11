@@ -405,6 +405,11 @@ div.docs-sidebar-toc li.toctree-l1 > a {
 /* SIDEBAR END */
 
 /* CONTENT */
+/* Fix pre blocks not to strech width */
+.row {
+  min-width: 0;
+}
+
 /* Chapters include normally invisible (P) symbol */
 a {
   color: var(--dt-color-blue-60);
@@ -632,6 +637,7 @@ pre {
   overflow: auto;
   margin: 0 0 10px;
   padding: 20px 30px;
+  max-width: 100%;
 }
 
 pre code,
