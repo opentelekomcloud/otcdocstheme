@@ -311,6 +311,9 @@ body {
 /* SIDEBAR */
 .docs-sidebar {
   grid-area: sidebar;
+  background-color: var(--dt-color-grey-10);
+  box-shadow: 2px 1px 0px -1px var(--dt-color-grey-30);
+  font-size: 0.8rem;
 }
 
 @media (min-width: 768px) {
@@ -391,6 +394,7 @@ div.docs-sidebar-toc li.toctree-l1 > a {
 }
 .docs-sidebar-section-title > h4 {
   font-weight: 400;
+  font-size: 1.4rem;
 }
 #table-of-contents.docs-sidebar-section {
   background-color: transparent;
@@ -400,6 +404,9 @@ div.docs-sidebar-toc li.toctree-l1 > a {
 }
 #table-of-contents.docs-sidebar-section ul {
   list-style: none;
+}
+.current > a{
+  color: var(--dt-color-magenta) !important;
 }
 
 /* SIDEBAR END */
