@@ -29,7 +29,7 @@ async function searchRequest(val) {
             }
         }
     };
-    let response = await fetch('https://opensearch-stg.eco.tsi-dev.otc-service.com/helpcenter-*/_search', {
+    let response = await fetch('https://opensearch.eco.tsi-dev.otc-service.com/helpcenter-*/_search', {
         method: 'POST',
         mode: 'cors',
         headers: {
