@@ -553,6 +553,7 @@ table.docutils tr.row-odd {
 }
 
 table.docutils caption {
+  caption-side: top;
   font-weight: bold;
 }
 
