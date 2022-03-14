@@ -59,3 +59,28 @@ function pdfLink(currentSourceFile, pdfFileName) {
     document.getElementById("pdfLink1").href = pdfLink;
     //document.getElementById("pdfLink2").href = pdfLink;
 }
+
+
+// Adding a scroll event listener to detect when page is beeing scrolled
+window.addEventListener("scroll", () => {
+    // Get all a elements of the right sidebar and iterate through them
+    var all_a = document.getElementById("TableOfContents").querySelectorAll("a:not([href='#'])")
+
+    for (var j = 0; j < all_a.length; j++) {
+        // If you scrolled past a headline...
+        var elementTarget = document.getElementById(all_a[j].getAttribute("href").slice(1));
+        if (window.scrollY >= elementTarget.offsetTop) {
+
+            // get the a element on the right sidebar with the headline and all the others
+            var a = document.getElementById("TableOfContents").querySelector(`a[href='${all_a[j].getAttribute("href")}']`)
+            var not_a = document.getElementById("TableOfContents").querySelectorAll(`a:not([href='${all_a[j].getAttribute("href")}'])`)
+
+            // make the single a element magenta and all others back to grey
+            a.classList.add("color-magenta")
+            for (var i = 0; i < not_a.length; i++) {
+                not_a[i].classList.remove("color-magenta")
+            }
+        }
+    }
+    
+  });
