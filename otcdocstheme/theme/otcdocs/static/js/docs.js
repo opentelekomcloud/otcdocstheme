@@ -63,12 +63,13 @@ function pdfLink(currentSourceFile, pdfFileName) {
 
 // Adding a scroll event listener to detect when page is beeing scrolled
 window.addEventListener("scroll", () => {
-    // Get all a elements of the right sidebar and iterate through them
+    // Get all a elements except the one without a link of the right sidebar and iterate through them
     var all_a = document.getElementById("TableOfContents").querySelectorAll("a:not([href='#'])")
 
     for (var j = 0; j < all_a.length; j++) {
-        // If you scrolled past a headline...
+        // Get the target headline element from the href from the all_a elements minus the # symbol
         var elementTarget = document.getElementById(all_a[j].getAttribute("href").slice(1));
+        // If you scrolled past a headline...
         if (window.scrollY >= elementTarget.offsetTop) {
 
             // get the a element on the right sidebar with the headline and all the others
