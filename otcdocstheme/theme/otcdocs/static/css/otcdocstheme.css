@@ -164,7 +164,7 @@ body {
   --admonition-background-warning:  hsla(33.5, 100%, 75.1%, 0.3);
   --admonition-icon-warning:  rgb(243, 138, 0);
   --admonition-background-informational: hsla(190.2, 100%, 92%, 0.75);
-  --admonition-icon-informational: rgb(0, 213, 255);
+  --admonition-icon-informational: rgb(5, 181, 216);
   --admonition-background-success: hsl(98.8, 49.7%, 61%, 0.2);
   --admonition-icon-success: rgb(69, 192, 3);
 }
@@ -759,7 +759,7 @@ pre .cl {
   border-color: var(--admonition-icon-informational);
 }
 
-.admonition.note .fa.fa-fw.fa-check-circle {
+.admonition.note .fa.fa-book {
   color: var(--admonition-icon-informational);
 }
 
@@ -768,12 +768,16 @@ pre .cl {
   border-color: var(--admonition-icon-informational);
 }
 
+.admonition.tip .fa.fa-fw.fa-info-circle {
+  color: var(--admonition-icon-informational);
+}
+
 .admonition.important {
   background: var(--admonition-background-warning);
   border-color: var(--admonition-icon-warning);
 }
 
-.admonition.important .fa.fa-fw.fa-check-circle {
+.admonition.important .fa.fa-exclamation {
   color: var(--admonition-icon-warning);
 }
 
