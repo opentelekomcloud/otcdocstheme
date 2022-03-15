@@ -673,6 +673,17 @@ p.sidebar-title {
   font-weight: bold;
 }
 
+/* Make figure caption be on top */
+figure {
+  display: table;
+}
+
+figcaption {
+  display: table-caption;
+  caption-side: top;
+}
+/* End - Make figure caption be on top */
+
 pre {
   background-color: var(--dt-color-grey-0);
   border: 1px solid var(--dt-color-grey-10);
