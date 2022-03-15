@@ -782,6 +782,10 @@ pre .cl {
   border-color: var(--admonition-icon-warning);
 }
 
+.admonition.caution .fa.fa-fw.fa-exclamation-triangle {
+  color: var(--admonition-icon-error);
+}
+
 .admonition.warning {
   background: var(--admonition-background-error);
   border-color: var(--admonition-icon-error);
