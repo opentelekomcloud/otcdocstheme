@@ -674,6 +674,11 @@ p.sidebar-title {
   font-weight: bold;
 }
 
+/* limit image width so that they do not scale page */
+img {
+  max-width: 100%;
+}
+
 pre {
   background-color: var(--dt-color-grey-0);
   border: 1px solid var(--dt-color-grey-10);
