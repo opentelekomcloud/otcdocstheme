@@ -553,6 +553,7 @@ table.docutils tr.row-odd {
 }
 
 table.docutils caption {
+  caption-side: top;
   font-weight: bold;
 }
 
@@ -671,6 +672,11 @@ code.docutils.literal.notranslate {
 
 p.sidebar-title {
   font-weight: bold;
+}
+
+/* limit image width so that they do not scale page */
+img {
+  max-width: 100%;
 }
 
 pre {
