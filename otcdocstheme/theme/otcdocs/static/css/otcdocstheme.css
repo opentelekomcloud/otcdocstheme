@@ -435,6 +435,9 @@ div.docs-sidebar-toc li.toctree-l1 > a {
 .docs-sidebar-section-title > h4 {
   font-weight: 400;
 }
+#TableOfContents {
+  color: var(--dt-color-grey-40)
+}
 #table-of-contents.docs-sidebar-section {
   background-color: transparent;
 }
@@ -443,6 +446,12 @@ div.docs-sidebar-toc li.toctree-l1 > a {
 }
 #table-of-contents.docs-sidebar-section ul {
   list-style: none;
+}
+.color-magenta {
+  color: var(--dt-color-magenta) !important;
+}
+.docs-toc > strong {
+  color: var(--dt-color-grey-50)
 }
 
 /* SIDEBAR END */
