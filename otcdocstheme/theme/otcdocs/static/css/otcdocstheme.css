@@ -159,6 +159,14 @@ body {
   --dt-color-functional-red: hsl(349.70000000000005, 69%, 50.6%);
   --dt-color-functional-green: hsl(136.3, 65.7%, 27.5%);
   --dt-color-functional-blue: hsl(227.39999999999998, 89%, 46.3%);
+  --admonition-background-error: hsla(353.8, 100%, 88.6%, 0.35);
+  --admonition-icon-error: rgb(253, 0, 25);
+  --admonition-background-warning:  hsla(33.5, 100%, 75.1%, 0.3);
+  --admonition-icon-warning:  rgb(243, 138, 0);
+  --admonition-background-informational: hsla(190.2, 100%, 92%, 0.75);
+  --admonition-icon-informational: rgb(5, 181, 216);
+  --admonition-background-success: hsl(98.8, 49.7%, 61%, 0.2);
+  --admonition-icon-success: rgb(69, 192, 3);
 }
 
 body {
@@ -758,49 +766,57 @@ pre .cl {
 }
 
 .admonition.note {
-  background: var(--dt-color-pigeon-0);
-  border-color: #2a4e68;
-  color: var(--dt-color-pigeon-80);
+  background: var(--admonition-background-informational);
+  border-color: var(--admonition-icon-informational);
 }
 
-.admonition.note a {
-  color: #2a4e68;
+.admonition.note .fa.fa-book {
+  color: var(--admonition-icon-informational);
+}
+
+.admonition.tip {
+  background: var(--admonition-background-informational);
+  border-color: var(--admonition-icon-informational);
+}
+
+.admonition.tip .fa.fa-fw.fa-info-circle {
+  color: var(--admonition-icon-informational);
 }
 
 .admonition.important {
-  background: var(--dt-color-orange-0);
-  border-color: #2a4e68;
-  color: var(--dt-colot-pigeon-80);
+  background: var(--admonition-background-warning);
+  border-color: var(--admonition-icon-warning);
 }
 
-.admonition.important a {
-  color: #cca50a;
+.admonition.important .fa.fa-exclamation {
+  color: var(--admonition-icon-warning);
 }
 
-.admonition.important h3 {
-  color: #cca50a;
+.admonition.caution {
+  background: var(--admonition-background-warning);
+  border-color: var(--admonition-icon-warning);
 }
 
-.admonition.important h3 i {
-  color: #cca50a;
+.admonition.caution .fa.fa-fw.fa-exclamation-triangle {
+  color: var(--admonition-icon-error);
 }
 
 .admonition.warning {
-  background: var(--dt-color-red-0);
-  border-color: #da422f;
-  color: var(--dt-color-red-80);
+  background: var(--admonition-background-error);
+  border-color: var(--admonition-icon-error);
 }
 
-.admonition.warning h3 {
-  color: #da422f;
+.admonition.warning .fa.fa-fw.fa-exclamation-triangle {
+  color: var(--admonition-icon-error);
 }
 
-.admonition.warning h3 i {
-  color: #da422f;
+.admonition.seealso {
+  background: var(--admonition-background-success);
+  border-color: var(--admonition-icon-success);
 }
 
-.admonition.warning a {
-  color: #da422f;
+.admonition.seealso .fa.fa-fw.fa-info-circle {
+  color: var(--admonition-icon-success);
 }
 
 .versionadded {
