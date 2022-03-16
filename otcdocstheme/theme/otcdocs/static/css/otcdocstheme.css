@@ -683,6 +683,17 @@ p.sidebar-title {
   font-weight: bold;
 }
 
+/* Make figure caption be on top */
+figure {
+  display: table;
+}
+
+figcaption {
+  display: table-caption;
+  caption-side: top;
+}
+/* End - Make figure caption be on top */
+
 /* limit image width so that they do not scale page */
 img {
   max-width: 100%;
