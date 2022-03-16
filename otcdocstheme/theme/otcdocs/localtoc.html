@@ -1,5 +1,5 @@
 {%- if theme_sidebar_mode == 'toctree' and theme_display_toc %}
-<div class="d-none d-xl-block col-xl-3 docs-toc d-print-none">
+<div id="localtoc" class="d-none d-xl-block col-xl-3 docs-toc d-print-none">
   <div class="docs-toc-meta ms-2 pb-1 pt-2 mb-0">
     {%- if giturl_edit %}
     <a href="{{giturl_edit}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa fa-edit fa-fw"></i>Edit page</a>
