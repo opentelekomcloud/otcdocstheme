@@ -216,7 +216,9 @@ const deleteEnterResults = () => {
     document.getElementById('searchbox').value = ""
     document.getElementById('searchDropdown').classList.remove('show');
     let div = document.getElementById('searchResultsEnter')
-    div.parentNode.removeChild(div)
+    if (div) {
+        div.parentNode.removeChild(div)
+    }
     document.getElementById('docs-content').classList.remove('nodisplay');
     document.getElementById('docs-aside').classList.remove('not-visible')
     document.getElementById('localtoc').classList.remove('not-visible')
