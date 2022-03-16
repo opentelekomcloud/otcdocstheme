@@ -396,6 +396,7 @@ body {
   .docs-sidebar-toc {
     position: sticky;
     top: 10px;
+    height: calc(100vh - 10rem);
     display: block !important;
     overflow-y: auto;
     border-top: 1px solid var(--dt-color-grey-0);
@@ -633,7 +634,7 @@ code.docutils.literal.notranslate {
     top: 10px;
     right: 0;
     z-index: 2;
-    height: calc(100vh - 7rem);
+    height: calc(100vh - 10rem);
     overflow-y: auto;
   }
 }
