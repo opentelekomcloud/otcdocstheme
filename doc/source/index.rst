@@ -104,3 +104,4 @@ for all documentation that is not API reference.
    :maxdepth: 1
 
    demo/index
+   examples/index
