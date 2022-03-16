@@ -770,7 +770,7 @@ pre .cl {
   border-color: var(--admonition-icon-informational);
 }
 
-.admonition.note .fa.fa-book {
+.admonition.note .fa-solid.fa-book {
   color: var(--admonition-icon-informational);
 }
 
@@ -779,7 +779,7 @@ pre .cl {
   border-color: var(--admonition-icon-informational);
 }
 
-.admonition.tip .fa.fa-fw.fa-info-circle {
+.admonition.tip .fa-solid.fa-info-circle {
   color: var(--admonition-icon-informational);
 }
 
@@ -788,7 +788,7 @@ pre .cl {
   border-color: var(--admonition-icon-warning);
 }
 
-.admonition.important .fa.fa-exclamation {
+.admonition.important .fa-solid.fa-circle-exclamation {
   color: var(--admonition-icon-warning);
 }
 
@@ -797,7 +797,7 @@ pre .cl {
   border-color: var(--admonition-icon-warning);
 }
 
-.admonition.caution .fa.fa-fw.fa-exclamation-triangle {
+.admonition.caution .fa-solid.fa-exclamation-triangle {
   color: var(--admonition-icon-error);
 }
 
@@ -806,7 +806,7 @@ pre .cl {
   border-color: var(--admonition-icon-error);
 }
 
-.admonition.warning .fa.fa-fw.fa-exclamation-triangle {
+.admonition.warning .fa-solid.fa-exclamation-triangle {
   color: var(--admonition-icon-error);
 }
 
@@ -815,7 +815,7 @@ pre .cl {
   border-color: var(--admonition-icon-success);
 }
 
-.admonition.seealso .fa.fa-fw.fa-info-circle {
+.admonition.seealso .fa-solid.fa-info-circle {
   color: var(--admonition-icon-success);
 }
 

@@ -9,15 +9,15 @@
  * types of admonitions. I play it safe here and explicitly work on the three
  * otcdocstheme admonitions.
  */
-$('div.important > p.admonition-title').prepend('<div class="fa fa-exclamation">&nbsp;</div>');
-$('div.note > p.admonition-title').prepend('<div class="fa fa-book">&nbsp;</div>');
-$('div.seealso > p.admonition-title').prepend('<div class="fa fa-fw fa-info-circle">&nbsp;</div>');
-$('div.tip > p.admonition-title').prepend('<div class="fa fa-fw fa-info-circle">&nbsp;</div>');
-$('div.warning > p.admonition-title').prepend('<div class="fa fa-fw fa-exclamation-triangle">&nbsp;</div>');
-$('div.caution > p.admonition-title').prepend('<div class="fa fa-fw fa-exclamation-triangle">&nbsp;</div>');
-$('div.versionadded > p').prepend('<div class="fa fa-fw fa-plus-circle">&nbsp;</div>');
-$('div.versionchanged > p').prepend('<div class="fa fa-fw fa-info-circle">&nbsp;</div>');
-$('div.deprecated > p').prepend('<div class="fa fa-fw fa-minus-circle">&nbsp;</div>');
+$('div.important > p.admonition-title').prepend('<div class="fa-solid fa-circle-exclamation">&nbsp;</div>');
+$('div.note > p.admonition-title').prepend('<div class="fa-solid fa-book">&nbsp;</div>');
+$('div.seealso > p.admonition-title').prepend('<div class="fa-solid fa-info-circle">&nbsp;</div>');
+$('div.tip > p.admonition-title').prepend('<div class="fa-solid fa-info-circle">&nbsp;</div>');
+$('div.warning > p.admonition-title').prepend('<div class="fa-solid fa-exclamation-triangle">&nbsp;</div>');
+$('div.caution > p.admonition-title').prepend('<div class="fa-solid fa-exclamation-triangle">&nbsp;</div>');
+$('div.versionadded > p').prepend('<div class="fa-solid fa-plus-circle">&nbsp;</div>');
+$('div.versionchanged > p').prepend('<div class="fa-solid fa-info-circle">&nbsp;</div>');
+$('div.deprecated > p').prepend('<div class="fa-solid fa-minus-circle">&nbsp;</div>');
 
 function logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName) {
     /* Gives the log a bug icon the information it needs to generate the bug in
