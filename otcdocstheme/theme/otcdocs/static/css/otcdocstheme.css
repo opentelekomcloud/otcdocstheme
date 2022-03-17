@@ -587,7 +587,6 @@ table.docutils tr.row-odd {
 
 table.docutils caption {
   caption-side: top;
-  font-weight: bold;
 }
 
 /* Formats the client command options to a propper styling */
