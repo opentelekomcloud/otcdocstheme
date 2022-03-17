@@ -362,8 +362,7 @@ body {
 /* SIDEBAR */
 .docs-sidebar {
   grid-area: sidebar;
-  background-color: var(--dt-color-grey-10);
-  box-shadow: 2px 1px 0px -1px var(--dt-color-grey-30);
+  border-right: 2px solid var(--dt-color-grey-0);
   font-size: 0.8rem;
 }
 
@@ -402,7 +401,6 @@ body {
     height: calc(100vh - 10rem);
     display: block !important;
     overflow-y: auto;
-    border-top: 1px solid var(--dt-color-grey-0);
   }
 }
 
