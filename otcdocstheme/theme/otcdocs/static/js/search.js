@@ -97,6 +97,8 @@ const createMainResult = (response) => {
         let contentDiv = document.getElementById('docs-content')
         contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter' class='overflow-hidden'></div>");
         contentDiv.classList.add('nodisplay')
+        document.getElementById('left-sidebar').classList.add('not-visible')
+        document.getElementById('right-sidebar').classList.add('not-visible')
         div = document.getElementById('searchResultsEnter')
     }
 
@@ -214,8 +216,12 @@ const deleteEnterResults = () => {
     document.getElementById('searchbox').value = ""
     document.getElementById('searchDropdown').classList.remove('show');
     let div = document.getElementById('searchResultsEnter')
-    div.parentNode.removeChild(div)
+    if (div) {
+        div.parentNode.removeChild(div)
+    }
     document.getElementById('docs-content').classList.remove('nodisplay');
+    document.getElementById('left-sidebar').classList.remove('not-visible')
+    document.getElementById('right-sidebar').classList.remove('not-visible')
 }
 
 const returnValue = async (event) => {

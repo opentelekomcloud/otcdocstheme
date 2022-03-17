@@ -335,6 +335,10 @@ body {
   display: none;
 }
 
+.not-visible {
+  visibility: hidden;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
