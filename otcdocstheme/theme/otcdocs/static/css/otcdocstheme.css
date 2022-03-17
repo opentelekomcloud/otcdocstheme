@@ -366,6 +366,8 @@ body {
 /* SIDEBAR */
 .docs-sidebar {
   grid-area: sidebar;
+  border-right: 2px solid var(--dt-color-grey-0);
+  padding-right: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -375,7 +377,7 @@ body {
     max-width: unset;
     display: grid;
     grid-template-areas: "sidebar main";
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 4fr;
     gap: 1.5rem;
   }
 }
@@ -400,10 +402,9 @@ body {
   .docs-sidebar-toc {
     position: sticky;
     top: 10px;
-    height: calc(100vh - 10rem);
+    height: calc(100vh);
     display: block !important;
     overflow-y: auto;
-    border-top: 1px solid var(--dt-color-grey-0);
   }
 }
 
@@ -447,6 +448,7 @@ div.docs-sidebar-toc li.toctree-l1 > a {
 }
 .docs-sidebar-section-title > h4 {
   font-weight: 400;
+  font-size: 1.4rem;
 }
 #TableOfContents {
   color: var(--dt-color-grey-40)
@@ -459,6 +461,15 @@ div.docs-sidebar-toc li.toctree-l1 > a {
 }
 #table-of-contents.docs-sidebar-section ul {
   list-style: none;
+}
+/* add spaces between elements of the nav */
+#table-of-contents.docs-sidebar-section li {
+  margin-top: 0.5rem;
+}
+.docs-sidebar a.current {
+  color: var(--dt-color-magenta) !important;
+  border-left: 1px solid var(--dt-color-magenta);
+  padding-left: 0.75rem;
 }
 .color-magenta {
   color: var(--dt-color-magenta) !important;
