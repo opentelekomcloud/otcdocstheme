@@ -706,6 +706,14 @@ figcaption {
   caption-side: top;
 }
 /* End - Make figure caption be on top */
+/* Make numbered lists as expected */
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+/* End - Make numbered lists as expected */
 
 /* limit image width so that they do not scale page */
 img {
@@ -1013,5 +1021,3 @@ pre .cl {
 .btn-info {
   background-color: var(--dt-color-teal-30);
 }
-
-
