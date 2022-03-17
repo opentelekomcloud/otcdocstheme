@@ -710,6 +710,11 @@ p.sidebar-title {
 /* Make figure caption be on top */
 figure {
   display: table;
+  margin: 2rem 0 3rem;
+}
+
+table {
+  margin: 2rem 0 2rem;
 }
 
 figcaption {
