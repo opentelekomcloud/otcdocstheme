@@ -522,6 +522,10 @@ h1, h2, h3 {
   margin-top: 2rem;
 }
 
+.docs-content li > p {
+  margin-bottom: 0.5rem;
+}
+
 .docs-body a {
   text-decoration-line: none;
 }
