@@ -14,6 +14,7 @@
 
   {%- block content %}
       <div class="container-xxl my-md-4 docs-book-wrapper">
+
 	{% include 'sidebartoc.html' %}
 	<div class="row">
 {%- if theme_sidebar_mode == 'toctree' and theme_display_toc %}
@@ -21,7 +22,7 @@
 {% else %}
         <main class="docs-main col-12 col-xl-11" role="main">
 {% endif %}
-          <div class="docs-content ps-lg-4">
+          <div id="docs-content" class="docs-content ps-lg-4">
             {% block body %}{% endblock %}
             {% if next %}
   	  <h2 id="what-s-next">Whats next</h2>

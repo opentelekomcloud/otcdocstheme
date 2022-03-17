@@ -9,13 +9,15 @@
  * types of admonitions. I play it safe here and explicitly work on the three
  * otcdocstheme admonitions.
  */
-$('div.important > p.admonition-title').prepend('<div class="fa fa-fw fa-check-circle">&nbsp;</div>');
-$('div.note > p.admonition-title').prepend('<div class="fa fa-fw fa-check-circle">&nbsp;</div>');
-$('div.seealso > p.admonition-title').prepend('<div class="fa fa-fw fa-info-circle">&nbsp;</div>');
-$('div.warning > p.admonition-title').prepend('<div class="fa fa-fw fa-exclamation-triangle">&nbsp;</div>');
-$('div.versionadded > p').prepend('<div class="fa fa-fw fa-plus-circle">&nbsp;</div>');
-$('div.versionchanged > p').prepend('<div class="fa fa-fw fa-info-circle">&nbsp;</div>');
-$('div.deprecated > p').prepend('<div class="fa fa-fw fa-minus-circle">&nbsp;</div>');
+$('div.important > p.admonition-title').prepend('<div class="fa-solid fa-circle-exclamation">&nbsp;</div>');
+$('div.note > p.admonition-title').prepend('<div class="fa-solid fa-book">&nbsp;</div>');
+$('div.seealso > p.admonition-title').prepend('<div class="fa-solid fa-info-circle">&nbsp;</div>');
+$('div.tip > p.admonition-title').prepend('<div class="fa-solid fa-info-circle">&nbsp;</div>');
+$('div.warning > p.admonition-title').prepend('<div class="fa-solid fa-exclamation-triangle">&nbsp;</div>');
+$('div.caution > p.admonition-title').prepend('<div class="fa-solid fa-exclamation-triangle">&nbsp;</div>');
+$('div.versionadded > p').prepend('<div class="fa-solid fa-plus-circle">&nbsp;</div>');
+$('div.versionchanged > p').prepend('<div class="fa-solid fa-info-circle">&nbsp;</div>');
+$('div.deprecated > p').prepend('<div class="fa-solid fa-minus-circle">&nbsp;</div>');
 
 function logABug(bugTitle, bugProject, fieldComment, fieldTags, repositoryName) {
     /* Gives the log a bug icon the information it needs to generate the bug in
@@ -59,3 +61,29 @@ function pdfLink(currentSourceFile, pdfFileName) {
     document.getElementById("pdfLink1").href = pdfLink;
     //document.getElementById("pdfLink2").href = pdfLink;
 }
+
+
+// Adding a scroll event listener to detect when page is beeing scrolled
+window.addEventListener("scroll", () => {
+    // Get all a elements except the one without a link of the right sidebar and iterate through them
+    var all_a = document.getElementById("TableOfContents").querySelectorAll("a:not([href='#'])")
+
+    for (var j = 0; j < all_a.length; j++) {
+        // Get the target headline element from the href from the all_a elements minus the # symbol
+        var elementTarget = document.getElementById(all_a[j].getAttribute("href").slice(1));
+        // If you scrolled past a headline...
+        if (window.scrollY >= elementTarget.offsetTop) {
+
+            // get the a element on the right sidebar with the headline and all the others
+            var a = document.getElementById("TableOfContents").querySelector(`a[href='${all_a[j].getAttribute("href")}']`)
+            var not_a = document.getElementById("TableOfContents").querySelectorAll(`a:not([href='${all_a[j].getAttribute("href")}'])`)
+
+            // make the single a element magenta and all others back to grey
+            a.classList.add("color-magenta")
+            for (var i = 0; i < not_a.length; i++) {
+                not_a[i].classList.remove("color-magenta")
+            }
+        }
+    }
+
+  });
