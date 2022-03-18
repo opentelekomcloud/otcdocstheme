@@ -52,7 +52,7 @@ function pdfLink(currentSourceFile, pdfFileName) {
     /* We know the local path of the html page, so substitute that in
        the URL with the path to the PDF file. */
     /* We do not want any #subanchors, so do not use window.location.href. */
-    var currentLink = window.location.protocol + "//" + window.location.hostname + "/" + window.location.pathname;
+    var currentLink = window.location.protocol + "//" + window.location.hostname + window.location.pathname;
     if (currentLink.endsWith("/")) {
         currentLink = currentLink + "index.html";
     }
