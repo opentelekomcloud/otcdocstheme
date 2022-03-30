@@ -17,6 +17,15 @@
 
 	{% include 'sidebartoc.html' %}
 	<div class="row">
+    <ul id="breadcrumbs" class="ul-breadcrumbs">
+      {%- block breadcrumbs %}
+        <li><a href="{{ pathto(master_doc) }}" class="fa-solid fa-house"></a><span class="fa-solid fa-chevron-right ms-1 breadcrumb-arrow"></span></li>
+          {%- for doc in parents %}
+            <li><a href="{{ doc.link|e }}">{{ doc.title }}</a><span class="fa-solid fa-chevron-right ms-1 breadcrumb-arrow"></span></li>
+          {%- endfor %}
+        <li class="breadcrumb-title">{{ title }}</li>
+      {%- endblock %}
+    </ul>
 {%- if theme_sidebar_mode == 'toctree' and theme_display_toc %}
         <main class="docs-main col-12 col-xl-9" role="main">
 {% else %}

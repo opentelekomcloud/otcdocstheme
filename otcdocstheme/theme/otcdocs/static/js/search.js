@@ -100,6 +100,7 @@ const createMainResult = (response) => {
         contentDiv.classList.add('nodisplay')
         document.getElementById('left-sidebar').classList.add('not-visible')
         document.getElementById('right-sidebar').classList.add('not-visible')
+        document.getElementById('breadcrumbs').classList.add('not-visible')
         div = document.getElementById('searchResultsEnter')
     }
 
@@ -223,6 +224,7 @@ const deleteEnterResults = () => {
     document.getElementById('docs-content').classList.remove('nodisplay');
     document.getElementById('left-sidebar').classList.remove('not-visible')
     document.getElementById('right-sidebar').classList.remove('not-visible')
+    document.getElementById('breadcrumbs').classList.remove('not-visible')
 }
 
 const returnValue = async (event) => {
