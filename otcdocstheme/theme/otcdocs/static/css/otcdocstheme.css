@@ -321,13 +321,32 @@ body {
   list-style-image: none;
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding-bottom: 1rem;
+  padding-left: 2.5rem;
+  text-decoration: none;
 }
 
 .ul-breadcrumbs li {
   display:inline-block;
 }
 
+.ul-breadcrumbs li a {
+  color: var(--dt-color-grey-50);
+  text-decoration: none;
+}
+
+.ul-breadcrumbs li a:hover {
+  color: var(--dt-color-magenta);
+}
+
+.breadcrumb-title {
+  color: var(--dt-color-grey-70);
+}
+
+.breadcrumb-arrow {
+  font-size: 0.7rem;
+  color: var(--dt-color-grey-50)
+}
 /* End Breadcrumbs */
 
 /* SEARCH */
