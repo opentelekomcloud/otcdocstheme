@@ -317,13 +317,26 @@ body {
 /* end subnavbar */
 
 /* Breadcrumbs */
-.ul-breadcrumbs {
-  list-style-image: none;
-  list-style: none;
-  margin: 0;
-  padding-bottom: 1rem;
-  padding-left: 2.5rem;
-  text-decoration: none;
+
+@media (min-width: 576px) {
+  .ul-breadcrumbs {
+    list-style-image: none;
+    list-style: none;
+    margin: 0;
+    padding-bottom: 1rem;
+    padding-left: 2.5rem;
+    text-decoration: none;
+  }
+}
+@media(max-width: 575px) {
+  .ul-breadcrumbs {
+    list-style-image: none;
+    list-style: none;
+    margin: 0;
+    padding-bottom: 1rem;
+    padding-left: 0.75rem;
+    text-decoration: none;
+  }
 }
 
 .ul-breadcrumbs li {

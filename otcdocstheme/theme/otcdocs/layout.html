@@ -17,7 +17,7 @@
 
 	{% include 'sidebartoc.html' %}
 	<div class="row">
-    <ul class="ul-breadcrumbs">
+    <ul id="breadcrumbs" class="ul-breadcrumbs">
       {%- block breadcrumbs %}
         <li><a href="{{ pathto(master_doc) }}" class="fa-solid fa-house"></a><span class="fa-solid fa-chevron-right ms-1 breadcrumb-arrow"></span></li>
           {%- for doc in parents %}
