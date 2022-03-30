@@ -92,6 +92,6 @@ window.addEventListener("scroll", () => {
 // There's currently no solution to do this by CSS
 var all_a = document.getElementsByClassName("external")
 for (var j = 0; j < all_a.length; j++) {
-    all_a[j].setAttribute("onclick","window.open(this.href); return false;")
-    all_a[j].setAttribute("onkeypress","window.open(this.href); return false;")
+    all_a[j].setAttribute("target","_blank")
+    all_a[j].setAttribute("rel","external noopener noreferrer")
 }
