@@ -316,6 +316,20 @@ body {
 }
 /* end subnavbar */
 
+/* Breadcrumbs */
+.ul-breadcrumbs {
+  list-style-image: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ul-breadcrumbs li {
+  display:inline-block;
+}
+
+/* End Breadcrumbs */
+
 /* SEARCH */
 
 .search-title {
