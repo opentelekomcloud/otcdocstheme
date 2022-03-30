@@ -11,9 +11,10 @@ async function searchRequest(val) {
         "from" : 0, "size" : 100,
         "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url"],
         "query": {
-          "match": {
-            "body": val
-          }
+            "multi_match": {
+              "query": val,
+              "fields": [ "body", "title^2" ]
+            }
         },
         "highlight": {
             "number_of_fragments": 1,
