@@ -87,3 +87,11 @@ window.addEventListener("scroll", () => {
     }
 
   });
+
+// Make external links open in new Tab
+// There's currently no solution to do this by CSS
+var all_a = document.getElementsByClassName("external")
+for (var j = 0; j < all_a.length; j++) {
+    all_a[j].setAttribute("target","_blank")
+    all_a[j].setAttribute("rel","external noopener noreferrer")
+}
