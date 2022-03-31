@@ -98,9 +98,15 @@ const createMainResult = (response) => {
         let contentDiv = document.getElementById('docs-content')
         contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter' class='overflow-hidden'></div>");
         contentDiv.classList.add('nodisplay')
-        document.getElementById('left-sidebar').classList.add('not-visible')
-        document.getElementById('right-sidebar').classList.add('not-visible')
-        document.getElementById('breadcrumbs').classList.add('not-visible')
+        // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
+        try {
+            document.getElementById('left-sidebar').classList.add('not-visible')
+            document.getElementById('right-sidebar').classList.add('not-visible')
+            document.getElementById('breadcrumbs').classList.add('not-visible')
+        }
+        catch(err) {
+            document.getElementById('left-sidebar').classList.add('not-visible')
+        }
         div = document.getElementById('searchResultsEnter')
     }
 
@@ -221,10 +227,17 @@ const deleteEnterResults = () => {
     if (div) {
         div.parentNode.removeChild(div)
     }
-    document.getElementById('docs-content').classList.remove('nodisplay');
-    document.getElementById('left-sidebar').classList.remove('not-visible')
-    document.getElementById('right-sidebar').classList.remove('not-visible')
-    document.getElementById('breadcrumbs').classList.remove('not-visible')
+    // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
+    try {
+        document.getElementById('docs-content').classList.remove('nodisplay');
+        document.getElementById('left-sidebar').classList.remove('not-visible')
+        document.getElementById('right-sidebar').classList.remove('not-visible')
+        document.getElementById('breadcrumbs').classList.remove('not-visible')
+    }
+    catch(err) {
+        document.getElementById('docs-content').classList.remove('nodisplay');
+        document.getElementById('left-sidebar').classList.remove('not-visible')
+    }
 }
 
 const returnValue = async (event) => {
