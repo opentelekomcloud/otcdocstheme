@@ -6,7 +6,7 @@
       {%- if theme_sidebar_mode == 'toc' %}
       {{ toc }}
       {%- elif theme_sidebar_mode == 'toctree' %}
-      {{ toctree(maxdepth=4, titles_only=true) }}
+      {{ toctree(maxdepth=4, includehidden=True, titles_only=true) }}
       {%- endif %}
     </div>
   {%- endif %}

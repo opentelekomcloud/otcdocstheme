@@ -33,6 +33,7 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <hr class="d-md-none text-white">
+	{%- if not theme_disable_global_nav %}
         <ul class="navbar-nav flex-row flex-wrap docs-navbar-nav pt-2 py-md-0">
           <li class="nav-item dropdown col-12 col-md-auto me-2">
             <a
@@ -123,12 +124,14 @@
             >
           </li>
         </ul>
+	{%- endif %}
       </div>
     </div>
   </nav>
 </header>
 
 <nav id="docs-subnavbar" class="docs-subnavbar py-2 px-3 d-flex justify-content-between" aria-label="Secondary navigation">
+{%- if not theme_disable_search %}
   <!-- Form for input, onSubmit="return false" to prevent reloading the page when pressing enter -->
   <form id="searchInput" class="col-lg-3 col-md-6 col-10" onsubmit="return false">
     <div class="input-group">
@@ -140,6 +143,7 @@
 
     <ul class="dropdown-menu overflow-hidden" style="max-width:90%" id="searchDropdown"></ul>
   </form>
+{%- endif %}
 
   <button
     class="btn docs-sidebar-toggle d-md-none py-0 px-1 ms-3 order-3 navbar-toggler collapsed col-1"
