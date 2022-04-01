@@ -338,10 +338,10 @@ HTML Example (expl. highlight)
     </body>
     </html>
 
-Config file
------------
+Config file (expl. highlight)
+-----------------------------
 
-.. code-block::
+.. code-block:: ini
 
     [testenv:functional]
     setenv =
