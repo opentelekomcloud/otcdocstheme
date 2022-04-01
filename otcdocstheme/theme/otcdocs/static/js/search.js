@@ -274,3 +274,10 @@ const pagination = (element) => {
     // Unhide the selected page
     document.getElementById('ul_' + page_number.toString()).classList.remove('nodisplay')
 }
+
+// Remove Dropdown once the user clicks somewhere else on the page
+document.getElementsByTagName('body')[0].onclick = function(e) {
+    if(e.target != document.getElementById('searchInput')) {
+        document.getElementById('searchDropdown').classList.remove('show');
+    }
+}
