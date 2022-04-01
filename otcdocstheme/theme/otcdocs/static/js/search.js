@@ -98,9 +98,14 @@ const createMainResult = (response) => {
         let contentDiv = document.getElementById('docs-content')
         contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter' class='overflow-hidden'></div>");
         contentDiv.classList.add('nodisplay')
-        document.getElementById('left-sidebar').classList.add('not-visible')
-        document.getElementById('right-sidebar').classList.add('not-visible')
-        document.getElementById('breadcrumbs').classList.add('not-visible')
+        // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
+        if (!!document.getElementById('left-sidebar')) {
+            document.getElementById('left-sidebar').classList.add('not-visible')
+        } else {
+            document.getElementById('left-sidebar').classList.add('not-visible')
+            document.getElementById('right-sidebar').classList.add('not-visible')
+            document.getElementById('breadcrumbs').classList.add('not-visible')
+        }
         div = document.getElementById('searchResultsEnter')
     }
 
@@ -221,10 +226,16 @@ const deleteEnterResults = () => {
     if (div) {
         div.parentNode.removeChild(div)
     }
-    document.getElementById('docs-content').classList.remove('nodisplay');
-    document.getElementById('left-sidebar').classList.remove('not-visible')
-    document.getElementById('right-sidebar').classList.remove('not-visible')
-    document.getElementById('breadcrumbs').classList.remove('not-visible')
+    // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
+    if (!!document.getElementById('left-sidebar')) {
+        document.getElementById('docs-content').classList.remove('nodisplay');
+        document.getElementById('left-sidebar').classList.remove('not-visible')
+    } else {
+        document.getElementById('docs-content').classList.remove('nodisplay');
+        document.getElementById('left-sidebar').classList.remove('not-visible')
+        document.getElementById('right-sidebar').classList.remove('not-visible')
+        document.getElementById('breadcrumbs').classList.remove('not-visible')
+    }
 }
 
 const returnValue = async (event) => {
@@ -273,4 +284,11 @@ const pagination = (element) => {
     }
     // Unhide the selected page
     document.getElementById('ul_' + page_number.toString()).classList.remove('nodisplay')
+}
+
+// Remove Dropdown once the user clicks somewhere else on the page
+document.getElementsByTagName('body')[0].onclick = function(e) {
+    if(e.target != document.getElementById('searchInput')) {
+        document.getElementById('searchDropdown').classList.remove('show');
+    }
 }
