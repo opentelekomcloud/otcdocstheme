@@ -117,7 +117,7 @@ Javascript Example
 ------------------
 
 .. code-block::
-    
+
     function createResultList(response) {
         let ul = document.getElementById('searchDropdown');
         // Remove older search results
@@ -161,7 +161,7 @@ Javascript Example (expl. highlight)
 ------------------------------------
 
 .. code-block:: javascript
-    
+
     function createResultList(response) {
         let ul = document.getElementById('searchDropdown');
         // Remove older search results
