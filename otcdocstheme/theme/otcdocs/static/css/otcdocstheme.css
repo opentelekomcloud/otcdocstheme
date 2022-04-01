@@ -789,9 +789,7 @@ img {
 }
 
 pre {
-  background-color: var(--dt-color-grey-0);
   border: 1px solid var(--dt-color-grey-10);
-  color: var(--dt-color-text-standard);
   overflow: auto;
   margin: 0 0 10px;
   padding: 20px 30px;
@@ -910,31 +908,6 @@ pre .cl {
 
 .deprecated {
   color: var(--dt-color-red-70);
-}
-
-/* override pygments due to the conflict with DT default colors */
-.highlight .l {
-  color: var(--dt-color-grey-50);
-}
-.highlight .nt {
-  color: var(--dt-color-green-70);
-}
-.highlight .no {
-  color: var(--dt-color-teal-80);
-}
-.highlight .gh {
-  color: var(--dt-color-text-additional);
-}
-.highlight .ow {
-  color: var(--dt-color-green-90);
-}
-.highlight .p,
-.highlight .n,
-.highlight .o {
-  color: var(--dt-color-grey-90);
-}
-.highlight .hll {
-  background-color: transparent;
 }
 
 /* BB: added the adminition-title rule to bolden the adminition title */
