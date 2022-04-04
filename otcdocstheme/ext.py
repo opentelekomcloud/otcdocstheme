@@ -17,11 +17,13 @@ import os
 import subprocess
 import textwrap
 
+from docutils.nodes import Element
 import dulwich.repo
 from pbr import packaging
 import sphinx
 from sphinx.ext import extlinks
 from sphinx.util import logging
+from sphinx.writers.html5 import HTML5Translator
 
 from . import version
 from otcdocstheme import paths
@@ -429,6 +431,17 @@ def _builder_inited(app):
         app.builder.context['preamble'] = preamble
 
 
+class OTCHTML5Translator(HTML5Translator):
+    def visit_table(self, node: Element) -> None:
+        # Wrap table into the table-responsive class
+        self.body.append("<div class='table-responsive'>")
+        super().visit_table(node)
+
+    def depart_table(self, node) -> None:
+        super().depart_table(node)
+        self.body.append("</div>")
+
+
 def setup(app):
     logger.info(
         '[otcdocstheme] version: %s',
@@ -448,6 +461,8 @@ def setup(app):
     app.add_config_value('otcdocs_auto_name', True, 'env')
     app.add_config_value('otcdocs_pdf_link', False, 'env')
     app.add_config_value('otcdocs_pdf_filename', None, 'env')
+
+    app.set_translator('html', OTCHTML5Translator)
 
     # themes
     app.add_html_theme(
