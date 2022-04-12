@@ -99,12 +99,12 @@ const createMainResult = (response) => {
         contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter' class='overflow-hidden'></div>");
         contentDiv.classList.add('nodisplay')
         // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
-        if (!!document.getElementById('left-sidebar')) {
+        if (document.getElementById('right-sidebar') == undefined) {
             document.getElementById('left-sidebar').classList.add('not-visible')
         } else {
             document.getElementById('left-sidebar').classList.add('not-visible')
             document.getElementById('right-sidebar').classList.add('not-visible')
-            document.getElementById('breadcrumbs').classList.add('not-visible')
+            document.getElementById('breadcrumbs').classList.add('d-none')
         }
         div = document.getElementById('searchResultsEnter')
     }
@@ -227,14 +227,14 @@ const deleteEnterResults = () => {
         div.parentNode.removeChild(div)
     }
     // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
-    if (!!document.getElementById('left-sidebar')) {
+    if (document.getElementById('right-sidebar') == undefined) {
         document.getElementById('docs-content').classList.remove('nodisplay');
         document.getElementById('left-sidebar').classList.remove('not-visible')
     } else {
         document.getElementById('docs-content').classList.remove('nodisplay');
         document.getElementById('left-sidebar').classList.remove('not-visible')
         document.getElementById('right-sidebar').classList.remove('not-visible')
-        document.getElementById('breadcrumbs').classList.remove('not-visible')
+        document.getElementById('breadcrumbs').classList.remove('d-none')
     }
 }
 
