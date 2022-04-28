@@ -317,24 +317,12 @@ body {
 /* end subnavbar */
 
 /* Breadcrumbs */
-
-@media (min-width: 576px) {
-  .docs-book-wrapper .ul-breadcrumbs {
-    list-style-image: none;
-    list-style: none;
-    margin: 0;
-    padding-bottom: 1rem;
-    text-decoration: none;
-  }
-}
-@media(max-width: 575px) {
-  .docs-book-wrapper .ul-breadcrumbs {
-    list-style-image: none;
-    list-style: none;
-    margin: 0;
-    padding-bottom: 1rem;
-    text-decoration: none;
-  }
+docs-book-wrapper .ul-breadcrumbs {
+  list-style-image: none;
+  list-style: none;
+  margin: 0;
+  padding-bottom: 1rem;
+  text-decoration: none;
 }
 
 @media(max-width: 991px) {
