@@ -534,6 +534,10 @@ div.docs-sidebar-toc li.toctree-l1 > a {
   min-width: 0;
 }
 
+.flex-start {
+  align-content: flex-start;
+}
+
 /* Chapters include normally invisible (P) symbol */
 a {
   color: var(--dt-color-blue-60);
