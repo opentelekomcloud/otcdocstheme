@@ -129,8 +129,8 @@ def _html_page_context(app, pagename, templatename, context, doctree):
             _html_context_data['gitsha'] = 'unknown'
         try:
             gitbranch = subprocess.check_output(
-                ['git', 'symbolic-ref', '--short', 'HEAD'],
-            ).decode('utf-8').strip('')
+                ['git', 'branch', '--show-current'],
+            ).decode('utf-8').strip()
         except Exception:
             gitbranch = 'main'
             logger.warning(
