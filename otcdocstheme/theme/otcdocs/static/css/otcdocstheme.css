@@ -1064,3 +1064,39 @@ pre .cl {
 .btn-info {
   background-color: var(--dt-color-teal-30);
 }
+
+/* START: Scroll to top */
+.to-top {
+  display: none;
+  width: 40px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: var(--dt-color-magenta);
+  color: var(--dt-color-white);
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 99;
+}
+.to-top-fixed {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .to-top-bottom {
+    position: fixed;
+    bottom: 3rem;
+    right: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .to-top-bottom {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+/* END: Scroll to top */
