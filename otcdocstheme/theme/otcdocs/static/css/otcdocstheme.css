@@ -1097,17 +1097,26 @@ div.highlight {
 
 /* START: Scroll to top */
 .to-top {
+  webkit-transition: opacity .3s ease-in-out;
+  -o-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
   display: none;
   width: 40px;
   height: 40px;
   border: none;
   outline: none;
+  opacity: 0.5;
   background-color: var(--dt-color-magenta);
   color: var(--dt-color-white);
   cursor: pointer;
   border-radius: 50%;
   z-index: 99;
 }
+
+.to-top:hover {
+  opacity: 1;
+}
+
 .to-top-fixed {
   position: fixed;
   bottom: 1rem;
