@@ -53,10 +53,10 @@ function addCopyButtonToCode() {
   });
 
   // instantiate clipboardjs with class .btn
-  new Clipboard('.btn');
+  new ClipboardJS('.btn');
 }
 
-// Add copy buttons to code after DOM has been loaded
-$(document).ready(function () {
+// MAIN: Add copy buttons to code after DOM has been loaded
+$(function () {
   addCopyButtonToCode();
 });
