@@ -1016,9 +1016,39 @@ pre .cl {
   padding: 5px;
 }
 
+/* START Copy to Clipboard */
+
+button.copybtn {
+  webkit-transition: opacity .3s ease-in-out;
+  -o-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
+  opacity: 0;
+  padding: 0px 6px;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
+div.highlight:hover .copybtn, div.highlight .copybtn:focus {
+    opacity: .5;
+}
+div.highlight .copybtn:hover {
+    opacity: 1;
+    color: var(--dt-color-magenta);
+}
+
+div.highlight .btn:focus {
+    box-shadow: 0 0 0 .25rem rgba(226, 0, 116,.25);
+}
+
+div.highlight {
+    position: relative;
+}
+
+/* END Copy to Clipboard */
+
 /* End Main body */
 
-/* Page footer */
+/* START Page footer */
 .docs-footer {
   background: var(--dt-color-grey-90);
   display: flex;
@@ -1064,3 +1094,48 @@ pre .cl {
 .btn-info {
   background-color: var(--dt-color-teal-30);
 }
+
+/* START: Scroll to top */
+.to-top {
+  webkit-transition: opacity .3s ease-in-out;
+  -o-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
+  display: none;
+  width: 40px;
+  height: 40px;
+  border: none;
+  outline: none;
+  opacity: 0.5;
+  background-color: var(--dt-color-magenta);
+  color: var(--dt-color-white);
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 99;
+}
+
+.to-top:hover {
+  opacity: 1;
+}
+
+.to-top-fixed {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .to-top-bottom {
+    position: fixed;
+    bottom: 3rem;
+    right: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .to-top-bottom {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+/* END: Scroll to top */
