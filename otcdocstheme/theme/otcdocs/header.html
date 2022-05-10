@@ -19,7 +19,7 @@
         <img src="{{pathto('_static/images/deutsche-telekom-logo.svg', 1)}}" />
       </a>
       {% if theme_site_name %}
-      <div class="docs-title justify-content-center">{{ theme_site_name }}</div>
+      <a class="docs-title justify-content-center" href="{{ base_url }}" aria-label="{{ theme_site_name }}">{{ theme_site_name }}</a>
       {% endif %}
       <button
         class="navbar-toggler"
