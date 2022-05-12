@@ -1,3 +1,5 @@
+@import "bootstrap.min.css";
+
 body {
   --main-body-color: #hsl(0, 0%, 9.8%);
   --bs-body-color: #hsl(0, 0%, 9.8%);
