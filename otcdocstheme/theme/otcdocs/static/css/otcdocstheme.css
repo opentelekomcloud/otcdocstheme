@@ -506,7 +506,7 @@ div.docs-sidebar-toc li.toctree-l1 > a {
 @media (max-width: 768px) {
   .docs-sidebar-section-title > h4 {
     margin-top: 1rem;
-  }  
+  }
 }
 
 #TableOfContents {
