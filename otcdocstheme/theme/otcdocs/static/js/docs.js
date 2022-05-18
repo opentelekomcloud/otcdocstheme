@@ -66,7 +66,7 @@ function pdfLink(currentSourceFile, pdfFileName) {
 // Add magenta color to headlines of right sidebar to show document position while scrolling
 // Adding a scroll event listener to detect when page is beeing scrolled
 window.addEventListener("scroll", () => {
-    
+
     // Get right sidebar and check for existance
     let sidebar = document.getElementById("TableOfContents")
     if (sidebar !== null) {
