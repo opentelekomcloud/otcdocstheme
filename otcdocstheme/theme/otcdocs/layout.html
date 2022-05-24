@@ -53,20 +53,20 @@
                   <ul class="pagination justify-content-center">
                   {% if prev %}
                     <li class="page-item">
-                      <a class="page-link" href="{{ prev.link|e }}">Previous Page</a>
+                      <a class="page-link" href="{{ prev.link|e }}">Prev</a>
                     </li>
                   {% else %}
                     <li class="page-item disabled">
-                      <a class="page-link">Previous Page</a>
+                      <a class="page-link">Prev</a>
                     </li>
                   {% endif %}
                   {% if next %}
                     <li class="page-item">
-                      <a class="page-link" href="{{ next.link|e }}">Next Page</a>
+                      <a class="page-link" href="{{ next.link|e }}">Next</a>
                     </li>
                   {% else %}
                     <li class="page-item disabled">
-                      <a class="page-link">Next Page</a>
+                      <a class="page-link">Next</a>
                     </li>
                   {% endif %}
                   </ul>
