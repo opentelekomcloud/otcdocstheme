@@ -1,72 +1,93 @@
 {% extends "basic/layout.html" %}
 
 {% block extrahead %}
-<meta name="viewport" content="width=device-width, initial-scale=1">
 {% include 'css.html' %}
 {% endblock %}
+
+{%- macro sidebar1() %}
+  {%- block sidebartoc %}
+    {% include 'sidebartoc.html' %}
+  {%- endblock %}
+{%- endmacro %}
+
+{%- macro sidebar2() %}
+  {% include 'localtoc.html' %}
+{%- endmacro %}
+
+{%- macro relbar1() %}
+<div class="related" role="navigation" aria-label="related navigation">
+  <ul id="breadcrumbs" class="ul-breadcrumbs">
+    <li><a href="{{ pathto(master_doc) }}" class="fa-solid fa-house"></a><span class="fa-solid fa-chevron-right ms-1 breadcrumb-arrow"></span></li>
+      {%- for doc in parents %}
+        <li><a href="{{ doc.link|e }}">{{ doc.title }}</a><span class="fa-solid fa-chevron-right ms-1 breadcrumb-arrow"></span></li>
+      {%- endfor %}
+    <li class="breadcrumb-title">{{ title }}</li>
+  </ul>
+</div>
+{%- endmacro %}
+
+{%- block relbar1 %}{% endblock %}
+{%- block relbar2 %}{% endblock %}
 
 <div id="mainroot">
   {%- block header %}
   {% include 'header.html' %}
   {% endblock %}
 
-  {%- block relbar1 %}{% endblock %}
-
   {%- block content %}
-    <div class="container-xxl my-md-4 docs-book-wrapper">
-	{% include 'sidebartoc.html' %}
-	  <div class="row">
-  {%- if theme_sidebar_mode == 'toctree' and theme_display_toc and display_toc %}
-    <main class="docs-main col-12 col-xl-9" role="main">
-  {% else %}
-    <main class="docs-main col-12 col-xl-11" role="main">
-  {% endif %}
-    <div class="docs-content ps-lg-4">
-  {% block body %}{% endblock %}
-    <div id="bottom-navigation" class="py-5">
-      <nav>
-        <ul class="pagination justify-content-center">
-        {% if prev %}
-          <li class="page-item">
-            <a class="page-link" href="{{ prev.link|e }}">Previous Page</a>
-          </li>
-        {% else %}
-          <li class="page-item disabled">
-            <a class="page-link">Previous Page</a>
-          </li>
-        {% endif %}
-        {% if next %}
-          <li class="page-item">
-            <a class="page-link" href="{{ next.link|e }}">Next Page</a>
-          </li>
-        {% else %}
-          <li class="page-item disabled">
-            <a class="page-link">Next Page</a>
-          </li>
-        {% endif %}
-        </ul>
-      </nav>
-    </div>
+    <div class="container-xxl docs-book-wrapper">
+    
+      {%- block sidebar1 %}{{ sidebar1() }} {% endblock %}
+    
+      <div class="row flex-start py-md-4">
+        {%- block relbar3 %}{{ relbar1() }}{% endblock %}
+        {%- if theme_sidebar_mode == 'toctree' and theme_display_toc %}
+        <main class="docs-main col-12 col-xl-9" role="main">
+          {% else %}
+          <main class="docs-main col-12 col-xl-11" role="main">
+            {% endif %}
+            <div id="docs-content" class="docs-content ps-lg-4">
+              {% block body %}{% endblock %}
+              <div id="bottom-navigation" class="py-5">
+                <nav>
+                  <ul class="pagination justify-content-center">
+                  {% if prev %}
+                    <li class="page-item">
+                      <a class="page-link" href="{{ prev.link|e }}">Previous Page</a>
+                    </li>
+                  {% else %}
+                    <li class="page-item disabled">
+                      <a class="page-link">Previous Page</a>
+                    </li>
+                  {% endif %}
+                  {% if next %}
+                    <li class="page-item">
+                      <a class="page-link" href="{{ next.link|e }}">Next Page</a>
+                    </li>
+                  {% else %}
+                    <li class="page-item disabled">
+                      <a class="page-link">Next Page</a>
+                    </li>
+                  {% endif %}
+                  </ul>
+                </nav>
+              </div>
+            </div>
 
-    </div>
-
-	  <div class="row docs-byline bottom">
-            <div class="docs-updated">last updated: {{ last_updated }}</div>
-          </div>
+	  {%- if theme_display_last_updated %}
+            <div class="row docs-byline bottom">
+              <div class="docs-updated">last updated: {{ last_updated }}</div>
+            </div>
+	  {%- endif %}
         </main>
-	{% include 'localtoc.html' %}
+        {%- block sidebar2 %}{{ sidebar2() }}{% endblock %}
 	</div>
       </div>
   {%- endblock %}
 
-  {%- block relbar2 %}{% endblock %}
-
-
-
   {%- block footer %}
-  {% include 'footer.html' %}
-  {% include 'script_footer.html' %}
-  {% block script_footer %}{% endblock %}
+    {% include 'footer.html' %}
+    {% include 'script_footer.html' %}
+    {% block script_footer %}{% endblock %}
   {%- endblock %}
 </div>
-

@@ -12,7 +12,7 @@ extensions = ['otcdocstheme']
 # openstackdocstheme options
 otcdocs_repo_name = 'opentelekomcloud/otcdocstheme'
 otcdocs_pdf_link = True
-otcdocs_pdf_filename = 'doc-otcdocs.pdf'
+otcdocs_pdf_filename = 'doc-otcdocstheme.pdf'
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -28,7 +28,7 @@ copyright = u'2017-2021, OpenTelekomCloud Contributors'
 exclude_patterns = ['_build']
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+# pygments_style = 'sphinx'
 
 
 # -- Options for HTML output ----------------------------------------------

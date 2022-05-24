@@ -1,3 +1,5 @@
+@import "bootstrap.min.css";
+
 body {
   --main-body-color: #hsl(0, 0%, 9.8%);
   --bs-body-color: #hsl(0, 0%, 9.8%);
@@ -159,6 +161,14 @@ body {
   --dt-color-functional-red: hsl(349.70000000000005, 69%, 50.6%);
   --dt-color-functional-green: hsl(136.3, 65.7%, 27.5%);
   --dt-color-functional-blue: hsl(227.39999999999998, 89%, 46.3%);
+  --admonition-background-error: hsla(353.8, 100%, 88.6%, 0.35);
+  --admonition-icon-error: rgb(253, 0, 25);
+  --admonition-background-warning:  hsla(33.5, 100%, 75.1%, 0.3);
+  --admonition-icon-warning:  rgb(243, 138, 0);
+  --admonition-background-informational: hsla(190.2, 100%, 92%, 0.75);
+  --admonition-icon-informational: rgb(5, 181, 216);
+  --admonition-background-success: hsl(98.8, 49.7%, 61%, 0.2);
+  --admonition-icon-success: rgb(69, 192, 3);
 }
 
 body {
@@ -169,7 +179,7 @@ body {
 /* Sizing */
 /* force using full screen */
 .container-xxl {
-  max-width: unset;
+  max-width: unset !important;
 }
 
 /* End Sizing */
@@ -186,7 +196,7 @@ body {
 }
 
 .docs-navbar {
-  padding: 0 0 0.75rem 0;
+  padding: 0 0 0.75rem 0 !important;
   background: var(--dt-color-magenta);
   /*display: flex;*/
   /*height: 72px;
@@ -308,9 +318,104 @@ body {
 }
 /* end subnavbar */
 
+/* Breadcrumbs */
+docs-book-wrapper .ul-breadcrumbs {
+  list-style-image: none;
+  list-style: none;
+  margin: 0;
+  padding-bottom: 1rem;
+  text-decoration: none;
+}
+
+@media(max-width: 991px) {
+  .ul-breadcrumbs {
+    padding-left: 0;
+  }
+}
+
+@media(min-width: 992px) {
+  .ul-breadcrumbs {
+    padding-left: 1.5rem;
+  }
+}
+
+.ul-breadcrumbs li {
+  display:inline-block;
+}
+
+.ul-breadcrumbs li a {
+  color: var(--dt-color-grey-50);
+  text-decoration: none;
+}
+
+.ul-breadcrumbs li a:hover {
+  color: var(--dt-color-magenta);
+}
+
+.breadcrumb-title {
+  color: var(--dt-color-grey-70);
+}
+
+.breadcrumb-arrow {
+  font-size: 0.7rem;
+  color: var(--dt-color-grey-50);
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+}
+/* End Breadcrumbs */
+
+/* SEARCH */
+
+.search-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.path-green {
+  color: var(--dt-color-olive-80);
+}
+
+.nobullets {
+  list-style-type: none;
+}
+
+.nodisplay {
+  display: none;
+}
+
+.not-visible {
+  visibility: hidden;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.fa-close:hover, .fa-search:hover {
+  color: var(--dt-color-primary-hover);
+  cursor: pointer;
+}
+
+.page-item.active .page-link {
+  background-color: var(--dt-color-primary-active);
+  border-color: var(--dt-color-primary-active);
+}
+
+.page-link {
+  color: var(--dt-color-magenta);
+}
+
+.page-link:hover {
+  color: var(--dt-color-primary-hover)
+}
+
+/* end search */
+
 /* SIDEBAR */
 .docs-sidebar {
   grid-area: sidebar;
+  border-right: 2px solid var(--dt-color-grey-0);
+  padding-right: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -320,7 +425,7 @@ body {
     max-width: unset;
     display: grid;
     grid-template-areas: "sidebar main";
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 4fr;
     gap: 1.5rem;
   }
 }
@@ -345,9 +450,9 @@ body {
   .docs-sidebar-toc {
     position: sticky;
     top: 10px;
+    height: calc(100vh);
     display: block !important;
     overflow-y: auto;
-    border-top: 1px solid var(--dt-color-grey-0);
   }
 }
 
@@ -384,13 +489,28 @@ div.docs-sidebar-toc li.toctree-l1 > a {
 .docs-sidebar-section-title {
   display: block;
   width: 100%;
-  padding: 10px 20px;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-top: 0px;
+  padding-bottom: 10px;
 }
 .docs-sidebar-section-title h4:hover {
   color: var(--dt-color-primary-hover)
 }
 .docs-sidebar-section-title > h4 {
   font-weight: 400;
+  font-size: 1.4rem;
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .docs-sidebar-section-title > h4 {
+    margin-top: 1rem;
+  }
+}
+
+#TableOfContents {
+  color: var(--dt-color-grey-40)
 }
 #table-of-contents.docs-sidebar-section {
   background-color: transparent;
@@ -401,10 +521,34 @@ div.docs-sidebar-toc li.toctree-l1 > a {
 #table-of-contents.docs-sidebar-section ul {
   list-style: none;
 }
+/* add spaces between elements of the nav */
+#table-of-contents.docs-sidebar-section li {
+  margin-top: 0.5rem;
+}
+.docs-sidebar a.current {
+  color: var(--dt-color-magenta) !important;
+  border-left: 1px solid var(--dt-color-magenta);
+  padding-left: 0.75rem;
+}
+.color-magenta {
+  color: var(--dt-color-magenta) !important;
+}
+.docs-toc > strong {
+  color: var(--dt-color-grey-50)
+}
 
 /* SIDEBAR END */
 
 /* CONTENT */
+/* Fix pre blocks not to strech width */
+.row {
+  min-width: 0;
+}
+
+.flex-start {
+  align-content: flex-start;
+}
+
 /* Chapters include normally invisible (P) symbol */
 a {
   color: var(--dt-color-blue-60);
@@ -418,24 +562,32 @@ a.headerlink:hover {
   color: var(--dt-color-blue-60);
 }
 
-h1 {
+.docs-content h1 {
   font-weight: 400;
 }
 
+.docs-content
 h2,
 h3,
 h4,
 h5 {
-  color: var(--dt-color-text-standard);
   font-weight: lighter;
 }
 
-h1, h2, h3 {
+main h1, h2, h3, h4, h5 {
+  color: var(--dt-color-grey-70);
+}
+
+.docs-content h1, h2, h3 {
   margin-bottom: 1rem;
 }
 
 .docs-content h2, h3, h4 {
   margin-top: 2rem;
+}
+
+.docs-content li > p {
+  margin-bottom: 0.5rem;
 }
 
 .docs-body a {
@@ -502,7 +654,7 @@ table.docutils tr.row-odd {
 }
 
 table.docutils caption {
-  font-weight: bold;
+  caption-side: top;
 }
 
 /* Formats the client command options to a propper styling */
@@ -564,7 +716,7 @@ code.docutils.literal.notranslate {
     top: 10px;
     right: 0;
     z-index: 2;
-    height: calc(100vh - 7rem);
+    height: calc(100vh - 10rem);
     overflow-y: auto;
   }
 }
@@ -622,13 +774,41 @@ p.sidebar-title {
   font-weight: bold;
 }
 
+/* Make figure caption be on top */
+figure {
+  display: table;
+  margin: 2rem 0 3rem;
+}
+
+table {
+  margin: 2rem 0 2rem;
+}
+
+figcaption {
+  display: table-caption;
+  caption-side: top;
+}
+/* End - Make figure caption be on top */
+/* Make numbered lists as expected */
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+/* End - Make numbered lists as expected */
+
+/* limit image width so that they do not scale page */
+img {
+  max-width: 100%;
+}
+
 pre {
-  background-color: var(--dt-color-grey-0);
   border: 1px solid var(--dt-color-grey-10);
-  color: var(--dt-color-text-standard);
   overflow: auto;
   margin: 0 0 10px;
   padding: 20px 30px;
+  max-width: 100%;
 }
 
 pre code,
@@ -680,49 +860,57 @@ pre .cl {
 }
 
 .admonition.note {
-  background: var(--dt-color-pigeon-0);
-  border-color: #2a4e68;
-  color: var(--dt-color-pigeon-80);
+  background: var(--admonition-background-informational);
+  border-color: var(--admonition-icon-informational);
 }
 
-.admonition.note a {
-  color: #2a4e68;
+.admonition.note .fa-solid.fa-book {
+  color: var(--admonition-icon-informational);
+}
+
+.admonition.tip {
+  background: var(--admonition-background-informational);
+  border-color: var(--admonition-icon-informational);
+}
+
+.admonition.tip .fa-solid.fa-info-circle {
+  color: var(--admonition-icon-informational);
 }
 
 .admonition.important {
-  background: var(--dt-color-orange-0);
-  border-color: #2a4e68;
-  color: var(--dt-colot-pigeon-80);
+  background: var(--admonition-background-warning);
+  border-color: var(--admonition-icon-warning);
 }
 
-.admonition.important a {
-  color: #cca50a;
+.admonition.important .fa-solid.fa-circle-exclamation {
+  color: var(--admonition-icon-warning);
 }
 
-.admonition.important h3 {
-  color: #cca50a;
+.admonition.caution {
+  background: var(--admonition-background-warning);
+  border-color: var(--admonition-icon-warning);
 }
 
-.admonition.important h3 i {
-  color: #cca50a;
+.admonition.caution .fa-solid.fa-exclamation-triangle {
+  color: var(--admonition-icon-error);
 }
 
 .admonition.warning {
-  background: var(--dt-color-red-0);
-  border-color: #da422f;
-  color: var(--dt-color-red-80);
+  background: var(--admonition-background-error);
+  border-color: var(--admonition-icon-error);
 }
 
-.admonition.warning h3 {
-  color: #da422f;
+.admonition.warning .fa-solid.fa-exclamation-triangle {
+  color: var(--admonition-icon-error);
 }
 
-.admonition.warning h3 i {
-  color: #da422f;
+.admonition.seealso {
+  background: var(--admonition-background-success);
+  border-color: var(--admonition-icon-success);
 }
 
-.admonition.warning a {
-  color: #da422f;
+.admonition.seealso .fa-solid.fa-info-circle {
+  color: var(--admonition-icon-success);
 }
 
 .versionadded {
@@ -735,31 +923,6 @@ pre .cl {
 
 .deprecated {
   color: var(--dt-color-red-70);
-}
-
-/* override pygments due to the conflict with DT default colors */
-.highlight .l {
-  color: var(--dt-color-grey-50);
-}
-.highlight .nt {
-  color: var(--dt-color-green-70);
-}
-.highlight .no {
-  color: var(--dt-color-teal-80);
-}
-.highlight .gh {
-  color: var(--dt-color-text-additional);
-}
-.highlight .ow {
-  color: var(--dt-color-green-90);
-}
-.highlight .p,
-.highlight .n,
-.highlight .o {
-  color: var(--dt-color-grey-90);
-}
-.highlight .hll {
-  background-color: transparent;
 }
 
 /* BB: added the adminition-title rule to bolden the adminition title */
@@ -866,6 +1029,36 @@ pre .cl {
   padding: 5px;
 }
 
+/* START Copy to Clipboard */
+
+button.copybtn {
+  webkit-transition: opacity .3s ease-in-out;
+  -o-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
+  opacity: 0;
+  padding: 0px 6px;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
+div.highlight:hover .copybtn, div.highlight .copybtn:focus {
+    opacity: .5;
+}
+div.highlight .copybtn:hover {
+    opacity: 1;
+    color: var(--dt-color-magenta);
+}
+
+div.highlight .btn:focus {
+    box-shadow: 0 0 0 .25rem rgba(226, 0, 116,.25);
+}
+
+div.highlight {
+    position: relative;
+}
+
+/* END Copy to Clipboard */
+
 /* End Main body */
 
 /* Start Bottom Navigation */
@@ -880,7 +1073,8 @@ pre .cl {
 
 /* End Bottom Navigation */
 
-/* Page footer */
+/* START Page footer */
+
 .docs-footer {
   background: var(--dt-color-grey-90);
   display: flex;
@@ -922,9 +1116,54 @@ pre .cl {
 .docs-footer-logo {
   height: 24px;
 }
-/* End Page footer */
+
+/* END Page footer */
+
 .btn-info {
   background-color: var(--dt-color-teal-30);
 }
 
+/* START: Scroll to top */
+.to-top {
+  webkit-transition: opacity .3s ease-in-out;
+  -o-transition: opacity .3s ease-in-out;
+  transition: opacity .3s ease-in-out;
+  display: none;
+  width: 40px;
+  height: 40px;
+  border: none;
+  outline: none;
+  opacity: 0.5;
+  background-color: var(--dt-color-magenta);
+  color: var(--dt-color-white);
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 99;
+}
 
+.to-top:hover {
+  opacity: 1;
+}
+
+.to-top-fixed {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+@media (min-width: 768px) {
+  .to-top-bottom {
+    position: fixed;
+    bottom: 3rem;
+    right: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .to-top-bottom {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+/* END: Scroll to top */

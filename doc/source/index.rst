@@ -92,6 +92,16 @@ tags on your repository, set the release dropdown menu option in the
     Do not use this for release-notes as they are always published as one
     document with internal versioning.
 
+Following additional options are supported by the theme:
+
+- display_whats_next: Show "Whats next" footer under the main content
+
+- display_last_updated: Show "Last updated" footer
+
+- disable_search: Disable search box
+
+- disable_global_nav: Disable global navigation on the top header row
+
 
 Demonstration example
 ---------------------
@@ -104,3 +114,4 @@ for all documentation that is not API reference.
    :maxdepth: 1
 
    demo/index
+   examples/index

@@ -1,19 +1,14 @@
-<!-- Bootstrap CSS -->
-<link href="{{pathto('_static/css/bootstrap.min.css', 1)}}" rel="stylesheet">
-
 <!-- Fonts -->
-<link href="{{pathto('_static/css/font-awesome.min.css', 1)}}" rel="stylesheet">
+<link href="{{pathto('_static/css/fontawesome-all.min.css', 1)}}" rel="stylesheet">
+<link rel="preload" href="{{pathto('_static/webfonts/fa-regular-400.woff2', 1)}}" as="font" type="font/woff2" crossorigin>
 
-<!-- Pygments CSS -->
-<link href="{{pathto('_static/pygments.css', 1)}}" rel="stylesheet">
-
-<!-- Otcdocstheme CSS -->
-<link href="{{pathto('_static/css/otcdocstheme.css', 1)}}" rel="stylesheet">
+<!-- Favicon -->
+<link rel="icon" href="{{pathto('_static/favicon.ico', 1)}}" type="image/x-icon"/>
 
 <style>
 body {
   /* enable toc*/
-{%- if theme_sidebar_mode == 'toctree' and theme_display_toc and display_toc %}
+{%- if theme_sidebar_mode == 'toctree' and theme_display_toc %}
   --docs-grid-columns: 4fr 1fr;
 {% else %}
   --docs-grid-columns: 4fr;

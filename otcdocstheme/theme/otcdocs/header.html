@@ -3,6 +3,7 @@
 {% else %}{# a template was rendered directly #}
 <!-- TEMPLATE_NAME: {{pagename}} -->
 {% endif %}
+<button onclick="to_top()" id="scroll-to-top" class="to-top to-top-fixed" title="Go to top" aria-label="Scroll to top"><i class="fa-solid fa-angle-up"></i></button>
 <div class="skippy sticky-top"></div>
 {% set base_url = 'https://docs-beta.otc.t-systems.com' %}
 <header class="navbar navbar-expand-md docs-navbar">
@@ -33,6 +34,7 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <hr class="d-md-none text-white">
+	{%- if theme_disable_global_nav is not sameas true %}
         <ul class="navbar-nav flex-row flex-wrap docs-navbar-nav pt-2 py-md-0">
           <li class="nav-item dropdown col-12 col-md-auto me-2">
             <a
@@ -123,50 +125,63 @@
             >
           </li>
         </ul>
+	{%- endif %}
       </div>
     </div>
   </nav>
 </header>
 
-<nav class="docs-subnavbar py-2" aria-label="Secondary navigation">
-  <div class="container-xxl d-flex align-items-md-center">
-    <button
-      class="btn docs-sidebar-toggle d-md-none py-0 px-1 ms-3 order-3 navbar-toggler collapsed"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#docs-sidebar-nav"
-      aria-controls="docs-sidebar-nav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
+<nav id="docs-subnavbar" class="docs-subnavbar py-2 px-3 d-flex justify-content-between" aria-label="Secondary navigation">
+{%- if theme_disable_search is not sameas true %}
+  <!-- Form for input, onSubmit="return false" to prevent reloading the page when pressing enter -->
+  <form id="searchInput" class="col-lg-3 col-md-6 col-10" onsubmit="return false">
+    <div class="input-group">
+      <input type="search" id="searchbox" class="form-control" placeholder="Type here to search" oninput="returnValue(event)" onkeyup="onEnter(event)">
+      <span class="input-group-text" style="background-color: var(--dt-color-white)" onclick="searchMainResult()">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </span>
+    </div>
+
+    <ul class="dropdown-menu overflow-hidden" style="max-width:90%" id="searchDropdown"></ul>
+  </form>
+{%- endif %}
+
+  <button
+    class="btn docs-sidebar-toggle d-md-none py-0 px-1 ms-3 order-3 navbar-toggler collapsed col-1"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#docs-sidebar-nav"
+    aria-controls="docs-sidebar-nav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      class="bi bi-expand"
+      fill="currentColor"
+      viewBox="0 0 16 16"
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        class="bi bi-expand"
-        fill="currentColor"
-        viewBox="0 0 16 16"
-      >
-        <title>Expand</title>
-        <path
-          fill-rule="evenodd"
-          d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zM7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10z"
-        ></path>
-      </svg>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        class="bi bi-collapse"
-        fill="currentColor"
-        viewBox="0 0 16 16"
-      >
-        <title>Collapse</title>
-        <path
-          fill-rule="evenodd"
-          d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707l-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z"
-        ></path>
-      </svg>
-    </button>
-  </div>
+      <title>Expand</title>
+      <path
+        fill-rule="evenodd"
+        d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zM7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10z"
+      ></path>
+    </svg>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      class="bi bi-collapse"
+      fill="currentColor"
+      viewBox="0 0 16 16"
+    >
+      <title>Collapse</title>
+      <path
+        fill-rule="evenodd"
+        d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707l-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z"
+      ></path>
+    </svg>
+  </button>
 </nav>
