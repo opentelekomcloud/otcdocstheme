@@ -26,8 +26,10 @@ async function searchRequest(val) {
                 "</span>"
             ],
             "fields":{
-               "body":{}
-            }
+                "body": {},
+                "title": {}
+            },
+            "require_field_match" : false
         }
     };
     let response = await fetch('https://opensearch.eco.tsi-dev.otc-service.com/helpcenter-*/_search', {
@@ -66,7 +68,11 @@ function createResultList(response) {
             a.classList.add("dropdown-item");
             li.classList.add("border-bottom")
             div_1.classList.add("fw-bolder");
-            div_1.innerHTML = hit._source.title;
+            if (typeof hit.highlight.title == 'undefined') {
+                div_1.innerHTML = hit._source.title;
+            } else {
+                div_1.innerHTML = hit.highlight.title[0];
+            }
             div_2.innerHTML = cleanupString(hit.highlight.body[0]);
 
             // Append as childs to structure ul > li > a > div/div
@@ -165,7 +171,11 @@ const createMainResult = (response) => {
         li.classList.add("border-bottom")
         div_1.classList.add("search-title");
         div_url.classList.add("path-green");
-        div_1.innerHTML = hit._source.title;
+        if (typeof hit.highlight.title == 'undefined') {
+            div_1.innerHTML = hit._source.title;
+        } else {
+            div_1.innerHTML = hit.highlight.title[0];
+        }
         div_url.innerHTML = hit._source.doc_url + hit._source.current_page_name;
         div_2.innerHTML = cleanupString(hit.highlight.body[0]);
 
