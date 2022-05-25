@@ -1061,7 +1061,20 @@ div.highlight {
 
 /* End Main body */
 
+/* Start Bottom Navigation */
+
+.page-link {
+  color: var(--dt-color-black);
+}
+
+.page-link:hover {
+  color: var(--dt-color-magenta);
+}
+
+/* End Bottom Navigation */
+
 /* START Page footer */
+
 .docs-footer {
   background: var(--dt-color-grey-90);
   display: flex;
@@ -1103,7 +1116,9 @@ div.highlight {
 .docs-footer-logo {
   height: 24px;
 }
-/* End Page footer */
+
+/* END Page footer */
+
 .btn-info {
   background-color: var(--dt-color-teal-30);
 }

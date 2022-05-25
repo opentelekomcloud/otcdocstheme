@@ -41,21 +41,38 @@
 
       <div class="row flex-start py-md-4">
         {%- block relbar3 %}{{ relbar1() }}{% endblock %}
-{%- if theme_sidebar_mode == 'toctree' and theme_display_toc %}
+        {%- if theme_sidebar_mode == 'toctree' and theme_display_toc %}
         <main class="docs-main col-12 col-xl-9" role="main">
-{% else %}
-        <main class="docs-main col-12 col-xl-11" role="main">
-{% endif %}
-          <div id="docs-content" class="docs-content ps-lg-4">
-            {% block body %}{% endblock %}
-            {%- if theme_display_whats_next and next %}
-  	      <h2 id="what-s-next">Whats next</h2>
-  	        <ul>
-  		  <li><a href="{{ next.link|e }}" title="Next: {{ next.title|striptags }}">{{ next.title }}</a></li>
-                </ul>
-              </h2>
-            {%- endif %}
-          </div>
+          {% else %}
+          <main class="docs-main col-12 col-xl-11" role="main">
+            {% endif %}
+            <div id="docs-content" class="docs-content ps-lg-4">
+              {% block body %}{% endblock %}
+              <div id="bottom-navigation" class="py-5">
+                <nav>
+                  <ul class="pagination justify-content-center">
+                  {% if prev %}
+                    <li class="page-item">
+                      <a class="page-link" href="{{ prev.link|e }}">Prev</a>
+                    </li>
+                  {% else %}
+                    <li class="page-item disabled">
+                      <a class="page-link">Prev</a>
+                    </li>
+                  {% endif %}
+                  {% if next %}
+                    <li class="page-item">
+                      <a class="page-link" href="{{ next.link|e }}">Next</a>
+                    </li>
+                  {% else %}
+                    <li class="page-item disabled">
+                      <a class="page-link">Next</a>
+                    </li>
+                  {% endif %}
+                  </ul>
+                </nav>
+              </div>
+            </div>
 
 	  {%- if theme_display_last_updated %}
             <div class="row docs-byline bottom">
