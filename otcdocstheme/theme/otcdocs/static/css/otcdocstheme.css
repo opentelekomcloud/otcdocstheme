@@ -182,7 +182,7 @@ body {
   max-width: unset !important;
 }
 
-/* End Sizing */
+/* END: Sizing */
 
 /* Make the container larger on XXL Screens */
 
@@ -302,7 +302,7 @@ body {
   }
 }
 
-/* End NAVBAR */
+/* END: NAVBAR */
 
 /* subnavbar */
 .docs-subnavbar {
@@ -316,7 +316,7 @@ body {
 .docs-subnavbar div {
   justify-content: flex-end;
 }
-/* end subnavbar */
+/* END: subnavbar */
 
 /* Breadcrumbs */
 docs-book-wrapper .ul-breadcrumbs {
@@ -362,7 +362,7 @@ docs-book-wrapper .ul-breadcrumbs {
   padding-left: 0.2rem;
   padding-right: 0.2rem;
 }
-/* End Breadcrumbs */
+/* END: Breadcrumbs */
 
 /* SEARCH */
 
@@ -409,7 +409,7 @@ docs-book-wrapper .ul-breadcrumbs {
   color: var(--dt-color-primary-hover)
 }
 
-/* end search */
+/* END: search */
 
 /* SIDEBAR */
 .docs-sidebar {
@@ -537,7 +537,7 @@ div.docs-sidebar-toc li.toctree-l1 > a {
   color: var(--dt-color-grey-50)
 }
 
-/* SIDEBAR END */
+/* END: Sidebar */
 
 /* CONTENT */
 /* Fix pre blocks not to strech width */
@@ -788,7 +788,7 @@ figcaption {
   display: table-caption;
   caption-side: top;
 }
-/* End - Make figure caption be on top */
+/* END: - Make figure caption be on top */
 /* Make numbered lists as expected */
 ol.arabic {
   list-style-type: decimal;
@@ -796,7 +796,7 @@ ol.arabic {
 ol.loweralpha {
   list-style-type: lower-alpha;
 }
-/* End - Make numbered lists as expected */
+/* END: - Make numbered lists as expected */
 
 /* limit image width so that they do not scale page */
 img {
@@ -1029,7 +1029,7 @@ pre .cl {
   padding: 5px;
 }
 
-/* START Copy to Clipboard */
+/* START: Copy to Clipboard */
 
 button.copybtn {
   webkit-transition: opacity .3s ease-in-out;
@@ -1057,11 +1057,11 @@ div.highlight {
     position: relative;
 }
 
-/* END Copy to Clipboard */
+/* END: Copy to Clipboard */
 
-/* End Main body */
+/* END: Main body */
 
-/* Start Bottom Navigation */
+/* START Bottom Navigation */
 
 .page-link {
   color: var(--dt-color-black);
@@ -1071,7 +1071,7 @@ div.highlight {
   color: var(--dt-color-magenta);
 }
 
-/* End Bottom Navigation */
+/* END: Bottom Navigation */
 
 /* START Page footer */
 
@@ -1117,7 +1117,7 @@ div.highlight {
   height: 24px;
 }
 
-/* END Page footer */
+/* END: Page footer */
 
 .btn-info {
   background-color: var(--dt-color-teal-30);
@@ -1167,3 +1167,20 @@ div.highlight {
   }
 }
 /* END: Scroll to top */
+
+/* START: Config Options */
+dd {
+  margin-left: 2em;
+}
+.pre {
+  font-family: "Courier New", Courier, Monospace;
+}
+
+dt {
+  font-weight: 700;
+}
+
+dl {
+  margin-bottom: 1.5em;
+}
+/* END: Config Options */
