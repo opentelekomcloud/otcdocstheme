@@ -1183,4 +1183,9 @@ dt {
 dl {
   margin-bottom: 1.5em;
 }
+
+dl table {
+  margin: 0;
+}
+
 /* END: Config Options */
