@@ -677,37 +677,8 @@ code.docutils.literal.notranslate {
   grid-area: main;
 }
 
-@media (min-width: 992px) {
-  .docs-main {
-    /*
-     * those comments are from a successful attempt to use grid layout
-     * it is now dropped in favor of columns, which are easier to do truly flexible,
-     * but anytime can come back
-     * */
-
-    /*grid-template-areas: "title toc" "content toc" "footer toc";
-    grid-template-columns: var(--docs-grid-columns);
-    grid-template-rows: auto 1fr;*/
-  }
-}
-
-@media (min-width: 768px) {
-  /*.docs-main {
-    display: grid;
-    gap: inherit;
-  }*/
-}
-
 .docs-toc {
-  /*grid-area: toc;*/
-  font-weigth: 300;
   color: var(--dt-color-grey-60);
-}
-.docs-content {
-  /*grid-area: content;*/
-}
-
-.docs-toc nav {
 }
 
 @media (min-width: 768px) {
