@@ -140,13 +140,15 @@ def _html_page_context(app, pagename, templatename, context, doctree):
 
         doc_path = _get_doc_path(app)
         repo_name = app.config.otcdocs_repo_name
+        logo_url = app.config.otcdocs_logo_url
         _html_context_data['repository_name'] = repo_name
         logger.debug('[otcdocstheme] repository_name %r', repo_name)
-        if repo_name and doc_path:
+        if repo_name and doc_path and logo_url:
             _html_context_data['giturl'] = _giturl.format(
                 repo_name, gitbranch, doc_path)
             _html_context_data['giturl_edit'] = _giturl_edit.format(
                 repo_name, gitbranch, doc_path)
+            _html_context_data['logo_url'] = logo_url
             logger.debug(
                 '[otcdocstheme] giturl %r', _html_context_data['giturl'],
             )
@@ -456,6 +458,7 @@ def setup(app):
 
     # config options
     app.add_config_value('otcdocs_repo_name', '', 'env')
+    app.add_config_value('otcdocs_logo_url', '', 'env')
     app.add_config_value('otcdocs_projects', [], 'env')
     app.add_config_value('otcdocs_auto_version', None, 'env')
     app.add_config_value('otcdocs_auto_name', True, 'env')

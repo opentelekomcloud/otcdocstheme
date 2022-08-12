@@ -13,6 +13,7 @@ extensions = ['otcdocstheme']
 otcdocs_repo_name = 'opentelekomcloud/otcdocstheme'
 otcdocs_pdf_link = True
 otcdocs_pdf_filename = 'doc-otcdocstheme.pdf'
+otcdocs_logo_url = 'https://docs-beta.otc.t-systems.com'
 
 # The suffix of source filenames.
 source_suffix = '.rst'
