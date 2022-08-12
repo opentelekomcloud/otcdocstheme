@@ -1,11 +1,15 @@
 {%- if theme_sidebar_mode == 'toctree' and theme_display_toc %}
 <div id="right-sidebar" class="d-none d-xl-block col-xl-3 docs-toc d-print-none">
   <div class="docs-toc-meta ms-2 pb-1 pt-2 mb-0">
-    {%- if giturl_edit %}
-    <a href="{{giturl_edit}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa-regular fa-pen-to-square me-2"></i>Edit page</a>
+    {%- if edit_enabled == True %}
+      {%- if giturl_edit %}
+      <a href="{{giturl_edit}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa-regular fa-pen-to-square me-2"></i>Edit page</a>
+      {% endif %}
     {% endif %}
-    {%- if giturl %}
-    <a href="https://{{repo_url}}/{{ repository_name }}/issues/new?title={{title}}&body=Issue on page: {{giturl}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa-brands fa-github me-2"></i>Report Bug</a>
+    {%- if report_enabled == True %}
+      {%- if giturl %}
+      <a href="https://{{repo_url}}/{{ repository_name }}/issues/new?title={{title}}&body=Issue on page: {{giturl}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa-brands fa-github me-2"></i>Report Bug</a>
+      {% endif %}
     {% endif %}
 	  {%- if pdf_link %}
     <a id="pdfLink1" href="" target="_blank" title="Download PDF"><i class="fa-solid fa-file-pdf me-2"></i> Download PDF</a>
