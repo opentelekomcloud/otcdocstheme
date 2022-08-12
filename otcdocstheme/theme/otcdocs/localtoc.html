@@ -8,7 +8,7 @@
     {% endif %}
     {%- if report_enabled == True %}
       {%- if giturl %}
-      <a href="https://{{repo_url}}/{{ repository_name }}/issues/new?title={{title}}&body=Issue on page: {{giturl}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa-brands fa-github me-2"></i>Report Bug</a>
+      <a href="https://{{repo_fqdn}}/{{ repository_name }}/issues/new?title={{title}}&body=Issue on page: {{giturl}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa-brands fa-github me-2"></i>Report Bug</a>
       {% endif %}
     {% endif %}
 	  {%- if pdf_link %}
