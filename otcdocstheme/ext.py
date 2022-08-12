@@ -137,7 +137,6 @@ def _html_page_context(app, pagename, templatename, context, doctree):
                 '[otcdocstheme] cannot get branch name from git repository. '
                 f'Using {gitbranch}'
             )
-
         doc_path = _get_doc_path(app)
         repo_name = app.config.otcdocs_repo_name
         repo_url = app.config.otcdocs_repo_url
@@ -148,6 +147,7 @@ def _html_page_context(app, pagename, templatename, context, doctree):
                 repo_url, repo_name, gitbranch, doc_path)
             _html_context_data['giturl_edit'] = _giturl_edit.format(
                 repo_url, repo_name, gitbranch, doc_path)
+            _html_context_data['repo_url'] = repo_url
             logger.debug(
                 '[otcdocstheme] giturl %r', _html_context_data['giturl'],
             )
