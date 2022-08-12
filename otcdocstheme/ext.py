@@ -30,9 +30,9 @@ from otcdocstheme import paths
 
 _series = None
 _project = None
-_giturl = 'https://github.com/{}/blob/{}/{}'
+_giturl = 'https://{}/{}/blob/{}/{}'
 _git_branch = 'main'
-_giturl_edit = 'https://github.com/{}/edit/{}/{}'
+_giturl_edit = 'https://{}/{}/edit/{}/{}'
 _html_context_data = None
 
 logger = logging.getLogger(__name__)
@@ -140,13 +140,14 @@ def _html_page_context(app, pagename, templatename, context, doctree):
 
         doc_path = _get_doc_path(app)
         repo_name = app.config.otcdocs_repo_name
+        repo_url = app.config.otcdocs_repo_url
         _html_context_data['repository_name'] = repo_name
         logger.debug('[otcdocstheme] repository_name %r', repo_name)
         if repo_name and doc_path:
             _html_context_data['giturl'] = _giturl.format(
-                repo_name, gitbranch, doc_path)
+                repo_url, repo_name, gitbranch, doc_path)
             _html_context_data['giturl_edit'] = _giturl_edit.format(
-                repo_name, gitbranch, doc_path)
+                repo_url, repo_name, gitbranch, doc_path)
             logger.debug(
                 '[otcdocstheme] giturl %r', _html_context_data['giturl'],
             )
@@ -456,6 +457,7 @@ def setup(app):
 
     # config options
     app.add_config_value('otcdocs_repo_name', '', 'env')
+    app.add_config_value('otcdocs_repo_url', '', 'env')
     app.add_config_value('otcdocs_projects', [], 'env')
     app.add_config_value('otcdocs_auto_version', None, 'env')
     app.add_config_value('otcdocs_auto_name', True, 'env')
