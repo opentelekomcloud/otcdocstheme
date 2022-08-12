@@ -11,7 +11,7 @@ extensions = ['otcdocstheme']
 
 # openstackdocstheme options
 otcdocs_repo_name = 'opentelekomcloud/otcdocstheme'
-otcdocs_repo_url = 'blabla.com'
+otcdocs_repo_url = 'github.com'
 otcdocs_pdf_link = True
 otcdocs_pdf_filename = 'doc-otcdocstheme.pdf'
 
