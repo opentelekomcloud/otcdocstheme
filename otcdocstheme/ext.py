@@ -461,7 +461,7 @@ def setup(app):
 
     # config options
     app.add_config_value('otcdocs_repo_name', '', 'env')
-    app.add_config_value('otcdocs_repo_fqdn', '', 'env')
+    app.add_config_value('otcdocs_repo_fqdn', 'github.com', 'env')
     app.add_config_value('otcdocs_edit_enabled', True, 'env')
     app.add_config_value('otcdocs_report_enabled', True, 'env')
     app.add_config_value('otcdocs_projects', [], 'env')
