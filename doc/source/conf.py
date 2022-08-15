@@ -48,6 +48,7 @@ html_theme = 'otcdocs'
 # appear in the sidebar dropdown menu.
 html_theme_options = {
     'show_other_versions': True,
+    'logo_url': 'https://docs-beta.otc.t-systems.com',
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
