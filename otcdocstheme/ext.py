@@ -30,9 +30,9 @@ from otcdocstheme import paths
 
 _series = None
 _project = None
-_giturl = 'https://github.com/{}/blob/{}/{}'
+_giturl = 'https://{}/{}/blob/{}/{}'
 _git_branch = 'main'
-_giturl_edit = 'https://github.com/{}/edit/{}/{}'
+_giturl_edit = 'https://{}/{}/edit/{}/{}'
 _html_context_data = None
 
 logger = logging.getLogger(__name__)
@@ -137,16 +137,21 @@ def _html_page_context(app, pagename, templatename, context, doctree):
                 '[otcdocstheme] cannot get branch name from git repository. '
                 f'Using {gitbranch}'
             )
-
         doc_path = _get_doc_path(app)
         repo_name = app.config.otcdocs_repo_name
+        repo_fqdn = app.config.otcdocs_repo_fqdn
+        edit_enabled = app.config.otcdocs_edit_enabled
+        report_enabled = app.config.otcdocs_report_enabled
         _html_context_data['repository_name'] = repo_name
         logger.debug('[otcdocstheme] repository_name %r', repo_name)
-        if repo_name and doc_path:
+        if repo_name and doc_path and repo_fqdn:
             _html_context_data['giturl'] = _giturl.format(
-                repo_name, gitbranch, doc_path)
+                repo_fqdn, repo_name, gitbranch, doc_path)
             _html_context_data['giturl_edit'] = _giturl_edit.format(
-                repo_name, gitbranch, doc_path)
+                repo_fqdn, repo_name, gitbranch, doc_path)
+            _html_context_data['repo_fqdn'] = repo_fqdn
+            _html_context_data['edit_enabled'] = edit_enabled
+            _html_context_data['report_enabled'] = report_enabled
             logger.debug(
                 '[otcdocstheme] giturl %r', _html_context_data['giturl'],
             )
@@ -456,6 +461,9 @@ def setup(app):
 
     # config options
     app.add_config_value('otcdocs_repo_name', '', 'env')
+    app.add_config_value('otcdocs_repo_fqdn', 'github.com', 'env')
+    app.add_config_value('otcdocs_edit_enabled', True, 'env')
+    app.add_config_value('otcdocs_report_enabled', True, 'env')
     app.add_config_value('otcdocs_projects', [], 'env')
     app.add_config_value('otcdocs_auto_version', None, 'env')
     app.add_config_value('otcdocs_auto_name', True, 'env')
