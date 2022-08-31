@@ -37,33 +37,33 @@ Using the theme
 
 #. Set the options to link to the git repository and bug tracker.
 
-    ``otcdocs_git_fqdn``
-      FQDN of the used git hosting. It is used to construct page
-      edit/source/bug links. `github.com` is a default value.
+   ``otcdocs_git_fqdn``
+     FQDN of the used git hosting. It is used to construct page
+     edit/source/bug links. `github.com` is a default value.
 
    ``otcdocs_repo_name``
      The prefix and repo name. For example,
-      ``'opentelekomcloud/python-otcextensions'``.
+     ``'opentelekomcloud/python-otcextensions'``.
 
-    ``otcdocs_git_type``
-      Git hosting type. Can be one of `github`, `gitea` and also used for
-      calculating links. `github` is a default value.
+   ``otcdocs_git_type``
+     Git hosting type. Can be one of `github`, `gitea` and also used for
+     calculating links. `github` is a default value.
 
 #. Configure "edit", "report bug" behaviour.
 
-    ``otcdocs_edit_enabled``
-      Whether page "Edit" functionality shoud be enabled or not. `True` is a default.
+   ``otcdocs_edit_enabled``
+     Whether page "Edit" functionality shoud be enabled or not. `True` is a default.
 
-    ``otcdocs_edit_url``
-      Optional URL to be used for "Edit". Default value based on `git_type` and
-      `git_fqdn` is used if not set.
+   ``otcdocs_edit_url``
+     Optional URL to be used for "Edit". Default value based on `git_type` and
+     `git_fqdn` is used if not set.
 
-    ``otcdocs_bug_reported_enabled``
-      Whether "Report Issue" functionality shoud be enabled or not. `True` is a default.
+   ``otcdocs_bug_reported_enabled``
+     Whether "Report Issue" functionality shoud be enabled or not. `True` is a default.
 
-    ``otcdocs_bug_report_url``
-      Optional URL to be used for "Report Issue". Default value based on `git_type` and
-      `git_fqdn` is used if not set.
+   ``otcdocs_bug_report_url``
+     Optional URL to be used for "Report Issue". Default value based on `git_type` and
+     `git_fqdn` is used if not set.
 
 #. Remove the options that will be automatically configured by the theme.
 
