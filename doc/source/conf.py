@@ -11,11 +11,10 @@ extensions = ['otcdocstheme']
 
 # openstackdocstheme options
 otcdocs_repo_name = 'opentelekomcloud/otcdocstheme'
-otcdocs_repo_fqdn = 'github.com'
+otcdocs_edit_enabled = True
+otcdocs_bug_report_enabled = True
 otcdocs_pdf_link = True
 otcdocs_pdf_filename = 'doc-otcdocstheme.pdf'
-otcdocs_edit_enabled = True
-otcdocs_report_enabled = True
 
 # The suffix of source filenames.
 source_suffix = '.rst'

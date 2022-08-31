@@ -1,0 +1,7 @@
+---
+features:
+  - |
+    Configuration of the links (edit, report bug) is improved and unified.
+upgrade:
+  - |
+    otcdocs_git_fqdn replaces previously added otcdocs_repo_fqdn option.

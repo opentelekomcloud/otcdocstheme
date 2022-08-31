@@ -30,9 +30,19 @@ from otcdocstheme import paths
 
 _series = None
 _project = None
-_giturl = 'https://{}/{}/blob/{}/{}'
+_giturl_source = {
+    'github': 'https://{git_fqdn}/{repo_name}/blob/{branch_name}/{doc_path}',
+    'gitea': 'https://{git_fqdn}/{repo_name}/src/{branch_name}/{doc_path}',
+}
+_giturl_edit = {
+    'github': 'https://{git_fqdn}/{repo_name}/edit/{branch_name}/{doc_path}',
+    'gitea': 'https://{git_fqdn}/{repo_name}/_edit/{branch_name}/{doc_path}',
+}
+_giturl_bug_report = {
+    'github': 'https://{git_fqdn}/{repo_name}/issues/new',
+    'gitea': 'https://{git_fqdn}/{repo_name}/issues/new',
+}
 _git_branch = 'main'
-_giturl_edit = 'https://{}/{}/edit/{}/{}'
 _html_context_data = None
 
 logger = logging.getLogger(__name__)
@@ -139,21 +149,37 @@ def _html_page_context(app, pagename, templatename, context, doctree):
             )
         doc_path = _get_doc_path(app)
         repo_name = app.config.otcdocs_repo_name
-        repo_fqdn = app.config.otcdocs_repo_fqdn
+        git_fqdn = app.config.otcdocs_git_fqdn
         edit_enabled = app.config.otcdocs_edit_enabled
-        report_enabled = app.config.otcdocs_report_enabled
+        bug_report_enabled = app.config.otcdocs_bug_report_enabled
         _html_context_data['repository_name'] = repo_name
         logger.debug('[otcdocstheme] repository_name %r', repo_name)
-        if repo_name and doc_path and repo_fqdn:
-            _html_context_data['giturl'] = _giturl.format(
-                repo_fqdn, repo_name, gitbranch, doc_path)
-            _html_context_data['giturl_edit'] = _giturl_edit.format(
-                repo_fqdn, repo_name, gitbranch, doc_path)
-            _html_context_data['repo_fqdn'] = repo_fqdn
+        if repo_name and doc_path and git_fqdn:
+            _source_url = app.config.otcdocs_source_url
+            _edit_url = app.config.otcdocs_edit_url
+            _bug_report_url = app.config.otcdocs_bug_report_url
+            if app.config.otcdocs_git_type:
+                git_type = app.config.otcdocs_git_type
+                if not _source_url:
+                    _source_url = _giturl_source[git_type]
+                if not _edit_url:
+                    _edit_url = _giturl_edit[git_type]
+                if not _bug_report_url:
+                    _bug_report_url = _giturl_bug_report[git_type]
+
+            _html_context_data['url_source'] = _source_url.format(
+                git_fqdn=git_fqdn, repo_name=repo_name,
+                branch_name=gitbranch, doc_path=doc_path)
+            _html_context_data['url_edit'] = _edit_url.format(
+                git_fqdn=git_fqdn, repo_name=repo_name,
+                branch_name=gitbranch, doc_path=doc_path)
+            _html_context_data['url_bug_report'] = _bug_report_url.format(
+                git_fqdn=git_fqdn, repo_name=repo_name)
+
             _html_context_data['edit_enabled'] = edit_enabled
-            _html_context_data['report_enabled'] = report_enabled
+            _html_context_data['bug_report_enabled'] = bug_report_enabled
             logger.debug(
-                '[otcdocstheme] giturl %r', _html_context_data['giturl'],
+                '[otcdocstheme] giturl %r', _html_context_data['url_source'],
             )
 
         _html_context_data['pdf_link'] = app.config.otcdocs_pdf_link
@@ -461,9 +487,13 @@ def setup(app):
 
     # config options
     app.add_config_value('otcdocs_repo_name', '', 'env')
-    app.add_config_value('otcdocs_repo_fqdn', 'github.com', 'env')
+    app.add_config_value('otcdocs_git_fqdn', 'github.com', 'env')
+    app.add_config_value('otcdocs_git_type', 'github', 'env')
+    app.add_config_value('otcdocs_source_url', None, 'env')
     app.add_config_value('otcdocs_edit_enabled', True, 'env')
-    app.add_config_value('otcdocs_report_enabled', True, 'env')
+    app.add_config_value('otcdocs_edit_url', None, 'env')
+    app.add_config_value('otcdocs_bug_report_enabled', True, 'env')
+    app.add_config_value('otcdocs_bug_report_url', None, 'env')
     app.add_config_value('otcdocs_projects', [], 'env')
     app.add_config_value('otcdocs_auto_version', None, 'env')
     app.add_config_value('otcdocs_auto_name', True, 'env')
