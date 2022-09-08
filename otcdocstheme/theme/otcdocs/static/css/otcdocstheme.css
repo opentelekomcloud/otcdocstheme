@@ -677,6 +677,11 @@ code.docutils.literal.notranslate {
   grid-area: main;
 }
 
+/* Forcing word wrapping to avoid text overflow in case of no space in it */
+.docs-main p {
+  word-wrap: break-word;
+}
+
 @media (min-width: 992px) {
   .docs-main {
     /*
