@@ -247,6 +247,12 @@ body {
   width: 100%;
 }
 
+@media (max-width: 385px) {
+  .navbar-brand img {
+    height: 20px;
+  }
+}
+
 /* claim logo on, narrow - off */
 .brand-wide {
   display: flex;
