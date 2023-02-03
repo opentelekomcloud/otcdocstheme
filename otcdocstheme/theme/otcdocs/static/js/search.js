@@ -13,7 +13,8 @@ async function searchRequest(val) {
         "query": {
             "multi_match": {
               "query": val,
-              "type": "bool_prefix",
+              "type": "best_fields",
+              "operator": "and",
               "fields": [ "body", "title^2" ]
             }
         },
