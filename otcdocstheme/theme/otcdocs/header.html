@@ -140,9 +140,12 @@
 {%- if theme_disable_search is not sameas true %}
   <!-- Form for input, onSubmit="return false" to prevent reloading the page when pressing enter -->
   <form id="searchInput" class="col-lg-3 col-md-6 col-10" onsubmit="return false">
-    <div class="input-group">
-      <input type="search" id="searchbox" class="form-control" placeholder="Type here to search" oninput="returnValue(event)" onkeyup="onEnter(event)">
-      <span class="input-group-text" style="background-color: var(--dt-color-white)" onclick="searchMainResult()">
+    <div class="input-group" id="searchInputGroup">
+      <input id="searchbox" class="form-control delete-right-border" placeholder="Type here to search" onfocus="addBoxShadow(event)" onfocusout="removeBoxShadow(event)" oninput="returnValue(event)" onkeyup="onEnter(event)">
+      <span class="input-group-text delete-search-text d-none" onclick="deleteEnterResults()" id="DeleteSearchText">
+        <i class="fa fa-close"></i>
+      </span>
+      <span class="input-group-text add-left-border" style="background-color: var(--dt-color-white)" onclick="searchMainResult()">
         <i class="fa-solid fa-magnifying-glass"></i>
       </span>
     </div>
