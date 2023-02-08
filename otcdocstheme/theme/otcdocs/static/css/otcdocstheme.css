@@ -372,6 +372,11 @@ docs-book-wrapper .ul-breadcrumbs {
 
 /* SEARCH */
 
+#searchDropdown {
+  -webkit-box-shadow: 0px 5px 19px 0px rgba(0,0,0,0.33);
+  box-shadow: 0px 5px 19px 0px rgba(0,0,0,0.33);
+}
+
 #searchInputGroup > .form-control:focus {
   box-shadow: none;
   border-color: #ced4da;
