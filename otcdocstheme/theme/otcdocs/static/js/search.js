@@ -248,11 +248,13 @@ const deleteEnterResults = () => {
         document.getElementById('right-sidebar').classList.remove('not-visible')
         document.getElementById('breadcrumbs').classList.remove('d-none')
     }
+    document.getElementById('DeleteSearchText').classList.add("d-none");
 }
 
 const returnValue = async (event) => {
     clearTimeout(id);
     const el = document.getElementById('searchbox');
+    document.getElementById('DeleteSearchText').classList.remove("d-none");
     timer(el);
 };
 

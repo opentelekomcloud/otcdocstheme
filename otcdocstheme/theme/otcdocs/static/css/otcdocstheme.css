@@ -377,6 +377,30 @@ docs-book-wrapper .ul-breadcrumbs {
   box-shadow: 0px 5px 19px 0px rgba(0,0,0,0.33);
 }
 
+#searchInputGroup > .form-control:focus {
+  box-shadow: none;
+  border-color: #ced4da;
+  background-color: var(--dt-color-white);
+}
+
+.add-box-shadow {
+  box-shadow: 0 0 0 0.25rem rgb(226 0 116 / 25%);
+  border-radius: .25rem;
+}
+
+.add-left-border {
+  border-left: 1px;
+}
+
+.delete-right-border {
+  border-right: 0;
+}
+
+.delete-search-text {
+  border-left: 0;
+  background-color: var(--dt-color-white);
+}
+
 .search-title {
   font-size: 1.3rem;
   font-weight: 500;
@@ -402,7 +426,7 @@ docs-book-wrapper .ul-breadcrumbs {
   overflow: hidden;
 }
 
-.fa-close:hover, .fa-search:hover {
+.fa-close:hover, .fa-search:hover, .fa-magnifying-glass:hover {
   color: var(--dt-color-primary-hover);
   cursor: pointer;
 }
@@ -1205,3 +1229,19 @@ dl table {
 }
 
 /* END: Config Options */
+
+/* DELETE CHROME AUTO-FILL BACKGROUND COLOR BLUE */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+}
+
+/* ENDE DELETE CHROME AUTO-FILL */
