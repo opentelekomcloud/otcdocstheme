@@ -240,7 +240,8 @@ body a:hover {
 }
 
 /* light box around link on hover for informativity */
-#navbarNav .navbar-nav li a:hover {
+
+.nav-link:hover {
   background-color: rgba(255, 255, 255, 0.3);
   text-decoration: none;
 }
@@ -306,8 +307,6 @@ body a:hover {
     font-size: 1.2rem;
   }
 
-
-
   .navbar-nav hr {
      color: var(--dt-color-grey-10);
   }
@@ -320,12 +319,13 @@ body a:hover {
     border-radius: 0;
   }
   .docs-navbar .dropdown-item:hover {
-    background-color: unset;
+    background-color: rgba(255, 255, 255, 0.3);
   }
 }
 
-.dropdown-item a:hover {
+.dropdown-item:hover {
   background-color: var(--dt-color-background-light);
+  text-decoration: none;
 }
 
 /* END: NAVBAR */
@@ -391,6 +391,10 @@ docs-book-wrapper .ul-breadcrumbs {
 /* END: Breadcrumbs */
 
 /* SEARCH */
+
+#searchResultsEnter a:hover {
+  text-decoration: none;
+}
 
 #searchDropdown a:hover {
   text-decoration: none;
@@ -462,6 +466,10 @@ docs-book-wrapper .ul-breadcrumbs {
 
 .page-link:hover {
   color: var(--dt-color-primary-hover)
+}
+
+.pagination a:hover {
+  text-decoration: none;
 }
 
 /* END: search */
@@ -1138,6 +1146,11 @@ div.highlight {
 /* END: Bottom Navigation */
 
 /* START Page footer */
+
+footer a:hover {
+  text-decoration: underline;
+  color: var(--dt-color-white);
+}
 
 .docs-footer {
   background: var(--dt-color-grey-90);
