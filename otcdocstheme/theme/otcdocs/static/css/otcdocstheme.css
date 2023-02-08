@@ -396,6 +396,11 @@ docs-book-wrapper .ul-breadcrumbs {
   text-decoration: none;
 }
 
+#searchDropdown {
+  -webkit-box-shadow: 0px 5px 19px 0px rgba(0,0,0,0.33);
+  box-shadow: 0px 5px 19px 0px rgba(0,0,0,0.33);
+}
+
 #searchDropdown a:hover {
   text-decoration: none;
   background-color: var(--dt-color-background-light);
