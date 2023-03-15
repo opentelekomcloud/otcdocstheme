@@ -9,7 +9,7 @@
 # ones.
 extensions = [
   'otcdocstheme',
-  'otc_directives'
+  'otc_sphinx_directives'
 ]
 
 # openstackdocstheme options
