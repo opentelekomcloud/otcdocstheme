@@ -6,4 +6,4 @@
 
 otc-api-ref>=0.1.0 # Apache-2.0
 reno>=3.1.0 # Apache-2.0
-git+https://github.com/opentelekomcloud/otc-directives.git#egg=otc_directives
+git+https://github.com/opentelekomcloud/otc-sphinx-directives.git#egg=otc_sphinx_directives

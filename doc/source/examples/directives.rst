@@ -6,10 +6,8 @@ Directives
    :id: test2
    :wrapper_type: section
 
-   .. code-block:: python
-      :caption: this.py
-      :name: this-py
-
-      print 'Explicit is better than implicit.'
+   .. service_card::
+      :service_type: ecs
 
    .. service_card::
+      :service_type: obs
