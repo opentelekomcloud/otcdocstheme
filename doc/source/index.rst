@@ -2,6 +2,8 @@
 Open Telekom Cloud Sphinx theme
 ===============================
 
+dummy
+
 *otcdocstheme* is a theme and extension support for Sphinx documentation
 that is published to readthemanuals.org.
 
