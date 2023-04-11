@@ -479,6 +479,25 @@ docs-book-wrapper .ul-breadcrumbs {
 
 /* END: search */
 
+/* Service-Based-View */
+
+.container-sbv {
+  display: flex;
+  align-items: flex-start;
+  align-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.item-sbv {
+  flex-basis: calc(50%);
+  padding: 10px;
+  box-sizing: border-box;
+  align-self: flex-start;
+}
+
+/* END: Service-Based-View */
+
 /* SIDEBAR */
 
 .docs-sidebar {
