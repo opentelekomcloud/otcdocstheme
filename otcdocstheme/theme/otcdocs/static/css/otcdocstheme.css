@@ -487,14 +487,47 @@ docs-book-wrapper .ul-breadcrumbs {
   align-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
+  gap: 1em; /* needs to be substracted from item size */
 }
 
 .item-sbv {
-  flex-basis: calc(50%);
-  padding: 10px;
+  flex-basis: calc(50% - 1em); /* needs gap in container-sbv */
   box-sizing: border-box;
   align-self: flex-start;
 }
+
+.item-sbv:hover {
+  color: var(--dt-color-magenta);
+  cursor: pointer;
+}
+
+.item-sbv:hover h3 {
+  color: var(--dt-color-magenta);
+}
+
+.item-sbv:hover .card {
+  border: 1px solid var(--dt-color-magenta);
+}
+
+.item-sbv:hover a {
+  color: var(--dt-color-magenta);
+  text-decoration: none;
+}
+
+.item-sbv a {
+  color: var(--dt-color-text-standard);
+}
+
+.item-sbv h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.item-sbv p {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
 
 /* END: Service-Based-View */
 
