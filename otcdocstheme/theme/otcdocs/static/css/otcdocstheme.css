@@ -487,6 +487,7 @@ docs-book-wrapper .ul-breadcrumbs {
   align-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
+  margin-top: 2em;
   gap: 1em; /* needs to be substracted from item size */
 }
 
@@ -501,7 +502,7 @@ docs-book-wrapper .ul-breadcrumbs {
   cursor: pointer;
 }
 
-.item-sbv:hover h3 {
+.item-sbv:hover h4 {
   color: var(--dt-color-magenta);
 }
 
@@ -518,7 +519,7 @@ docs-book-wrapper .ul-breadcrumbs {
   color: var(--dt-color-text-standard);
 }
 
-.item-sbv h3 {
+.item-sbv h4 {
   margin-top: 0;
   margin-bottom: 0;
 }
