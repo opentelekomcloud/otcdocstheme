@@ -495,7 +495,6 @@ docs-book-wrapper .ul-breadcrumbs {
   flex-basis: calc(50% - 1em); /* needs gap in container-sbv */
   box-sizing: border-box;
   align-self: stretch;
-  flex-grow: 1;
 }
 
 .item-sbv:hover {
