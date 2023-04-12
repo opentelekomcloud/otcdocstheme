@@ -479,6 +479,59 @@ docs-book-wrapper .ul-breadcrumbs {
 
 /* END: search */
 
+/* Service-Based-View */
+
+.container-sbv {
+  display: flex;
+  align-items: stretch;
+  align-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 2em;
+  gap: 1em; /* needs to be substracted from item size */
+}
+
+.item-sbv {
+  flex-basis: calc(50% - 1em); /* needs gap in container-sbv */
+  box-sizing: border-box;
+  align-self: stretch;
+  flex-grow: 1;
+}
+
+.item-sbv:hover {
+  color: var(--dt-color-magenta);
+  cursor: pointer;
+}
+
+.item-sbv:hover h4 {
+  color: var(--dt-color-magenta);
+}
+
+.item-sbv.card:hover {
+  border: 1px solid var(--dt-color-magenta);
+}
+
+.item-sbv:hover a {
+  color: var(--dt-color-magenta);
+  text-decoration: none;
+}
+
+.item-sbv a {
+  color: var(--dt-color-text-standard);
+}
+
+.item-sbv h4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.item-sbv p {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+/* END: Service-Based-View */
+
 /* SIDEBAR */
 
 .docs-sidebar {
