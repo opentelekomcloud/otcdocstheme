@@ -483,7 +483,7 @@ docs-book-wrapper .ul-breadcrumbs {
 
 .container-sbv {
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
   align-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
@@ -494,7 +494,8 @@ docs-book-wrapper .ul-breadcrumbs {
 .item-sbv {
   flex-basis: calc(50% - 1em); /* needs gap in container-sbv */
   box-sizing: border-box;
-  align-self: flex-start;
+  align-self: stretch;
+  flex-grow: 1;
 }
 
 .item-sbv:hover {
@@ -506,7 +507,7 @@ docs-book-wrapper .ul-breadcrumbs {
   color: var(--dt-color-magenta);
 }
 
-.item-sbv:hover .card {
+.item-sbv.card:hover {
   border: 1px solid var(--dt-color-magenta);
 }
 
