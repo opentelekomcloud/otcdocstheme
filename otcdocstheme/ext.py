@@ -152,7 +152,21 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         git_fqdn = app.config.otcdocs_git_fqdn
         edit_enabled = app.config.otcdocs_edit_enabled
         bug_report_enabled = app.config.otcdocs_bug_report_enabled
+        doc_env = app.config.otcdocs_doc_environment
+        doc_link = app.config.otcdocs_doc_link
+        doc_title = app.config.otcdocs_doc_title
+        doc_type = app.config.otcdocs_doc_type
+        service_title = app.config.otcdocs_service_title
+        service_type = app.config.otcdocs_service_type
+        service_category = app.config.otcdocs_service_category
         _html_context_data['repository_name'] = repo_name
+        _html_context_data['doc_environment'] = doc_env
+        _html_context_data['doc_link'] = doc_link
+        _html_context_data['doc_title'] = doc_title
+        _html_context_data['doc_type'] = doc_type
+        _html_context_data['service_title'] = service_title
+        _html_context_data['service_type'] = service_type
+        _html_context_data['service_category'] = service_category
         logger.debug('[otcdocstheme] repository_name %r', repo_name)
         if repo_name and doc_path and git_fqdn:
             _source_url = app.config.otcdocs_source_url
@@ -486,7 +500,6 @@ def setup(app):
     app.connect('html-page-context', _html_page_context)
 
     # config options
-    app.add_config_value('otcdocs_repo_name', '', 'env')
     app.add_config_value('otcdocs_git_fqdn', 'github.com', 'env')
     app.add_config_value('otcdocs_git_type', 'github', 'env')
     app.add_config_value('otcdocs_source_url', None, 'env')
@@ -499,6 +512,16 @@ def setup(app):
     app.add_config_value('otcdocs_auto_name', True, 'env')
     app.add_config_value('otcdocs_pdf_link', False, 'env')
     app.add_config_value('otcdocs_pdf_filename', None, 'env')
+
+    # metadata options
+    app.add_config_value('otcdocs_repo_name', '', 'env')
+    app.add_config_value('otcdocs_doc_environment', '', 'env')
+    app.add_config_value('otcdocs_doc_link', '', 'env')
+    app.add_config_value('otcdocs_doc_title', '', 'env')
+    app.add_config_value('otcdocs_doc_type', '', 'env')
+    app.add_config_value('otcdocs_service_title', '', 'env')
+    app.add_config_value('otcdocs_service_type', '', 'env')
+    app.add_config_value('otcdocs_service_category', '', 'env')
 
     app.set_translator('html', OTCHTML5Translator)
 

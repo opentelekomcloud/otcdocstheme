@@ -15,6 +15,14 @@ otcdocs_edit_enabled = True
 otcdocs_bug_report_enabled = True
 otcdocs_pdf_link = True
 otcdocs_pdf_filename = 'doc-otcdocstheme.pdf'
+otcdocs_doc_environment = 'public'
+otcdocs_doc_link = '/test/link/'
+otcdocs_doc_title = 'otcdocstheme Demo Documentation'
+otcdocs_doc_type = 'umn'
+otcdocs_service_title = 'otcdocstheme'
+otcdocs_service_type = 'otcdocstheme'
+otcdocs_service_category = 'theme'
+
 
 # The suffix of source filenames.
 source_suffix = '.rst'
