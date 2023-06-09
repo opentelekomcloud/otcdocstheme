@@ -33,7 +33,7 @@ extensions = [
     'reno.sphinxext',
     'otcdocstheme',
 ]
-#otcdocs_repo_name = 'opentelekomcloud/otcdocstheme'
+# otcdocs_repo_name = 'opentelekomcloud/otcdocstheme'
 
 # Add any paths that contain templates here, relative to this directory.
 # templates_path = ['_templates']
