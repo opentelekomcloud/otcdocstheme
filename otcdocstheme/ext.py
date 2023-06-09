@@ -527,7 +527,7 @@ def setup(app):
     app.add_config_value('otcdocs_service_category', '', 'env')
 
     # search options
-    app.add_config_value('otcdocs_search_environment', 'eu-de', 'env')
+    app.add_config_value('otcdocs_search_environment', 'hc_de', 'env')
 
     app.set_translator('html', OTCHTML5Translator)
 
