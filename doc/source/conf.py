@@ -23,6 +23,7 @@ otcdocs_service_title = 'otcdocstheme'
 otcdocs_service_type = 'otcdocstheme'
 otcdocs_service_category = 'theme'
 
+otcdocs_search_environment = 'hc_de'
 
 # The suffix of source filenames.
 source_suffix = '.rst'
