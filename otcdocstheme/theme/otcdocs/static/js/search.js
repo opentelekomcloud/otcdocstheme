@@ -1,4 +1,5 @@
 var id = 0;
+const base_url = 'https://opensearch.eco.tsi-dev.otc-service.com/'
 
 const cleanupString = (text) => {
     text = text.replace(/¶/, " ");
@@ -6,8 +7,22 @@ const cleanupString = (text) => {
     return text;
 }
 
+async function postRequest(url, body) {
+    let response = await fetch(url, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+    })
+
+    response = await response.json()
+    return response
+}
+
 async function searchRequest(val) {
-    const requestjson = {
+    const request = {
         "from" : 0, "size" : 100,
         "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url"],
         "query": {
@@ -35,23 +50,18 @@ async function searchRequest(val) {
         }
     };
 
-    // Get the value search_environment of the current skript
+    // Get the value search_environment out of this script's html description of the footer section
     let this_js_script = $('script[src*=search]');
+
+    // search_environment => hc_de | hc_swiss
     let search_environment = this_js_script.attr('search_environment');
 
     // Set the URL for the OpenSearch search correctly
-    let search_url = `https://opensearch.eco.tsi-dev.otc-service.com/${search_environment}-*/_search`
+    let url = `${base_url}${search_environment}-*/_search`
 
-    let response = await fetch(search_url, {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(requestjson)
-    })
-    const responsedata = await response.json()
-    return responsedata;
+    let response = await postRequest(url, request)
+
+    return response
 };
 
 function createResultList(response) {
@@ -97,7 +107,7 @@ function createResultList(response) {
     }
 };
 
-const createMainResult = (response) => {
+const createMainResult = async (response) => {
     // Function to generate result list on main content
     // Remove search as you type results
     document.getElementById('searchDropdown').classList.remove('show');
@@ -226,7 +236,50 @@ const createMainResult = (response) => {
         nav.appendChild(ul_pagination);
         div.appendChild(nav);
     }
+
+    // Create Filter List
+    let filters = await addFilters()
+    createSearchFilter()
+    addFiltersToAccordion(filters)
 }
+
+async function addFilters() {
+    let request = {
+        "query" : {
+            "match_all" : {}
+        }
+    }
+
+    let url = `${base_url}search_index_de/_search`
+
+    let response = await postRequest(url, request)
+    response = response.hits.hits[0]._source
+    console.log(response)
+    return response
+}
+
+const addFiltersToAccordion = (filters) => {
+    let serviceDiv = document.getElementById('serviceFilterBody')
+    let docDiv = document.getElementById('docFilterBody')
+    let services = filters['services']
+    let doc_types = filters['doc_types']
+    services.map(service => {
+        serviceDiv.insertAdjacentHTML("beforeend", `
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                <label class="form-check-label" for="flexSwitchCheckDefault">${service["service_title"]}</label>
+            </div>
+        `)
+    })
+    doc_types.map(doc => {
+        docDiv.insertAdjacentHTML("beforeend", `
+            <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                <label class="form-check-label" for="flexSwitchCheckDefault">${doc}</label>
+            </div>
+        `)
+    })
+} 
 
 function timer(el) {
     id = setTimeout(async () => {
@@ -257,6 +310,9 @@ const deleteEnterResults = () => {
         document.getElementById('breadcrumbs').classList.remove('d-none')
     }
     document.getElementById('DeleteSearchText').classList.add("d-none");
+
+    // Remove Search Filter
+    removeSearchFilter()
 }
 
 const returnValue = async (event) => {
@@ -276,6 +332,52 @@ async function onEnter(event) {
 const searchMainResult = async () => {
     let response = await searchRequest(document.getElementById('searchbox').value);
     createMainResult(response)
+}
+
+const createSearchFilter = () => {
+    let filter = document.createElement('div')
+    filter.setAttribute('id', 'accordions')
+    filter.classList.add('docs-sidebar')
+    filter.classList.add('py-md-4')
+    filter.insertAdjacentHTML("beforeend", `
+        <div class="accordion" id="serviceAccordion">
+            <div class="accordion-item">
+            <h2 class="accordion-header" id="serviceFilter">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseServiceFilter"
+                aria-expanded="true" aria-controls="collapseServiceFilter">
+                Service Filter
+                </button>
+            </h2>
+            <div id="collapseServiceFilter" class="accordion-collapse collapse" aria-labelledby="serviceFilter"
+                data-bs-parent="#serviceAccordion" style="">
+                <div class="accordion-body" id="serviceFilterBody">
+                </div>
+            </div>
+            </div>
+        </div>
+        <div class="accordion" id="docAccordion"></div>
+            <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDocFilter"
+                aria-expanded="false" aria-controls="collapseDocFilter">
+                Document Filter
+                </button>
+            </h2>
+            <div id="collapseDocFilter" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                data-bs-parent="#docAccordion">
+                <div class="accordion-body"  id="docFilterBody">
+                </div>
+            </div>
+            </div>
+        </div>
+    `);
+    let sidebar = document.getElementById('left-sidebar')
+    sidebar.after(filter)
+}
+
+const removeSearchFilter = () => {
+    let filter = document.getElementById('accordions')
+    filter.remove(filter)
 }
 
 const pagination = (element) => {
