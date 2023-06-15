@@ -175,6 +175,7 @@ body {
 body {
   --background-button-hover: hsla(0, 0%, 0%, 0.07);
   --dt-color-switch-background: #dfdfe1;
+  --shadow-thumb: 0 0 2px 0 rgba(0, 0, 0, 0.24), 0 2px 4px 0 rgba(0, 0, 0, 0.24), 0 4px 12px 0 rgba(0, 0, 0, 0.26);
 }
 
 body {
@@ -554,6 +555,7 @@ docs-book-wrapper .ul-breadcrumbs {
   grid-area: sidebar;
   border-right: 2px solid var(--dt-color-grey-0);
   padding-right: 1rem;
+  padding-left: 1rem;
 }
 
 @media (min-width: 768px) {
@@ -565,6 +567,10 @@ docs-book-wrapper .ul-breadcrumbs {
     grid-template-areas: "sidebar main";
     grid-template-columns: 1fr 4fr;
     gap: 1.5rem;
+  }
+  
+  .docs-sidebar {
+    padding-left: 0;
   }
 }
 
@@ -1341,6 +1347,20 @@ dl table {
 /* END: Config Options */
 
 /* START: Search Filter */
+
+.accordion-body {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1.25rem;
+  padding-right: 0;
+}
+
+@media(max-width: 767px) {
+  #accordions {
+    border-bottom: solid 1px var(--dt-color-grey-20);
+  }
+}
+
 .accordion-item {
   border: 0;
   background-color: transparent;
@@ -1367,6 +1387,9 @@ dl table {
 }
 
 /* Checkbox */
+.form-check:hover {
+  background-color: var(--dt-color-background-light);
+}
 .form-check-input:checked {
   background-color: var(--dt-color-magenta);
   border-color: var(--dt-color-magenta);
@@ -1377,9 +1400,29 @@ dl table {
   border: 1px solid var(--dt-color-switch-background);
 }
 
+.form-check-input:hover {
+  cursor: pointer;
+}
+
+.form-check-input:focus {
+  cursor: pointer;
+  box-shadow: none;
+  border: 0;
+}
+
+.form-switch .form-check-input:focus {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%28255, 255, 255, 1%29'/%3e%3c/svg%3e");
+}
+
+.form-check-label:hover {
+  cursor: pointer;
+}
+
 .form-switch .form-check-input {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba%28255, 255, 255, 1%29'/%3e%3c/svg%3e");
 }
+
+
 
 
 /* END: Search Filter */
