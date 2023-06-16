@@ -265,43 +265,79 @@ const addFiltersToAccordion = (filters) => {
     let services = filters['services']
     let doc_types = filters['doc_types']
     services.map(service => {
+        // Create the filters on the left side
         serviceDiv.insertAdjacentHTML("beforeend", `
             <div class="form-check form-switch">
                 <input class="form-check-input" type="checkbox" id="filter-service-${service["service_type"]}" />
                 <label class="form-check-label" for="filter-service-${service["service_type"]}">${service["service_title"]}</label>
             </div>
         `)
-        serviceDiv.insertAdjacentHTML("beforeend", `
-                <div class="nodisplay" id="filter-service-doc-div-${service["service_type"]}">`)
-        
-        service["docs"].map (doc => {
-            document.getElementById(`filter-service-doc-div-${service["service_type"]}`).insertAdjacentHTML("beforeend", `
-                <div id="filter-service-doc-div-${service["service_type"]}">
-                    <div class="form-check form-switch form-check-doc">
-                        <input class="form-check-input" type="checkbox" id="filter-service-doc-${doc["type"]}" />
-                        <label class="form-check-label" for="filter-service-doc-${doc["type"]}">${doc["title"]}</label>
-                    </div>
-                </div>
-            `)
-        })
+
+        // Add the event listeners for clicking on a service-filter
         let serviceCheckbox = document.getElementById(`filter-service-${service["service_type"]}`)
         serviceCheckbox.addEventListener("change", (e) => {
             if (e["target"].checked) {
-                console.log(`filter-service-${service["service_type"]} is checked`)
+                // Add element to the array
                 active_service_search_filters.push({
                     service_type: `${service["service_type"]}`,
                     doc_types: []
                 })
+                // Add the doc filter UI for that service
                 document.getElementById(`filter-service-doc-div-${service["service_type"]}`).classList.remove("nodisplay")
             } else {
-                console.log(`filter-service-${service["service_type"]} is not checked`)
                 // Remove the element from the array
                 active_service_search_filters = (
                     active_service_search_filters.filter((item) => item.service_type !== `${service["service_type"]}`)
                 );
+                // Remove the doc filter UI for that service
                 document.getElementById(`filter-service-doc-div-${service["service_type"]}`).classList.add("nodisplay")
             }
         })
+
+        // Add the doc filters to each service type
+        serviceDiv.insertAdjacentHTML("beforeend", `
+                <div class="nodisplay" id="filter-service-doc-div-${service["service_type"]}">`)
+        service["docs"].map (doc => {
+            document.getElementById(`filter-service-doc-div-${service["service_type"]}`).insertAdjacentHTML("beforeend", `
+                <div id="filter-service-doc-div-${service["service_type"]}">
+                    <div class="form-check form-switch form-check-doc">
+                        <input class="form-check-input" type="checkbox" id="filter-service-${service["service_type"]}-doc-${doc["type"]}" />
+                        <label class="form-check-label" for="filter-service-${service["service_type"]}-doc-${doc["type"]}">${doc["title"]}</label>
+                    </div>
+                </div>
+            `)
+            // Add Event Listeners for clicking on the doc filter
+            let serviceDocCheckbox = document.getElementById(`filter-service-${service["service_type"]}-doc-${doc["type"]}`)
+            serviceDocCheckbox.addEventListener("change", (e) => {
+                // Function to update array
+                function updateDocTypes(arr, serviceType, element, remove = false) {
+                    return arr.map((item) => {
+                        if (item.service_type === serviceType) {
+                            let updatedDocTypes;
+                            if (remove) {
+                                updatedDocTypes = item.doc_types.filter((docType) => docType !== element);
+                            } else {
+                                updatedDocTypes = [...item.doc_types, element];
+                            }
+                            return {
+                                ...item,
+                                doc_types: updatedDocTypes
+                            };
+                        }
+                        return item;
+                    });
+                  }
+                if (e["target"].checked) {
+                    // Add element to the array
+                    active_service_search_filters = updateDocTypes(active_service_search_filters, service["service_type"], doc["type"])
+                } else {
+                    // Remove the element from the array
+                    active_service_search_filters = updateDocTypes(active_service_search_filters, service["service_type"], doc["type"], true)
+                }
+            })
+        })
+        
+        
     })
     doc_types.map(doc => {
         docDiv.insertAdjacentHTML("beforeend", `
