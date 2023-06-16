@@ -1,6 +1,7 @@
 var id = 0;
 const base_url = 'https://opensearch.eco.tsi-dev.otc-service.com/'
 let active_service_search_filters = []
+let available_doc_types = []
 
 const cleanupString = (text) => {
     text = text.replace(/¶/, " ");
@@ -23,6 +24,61 @@ async function postRequest(url, body) {
 }
 
 async function searchRequest(val) {
+
+    let service_type_query = []
+    let doc_type_query = []
+
+    if (active_service_search_filters.length != 0) {
+        active_service_search_filters.map(item => {
+            service_type_query.push(item["service_type"])
+            doc_type_query = item["doc_types"]
+        })
+    }
+
+    const request_filtered = {
+        "from" : 0, "size" : 100,
+        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url"],
+        "query": {
+            "bool": {
+                "must": [
+                    {
+                        "terms": {
+                          "service_type": service_type_query
+                        }
+                    },
+                    {
+                        "terms": {
+                          "doc_type": doc_type_query
+                        }
+                    },
+                    {
+                    "multi_match": {
+                        "query": val,
+                        "type": "best_fields",
+                        "operator": "and",
+                        "fields": ["body", "title^2"]
+                    }
+                    }
+                ]
+            }
+        },
+        "highlight": {
+            "number_of_fragments": 1,
+            "fragment_size":100,
+            "pre_tags": [
+                "<span style='color: var(--dt-color-magenta)'>"
+            ],
+            "post_tags": [
+                "</span>"
+            ],
+            "fields":{
+                "body": {},
+                "title": {}
+            },
+            "require_field_match" : false
+        }
+    };
+
     const request = {
         "from" : 0, "size" : 100,
         "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url"],
@@ -51,6 +107,16 @@ async function searchRequest(val) {
         }
     };
 
+    let final_query = {}
+
+    if (active_service_search_filters.length == 0) {
+        final_query = request
+    } else {
+        final_query = request_filtered
+    }
+
+    console.log(final_query)
+
     // Get the value search_environment out of this script's html description of the footer section
     let this_js_script = $('script[src*=search]');
 
@@ -60,7 +126,7 @@ async function searchRequest(val) {
     // Set the URL for the OpenSearch search correctly
     let url = `${base_url}${search_environment}-*/_search`
 
-    let response = await postRequest(url, request)
+    let response = await postRequest(url, final_query)
 
     return response
 };
@@ -239,9 +305,14 @@ const createMainResult = async (response) => {
     }
 
     // Create Filter List
-    let filters = await addFilters()
-    createSearchFilter()
-    addFiltersToAccordion(filters)
+    // Check whether the serviceAccordion div already exists
+    let div_service_accordion = document.getElementById('serviceAccordion')
+    if (div_service_accordion === null) {
+        let filters = await addFilters()
+        createSearchFilter()
+        addFiltersToAccordion(filters)
+    }
+    
 }
 
 async function addFilters() {
@@ -255,7 +326,7 @@ async function addFilters() {
 
     let response = await postRequest(url, request)
     response = response.hits.hits[0]._source
-    console.log(response)
+    available_doc_types = response["doc_types"]
     return response
 }
 
@@ -280,10 +351,11 @@ const addFiltersToAccordion = (filters) => {
                 // Add element to the array
                 active_service_search_filters.push({
                     service_type: `${service["service_type"]}`,
-                    doc_types: []
+                    doc_types: doc_types
                 })
                 // Add the doc filter UI for that service
                 document.getElementById(`filter-service-doc-div-${service["service_type"]}`).classList.remove("nodisplay")
+                searchFilterMainResult()
             } else {
                 // Remove the element from the array
                 active_service_search_filters = (
@@ -291,6 +363,7 @@ const addFiltersToAccordion = (filters) => {
                 );
                 // Remove the doc filter UI for that service
                 document.getElementById(`filter-service-doc-div-${service["service_type"]}`).classList.add("nodisplay")
+                searchFilterMainResult()
             }
         })
 
@@ -310,14 +383,24 @@ const addFiltersToAccordion = (filters) => {
             let serviceDocCheckbox = document.getElementById(`filter-service-${service["service_type"]}-doc-${doc["type"]}`)
             serviceDocCheckbox.addEventListener("change", (e) => {
                 // Function to update array
-                function updateDocTypes(arr, serviceType, element, remove = false) {
+                function updateDocTypes(arr, serviceType, element, remove = false, docTypes) {
                     return arr.map((item) => {
                         if (item.service_type === serviceType) {
                             let updatedDocTypes;
+                            // Remove all docTypes as we now want to filter
+                            if (item.doc_types === docTypes) {
+                                item.doc_types = []
+                            }
+                            // Filter by adding a doc type or removing it
                             if (remove) {
                                 updatedDocTypes = item.doc_types.filter((docType) => docType !== element);
                             } else {
                                 updatedDocTypes = [...item.doc_types, element];
+                            }
+                            // If no filter is selected add all doc types
+                            if (updatedDocTypes.length == 0) {
+                                console.log("teste")
+                                updatedDocTypes = docTypes
                             }
                             return {
                                 ...item,
@@ -329,15 +412,15 @@ const addFiltersToAccordion = (filters) => {
                   }
                 if (e["target"].checked) {
                     // Add element to the array
-                    active_service_search_filters = updateDocTypes(active_service_search_filters, service["service_type"], doc["type"])
+                    active_service_search_filters = updateDocTypes(active_service_search_filters, service["service_type"], doc["type"], false, doc_types)
+                    searchFilterMainResult()
                 } else {
                     // Remove the element from the array
-                    active_service_search_filters = updateDocTypes(active_service_search_filters, service["service_type"], doc["type"], true)
+                    active_service_search_filters = updateDocTypes(active_service_search_filters, service["service_type"], doc["type"], true, doc_types)
+                    searchFilterMainResult()
                 }
             })
         })
-        
-        
     })
     doc_types.map(doc => {
         docDiv.insertAdjacentHTML("beforeend", `
@@ -398,6 +481,11 @@ async function onEnter(event) {
 };
 
 const searchMainResult = async () => {
+    let response = await searchRequest(document.getElementById('searchbox').value);
+    createMainResult(response)
+}
+
+const searchFilterMainResult = async () => {
     let response = await searchRequest(document.getElementById('searchbox').value);
     createMainResult(response)
 }
