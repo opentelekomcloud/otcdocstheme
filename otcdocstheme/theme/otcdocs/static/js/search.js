@@ -312,7 +312,7 @@ const createMainResult = async (response) => {
         createSearchFilter()
         addFiltersToAccordion(filters)
     }
-    
+
 }
 
 async function addFilters() {
@@ -430,7 +430,7 @@ const addFiltersToAccordion = (filters) => {
             </div>
         `)
     })
-} 
+}
 
 function timer(el) {
     id = setTimeout(async () => {

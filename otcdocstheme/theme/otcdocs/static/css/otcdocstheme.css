@@ -568,7 +568,7 @@ docs-book-wrapper .ul-breadcrumbs {
     grid-template-columns: 1fr 4fr;
     gap: 1.5rem;
   }
-  
+
   .docs-sidebar {
     padding-left: 0;
   }
