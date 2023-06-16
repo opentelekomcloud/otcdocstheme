@@ -1,5 +1,6 @@
 var id = 0;
 const base_url = 'https://opensearch.eco.tsi-dev.otc-service.com/'
+let active_service_search_filters = []
 
 const cleanupString = (text) => {
     text = text.replace(/¶/, " ");
@@ -266,16 +267,47 @@ const addFiltersToAccordion = (filters) => {
     services.map(service => {
         serviceDiv.insertAdjacentHTML("beforeend", `
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-                <label class="form-check-label" for="flexSwitchCheckDefault">${service["service_title"]}</label>
+                <input class="form-check-input" type="checkbox" id="filter-service-${service["service_type"]}" />
+                <label class="form-check-label" for="filter-service-${service["service_type"]}">${service["service_title"]}</label>
             </div>
         `)
+        serviceDiv.insertAdjacentHTML("beforeend", `
+                <div class="nodisplay" id="filter-service-doc-div-${service["service_type"]}">`)
+        
+        service["docs"].map (doc => {
+            document.getElementById(`filter-service-doc-div-${service["service_type"]}`).insertAdjacentHTML("beforeend", `
+                <div id="filter-service-doc-div-${service["service_type"]}">
+                    <div class="form-check form-switch form-check-doc">
+                        <input class="form-check-input" type="checkbox" id="filter-service-doc-${doc["type"]}" />
+                        <label class="form-check-label" for="filter-service-doc-${doc["type"]}">${doc["title"]}</label>
+                    </div>
+                </div>
+            `)
+        })
+        let serviceCheckbox = document.getElementById(`filter-service-${service["service_type"]}`)
+        serviceCheckbox.addEventListener("change", (e) => {
+            if (e["target"].checked) {
+                console.log(`filter-service-${service["service_type"]} is checked`)
+                active_service_search_filters.push({
+                    service_type: `${service["service_type"]}`,
+                    doc_types: []
+                })
+                document.getElementById(`filter-service-doc-div-${service["service_type"]}`).classList.remove("nodisplay")
+            } else {
+                console.log(`filter-service-${service["service_type"]} is not checked`)
+                // Remove the element from the array
+                active_service_search_filters = (
+                    active_service_search_filters.filter((item) => item.service_type !== `${service["service_type"]}`)
+                );
+                document.getElementById(`filter-service-doc-div-${service["service_type"]}`).classList.add("nodisplay")
+            }
+        })
     })
     doc_types.map(doc => {
         docDiv.insertAdjacentHTML("beforeend", `
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-                <label class="form-check-label" for="flexSwitchCheckDefault">${doc}</label>
+                <input class="form-check-input" type="checkbox" id="filter-doc-${doc}" />
+                <label class="form-check-label" for="filter-doc-${doc}">${doc}</label>
             </div>
         `)
     })
