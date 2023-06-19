@@ -115,8 +115,6 @@ async function searchRequest(val) {
         final_query = request_filtered
     }
 
-    console.log(final_query)
-
     // Get the value search_environment out of this script's html description of the footer section
     let this_js_script = $('script[src*=search]');
 
@@ -174,58 +172,20 @@ function createResultList(response) {
     }
 };
 
-const createMainResult = async (response) => {
-    // Function to generate result list on main content
-    // Remove search as you type results
-    document.getElementById('searchDropdown').classList.remove('show');
-
-    let div = document.getElementById('searchResultsEnter')
-    // Check whether the searchResultsEnter div already exists
-    if (typeof(div)!= 'undefined' && div != null) {
-        div = document.getElementById('searchResultsEnter')
-
-    }
-    // If it does not exist create it
-    else {
-        // Search for content div, hide it and add search results
-        let contentDiv = document.getElementById('docs-content')
-        contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter' class='overflow-hidden'></div>");
-        contentDiv.classList.add('nodisplay')
-        // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
-        if (document.getElementById('right-sidebar') == undefined) {
-            document.getElementById('left-sidebar').classList.add('not-visible')
-        } else {
-            document.getElementById('left-sidebar').classList.add('not-visible')
-            document.getElementById('right-sidebar').classList.add('not-visible')
-            document.getElementById('breadcrumbs').classList.add('d-none')
-        }
-        div = document.getElementById('searchResultsEnter')
-    }
-
-    // Remove old search results
-    div.textContent = ""
-
-    // Create Results Headline
-    let h1 = document.createElement('h1')
-    h1.innerHTML = "Search Results: " + response.hits.hits.length
-    h1.setAttribute('style', 'font-size: 1.5rem')
-    h1.classList.add('ps-3')
-    h1.classList.add('d-flex')
-    h1.classList.add('justify-content-between')
-
-    // Search Results Close Button
-    let i = document.createElement('i')
-    i.classList.add('fa')
-    i.classList.add('fa-close')
-    i.setAttribute('onclick', 'deleteEnterResults()')
-    h1.appendChild(i)
-    div.appendChild(h1)
-
+const createMainResultList = (response, div) => {
     // Create Result-List
     let index = 0
     let ul_index = 0
     let hit_length = response.hits.hits.length
     let ul;
+    if (document.getElementById('ul_div') === null) {
+        let ul_div = document.createElement('div')
+        ul_div.setAttribute('id', 'ul_div')
+        div.appendChild(ul_div)
+    } else {
+        document.getElementById('ul_div').textContent = ""
+    }
+    
     // number of results per page
     let pagination_size = 10;
     while (hit_length > 0) {
@@ -240,7 +200,7 @@ const createMainResult = async (response) => {
         }
         ul.classList.add('p-0')
         ul.setAttribute('id', "ul_" + ul_index)
-        div.appendChild(ul)
+        ul_div.appendChild(ul)
 
         let hit = response.hits.hits[index];
 
@@ -301,8 +261,59 @@ const createMainResult = async (response) => {
             ul_pagination.appendChild(li_pagination);
         }
         nav.appendChild(ul_pagination);
-        div.appendChild(nav);
+        ul_div.appendChild(nav);
     }
+}
+
+const createMainResult = async (response) => {
+    // Function to generate result list on main content
+    // Remove search as you type results
+    document.getElementById('searchDropdown').classList.remove('show');
+
+    let div = document.getElementById('searchResultsEnter')
+    // Check whether the searchResultsEnter div already exists
+    if (typeof(div)!= 'undefined' && div != null) {
+        div = document.getElementById('searchResultsEnter')
+
+    }
+    // If it does not exist create it
+    else {
+        // Search for content div, hide it and add search results
+        let contentDiv = document.getElementById('docs-content')
+        contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter' class='overflow-hidden'></div>");
+        contentDiv.classList.add('nodisplay')
+        // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
+        if (document.getElementById('right-sidebar') == undefined) {
+            document.getElementById('left-sidebar').classList.add('not-visible')
+        } else {
+            document.getElementById('left-sidebar').classList.add('not-visible')
+            document.getElementById('right-sidebar').classList.add('not-visible')
+            document.getElementById('breadcrumbs').classList.add('d-none')
+        }
+        div = document.getElementById('searchResultsEnter')
+    }
+
+    // Remove old search results
+    div.textContent = ""
+
+    // Create Results Headline
+    let h1 = document.createElement('h1')
+    h1.innerHTML = "Search Results: " + response.hits.hits.length
+    h1.setAttribute('style', 'font-size: 1.5rem')
+    h1.classList.add('ps-3')
+    h1.classList.add('d-flex')
+    h1.classList.add('justify-content-between')
+
+    // Search Results Close Button
+    let i = document.createElement('i')
+    i.classList.add('fa')
+    i.classList.add('fa-close')
+    i.setAttribute('onclick', 'deleteEnterResults()')
+    h1.appendChild(i)
+    div.appendChild(h1)
+
+    // Create Main Result List
+    createMainResultList(response, div)
 
     // Create Filter List
     // Check whether the serviceAccordion div already exists
@@ -355,7 +366,7 @@ const addFiltersToAccordion = (filters) => {
                 })
                 // Add the doc filter UI for that service
                 document.getElementById(`filter-service-doc-div-${service["service_type"]}`).classList.remove("nodisplay")
-                searchFilterMainResult()
+                searchMainResult()
             } else {
                 // Remove the element from the array
                 active_service_search_filters = (
@@ -363,7 +374,7 @@ const addFiltersToAccordion = (filters) => {
                 );
                 // Remove the doc filter UI for that service
                 document.getElementById(`filter-service-doc-div-${service["service_type"]}`).classList.add("nodisplay")
-                searchFilterMainResult()
+                searchMainResult()
             }
         })
 
@@ -413,11 +424,11 @@ const addFiltersToAccordion = (filters) => {
                 if (e["target"].checked) {
                     // Add element to the array
                     active_service_search_filters = updateDocTypes(active_service_search_filters, service["service_type"], doc["type"], false, doc_types)
-                    searchFilterMainResult()
+                    searchMainResult()
                 } else {
                     // Remove the element from the array
                     active_service_search_filters = updateDocTypes(active_service_search_filters, service["service_type"], doc["type"], true, doc_types)
-                    searchFilterMainResult()
+                    searchMainResult()
                 }
             })
         })
@@ -463,6 +474,7 @@ const deleteEnterResults = () => {
     document.getElementById('DeleteSearchText').classList.add("d-none");
 
     // Remove Search Filter
+    active_service_search_filters = []
     removeSearchFilter()
 }
 
@@ -481,11 +493,6 @@ async function onEnter(event) {
 };
 
 const searchMainResult = async () => {
-    let response = await searchRequest(document.getElementById('searchbox').value);
-    createMainResult(response)
-}
-
-const searchFilterMainResult = async () => {
     let response = await searchRequest(document.getElementById('searchbox').value);
     createMainResult(response)
 }
