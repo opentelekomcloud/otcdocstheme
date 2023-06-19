@@ -317,7 +317,7 @@ const createMainResult = async (response) => {
 
     // Create Filter List
     // Check whether the serviceAccordion div already exists
-    let div_service_accordion = document.getElementById('serviceAccordion')
+    let div_service_accordion = document.getElementById('searchAccordions')
     if (div_service_accordion === null) {
         let filters = await addFilters()
         createSearchFilter()
@@ -410,7 +410,6 @@ const addFiltersToAccordion = (filters) => {
                             }
                             // If no filter is selected add all doc types
                             if (updatedDocTypes.length == 0) {
-                                console.log("teste")
                                 updatedDocTypes = docTypes
                             }
                             return {
@@ -523,7 +522,7 @@ const createSearchFilter = () => {
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDocFilter"
-                    aria-expanded="false" aria-controls="collapseDocFilter">
+                    aria-expanded="false" aria-controls="collapseDocFilter" onclick="removeServiceFilters()">
                     Document Filter
                     </button>
                 </h2>
@@ -543,6 +542,32 @@ const removeSearchFilter = () => {
     let filter = document.getElementById('accordions')
     filter.remove(filter)
 }
+
+const removeServiceFilters = () => {
+    active_service_search_filters.map(item => {
+        document.getElementById(`filter-service-${item["service_type"]}`).checked = false
+        document.getElementById(`filter-service-doc-div-${item["service_type"]}`).classList.add("nodisplay")
+        item["doc_types"].map(type => {
+            document.getElementById(`filter-service-${item["service_type"]}-doc-${type}`).checked = false
+        })
+    })
+    active_service_search_filters = []
+    searchMainResult()
+}
+
+// TODO Remove Doc Filters when closing it and clicking on Service Filters
+
+// const removeDocFilters = () => {
+//     active_service_search_filters.map(item => {
+//         document.getElementById(`filter-service-${item["service_type"]}`).checked = false
+//         document.getElementById(`filter-service-doc-div-${item["service_type"]}`).classList.add("nodisplay")
+//         item["doc_types"].map(type => {
+//             document.getElementById(`filter-service-${item["service_type"]}-doc-${type}`).checked = false
+//         })
+//     })
+//     active_service_search_filters = []
+//     searchMainResult()
+// }
 
 const pagination = (element) => {
     // Get pagination ul element and it's children
