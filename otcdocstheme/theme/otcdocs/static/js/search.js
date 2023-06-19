@@ -446,8 +446,11 @@ const addFiltersToAccordion = (filters) => {
 function timer(el) {
     id = setTimeout(async () => {
         if (el.value) {
-            let response = await searchRequest(el.value);
-            createResultList(response);
+            // Check whether main Result is opened
+            if (document.getElementById("searchResultsEnter") === null) {
+                let response = await searchRequest(el.value);
+                createResultList(response);
+            }
         } else {
             deleteEnterResults()
         };
