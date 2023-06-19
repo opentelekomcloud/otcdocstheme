@@ -506,34 +506,32 @@ const createSearchFilter = () => {
     filter.classList.add('docs-sidebar')
     filter.classList.add('py-md-4')
     filter.insertAdjacentHTML("beforeend", `
-        <div class="accordion" id="serviceAccordion">
+        <div class="accordion" id="searchAccordions">
             <div class="accordion-item">
-            <h2 class="accordion-header" id="serviceFilter">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseServiceFilter"
-                aria-expanded="true" aria-controls="collapseServiceFilter">
-                Service Filter
-                </button>
-            </h2>
-            <div id="collapseServiceFilter" class="accordion-collapse collapse" aria-labelledby="serviceFilter"
-                data-bs-parent="#serviceAccordion" style="">
-                <div class="accordion-body" id="serviceFilterBody">
+                <h2 class="accordion-header" id="serviceFilter">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseServiceFilter"
+                    aria-expanded="true" aria-controls="collapseServiceFilter">
+                    Service Filter
+                    </button>
+                </h2>
+                <div id="collapseServiceFilter" class="accordion-collapse collapse" aria-labelledby="serviceFilter"
+                    data-bs-parent="#searchAccordions" style="">
+                    <div class="accordion-body" id="serviceFilterBody">
+                    </div>
                 </div>
             </div>
-            </div>
-        </div>
-        <div class="accordion" id="docAccordion"></div>
             <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDocFilter"
-                aria-expanded="false" aria-controls="collapseDocFilter">
-                Document Filter
-                </button>
-            </h2>
-            <div id="collapseDocFilter" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                data-bs-parent="#docAccordion">
-                <div class="accordion-body"  id="docFilterBody">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDocFilter"
+                    aria-expanded="false" aria-controls="collapseDocFilter">
+                    Document Filter
+                    </button>
+                </h2>
+                <div id="collapseDocFilter" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#searchAccordions">
+                    <div class="accordion-body"  id="docFilterBody">
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
     `);
