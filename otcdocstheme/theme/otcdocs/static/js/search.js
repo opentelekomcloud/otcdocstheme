@@ -1,6 +1,7 @@
 var id = 0;
 const base_url = 'https://opensearch.eco.tsi-dev.otc-service.com/'
 let active_service_search_filters = []
+let active_doc_search_filters = []
 let available_doc_types = []
 
 const cleanupString = (text) => {
@@ -26,16 +27,22 @@ async function postRequest(url, body) {
 async function searchRequest(val) {
 
     let service_type_query = []
-    let doc_type_query = []
+    let service_doc_type_query = []
 
     if (active_service_search_filters.length != 0) {
         active_service_search_filters.map(item => {
             service_type_query.push(item["service_type"])
-            doc_type_query = item["doc_types"]
+            service_doc_type_query = item["doc_types"]
         })
     }
 
-    const request_filtered = {
+    let docs_type_query = []
+
+    if (active_doc_search_filters.length != 0) {
+        docs_type_query = active_doc_search_filters
+    }
+
+    const request_service_filtered = {
         "from" : 0, "size" : 100,
         "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url"],
         "query": {
@@ -48,7 +55,46 @@ async function searchRequest(val) {
                     },
                     {
                         "terms": {
-                          "doc_type": doc_type_query
+                          "doc_type": service_doc_type_query
+                        }
+                    },
+                    {
+                    "multi_match": {
+                        "query": val,
+                        "type": "best_fields",
+                        "operator": "and",
+                        "fields": ["body", "title^2"]
+                    }
+                    }
+                ]
+            }
+        },
+        "highlight": {
+            "number_of_fragments": 1,
+            "fragment_size":100,
+            "pre_tags": [
+                "<span style='color: var(--dt-color-magenta)'>"
+            ],
+            "post_tags": [
+                "</span>"
+            ],
+            "fields":{
+                "body": {},
+                "title": {}
+            },
+            "require_field_match" : false
+        }
+    };
+
+    const request_docs_filtered = {
+        "from" : 0, "size" : 100,
+        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url"],
+        "query": {
+            "bool": {
+                "must": [
+                    {
+                        "terms": {
+                          "doc_type": docs_type_query
                         }
                     },
                     {
@@ -109,11 +155,15 @@ async function searchRequest(val) {
 
     let final_query = {}
 
-    if (active_service_search_filters.length == 0) {
+    if (active_service_search_filters.length == 0 && active_doc_search_filters.length == 0) {
         final_query = request
-    } else {
-        final_query = request_filtered
+    } else if (active_service_search_filters != 0) {
+        final_query = request_service_filtered
+    } else if (active_doc_search_filters != 0) {
+        final_query = request_docs_filtered
     }
+
+    console.log(final_query)
 
     // Get the value search_environment out of this script's html description of the footer section
     let this_js_script = $('script[src*=search]');
@@ -444,27 +494,22 @@ const addFiltersToAccordion = (filters) => {
         `)
 
         // Add the event listeners for clicking on a doc-filter
-        // let docCheckbox = document.getElementById(`filter-service-${doc}`)
-        // docCheckbox.addEventListener("change", (e) => {
-        //     if (e["target"].checked) {
-        //         // Add element to the array
-        //         active_service_search_filters.push({
-        //             service_type: `${service["service_type"]}`,
-        //             doc_types: doc_types
-        //         })
-        //         // Add the doc filter UI for that service
-        //         document.getElementById(`filter-service-doc-div-${service["service_type"]}`).classList.remove("nodisplay")
-        //         searchMainResult()
-        //     } else {
-        //         // Remove the element from the array
-        //         active_service_search_filters = (
-        //             active_service_search_filters.filter((item) => item.service_type !== `${service["service_type"]}`)
-        //         );
-        //         // Remove the doc filter UI for that service
-        //         document.getElementById(`filter-service-doc-div-${service["service_type"]}`).classList.add("nodisplay")
-        //         searchMainResult()
-        //     }
-        // })
+        let docCheckbox = document.getElementById(`filter-doc-${doc['type']}`)
+        docCheckbox.addEventListener("change", (e) => {
+            if (e["target"].checked) {
+                // Add element to the array
+                active_doc_search_filters.push(doc['type'])
+            } else {
+                // Remove the element from the array
+                // Search the element first
+                const doc_type_index = active_doc_search_filters.indexOf(doc['type'])
+                // If found remove it using splice method
+                if (doc_type_index > -1) {
+                    active_doc_search_filters.splice(doc_type_index, 1)
+                }
+            }
+            searchMainResult()
+        })
     })
     
 }
