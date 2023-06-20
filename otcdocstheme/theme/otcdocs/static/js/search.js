@@ -571,6 +571,7 @@ const searchMainResult = async () => {
     createMainResult(response)
 }
 
+// Create the Accordions
 const createSearchFilter = () => {
     let filter = document.createElement('div')
     filter.setAttribute('id', 'accordions')
@@ -581,7 +582,7 @@ const createSearchFilter = () => {
             <div class="accordion-item">
                 <h2 class="accordion-header" id="serviceFilter">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseServiceFilter"
-                    aria-expanded="true" aria-controls="collapseServiceFilter">
+                    aria-expanded="true" aria-controls="collapseServiceFilter" onclick="removeDocFilters()">
                     Service Filter
                     </button>
                 </h2>
@@ -615,31 +616,30 @@ const removeSearchFilter = () => {
     filter.remove(filter)
 }
 
+// Remove Service Filters once user clicks on Doc-Filter accordion
 const removeServiceFilters = () => {
+    console.log(active_service_search_filters)
     active_service_search_filters.map(item => {
         document.getElementById(`filter-service-${item["service_type"]}`).checked = false
         document.getElementById(`filter-service-doc-div-${item["service_type"]}`).classList.add("nodisplay")
-        item["doc_types"].map(type => {
-            document.getElementById(`filter-service-${item["service_type"]}-doc-${type}`).checked = false
-        })
+        if (item["doc_types"].length > 0 && item["doc_types"] !== available_doc_types) {
+            item["doc_types"].map(type => {
+                document.getElementById(`filter-service-${item["service_type"]}-doc-${type}`).checked = false
+            })
+        }
     })
     active_service_search_filters = []
     searchMainResult()
 }
 
-// TODO Remove Doc Filters when closing it and clicking on Service Filters
-
-// const removeDocFilters = () => {
-//     active_service_search_filters.map(item => {
-//         document.getElementById(`filter-service-${item["service_type"]}`).checked = false
-//         document.getElementById(`filter-service-doc-div-${item["service_type"]}`).classList.add("nodisplay")
-//         item["doc_types"].map(type => {
-//             document.getElementById(`filter-service-${item["service_type"]}-doc-${type}`).checked = false
-//         })
-//     })
-//     active_service_search_filters = []
-//     searchMainResult()
-// }
+// Remove Doc Filters once user clicks on Service-Filter accordion
+const removeDocFilters = () => {
+    active_doc_search_filters.map(item => {
+        document.getElementById(`filter-doc-${item}`).checked = false
+    })
+    active_doc_search_filters = []
+    searchMainResult()
+}
 
 const pagination = (element) => {
     // Get pagination ul element and it's children
