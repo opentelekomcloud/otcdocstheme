@@ -333,11 +333,13 @@ async function addFilters() {
         }
     }
 
-    let url = `${base_url}search_index_de/_search`
+    let url = `${base_url}search_index_test/_search`
 
     let response = await postRequest(url, request)
     response = response.hits.hits[0]._source
-    available_doc_types = response["doc_types"]
+    response["docs"].map(doc => {
+        available_doc_types.push(doc["type"])
+    })
     return response
 }
 
@@ -345,7 +347,8 @@ const addFiltersToAccordion = (filters) => {
     let serviceDiv = document.getElementById('serviceFilterBody')
     let docDiv = document.getElementById('docFilterBody')
     let services = filters['services']
-    let doc_types = filters['doc_types']
+    let doc_types = available_doc_types
+    let all_docs = filters['docs']
     services.map(service => {
         // Create the filters on the left side
         serviceDiv.insertAdjacentHTML("beforeend", `
@@ -432,14 +435,38 @@ const addFiltersToAccordion = (filters) => {
             })
         })
     })
-    doc_types.map(doc => {
+    all_docs.map(doc => {
         docDiv.insertAdjacentHTML("beforeend", `
             <div class="form-check form-switch">
-                <input class="form-check-input" type="checkbox" id="filter-doc-${doc}" />
-                <label class="form-check-label" for="filter-doc-${doc}">${doc}</label>
+                <input class="form-check-input" type="checkbox" id="filter-doc-${doc['type']}" />
+                <label class="form-check-label" for="filter-doc-${doc['type']}">${doc['title']}</label>
             </div>
         `)
+
+        // Add the event listeners for clicking on a doc-filter
+        // let docCheckbox = document.getElementById(`filter-service-${doc}`)
+        // docCheckbox.addEventListener("change", (e) => {
+        //     if (e["target"].checked) {
+        //         // Add element to the array
+        //         active_service_search_filters.push({
+        //             service_type: `${service["service_type"]}`,
+        //             doc_types: doc_types
+        //         })
+        //         // Add the doc filter UI for that service
+        //         document.getElementById(`filter-service-doc-div-${service["service_type"]}`).classList.remove("nodisplay")
+        //         searchMainResult()
+        //     } else {
+        //         // Remove the element from the array
+        //         active_service_search_filters = (
+        //             active_service_search_filters.filter((item) => item.service_type !== `${service["service_type"]}`)
+        //         );
+        //         // Remove the doc filter UI for that service
+        //         document.getElementById(`filter-service-doc-div-${service["service_type"]}`).classList.add("nodisplay")
+        //         searchMainResult()
+        //     }
+        // })
     })
+    
 }
 
 function timer(el) {
