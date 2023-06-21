@@ -235,7 +235,7 @@ const createMainResultList = (response, div) => {
     } else {
         document.getElementById('ul_div').textContent = ""
     }
-    
+
     // number of results per page
     let pagination_size = 10;
     while (hit_length > 0) {
@@ -511,7 +511,7 @@ const addFiltersToAccordion = (filters) => {
             searchMainResult()
         })
     })
-    
+
 }
 
 function timer(el) {
