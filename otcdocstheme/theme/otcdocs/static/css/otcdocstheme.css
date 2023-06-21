@@ -484,6 +484,11 @@ docs-book-wrapper .ul-breadcrumbs {
   text-decoration: none;
 }
 
+a.page-link:focus {
+  border: 0;
+  box-shadow: none;
+}
+
 /* END: search */
 
 /* Service-Based-View */
