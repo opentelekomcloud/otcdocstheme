@@ -596,7 +596,7 @@ const createSearchFilter = () => {
                 <h2 class="accordion-header" id="headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDocFilter"
                     aria-expanded="false" aria-controls="collapseDocFilter" onclick="removeServiceFilters()">
-                    Document Filter
+                    Document-Type Filter
                     </button>
                 </h2>
                 <div id="collapseDocFilter" class="accordion-collapse collapse" aria-labelledby="headingTwo"
