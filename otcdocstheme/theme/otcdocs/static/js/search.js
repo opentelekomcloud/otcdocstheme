@@ -50,12 +50,12 @@ async function searchRequest(val) {
                 "must": [
                     {
                         "terms": {
-                          "service_type": service_type_query
+                          "service_type.keyword": service_type_query
                         }
                     },
                     {
                         "terms": {
-                          "doc_type": service_doc_type_query
+                          "doc_type.keyword": service_doc_type_query
                         }
                     },
                     {
@@ -94,7 +94,7 @@ async function searchRequest(val) {
                 "must": [
                     {
                         "terms": {
-                          "doc_type": docs_type_query
+                          "doc_type.keyword": docs_type_query
                         }
                     },
                     {
