@@ -38,11 +38,15 @@ async function searchRequest(val) {
     // Get the value search_environment of the current skript
     let this_js_script = $('script[src*=search]');
     let search_environment = this_js_script.attr('search_environment');
+    let search_url = this_js_script.attr('search_url')
+    if (search_url.slice(-1) !== '/') {
+        search_url = search_url + '/'
+    }
 
     // Set the URL for the OpenSearch search correctly
-    let search_url = `https://opensearch.eco.tsi-dev.otc-service.com/${search_environment}-*/_search`
+    let final_search_url = `${search_url}${search_environment}-*/_search`
 
-    let response = await fetch(search_url, {
+    let response = await fetch(final_search_url, {
         method: 'POST',
         mode: 'cors',
         headers: {
