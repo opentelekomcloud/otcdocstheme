@@ -418,7 +418,11 @@ const addFiltersToAccordion = (filters) => {
                     doc_types: doc_types
                 })
                 // Add the doc filter UI for that service
-                document.getElementById(`filter-service-doc-div-${service["service_type"]}`).classList.remove("nodisplay")
+                let docdivservice = document.getElementById(`filter-service-doc-div-${service["service_type"]}`)
+                docdivservice.classList.remove("nodisplay")
+                for (child of docdivservice.children) {
+                    child.children[0].children[0].checked = true
+                }
                 searchMainResult()
             } else {
                 // Remove the element from the array
@@ -451,19 +455,11 @@ const addFiltersToAccordion = (filters) => {
                     return arr.map((item) => {
                         if (item.service_type === serviceType) {
                             let updatedDocTypes;
-                            // Remove all docTypes as we now want to filter
-                            if (item.doc_types === docTypes) {
-                                item.doc_types = []
-                            }
                             // Filter by adding a doc type or removing it
                             if (remove) {
                                 updatedDocTypes = item.doc_types.filter((docType) => docType !== element);
                             } else {
                                 updatedDocTypes = [...item.doc_types, element];
-                            }
-                            // If no filter is selected add all doc types
-                            if (updatedDocTypes.length == 0) {
-                                updatedDocTypes = docTypes
                             }
                             return {
                                 ...item,
@@ -618,7 +614,6 @@ const removeSearchFilter = () => {
 
 // Remove Service Filters once user clicks on Doc-Filter accordion
 const removeServiceFilters = () => {
-    console.log(active_service_search_filters)
     active_service_search_filters.map(item => {
         document.getElementById(`filter-service-${item["service_type"]}`).checked = false
         document.getElementById(`filter-service-doc-div-${item["service_type"]}`).classList.add("nodisplay")
