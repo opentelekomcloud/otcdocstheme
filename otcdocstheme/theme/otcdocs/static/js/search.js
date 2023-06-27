@@ -17,7 +17,7 @@ async function postRequest(url, body) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(body, null, 0)
     })
 
     response = await response.json()
