@@ -44,7 +44,7 @@ async function searchRequest(val) {
 
     const request_service_filtered = {
         "from" : 0, "size" : 100,
-        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url"],
+        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title"],
         "query": {
             "bool": {
                 "must": [
@@ -88,7 +88,7 @@ async function searchRequest(val) {
 
     const request_docs_filtered = {
         "from" : 0, "size" : 100,
-        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url"],
+        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title"],
         "query": {
             "bool": {
                 "must": [
@@ -127,7 +127,7 @@ async function searchRequest(val) {
 
     const request = {
         "from" : 0, "size" : 100,
-        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url"],
+        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title"],
         "query": {
             "multi_match": {
               "query": val,
@@ -163,7 +163,7 @@ async function searchRequest(val) {
         final_query = request_docs_filtered
     }
 
-    console.log(final_query)
+
 
     // Get the value search_environment out of this script's html description of the footer section
     let this_js_script = $('script[src*=search]');
@@ -257,6 +257,7 @@ const createMainResultList = (response, div) => {
         // Create li, a, div elements
         let li = document.createElement('li');
         let a = document.createElement('a');
+        let doctype_div = document.createElement('div')
         let div_1 = document.createElement('div');
         let div_2 = document.createElement('div');
         let div_url = document.createElement('div');
@@ -273,11 +274,27 @@ const createMainResultList = (response, div) => {
         } else {
             div_1.innerHTML = hit.highlight.title[0];
         }
+
+        // Add Icons based on DocType
+        if (hit._source.doc_type === "umn") {
+            div_1.insertAdjacentHTML("afterbegin", `<i class="fa-regular fa-file-lines fa-fw icon-doc-type"></i>`)
+        } else if (hit._source.doc_type === "api-ref") {
+            div_1.insertAdjacentHTML("afterbegin", `<i class="fa-solid fa-code fa-fw icon-doc-type"></i>`)
+        } else if (hit._source.doc_type === "dev") {
+            div_1.insertAdjacentHTML("afterbegin", `<i class="fa-solid fa-terminal fa-fw icon-doc-type"></i>`)
+        } else {
+            div_1.insertAdjacentHTML("afterbegin", `<i class="fa-regular fa-file fa-fw icon-doc-type"></i>`)
+        }
+
+        // Add Doc Title
+        doctype_div.insertAdjacentHTML("afterbegin", `<div class="doc-title-green">${hit._source.doc_title}</div>`)
+        
         div_url.innerHTML = hit._source.doc_url + hit._source.current_page_name;
         div_2.innerHTML = cleanupString(hit.highlight.body[0]);
 
-        // Append as childs to structure ul > li > a > div/div
+        // Append as childs to structure ul > li > a > div/div/div
         a.appendChild(div_1);
+        a.appendChild(doctype_div);
         a.appendChild(div_url);
         a.appendChild(div_2);
         li.appendChild(a);

@@ -489,6 +489,14 @@ a.page-link:focus {
   box-shadow: none;
 }
 
+.icon-doc-type {
+  margin-right: 0.5rem;
+}
+
+.doc-title-green {
+  color: var(--dt-color-olive-100)
+}
+
 /* END: search */
 
 /* Service-Based-View */
