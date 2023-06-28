@@ -311,7 +311,7 @@ const createMainResultList = (response, div) => {
 
         // Add Doc Title
         doctype_div.insertAdjacentHTML("afterbegin", `<div class="doc-title-green">${hit._source.doc_title}</div>`)
-        
+
         div_url.innerHTML = hit._source.doc_url + hit._source.current_page_name;
         div_2.innerHTML = cleanupString(hit.highlight.body[0]);
 
