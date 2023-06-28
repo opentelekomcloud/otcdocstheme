@@ -497,6 +497,12 @@ a.page-link:focus {
   color: var(--dt-color-olive-100)
 }
 
+.search-result-code {
+  font-size: 1em;
+  color: #212529;
+  background-color: #eee
+}
+
 /* END: search */
 
 /* Service-Based-View */

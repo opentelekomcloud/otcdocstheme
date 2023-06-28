@@ -4,12 +4,30 @@ let active_service_search_filters = []
 let active_doc_search_filters = []
 let available_doc_types = []
 
+// Remove special characters and HTML from code blocks
 const cleanupString = (text) => {
     text = text.replace(/¶/, " ");
     text = text.replace(/¶/, " ");
+    if (containsHTML(text)) {
+        text = removeHTMLTags(text)
+        text = `<code class="search-result-code">${text}</code>`
+    }
     return text;
 }
 
+// Check if a string contains any HTML except <span>
+const containsHTML = (text) => {
+    var htmlPattern = /<(?!\/?span\b)[^>]*>/;
+    return htmlPattern.test(text);
+}
+
+// Remove any HTML from a string
+const removeHTMLTags = (text) => {
+    var doc = new DOMParser().parseFromString(text, "text/html");
+    return doc.body.textContent || "";
+}
+
+// Send a POST request
 async function postRequest(url, body) {
     let response = await fetch(url, {
         method: 'POST',
@@ -24,6 +42,7 @@ async function postRequest(url, body) {
     return response
 }
 
+// Build the request for searching
 async function searchRequest(val) {
 
     let service_type_query = []
@@ -42,6 +61,7 @@ async function searchRequest(val) {
         docs_type_query = active_doc_search_filters
     }
 
+    // Request in case filtered by services
     const request_service_filtered = {
         "from" : 0, "size" : 100,
         "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title"],
@@ -86,6 +106,7 @@ async function searchRequest(val) {
         }
     };
 
+    // Request in case only filtered by doc types
     const request_docs_filtered = {
         "from" : 0, "size" : 100,
         "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title"],
@@ -125,6 +146,7 @@ async function searchRequest(val) {
         }
     };
 
+    // Default request without filtering
     const request = {
         "from" : 0, "size" : 100,
         "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title"],
@@ -155,6 +177,7 @@ async function searchRequest(val) {
 
     let final_query = {}
 
+    // Check if filters exist and what exactly is being filtered
     if (active_service_search_filters.length == 0 && active_doc_search_filters.length == 0) {
         final_query = request
     } else if (active_service_search_filters != 0) {
@@ -239,8 +262,8 @@ const createMainResultList = (response, div) => {
     // number of results per page
     let pagination_size = 10;
     while (hit_length > 0) {
-        // Create list pages
 
+        // Create list pages
         if ((index % pagination_size) == 0) {
             ul_index = ul_index + 1;
             ul = document.createElement('ul');
@@ -393,6 +416,7 @@ const createMainResult = async (response) => {
 
 }
 
+// Obtain all the possible filter values
 async function addFilters() {
     let request = {
         "query" : {
@@ -400,6 +424,7 @@ async function addFilters() {
         }
     }
 
+    // URL for querying the filter values
     let url = `${base_url}search_index_test/_search`
 
     let response = await postRequest(url, request)
