@@ -43,7 +43,7 @@ async function postRequest(url, body) {
 }
 
 // Build the request for searching
-async function searchRequest(val) {
+async function searchRequest(val, request_size, highlight_size) {
 
     let service_type_query = []
     let service_doc_type_query = []
@@ -63,7 +63,7 @@ async function searchRequest(val) {
 
     // Request in case filtered by services
     const request_service_filtered = {
-        "from" : 0, "size" : 100,
+        "from" : 0, "size" : request_size,
         "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title", "service_title"],
         "query": {
             "bool": {
@@ -91,7 +91,7 @@ async function searchRequest(val) {
         },
         "highlight": {
             "number_of_fragments": 1,
-            "fragment_size":100,
+            "fragment_size":highlight_size,
             "pre_tags": [
                 "<span style='color: var(--dt-color-magenta)'>"
             ],
@@ -108,7 +108,7 @@ async function searchRequest(val) {
 
     // Request in case only filtered by doc types
     const request_docs_filtered = {
-        "from" : 0, "size" : 100,
+        "from" : 0, "size" : request_size,
         "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title", "service_title"],
         "query": {
             "bool": {
@@ -131,7 +131,7 @@ async function searchRequest(val) {
         },
         "highlight": {
             "number_of_fragments": 1,
-            "fragment_size":100,
+            "fragment_size":highlight_size,
             "pre_tags": [
                 "<span style='color: var(--dt-color-magenta)'>"
             ],
@@ -148,7 +148,7 @@ async function searchRequest(val) {
 
     // Default request without filtering
     const request = {
-        "from" : 0, "size" : 100,
+        "from" : 0, "size" : request_size,
         "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title", "service_title"],
         "query": {
             "multi_match": {
@@ -160,7 +160,7 @@ async function searchRequest(val) {
         },
         "highlight": {
             "number_of_fragments": 1,
-            "fragment_size":100,
+            "fragment_size":highlight_size,
             "pre_tags": [
                 "<span style='color: var(--dt-color-magenta)'>"
             ],
@@ -209,10 +209,6 @@ function createResultList(response) {
     if (response.hits.hits.length > 0) {
         ul.classList.add('show');
         for (index in response.hits.hits) {
-            // Only show top-5 search results
-            if (index > 4) {
-                break
-            }
             let hit = response.hits.hits[index];
 
             // Create li, a, div elements
@@ -555,7 +551,7 @@ function timer(el) {
         if (el.value) {
             // Check whether main Result is opened
             if (document.getElementById("searchResultsEnter") === null) {
-                let response = await searchRequest(el.value);
+                let response = await searchRequest(el.value, 5, 100);
                 createResultList(response);
             }
         } else {
@@ -603,7 +599,7 @@ async function onEnter(event) {
 };
 
 const searchMainResult = async () => {
-    let response = await searchRequest(document.getElementById('searchbox').value);
+    let response = await searchRequest(document.getElementById('searchbox').value, 100, 200);
     createMainResult(response)
 }
 
