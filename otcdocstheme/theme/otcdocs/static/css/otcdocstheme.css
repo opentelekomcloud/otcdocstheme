@@ -493,10 +493,6 @@ a.page-link:focus {
   margin-right: 0.5rem;
 }
 
-.doc-title-green {
-  color: var(--dt-color-olive-100)
-}
-
 .search-result-code {
   font-size: 1em;
   color: #212529;

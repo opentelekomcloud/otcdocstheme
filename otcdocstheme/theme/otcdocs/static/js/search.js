@@ -280,7 +280,6 @@ const createMainResultList = (response, div) => {
         // Create li, a, div elements
         let li = document.createElement('li');
         let a = document.createElement('a');
-        let doctype_div = document.createElement('div')
         let div_1 = document.createElement('div');
         let div_2 = document.createElement('div');
         let div_url = document.createElement('div');
@@ -311,15 +310,12 @@ const createMainResultList = (response, div) => {
             div_1.insertAdjacentHTML("afterbegin", `<i class="fa-regular fa-file fa-fw icon-doc-type"></i>`)
         }
 
-        // Add Doc Title
-        doctype_div.insertAdjacentHTML("afterbegin", `<div class="doc-title-green">${hit._source.doc_title}</div>`)
         meta_string = `<bold class="service-doc-title">${hit._source.service_title} - ${hit._source.doc_title}</bold> | <path class=path-green>${hit._source.doc_url}${hit._source.current_page_name}</path>`
         div_url.innerHTML = meta_string
         div_2.innerHTML = cleanupString(hit.highlight.body[0]);
 
         // Append as childs to structure ul > li > a > div/div/div
         a.appendChild(div_1);
-        // a.appendChild(doctype_div);
         a.appendChild(div_url);
         a.appendChild(div_2);
         li.appendChild(a);
