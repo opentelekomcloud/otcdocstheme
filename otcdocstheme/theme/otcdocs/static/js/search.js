@@ -64,7 +64,7 @@ async function searchRequest(val) {
     // Request in case filtered by services
     const request_service_filtered = {
         "from" : 0, "size" : 100,
-        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title"],
+        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title", "service_title"],
         "query": {
             "bool": {
                 "must": [
@@ -109,7 +109,7 @@ async function searchRequest(val) {
     // Request in case only filtered by doc types
     const request_docs_filtered = {
         "from" : 0, "size" : 100,
-        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title"],
+        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title", "service_title"],
         "query": {
             "bool": {
                 "must": [
@@ -149,7 +149,7 @@ async function searchRequest(val) {
     // Default request without filtering
     const request = {
         "from" : 0, "size" : 100,
-        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title"],
+        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title", "service_title"],
         "query": {
             "multi_match": {
               "query": val,
@@ -290,8 +290,10 @@ const createMainResultList = (response, div) => {
         a.classList.add("dropdown-item");
         li.classList.add("nobullets")
         li.classList.add("border-bottom")
+        li.classList.add("search-result-padding")
         div_1.classList.add("search-title");
-        div_url.classList.add("path-green");
+        div_url.classList.add("search-meta")
+        div_2.classList.add("search-result-text")
         if (typeof hit.highlight.title == 'undefined') {
             div_1.innerHTML = hit._source.title;
         } else {
@@ -311,13 +313,13 @@ const createMainResultList = (response, div) => {
 
         // Add Doc Title
         doctype_div.insertAdjacentHTML("afterbegin", `<div class="doc-title-green">${hit._source.doc_title}</div>`)
-
-        div_url.innerHTML = hit._source.doc_url + hit._source.current_page_name;
+        meta_string = `<bold class="service-doc-title">${hit._source.service_title} - ${hit._source.doc_title}</bold> | <path class=path-green>${hit._source.doc_url}${hit._source.current_page_name}</path>`
+        div_url.innerHTML = meta_string
         div_2.innerHTML = cleanupString(hit.highlight.body[0]);
 
         // Append as childs to structure ul > li > a > div/div/div
         a.appendChild(div_1);
-        a.appendChild(doctype_div);
+        // a.appendChild(doctype_div);
         a.appendChild(div_url);
         a.appendChild(div_2);
         li.appendChild(a);

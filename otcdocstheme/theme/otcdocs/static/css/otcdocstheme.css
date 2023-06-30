@@ -503,6 +503,23 @@ a.page-link:focus {
   background-color: #eee
 }
 
+bold.service-doc-title {
+  font-weight: 500;
+}
+
+.search-meta {
+  font-size: 0.9rem;
+}
+
+.search-result-text {
+  font-size: 1.1rem;
+}
+
+.search-result-padding {
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+
 /* END: search */
 
 /* Service-Based-View */
