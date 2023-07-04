@@ -241,6 +241,14 @@ function createResultList(response) {
     }
 };
 
+const shortenString = (str, maxLength) => {
+    if (str.length <= maxLength) {
+      return str;
+    }
+    
+    return str.slice(0, maxLength - 3) + "...";
+};
+
 const createMainResultList = (response, div) => {
     // Create Result-List
     let index = 0
@@ -283,6 +291,7 @@ const createMainResultList = (response, div) => {
         // Add text and classes
         a.setAttribute('href', hit._source.base_url + hit._source.doc_url + hit._source.current_page_name + '.html');
         a.classList.add("dropdown-item");
+        a.classList.add("search-a")
         li.classList.add("nobullets")
         li.classList.add("border-bottom")
         li.classList.add("search-result-padding")
@@ -305,10 +314,11 @@ const createMainResultList = (response, div) => {
         } else {
             div_1.insertAdjacentHTML("afterbegin", `<i class="fa-regular fa-file fa-fw icon-doc-type"></i>`)
         }
-
-        meta_string = `<bold class="service-doc-title">${hit._source.service_title} - ${hit._source.doc_title}</bold> | <path class=path-green>${hit._source.doc_url}${hit._source.current_page_name}</path>`
+        hit_doc_url = shortenString(`${hit._source.doc_url}${hit._source.current_page_name}`, 80)
+        meta_string = `<bold class="service-doc-title">${hit._source.service_title} - ${hit._source.doc_title}</bold> | <path class=path-green>${hit_doc_url}</path>`
         div_url.innerHTML = meta_string
-        div_2.innerHTML = cleanupString(hit.highlight.body[0]);
+        div_2.innerHTML = cleanupString(hit.highlight.body[0])
+        
 
         // Append as childs to structure ul > li > a > div/div/div
         a.appendChild(div_1);
@@ -599,7 +609,7 @@ async function onEnter(event) {
 };
 
 const searchMainResult = async () => {
-    let response = await searchRequest(document.getElementById('searchbox').value, 100, 200);
+    let response = await searchRequest(document.getElementById('searchbox').value, 100, 400);
     createMainResult(response)
 }
 

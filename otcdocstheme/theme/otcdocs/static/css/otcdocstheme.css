@@ -516,6 +516,10 @@ bold.service-doc-title {
   padding-top: 0.5rem;
 }
 
+.search-a {
+  white-space: normal;
+}
+
 /* END: search */
 
 /* Service-Based-View */
