@@ -247,7 +247,7 @@ const shortenString = (str, maxLength) => {
     if (str.length <= maxLength) {
       return str;
     }
-    
+
     return str.slice(0, maxLength - 3) + "...";
 };
 
@@ -322,7 +322,7 @@ const createMainResultList = (response, div) => {
         meta_string = `<bold class="service-doc-title">${hit._source.service_title} - ${hit._source.doc_title}</bold> | <path class=path-green>${hit_doc_url}</path>`
         div_url.innerHTML = meta_string
         div_2.innerHTML = cleanupString(hit.highlight.body[0])
-        
+
         // Append as childs to structure ul > li > a > div/div/div
         a.appendChild(div_1);
         a.appendChild(div_url);
