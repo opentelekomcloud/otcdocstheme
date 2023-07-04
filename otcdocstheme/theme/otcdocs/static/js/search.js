@@ -609,7 +609,7 @@ async function onEnter(event) {
 };
 
 const searchMainResult = async () => {
-    let response = await searchRequest(document.getElementById('searchbox').value, 100, 400);
+    let response = await searchRequest(document.getElementById('searchbox').value, 100, 300);
     createMainResult(response)
 }
 
