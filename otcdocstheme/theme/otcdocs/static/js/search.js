@@ -1,5 +1,6 @@
 var id = 0;
 const base_url = 'https://opensearch.eco.tsi-dev.otc-service.com/'
+let search_index = ''
 let active_service_search_filters = []
 let active_doc_search_filters = []
 let available_doc_types = []
@@ -193,6 +194,7 @@ async function searchRequest(val, request_size, highlight_size) {
 
     // search_environment => hc_de | hc_swiss
     let search_environment = this_js_script.attr('search_environment');
+    search_index = this_js_script.attr('search_index');
 
     // Set the URL for the OpenSearch search correctly
     let url = `${base_url}${search_environment}-*/_search`
@@ -314,12 +316,13 @@ const createMainResultList = (response, div) => {
         } else {
             div_1.insertAdjacentHTML("afterbegin", `<i class="fa-regular fa-file fa-fw icon-doc-type"></i>`)
         }
+        // Shorten the URL string so that it isn't too long
         hit_doc_url = shortenString(`${hit._source.doc_url}${hit._source.current_page_name}`, 80)
+        // Create meta string and add it
         meta_string = `<bold class="service-doc-title">${hit._source.service_title} - ${hit._source.doc_title}</bold> | <path class=path-green>${hit_doc_url}</path>`
         div_url.innerHTML = meta_string
         div_2.innerHTML = cleanupString(hit.highlight.body[0])
         
-
         // Append as childs to structure ul > li > a > div/div/div
         a.appendChild(div_1);
         a.appendChild(div_url);
@@ -429,7 +432,7 @@ async function addFilters() {
     }
 
     // URL for querying the filter values
-    let url = `${base_url}search_index_test/_search`
+    let url = `${base_url}${search_index}/_search`
 
     let response = await postRequest(url, request)
     response = response.hits.hits[0]._source

@@ -160,6 +160,7 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         service_type = app.config.otcdocs_service_type
         service_category = app.config.otcdocs_service_category
         otcdocs_search_environment = app.config.otcdocs_search_environment
+        otcdocs_search_index = app.config.otcdocs_search_index
         _html_context_data['repository_name'] = repo_name
         _html_context_data['doc_environment'] = doc_env
         _html_context_data['doc_link'] = doc_link
@@ -169,7 +170,11 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         _html_context_data['service_type'] = service_type
         _html_context_data['service_category'] = service_category
         _html_context_data['otcdocs_search_environment'] = (
-            otcdocs_search_environment)
+            otcdocs_search_environment
+        )
+        _html_context_data['otcdoc_search_index'] = (
+            otcdocs_search_index
+        )
         logger.debug('[otcdocstheme] repository_name %r', repo_name)
         if repo_name and doc_path and git_fqdn:
             _source_url = app.config.otcdocs_source_url
@@ -528,6 +533,7 @@ def setup(app):
 
     # search options
     app.add_config_value('otcdocs_search_environment', 'hc_de', 'env')
+    app.add_config_value('otcdocs_search_index', 'search_index_de', 'env')
 
     app.set_translator('html', OTCHTML5Translator)
 
