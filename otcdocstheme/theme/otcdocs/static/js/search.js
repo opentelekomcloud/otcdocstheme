@@ -1,6 +1,4 @@
 var id = 0;
-const base_url = 'https://opensearch.eco.tsi-dev.otc-service.com/'
-let search_index = ''
 let active_service_search_filters = []
 let active_doc_search_filters = []
 let available_doc_types = []
@@ -194,10 +192,13 @@ async function searchRequest(val, request_size, highlight_size) {
 
     // search_environment => hc_de | hc_swiss
     let search_environment = this_js_script.attr('search_environment');
-    search_index = this_js_script.attr('search_index');
 
     // Set the URL for the OpenSearch search correctly
-    let url = `${base_url}${search_environment}-*/_search`
+    let search_url = this_js_script.attr('search_url')
+    if (search_url.slice(-1) !== '/') {
+        search_url = search_url + '/'
+    }
+    let url = `${search_url}${search_environment}-*/_search`
 
     let response = await postRequest(url, final_query)
 
@@ -432,7 +433,10 @@ async function addFilters() {
     }
 
     // URL for querying the filter values
-    let url = `${base_url}${search_index}/_search`
+    let this_js_script = $('script[src*=search]');
+    let search_url = this_js_script.attr('search_url')
+    let search_index = this_js_script.attr('search_index');
+    let url = `${search_url}${search_index}/_search`
 
     let response = await postRequest(url, request)
     response = response.hits.hits[0]._source

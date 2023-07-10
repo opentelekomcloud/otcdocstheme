@@ -24,6 +24,7 @@ otcdocs_service_type = 'otcdocstheme'
 otcdocs_service_category = 'theme'
 
 otcdocs_search_environment = 'hc_de'
+otcdocs_search_url = 'https://opensearch.eco.tsi-dev.otc-service.com/'
 
 # The suffix of source filenames.
 source_suffix = '.rst'
