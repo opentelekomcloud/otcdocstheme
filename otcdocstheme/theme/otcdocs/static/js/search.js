@@ -652,7 +652,7 @@ const createSearchFilter = () => {
     filter.classList.add('docs-sidebar')
     filter.classList.add('py-md-4')
     filter.insertAdjacentHTML("beforeend", `
-        
+
         <div class="accordion" id="searchAccordions">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="suggestedFilter">
