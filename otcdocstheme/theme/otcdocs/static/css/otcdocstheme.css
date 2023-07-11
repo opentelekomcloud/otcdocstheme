@@ -520,6 +520,12 @@ bold.service-doc-title {
   white-space: normal;
 }
 
+.search-filter-current-type {
+  padding-left: 1.25rem;
+  padding-right: 0;
+  padding-bottom: 1rem;
+}
+
 /* END: search */
 
 /* Service-Based-View */

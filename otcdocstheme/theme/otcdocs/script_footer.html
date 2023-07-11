@@ -17,7 +17,16 @@
 <script type="text/javascript" src="{{pathto('_static/js/otc_helpers.js', 1)}}"></script>
 
 <!-- Search Skript -->
-<script search_environment="{{otcdocs_search_environment}}" search_index="{{otcdoc_search_index}}" search_url="{{otcdocs_search_url}}" src="{{pathto('_static/js/search.js', 1)}}"></script>
+<script 
+    search_environment="{{otcdocs_search_environment}}"
+    search_index="{{otcdoc_search_index}}"
+    search_url="{{otcdocs_search_url}}"
+    search_current_doc_type="{{doc_type}}"
+    search_current_doc_title="{{doc_title}}"
+    search_current_service_type="{{service_type}}"
+    search_current_service_title="{{service_title}}"
+    src="{{pathto('_static/js/search.js', 1)}}"
+    ></script>
 
 <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {

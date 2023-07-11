@@ -2,6 +2,10 @@ var id = 0;
 let active_service_search_filters = []
 let active_doc_search_filters = []
 let available_doc_types = []
+let currentDocTitle = ''
+let currentServiceTitle = ''
+let currentDocType = ''
+let currentServiceType = ''
 
 // Remove special characters and HTML from code blocks
 const cleanupString = (text) => {
@@ -192,6 +196,10 @@ async function searchRequest(val, request_size, highlight_size) {
 
     // search_environment => hc_de | hc_swiss
     let search_environment = this_js_script.attr('search_environment');
+    currentDocTitle = this_js_script.attr('search_current_doc_title')
+    currentServiceTitle = this_js_script.attr('search_current_service_title')
+    currentServiceType = this_js_script.attr('search_current_service_type')
+    currentDocType = this_js_script.attr('search_current_doc_type')
 
     // Set the URL for the OpenSearch search correctly
     let search_url = this_js_script.attr('search_url')
@@ -608,6 +616,23 @@ const returnValue = async (event) => {
     timer(el);
 };
 
+const filterCurrentDoc = (e) => {
+    if (e.checked) {
+        // Add element to the array
+        active_service_search_filters.push({
+            service_type: currentServiceType,
+            doc_types: [currentDocType]
+        })
+        searchMainResult()
+    } else {
+        // Remove the element from the array
+        active_service_search_filters = (
+            active_service_search_filters.filter((item) => item.service_type !== `${currentServiceType}`)
+        );
+        searchMainResult()
+    }
+}
+
 async function onEnter(event) {
     // keyCode 13 === Enter
     if (event.which == 13 || event.keyCode == 13) {
@@ -627,12 +652,32 @@ const createSearchFilter = () => {
     filter.classList.add('docs-sidebar')
     filter.classList.add('py-md-4')
     filter.insertAdjacentHTML("beforeend", `
+        
         <div class="accordion" id="searchAccordions">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="suggestedFilter">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSuggestedFilter"
+                    aria-expanded="true" aria-controls="collapseSuggestedFilter" onclick="removeAllFilters()">
+                    Suggested Filters
+                    </button>
+                </h2>
+                <div id="collapseSuggestedFilter" class="accordion-collapse collapse" aria-labelledby="suggestedFilter"
+                    data-bs-parent="#searchAccordions" style="">
+                    <div class="accordion-body" id="suggestedFilterBody">
+                        <div id="searchSelectCurrentValue">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" onClick="filterCurrentDoc(this)" id="searchSelectCurrentValueCheckbox" />
+                                <label class="form-check-label" for="searchSelectCurrentValueCheckbox">${currentServiceTitle} - ${currentDocTitle}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="serviceFilter">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseServiceFilter"
-                    aria-expanded="true" aria-controls="collapseServiceFilter" onclick="removeDocFilters()">
-                    Service Filter
+                    aria-expanded="true" aria-controls="collapseServiceFilter" onclick="removeAllFilters()">
+                    Service-Type Filters
                     </button>
                 </h2>
                 <div id="collapseServiceFilter" class="accordion-collapse collapse" aria-labelledby="serviceFilter"
@@ -644,8 +689,8 @@ const createSearchFilter = () => {
             <div class="accordion-item">
                 <h2 class="accordion-header" id="headingTwo">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDocFilter"
-                    aria-expanded="false" aria-controls="collapseDocFilter" onclick="removeServiceFilters()">
-                    Document-Type Filter
+                    aria-expanded="false" aria-controls="collapseDocFilter" onclick="removeAllFilters()">
+                    Document-Type Filters
                     </button>
                 </h2>
                 <div id="collapseDocFilter" class="accordion-collapse collapse" aria-labelledby="headingTwo"
@@ -665,6 +710,11 @@ const removeSearchFilter = () => {
     filter.remove(filter)
 }
 
+const removeAllFilters = () => {
+    removeServiceFilters()
+    removeDocFilters()
+}
+
 // Remove Service Filters once user clicks on Doc-Filter accordion
 const removeServiceFilters = () => {
     active_service_search_filters.map(item => {
@@ -676,6 +726,8 @@ const removeServiceFilters = () => {
             })
         }
     })
+    // Remove sugggested filters
+    document.getElementById("searchSelectCurrentValueCheckbox").checked = false
     active_service_search_filters = []
     searchMainResult()
 }
