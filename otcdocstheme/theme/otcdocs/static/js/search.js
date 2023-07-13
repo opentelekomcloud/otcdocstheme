@@ -652,27 +652,7 @@ const createSearchFilter = () => {
     filter.classList.add('docs-sidebar')
     filter.classList.add('py-md-4')
     filter.insertAdjacentHTML("beforeend", `
-
         <div class="accordion" id="searchAccordions">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="suggestedFilter">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSuggestedFilter"
-                    aria-expanded="true" aria-controls="collapseSuggestedFilter" onclick="removeAllFilters()">
-                    Suggested Filters
-                    </button>
-                </h2>
-                <div id="collapseSuggestedFilter" class="accordion-collapse collapse" aria-labelledby="suggestedFilter"
-                    data-bs-parent="#searchAccordions" style="">
-                    <div class="accordion-body" id="suggestedFilterBody">
-                        <div id="searchSelectCurrentValue">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" onClick="filterCurrentDoc(this)" id="searchSelectCurrentValueCheckbox" />
-                                <label class="form-check-label" for="searchSelectCurrentValueCheckbox">${currentServiceTitle} - ${currentDocTitle}</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="accordion-item">
                 <h2 class="accordion-header" id="serviceFilter">
                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseServiceFilter"
@@ -701,8 +681,34 @@ const createSearchFilter = () => {
             </div>
         </div>
     `);
+    
     let sidebar = document.getElementById('left-sidebar')
     sidebar.after(filter)
+    // Add suggested filters in case we have all the data
+    if (currentDocType !== "" && currentDocTitle !== "" && currentServiceTitle !== "" && currentServiceType !== "") {
+        const suggestedFilterHTML = `
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="suggestedFilter">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSuggestedFilter"
+                    aria-expanded="true" aria-controls="collapseSuggestedFilter" onclick="removeAllFilters()">
+                    Suggested Filters
+                    </button>
+                </h2>
+                <div id="collapseSuggestedFilter" class="accordion-collapse collapse" aria-labelledby="suggestedFilter"
+                    data-bs-parent="#searchAccordions" style="">
+                    <div class="accordion-body" id="suggestedFilterBody">
+                        <div id="searchSelectCurrentValue">
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" onClick="filterCurrentDoc(this)" id="searchSelectCurrentValueCheckbox" />
+                                <label class="form-check-label" for="searchSelectCurrentValueCheckbox">${currentServiceTitle} - ${currentDocTitle}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `
+        document.getElementById("searchAccordions").insertAdjacentHTML("afterbegin",suggestedFilterHTML)
+    }
 }
 
 const removeSearchFilter = () => {
@@ -726,8 +732,10 @@ const removeServiceFilters = () => {
             })
         }
     })
-    // Remove sugggested filters
-    document.getElementById("searchSelectCurrentValueCheckbox").checked = false
+    // Remove sugggested filters if we created them
+    if (currentDocType !== "" && currentDocTitle !== "" && currentServiceTitle !== "" && currentServiceType !== "") {
+        document.getElementById("searchSelectCurrentValueCheckbox").checked = false
+    }
     active_service_search_filters = []
     searchMainResult()
 }
