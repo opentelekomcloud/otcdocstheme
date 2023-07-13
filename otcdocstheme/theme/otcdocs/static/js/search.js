@@ -681,7 +681,7 @@ const createSearchFilter = () => {
             </div>
         </div>
     `);
-    
+
     let sidebar = document.getElementById('left-sidebar')
     sidebar.after(filter)
     // Add suggested filters in case we have all the data
