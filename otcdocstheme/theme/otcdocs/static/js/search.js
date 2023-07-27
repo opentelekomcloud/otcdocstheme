@@ -619,10 +619,18 @@ const returnValue = async (event) => {
 const filterCurrentDoc = (e) => {
     if (e.checked) {
         // Add element to the array
-        active_service_search_filters.push({
-            service_type: currentServiceType,
-            doc_types: [currentDocType]
-        })
+        if (currentDocTitle !== "") {
+            active_service_search_filters.push({
+                service_type: currentServiceType,
+                doc_types: [currentDocType]
+            })
+        }
+        else {
+            active_service_search_filters.push({
+                service_type: currentServiceType,
+                doc_types: available_doc_types
+            })
+        }
         searchMainResult()
     } else {
         // Remove the element from the array
@@ -685,7 +693,7 @@ const createSearchFilter = () => {
     let sidebar = document.getElementById('left-sidebar')
     sidebar.after(filter)
     // Add suggested filters in case we have all the data
-    if (currentDocType !== "" && currentDocTitle !== "" && currentServiceTitle !== "" && currentServiceType !== "") {
+    if (currentServiceTitle !== "" && currentServiceType !== "") {
         const suggestedFilterHTML = `
             <div class="accordion-item">
                 <h2 class="accordion-header" id="suggestedFilter">
@@ -700,7 +708,8 @@ const createSearchFilter = () => {
                         <div id="searchSelectCurrentValue">
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" onClick="filterCurrentDoc(this)" id="searchSelectCurrentValueCheckbox" />
-                                <label class="form-check-label" for="searchSelectCurrentValueCheckbox">${currentServiceTitle} - ${currentDocTitle}</label>
+                                <label class="form-check-label" for="searchSelectCurrentValueCheckbox">${currentServiceTitle} ${(currentDocTitle !== "") ? ("- " + currentDocTitle) : ""}
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -733,7 +742,7 @@ const removeServiceFilters = () => {
         }
     })
     // Remove sugggested filters if we created them
-    if (currentDocType !== "" && currentDocTitle !== "" && currentServiceTitle !== "" && currentServiceType !== "") {
+    if (currentServiceTitle !== "" && currentServiceType !== "") {
         document.getElementById("searchSelectCurrentValueCheckbox").checked = false
     }
     active_service_search_filters = []
