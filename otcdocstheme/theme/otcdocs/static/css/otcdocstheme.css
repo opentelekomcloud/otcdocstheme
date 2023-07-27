@@ -636,7 +636,6 @@ bold.service-doc-title {
   .docs-sidebar-toc {
     position: sticky;
     top: 10px;
-    height: calc(100vh);
     display: block !important;
     overflow-y: auto;
   }
