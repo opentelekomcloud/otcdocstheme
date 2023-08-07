@@ -722,7 +722,10 @@ const createSearchFilter = () => {
 
 const removeSearchFilter = () => {
     let filter = document.getElementById('accordions')
-    filter.remove(filter)
+    if (filter !== null) {
+        // Die Variable "filter" enthält ein gültiges DOM-Element
+        filter.remove(filter)
+      }     
 }
 
 const removeAllFilters = () => {
