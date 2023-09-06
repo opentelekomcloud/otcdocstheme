@@ -56,13 +56,13 @@ function addCopyButtonToCode() {
   new ClipboardJS('.btn');
 }
 
-// ADD BOX SHADOW
+// ADD BOX SHADOW FOR SEARCH INPUT
 
 function addBoxShadow(event) {
   document.getElementById('searchInputGroup').classList.add("add-box-shadow");
 }
 
-// REMOVE BOX SHADOW
+// REMOVE BOX SHADOW FOR SEARCH INPUT
 
 function removeBoxShadow(event) {
   document.getElementById('searchInputGroup').classList.remove("add-box-shadow");

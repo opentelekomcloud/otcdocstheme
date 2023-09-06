@@ -260,6 +260,7 @@ const shortenString = (str, maxLength) => {
     return str.slice(0, maxLength - 3) + "...";
 };
 
+// CREATES THE SEARCH RESULT LIST IN THE MAIN SECTION OF THE PAGE INSTEAD OF A DROP DOWN FIELD
 const createMainResultList = (response, div) => {
     // Create Result-List
     let index = 0
@@ -571,20 +572,7 @@ const addFiltersToAccordion = (filters) => {
 
 }
 
-function timer(el) {
-    id = setTimeout(async () => {
-        if (el.value) {
-            // Check whether main Result is opened
-            if (document.getElementById("searchResultsEnter") === null) {
-                let response = await searchRequest(el.value, 5, 100);
-                createResultList(response);
-            }
-        } else {
-            deleteEnterResults()
-        };
-    }, 250);
-};
-
+// REMOVES RESULTS ON MAIN CONTENT END REMOVES ALSO THE SEARCH FILTER
 const deleteEnterResults = () => {
     document.getElementById('searchbox').value = ""
     document.getElementById('searchDropdown').classList.remove('show');
@@ -609,13 +597,6 @@ const deleteEnterResults = () => {
     removeSearchFilter()
 }
 
-const returnValue = async (event) => {
-    clearTimeout(id);
-    const el = document.getElementById('searchbox');
-    document.getElementById('DeleteSearchText').classList.remove("d-none");
-    timer(el);
-};
-
 const filterCurrentDoc = (e) => {
     if (e.checked) {
         // Add element to the array
@@ -639,18 +620,6 @@ const filterCurrentDoc = (e) => {
         );
         searchMainResult()
     }
-}
-
-async function onEnter(event) {
-    // keyCode 13 === Enter
-    if (event.which == 13 || event.keyCode == 13) {
-        searchMainResult()
-    }
-};
-
-const searchMainResult = async () => {
-    let response = await searchRequest(document.getElementById('searchbox').value, 100, 300);
-    createMainResult(response)
 }
 
 // Create the Accordions
@@ -794,3 +763,41 @@ document.getElementsByTagName('body')[0].onclick = function(e) {
         document.getElementById('searchDropdown').classList.remove('show');
     }
 }
+
+// REPRESENTATION OF SEARCH RESULT ON MAIN CONTENT PAGE INSTEAD OF DROPDOWN
+const searchMainResult = async () => {
+    let response = await searchRequest(document.getElementById('searchbox').value, 100, 300);
+    createMainResult(response)
+}
+
+
+// FUNCTION WHICH STARTS SEARCH FUNCTIONALITY AFTER USING ENTER BUTTON
+async function onEnter(event) {
+    // keyCode 13 === Enter
+    if (event.which == 13 || event.keyCode == 13) {
+        searchMainResult()
+    }
+};
+
+// TIMER WHICH STARTS THE SEARCH RESULT LIST AFTER TIMEOUT HAS BEEN REACHED
+function timer(el) {
+    id = setTimeout(async () => {
+        if (el.value) {
+            // Check whether main Result is opened
+            if (document.getElementById("searchResultsEnter") === null) {
+                let response = await searchRequest(el.value, 5, 100);
+                createResultList(response);
+            }
+        } else {
+            deleteEnterResults()
+        };
+    }, 250);
+};
+
+// FUNCTION WHICH STARTS THE TIMER EVENT AFTER THE KEY UP EVENT
+const returnValue = async (event) => {
+    clearTimeout(id);
+    const el = document.getElementById('searchbox');
+    document.getElementById('DeleteSearchText').classList.remove("d-none");
+    timer(el);
+};
