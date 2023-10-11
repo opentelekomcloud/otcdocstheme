@@ -179,19 +179,24 @@ body {
 }
 
 body {
-  color: var(--dt-color-text-standard);
+  color: var(--telekom-color-text-and-icon-standard);
 }
 
 /* START: GLOBAL a-tag BEHAVIOR */
 
- body a {
+body {
+  background-color: var(--telekom-color-background-canvas-subtle);
+  color: var(--telekom-color-text-and-icon-standard)
+}
+
+body a {
   text-decoration: none;
-  color: var(--dt-color-text-link);
+  color: var(--telekom-color-text-and-icon-link-standard);
 }
 
 body a:hover {
   text-decoration: underline;
-  color: var(--dt-color-text-link-hover);
+  color: var(--telekom-color-text-and-icon-link-hovered)
 }
 
 /* END: GLOBAL a-tag BEHAVIOR */
@@ -338,12 +343,21 @@ body a:hover {
 /* END: NAVBAR */
 
 /* subnavbar */
+
+
+
 .docs-subnavbar {
   position: relative;
   /*#  z-index: 1020;*/
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05),
     inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+@media (prefers-color-scheme: dark) {
+  .docs-subnavbar {
+    background-color: var(--telekom-color-background-surface-highlight);
+  }
 }
 
 .docs-subnavbar div {
@@ -625,7 +639,7 @@ bold.service-doc-title {
   padding-left: 0;
 }
 .docs-sidebar-toc a {
-  color: var(--dt-color-black);
+  color: var(--telekom-color-text-and-icon-standard);
 }
 .docs-sidebar-toc a:hover {
   color: var(--dt-color-primary-hover);
@@ -695,7 +709,7 @@ div.docs-sidebar-toc li.toctree-l1 > a {
 }
 
 #TableOfContents {
-  color: var(--dt-color-grey-40)
+  color: var(--telekom-color-text-and-icon-additional)
 }
 #table-of-contents.docs-sidebar-section {
   background-color: transparent;
@@ -711,15 +725,23 @@ div.docs-sidebar-toc li.toctree-l1 > a {
   margin-top: 0.5rem;
 }
 .docs-sidebar a.current {
-  color: var(--dt-color-magenta) !important;
-  border-left: 1px solid var(--dt-color-magenta);
+  color: var(--telekom-color-text-and-icon-primary-standard) !important;
+  border-left: 1px solid var(--telekom-color-primary-standard);
   padding-left: 0.75rem;
+  font-weight: 700 !important;
 }
 .color-magenta {
-  color: var(--dt-color-magenta) !important;
+  color: var(--telekom-color-primary-standard) !important;
+  font-weight: 600;
 }
 .docs-toc > strong {
-  color: var(--dt-color-grey-50)
+  color: var(--telekom-color-text-and-icon-additional)
+}
+
+@media (prefers-color-scheme: dark) {
+  main h1, h2, h3, h4, h5 {
+    color: var(--telekom-color-text-and-icon-standard);
+  }
 }
 
 /* END: Sidebar */
@@ -747,10 +769,6 @@ a.headerlink:hover {
   color: var(--dt-color-blue-60);
 }
 
-.docs-content h1 {
-  font-weight: 400;
-}
-
 .docs-content
 h2,
 h3,
@@ -761,6 +779,12 @@ h5 {
 
 main h1, h2, h3, h4, h5 {
   color: var(--dt-color-grey-70);
+}
+
+@media (prefers-color-scheme: dark) {
+  main h1, h2, h3, h4, h5 {
+    color: var(--telekom-color-text-and-icon-standard);
+  }
 }
 
 .docs-content h1, h2, h3 {
@@ -1036,6 +1060,12 @@ pre .cl {
   margin: 15px 0;
 }
 
+@media (prefers-color-scheme: dark) {
+  .admonition {
+    background: var(--telekom-color-additional-cyan-900)
+  }
+}
+
 .admonition > .last {
   margin: 0;
 }
@@ -1059,6 +1089,15 @@ pre .cl {
   color: var(--admonition-icon-informational);
 }
 
+@media (prefers-color-scheme: dark) {
+  .admonition.note {
+    background: var(--telekom-color-additional-cyan-900)
+  }
+  .admonition.note .fa-solid.fa-book {
+    color: var(--telekom-color-additional-cyan-100);
+  }
+}
+
 .admonition.tip {
   background: var(--admonition-background-informational);
   border-color: var(--admonition-icon-informational);
@@ -1068,9 +1107,24 @@ pre .cl {
   color: var(--admonition-icon-informational);
 }
 
+@media (prefers-color-scheme: dark) {
+  .admonition.tip {
+    background: var(--telekom-color-additional-cyan-900)
+  }
+  .admonition.tip .fa-solid.fa-info-circle {
+    color: var(--telekom-color-additional-cyan-100);
+  }
+}
+
 .admonition.important {
   background: var(--admonition-background-warning);
   border-color: var(--admonition-icon-warning);
+}
+
+@media (prefers-color-scheme: dark) {
+  .admonition.important {
+    background: var(--telekom-color-additional-brown-900)
+  }
 }
 
 .admonition.important .fa-solid.fa-circle-exclamation {
@@ -1082,6 +1136,12 @@ pre .cl {
   border-color: var(--admonition-icon-warning);
 }
 
+@media (prefers-color-scheme: dark) {
+  .admonition.caution {
+    background: var(--telekom-color-additional-brown-900)
+  }
+}
+
 .admonition.caution .fa-solid.fa-exclamation-triangle {
   color: var(--admonition-icon-error);
 }
@@ -1089,6 +1149,12 @@ pre .cl {
 .admonition.warning {
   background: var(--admonition-background-error);
   border-color: var(--admonition-icon-error);
+}
+
+@media (prefers-color-scheme: dark) {
+  .admonition.warning {
+    background: var(--telekom-color-additional-red-900)
+  }
 }
 
 .admonition.warning .fa-solid.fa-exclamation-triangle {
@@ -1104,6 +1170,16 @@ pre .cl {
   color: var(--admonition-icon-success);
 }
 
+@media (prefers-color-scheme: dark) {
+  .admonition.seealso {
+    background: var(--telekom-color-additional-olive-900);
+    border-color: var(--telekom-color-additional-olive-400);
+  }
+  .admonition.seealso .fa-solid.fa-info-circle {
+    color: var(--telekom-color-additional-olive-400);
+  }
+}
+
 /* END: ADMONITION */
 
 .versionadded {
@@ -1116,6 +1192,20 @@ pre .cl {
 
 .deprecated {
   color: var(--dt-color-red-70);
+}
+
+@media (prefers-color-scheme: dark) {
+  .versionadded {
+    color: var(--telekom-color-additional-green-400);
+  }
+  
+  .versionchanged {
+    color: var(--telekom-color-additional-cyan-400);
+  }
+  
+  .deprecated {
+    color: var(--telekom-color-additional-red-400);
+  }
 }
 
 /* BB: added the adminition-title rule to bolden the adminition title */
