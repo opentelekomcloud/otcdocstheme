@@ -391,7 +391,7 @@ docs-book-wrapper .ul-breadcrumbs {
 }
 
 .ul-breadcrumbs li a {
-  color: var(--dt-color-grey-50);
+  color: var(--telekom-color-text-and-icon-additional);
 }
 
 .ul-breadcrumbs li a:hover {
@@ -400,7 +400,7 @@ docs-book-wrapper .ul-breadcrumbs {
 }
 
 .breadcrumb-title {
-  color: var(--dt-color-grey-70);
+  color: var(--telekom-color-text-and-icon-additional);
 }
 
 .breadcrumb-arrow {
