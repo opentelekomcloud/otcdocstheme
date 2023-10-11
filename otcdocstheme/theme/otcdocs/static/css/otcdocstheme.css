@@ -1,6 +1,6 @@
 @import "bootstrap.min.css";
 
-body {
+/* body {
   --main-body-color: #hsl(0, 0%, 9.8%);
   --bs-body-color: #hsl(0, 0%, 9.8%);
   --dt-color-magenta: hsl(329.20000000000005, 100%, 44.3%);
@@ -169,7 +169,7 @@ body {
   --admonition-icon-informational: rgb(5, 181, 216);
   --admonition-background-success: hsl(98.8, 49.7%, 61%, 0.2);
   --admonition-icon-success: rgb(69, 192, 3);
-}
+} */
 
 /* Own Definitions */
 body {
@@ -335,9 +335,14 @@ body a:hover {
   }
 }
 
+.dropdown-item {
+  color: var(--telekom-color-text-and-icon-standard);
+}
+
 .dropdown-item:hover {
-  background-color: var(--dt-color-background-light);
+  background-color: var(--telekom-color-background-surface-subtle);
   text-decoration: none;
+  color: var(--telekom-color-text-and-icon-standard);
 }
 
 /* END: NAVBAR */
@@ -420,11 +425,18 @@ docs-book-wrapper .ul-breadcrumbs {
 #searchDropdown {
   -webkit-box-shadow: 0px 5px 19px 0px rgba(0,0,0,0.33);
   box-shadow: 0px 5px 19px 0px rgba(0,0,0,0.33);
+  background-color: var(--telekom-color-background-surface);
+}
+
+@media (prefers-color-scheme: dark) {
+  #searchDropdown {
+    box-shadow: none;
+  }
 }
 
 #searchDropdown a:hover {
   text-decoration: none;
-  background-color: var(--dt-color-background-light);
+  background-color: var(--telekom-color-background-surface-subtle);
 }
 
 #searchInputGroup > .form-control:focus {
@@ -1081,120 +1093,74 @@ pre .cl {
 }
 
 .admonition.note {
-  background: var(--admonition-background-informational);
-  border-color: var(--admonition-icon-informational);
+  background: var(--telekom-color-functional-informational-subtle);
+  border-color: var(--telekom-color-functional-informational-standard);
 }
 
 .admonition.note .fa-solid.fa-book {
-  color: var(--admonition-icon-informational);
-}
-
-@media (prefers-color-scheme: dark) {
-  .admonition.note {
-    background: var(--telekom-color-additional-cyan-900)
-  }
-  .admonition.note .fa-solid.fa-book {
-    color: var(--telekom-color-additional-cyan-100);
-  }
+  color: var(--telekom-color-functional-informational-standard);
 }
 
 .admonition.tip {
-  background: var(--admonition-background-informational);
-  border-color: var(--admonition-icon-informational);
+  background: var(--telekom-color-functional-informational-subtle);
+  border-color: var(--telekom-color-functional-informational-standard);
 }
 
 .admonition.tip .fa-solid.fa-info-circle {
-  color: var(--admonition-icon-informational);
-}
-
-@media (prefers-color-scheme: dark) {
-  .admonition.tip {
-    background: var(--telekom-color-additional-cyan-900)
-  }
-  .admonition.tip .fa-solid.fa-info-circle {
-    color: var(--telekom-color-additional-cyan-100);
-  }
+  color: var(--telekom-color-functional-informational-standard);
 }
 
 .admonition.important {
-  background: var(--admonition-background-warning);
-  border-color: var(--admonition-icon-warning);
-}
-
-@media (prefers-color-scheme: dark) {
-  .admonition.important {
-    background: var(--telekom-color-additional-brown-900)
-  }
+  background: var(--telekom-color-functional-warning-subtle);
+  border-color: var(--telekom-color-functional-warning-standard);
 }
 
 .admonition.important .fa-solid.fa-circle-exclamation {
-  color: var(--admonition-icon-warning);
+  color: var(--telekom-color-functional-warning-standard);
 }
 
 .admonition.caution {
-  background: var(--admonition-background-warning);
-  border-color: var(--admonition-icon-warning);
-}
-
-@media (prefers-color-scheme: dark) {
-  .admonition.caution {
-    background: var(--telekom-color-additional-brown-900)
-  }
+  background: var(--telekom-color-functional-warning-subtle);
+  border-color: var(--telekom-color-functional-warning-standard);
 }
 
 .admonition.caution .fa-solid.fa-exclamation-triangle {
-  color: var(--admonition-icon-error);
+  color: var(--telekom-color-functional-warning-standard);
 }
 
 .admonition.warning {
-  background: var(--admonition-background-error);
-  border-color: var(--admonition-icon-error);
-}
-
-@media (prefers-color-scheme: dark) {
-  .admonition.warning {
-    background: var(--telekom-color-additional-red-900)
-  }
+  background: var(--telekom-color-functional-danger-subtle);
+  border-color: var(--telekom-color-functional-danger-standard);
 }
 
 .admonition.warning .fa-solid.fa-exclamation-triangle {
-  color: var(--admonition-icon-error);
+  color: var(--telekom-color-functional-danger-standard);
 }
 
 .admonition.seealso {
-  background: var(--admonition-background-success);
-  border-color: var(--admonition-icon-success);
+  background: var(--telekom-color-functional-success-subtle);
+  border-color: var(--telekom-color-functional-success-standard);
 }
 
 .admonition.seealso .fa-solid.fa-info-circle {
-  color: var(--admonition-icon-success);
-}
-
-@media (prefers-color-scheme: dark) {
-  .admonition.seealso {
-    background: var(--telekom-color-additional-olive-900);
-    border-color: var(--telekom-color-additional-olive-400);
-  }
-  .admonition.seealso .fa-solid.fa-info-circle {
-    color: var(--telekom-color-additional-olive-400);
-  }
+  color: var(--telekom-color-functional-success-standard);
 }
 
 /* END: ADMONITION */
 
 .versionadded {
-  color: var(--dt-color-green-80);
+  color: var(--telekom-color-text-and-icon-functional-success);
 }
 
 .versionchanged {
-  color: var(--dt-color-pigeon-80);
+  color: var(--telekom-color-text-and-icon-functional-informational);
 }
 
 .deprecated {
-  color: var(--dt-color-red-70);
+  color: var(--telekom-color-text-and-icon-functional-danger);
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   .versionadded {
     color: var(--telekom-color-additional-green-400);
   }
@@ -1206,7 +1172,7 @@ pre .cl {
   .deprecated {
     color: var(--telekom-color-additional-red-400);
   }
-}
+} */
 
 /* BB: added the adminition-title rule to bolden the adminition title */
 .admonition-title {
