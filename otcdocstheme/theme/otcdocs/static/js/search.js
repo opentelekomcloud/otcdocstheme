@@ -96,7 +96,7 @@ async function searchRequest(val, request_size, highlight_size) {
             "number_of_fragments": 1,
             "fragment_size":highlight_size,
             "pre_tags": [
-                "<span style='color: var(--dt-color-magenta)'>"
+                "<span style='color: var(--telekom-color-text-and-icon-primary-standard)'>"
             ],
             "post_tags": [
                 "</span>"
@@ -136,7 +136,7 @@ async function searchRequest(val, request_size, highlight_size) {
             "number_of_fragments": 1,
             "fragment_size":highlight_size,
             "pre_tags": [
-                "<span style='color: var(--dt-color-magenta)'>"
+                "<span style='color: var(--telekom-color-text-and-icon-primary-standard)'>"
             ],
             "post_tags": [
                 "</span>"
@@ -165,7 +165,7 @@ async function searchRequest(val, request_size, highlight_size) {
             "number_of_fragments": 1,
             "fragment_size":highlight_size,
             "pre_tags": [
-                "<span style='color: var(--dt-color-magenta)'>"
+                "<span style='color: var(--telekom-color-text-and-icon-primary-standard)'>"
             ],
             "post_tags": [
                 "</span>"
