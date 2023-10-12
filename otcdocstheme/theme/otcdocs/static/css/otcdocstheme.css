@@ -24,8 +24,11 @@ body a {
 }
 
 body a:hover {
-  text-decoration: underline;
-  color: var(--telekom-color-text-and-icon-link-hovered)
+  color: var(--telekom-color-text-and-icon-link-hovered);
+}
+
+body a:active {
+  color: var(--telekom-color-text-and-icon-link-active);
 }
 
 /* END: GLOBAL a-tag BEHAVIOR */
@@ -47,7 +50,7 @@ body a:hover {
 /* NAVBAR */
 .docs-navbar {
   padding: 0 0 0.75rem 0 !important;
-  background: var(--dt-color-magenta);
+  background: var(--telekom-color-primary-standard);
   /*display: flex;*/
   /*height: 72px;
   max-width: unset;
@@ -82,7 +85,7 @@ body a:hover {
 }
 
 .docs-title {
-  color: var(--dt-color-white);
+  color: var(--telekom-color-text-and-icon-white-standard);
   font-size: 1.5rem;
   text-align: center;
   flex-grow: 1;
@@ -115,7 +118,7 @@ body a:hover {
 
 @media screen and (min-width: 768px) {
   #navbarNav .navbar-nav > li > a.nav-link {
-    color: var(--dt-color-white);
+    color: var(--telekom-color-text-and-icon-white-standard);
     font-weight: 400;
     font-size: 1.2rem;
   }
@@ -138,7 +141,7 @@ body a:hover {
 
   /* make nav links bigger and white */
   #navbarNav .navbar-nav a {
-    color: var(--dt-color-white);
+    color: var(--telekom-color-text-and-icon-white-standard);
     font-size: 1.2rem;
   }
 
@@ -223,7 +226,7 @@ docs-book-wrapper .ul-breadcrumbs {
 }
 
 .ul-breadcrumbs li a:hover {
-  color: var(--dt-color-magenta);
+  color: var(--telekom-color-primary-standard);
   text-decoration: none;
 }
 
@@ -301,7 +304,7 @@ docs-book-wrapper .ul-breadcrumbs {
   #searchInputGroup > .form-control:focus {
     box-shadow: none;
     border-color: #ced4da;
-    background-color: var(--dt-color-white);
+    background-color: var(--telekom-color-text-and-icon-white-standard);
   }
 }
 
@@ -315,7 +318,7 @@ docs-book-wrapper .ul-breadcrumbs {
 
 .delete-search-text {
   border-left: 0;
-  background-color: var(--dt-color-white);
+  background-color: var(--telekom-color-text-and-icon-white-standard);
 }
 
 .search-title {
@@ -344,7 +347,7 @@ docs-book-wrapper .ul-breadcrumbs {
 }
 
 .fa-close:hover, .fa-search:hover, .fa-magnifying-glass:hover {
-  color: var(--dt-color-primary-hover);
+  color: var(--telekom-color-primary-standard);
   cursor: pointer;
 }
 
@@ -354,7 +357,7 @@ docs-book-wrapper .ul-breadcrumbs {
 }
 
 .page-link {
-  color: var(--dt-color-magenta);
+  color: var(--telekom-color-primary-standard);
 }
 
 .page-link:hover {
@@ -439,20 +442,20 @@ bold.service-doc-title {
 }
 
 .item-sbv:hover {
-  color: var(--dt-color-magenta);
+  color: var(--telekom-color-primary-standard);
   cursor: pointer;
 }
 
 .item-sbv:hover h4 {
-  color: var(--dt-color-magenta);
+  color: var(--telekom-color-primary-standard);
 }
 
 .item-sbv.card:hover {
-  border: 1px solid var(--dt-color-magenta);
+  border: 1px solid var(--telekom-color-primary-standard);
 }
 
 .item-sbv:hover a {
-  color: var(--dt-color-magenta);
+  color: var(--telekom-color-primary-standard);
   text-decoration: none;
 }
 
@@ -509,7 +512,7 @@ bold.service-doc-title {
   color: var(--telekom-color-text-and-icon-standard);
 }
 .docs-sidebar-toc a:hover {
-  color: var(--dt-color-primary-hover);
+  color: var(--telekom-color-text-and-icon-primary-standard);
   text-decoration: none;
 }
 
@@ -827,7 +830,7 @@ code.docutils.literal.notranslate {
   color: inherit;
 }
 .docs-toc nav a:hover {
-  color: var(--dt-color-primary-hover);
+  color: var(--telekom-color-text-and-icon-primary-standard);
   text-decoration: none;
 }
 
@@ -1136,7 +1139,7 @@ div.highlight:hover .copybtn, div.highlight .copybtn:focus {
 }
 div.highlight .copybtn:hover {
     opacity: 1;
-    color: var(--dt-color-magenta);
+    color: var(--telekom-color-primary-standard);
 }
 
 div.highlight .btn:focus {
@@ -1158,7 +1161,7 @@ div.highlight {
 }
 
 .page-link:hover {
-  color: var(--dt-color-magenta);
+  color: var(--telekom-color-primary-standard);
 }
 
 /* END: Bottom Navigation */
@@ -1167,7 +1170,7 @@ div.highlight {
 
 footer a:hover {
   text-decoration: underline;
-  color: var(--dt-color-white);
+  color: var(--telekom-color-text-and-icon-white-standard);
 }
 
 .docs-footer {
@@ -1228,8 +1231,8 @@ footer a:hover {
   border: none;
   outline: none;
   opacity: 0.5;
-  background-color: var(--dt-color-magenta);
-  color: var(--dt-color-white);
+  background-color: var(--telekom-color-primary-standard);
+  color: var(--telekom-color-text-and-icon-white-standard);
   cursor: pointer;
   border-radius: 50%;
   z-index: 99;
@@ -1310,7 +1313,7 @@ dl table {
 }
 
 .accordion-button:hover {
-  color: var(--dt-color-magenta);
+  color: var(--telekom-color-primary-standard);
   background-color: var(--background-button-hover);
 }
 
@@ -1321,7 +1324,7 @@ dl table {
 }
 
 .accordion-button:not(.collapsed) {
-    color: var(--dt-color-magenta);
+    color: var(--telekom-color-primary-standard);
     background-color: var(--background-button-hover);
 }
 
@@ -1335,8 +1338,8 @@ dl table {
   background-color: var(--dt-color-background-light);
 }
 .form-check-input:checked {
-  background-color: var(--dt-color-magenta);
-  border-color: var(--dt-color-magenta);
+  background-color: var(--telekom-color-primary-standard);
+  border-color: var(--telekom-color-primary-standard);
 }
 
 .form-check-input {

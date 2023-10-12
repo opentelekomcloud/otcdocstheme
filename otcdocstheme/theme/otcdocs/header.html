@@ -3,7 +3,8 @@
 {% else %}{# a template was rendered directly #}
 <!-- TEMPLATE_NAME: {{pagename}} -->
 {% endif %}
-<button onclick="to_top()" id="scroll-to-top" class="to-top to-top-fixed" title="Go to top" aria-label="Scroll to top"><i class="fa-solid fa-angle-up"></i></button>
+<button onclick="to_top()" id="scroll-to-top" class="to-top to-top-fixed" title="Go to top"
+  aria-label="Scroll to top"><i class="fa-solid fa-angle-up"></i></button>
 <!-- <div class="skippy sticky-top"></div> -->
 {% set base_url = theme_logo_url %}
 
@@ -16,164 +17,61 @@
   <!-- main nav (desktop) -->
   <scale-telekom-nav-list variant="main-nav" slot="main-nav">
     <scale-telekom-nav-item>
-      <button>Blueprints</button>
+      <button>Services</button>
       <scale-telekom-nav-flyout hover>
         <scale-telekom-mega-menu>
           <scale-telekom-mega-menu-column>
             <!--                <scale-icon-home-home slot="icon"></scale-icon-home-home>-->
-            <a href="https://example.com" slot="heading">By Use Case</a>
+            <a href="{{base_url}}/services.html" slot="heading">Services</a>
             <ul>
-              <li><a href="https://example.com">Hybrid</a></li>
-              <li><a href="https://example.com">Security & Compliance</a></li>
-              <li><a href="https://example.com">Networking</a></li>
-              <li><a href="https://example.com">Migration</a></li>
-              <li><a href="https://example.com">Data Analytics & AI</a></li>
-            </ul>
-          </scale-telekom-mega-menu-column>
-          <scale-telekom-mega-menu-column>
-            <!--                <scale-icon-home-home slot="icon"></scale-icon-home-home>-->
-            <a href="https://example.com" slot="heading">By Industry</a>
-            <ul>
-              <li><a href="https://example.com">Media</a></li>
-              <li><a href="https://example.com">Automotive</a></li>
-              <li><a href="https://example.com">Education</a></li>
-              <li><a href="https://example.com">Finance</a></li>
-              <li><a href="https://example.com">Healthcare</a></li>
-              <li><a href="https://example.com">Retail</a></li>
-            </ul>
-          </scale-telekom-mega-menu-column>
-          <scale-telekom-mega-menu-column>
-            <!--                <scale-icon-home-home slot="icon"></scale-icon-home-home>-->
-            <a href="https://example.com" slot="heading">Best Practices</a>
-            <ul>
-              <li><a href="https://example.com">Computing</a></li>
-              <li><a href="https://example.com">Storage</a></li>
-              <li><a href="https://example.com">Network</a></li>
-              <li><a href="https://example.com">Security</a></li>
-              <li><a href="https://example.com">Data Analysis</a></li>
+              <li><a href="{{base_url}}/compute.html">Compute</a></li>
+              <li><a href="{{base_url}}/container.html">Container</a></li>
+              <li><a href="{{base_url}}/network.html">Network</a></li>
+              <li><a href="{{base_url}}/storage.html">Storage</a></li>
+              <li><a href="{{base_url}}/md.html">Management and Deployment</a></li>
+              <li><a href="{{base_url}}/security.html">Security</a></li>
+              <li><a href="{{base_url}}/app.html">Application</a></li>
+              <li><a href="{{base_url}}/database.html">Database</a></li>
+              <li><a href="{{base_url}}/data_analysis.html">Big Data and Data Analysis</a></li>
             </ul>
           </scale-telekom-mega-menu-column>
         </scale-telekom-mega-menu>
       </scale-telekom-nav-flyout>
     </scale-telekom-nav-item>
     <scale-telekom-nav-item>
-      <button>Cloud Adoption Framework</button>
+      <button>DevOps</button>
       <scale-telekom-nav-flyout hover>
         <scale-telekom-mega-menu>
           <scale-telekom-mega-menu-column>
-            <a href="https://example.com" slot="heading">Plan</a>
+            <a slot="heading">DevOps</a>
             <ul>
-              <li><a href="https://example.com">Cloud Adoption Motivation</a></li>
-              <li><a href="https://example.com">Gap Analysis</a></li>
-              <li><a href="https://example.com">Cloud Adoption Blueprint</a></li>
-              <li><a href="https://example.com">Cloud Migration Plan</a></li>
-              <li><a href="https://example.com">Organisation & Capability Assurance</a></li>
+              <li><a href="{{base_url}}/developer/iac.html">Automation</a></li>
+              <li><a href="{{base_url}}/developer/sdk.html">Software Development Kit</a></li>
+              {% if otcdocs_search_environment != 'hc_swiss' %}
+              <li><a href="{{base_url}}/blueprints">Blueprints</a></li>
+              {% endif %}
             </ul>
-          </scale-telekom-mega-menu-column>
-          <scale-telekom-mega-menu-column>
-            <a href="https://example.com" slot="heading">Ready</a>
-            <ul>
-              <li><a href="https://example.com">Landing Zone Construction</a></li>
-              <li><a href="https://example.com">Cloud Architecture Design</a></li>
-            </ul>
-          </scale-telekom-mega-menu-column>
-          <scale-telekom-mega-menu-column>
-            <a href="https://example.com" slot="heading">Adopt</a>
-            <ul>
-              <li><a href="https://example.com">Application Migration</a></li>
-              <li><a href="https://example.com">Data Migration</a></li>
-            </ul>
-          </scale-telekom-mega-menu-column>
-          <scale-telekom-mega-menu-column>
-            <a href="https://example.com" slot="heading">Govern & Manage</a>
-            <ul>
-              <li><a href="https://example.com">Cost Management</a></li>
-              <li><a href="https://example.com">Cost Center</a></li>
-              <li><a href="https://example.com">Security Compliance & Governance</a></li>
-              <li><a href="https://example.com">Cloud-based OM</a></li>
-            </ul>
-          </scale-telekom-mega-menu-column>
-
         </scale-telekom-mega-menu>
       </scale-telekom-nav-flyout>
     </scale-telekom-nav-item>
-    <scale-telekom-nav-item>
-      <button>Developers</button>
-      <scale-telekom-nav-flyout hover>
-        <scale-telekom-mega-menu>
-          <scale-telekom-mega-menu-column>
-            <!--                <scale-icon-home-home slot="icon"></scale-icon-home-home>-->
-            <a href="https://example.com" slot="heading">APIs</a>
-            <ul>
-              <li><a href="https://example.com">REST API</a></li>
-              <li><a href="https://example.com">API Usage Guidelines</a></li>
-              <li><a href="https://example.com">Endpoints</a></li>
-            </ul>
-          </scale-telekom-mega-menu-column>
-          <scale-telekom-mega-menu-column>
-            <!--                <scale-icon-home-home slot="icon"></scale-icon-home-home>-->
-            <a href="https://example.com" slot="heading">Automation</a>
-            <ul>
-              <li><a href="https://example.com">Terraform</a></li>
-              <li><a href="https://example.com">Ansible</a></li>
-              <li><a href="https://example.com">Cloud Topology Designer</a></li>
-            </ul>
-          </scale-telekom-mega-menu-column>
-          <scale-telekom-mega-menu-column>
-            <!--                <scale-icon-home-home slot="icon"></scale-icon-home-home>-->
-            <a href="https://example.com" slot="heading">Development</a>
-            <ul>
-              <li><a href="https://example.com">SDKs</a></li>
-              <li><a href="https://example.com">Drivers & Tools</a></li>
-            </ul>
-          </scale-telekom-mega-menu-column>
-        </scale-telekom-mega-menu>
-      </scale-telekom-nav-flyout>
-    </scale-telekom-nav-item>
-    <scale-telekom-nav-item>
-      <button>Marketplace</button>
-      <scale-telekom-nav-flyout hover>
-        <scale-telekom-mega-menu>
-          <scale-telekom-mega-menu-column>
-            <!--                <scale-icon-home-home slot="icon"></scale-icon-home-home>-->
-            <a href="https://example.com" slot="heading">Alliances</a>
-            <ul>
-              <li><a href="https://example.com">IBM</a></li>
-              <li><a href="https://example.com">Canonical</a></li>
-              <li><a href="https://example.com">Oracle</a></li>
-              <li><a href="https://example.com">Mathworks</a></li>
-              <li><a href="https://example.com">Veeam</a></li>
-            </ul>
-          </scale-telekom-mega-menu-column>
-          <scale-telekom-mega-menu-column>
-            <!--                <scale-icon-home-home slot="icon"></scale-icon-home-home>-->
-            <a href="https://example.com" slot="heading">Partners</a>
-            <ul>
-              <li><a href="https://example.com">Muster 1 GmbH</a></li>
-              <li><a href="https://example.com">Muster 2 GmbH</a></li>
-            </ul>
-          </scale-telekom-mega-menu-column>
-        </scale-telekom-mega-menu>
-      </scale-telekom-nav-flyout>
-    </scale-telekom-nav-item>
-
-    <!--        <scale-telekom-nav-item>-->
-    <!--          <a href="#">Community</a>-->
-    <!--        </scale-telekom-nav-item>-->
   </scale-telekom-nav-list>
   <scale-telekom-nav-list variant="functions" slot="functions" alignment="right">
 
     </scale-telekom-nav-item>
 
     <scale-telekom-nav-item>
-      <a href="#">
+      <a href="https://community.open-telekom-cloud.com/">
         <scale-badge no-dot label="Community">
           <scale-icon-communication-chat accessibility-title="community" />
         </scale-badge>
       </a>
     </scale-telekom-nav-item>
     <scale-telekom-nav-item>
-      <a href="#">
+      {% if otcdocs_search_environment != 'hc_swiss' %}
+      <a href="https://console.sc.otc.t-systems.com/">
+      {% else %}
+      <a href="https://console.otc.t-systems.com/">
+      {% endif %}
         <scale-badge no-dot label="Console">
           <scale-icon-device-computer accessibility-title="console" />
         </scale-badge>
@@ -189,126 +87,55 @@
         <scale-telekom-mobile-flyout-canvas>
           <!-- main-nav (mobile) -->
           <scale-telekom-mobile-menu slot="mobile-main-nav">
-            <scale-telekom-mobile-menu-item active>
-              <a href="#">Blueprints</a>
-              <scale-telekom-mobile-menu-item active slot="children">
-                <a href="#">By Use Case</a>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Hybrid</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Security & Compliance</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Networking</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Migration</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Data Analytics & AI</a>
-                </scale-telekom-mobile-menu-item>
-              </scale-telekom-mobile-menu-item>
+            <scale-telekom-mobile-menu-item>
+              <a href="{{base_url}}/services.html">Services</a>
               <scale-telekom-mobile-menu-item slot="children">
-                <a href="#">By Industry</a>
+                <a href="{{base_url}}/services.html">Services</a>
                 <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Media</a>
+                  <a href="{{base_url}}/compute.html">Compute</a>
+                </scale-telekom-mobile-menu-item>                
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="{{base_url}}/container.html">Container</a>
                 </scale-telekom-mobile-menu-item>
                 <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Automotive</a>
+                  <a href="{{base_url}}/network.html">Network</a>
                 </scale-telekom-mobile-menu-item>
                 <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Education</a>
+                  <a href="{{base_url}}/storage.html">Storage</a>
                 </scale-telekom-mobile-menu-item>
                 <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Finance</a>
+                  <a href="{{base_url}}/md.html">Management and  Deployment</a>
                 </scale-telekom-mobile-menu-item>
                 <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Healthcare</a>
+                  <a href="{{base_url}}/security.html">Security</a>
                 </scale-telekom-mobile-menu-item>
                 <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Retail</a>
-                </scale-telekom-mobile-menu-item>
-              </scale-telekom-mobile-menu-item>
-              <scale-telekom-mobile-menu-item slot="children">
-                <a href="#">Best Practices</a>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Computing</a>
+                  <a href="{{base_url}}/app.html">Application</a>
                 </scale-telekom-mobile-menu-item>
                 <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Storage</a>
+                  <a href="{{base_url}}/database.html">Database</a>
                 </scale-telekom-mobile-menu-item>
                 <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Network</a>
+                  <a href="{{base_url}}/data_analysis.html">Bid Data and Data Analysis</a>
                 </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Security</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Data Analysis</a>
-                </scale-telekom-mobile-menu-item>
-              </scale-telekom-mobile-menu-item>
-
+              </scale-telekom-mobile-menu-item>              
             </scale-telekom-mobile-menu-item>
             <scale-telekom-mobile-menu-item>
-              <a href="#">Cloud Adoption Framework</a>
-            </scale-telekom-mobile-menu-item>
-            <scale-telekom-mobile-menu-item>
-              <a href="#">Developers</a>
+              <a href="{{base_url}}/developer/index.html">DevOps</a>
               <scale-telekom-mobile-menu-item slot="children">
-                <a href="#">APIs</a>
+                <a href="{{base_url}}/developer/index.html">DevOps</a>
                 <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">REST API</a>
-                </scale-telekom-mobile-menu-item>
+                  <a href="{{base_url}}/developer/iac.html">Automation</a>
+                </scale-telekom-mobile-menu-item>                
                 <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">API Usage Guidelines</a>
+                  <a href="{{base_url}}/developer/sdk.html">Software Development Kit</a>
                 </scale-telekom-mobile-menu-item>
-              </scale-telekom-mobile-menu-item>
-              <scale-telekom-mobile-menu-item slot="children">
-                <a href="#">Automation</a>
+                {% if otcdocs_search_environment != 'hc_swiss' %}
                 <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Terraform</a>
+                  <a href="{{base_url}}/blueprints">Blueprints</a>
                 </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Ansible</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Cloud Topology Designer</a>
-                </scale-telekom-mobile-menu-item>
-              </scale-telekom-mobile-menu-item>
-              <scale-telekom-mobile-menu-item slot="children">
-                <a href="#">Development</a>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">SDKs</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Drivers & Tools</a>
-                </scale-telekom-mobile-menu-item>
-              </scale-telekom-mobile-menu-item>
-            </scale-telekom-mobile-menu-item>
-            <scale-telekom-mobile-menu-item>
-              <a href="#">Marketplace</a>
-              <scale-telekom-mobile-menu-item slot="children">
-                <a href="#">Alliances</a>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">IBM</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">Canonical</a>
-                </scale-telekom-mobile-menu-item>
-              </scale-telekom-mobile-menu-item>
-              <scale-telekom-mobile-menu-item slot="children">
-                <a href="#">Partners</a>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">P1</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="#">P2</a>
-                </scale-telekom-mobile-menu-item>
-              </scale-telekom-mobile-menu-item>
-            </scale-telekom-mobile-menu-item>
-            <scale-telekom-mobile-menu-item>
-              <a href="#">Community</a>
+                {% endif %}
+              </scale-telekom-mobile-menu-item>              
             </scale-telekom-mobile-menu-item>
           </scale-telekom-mobile-menu>
         </scale-telekom-mobile-flyout-canvas>
@@ -448,12 +275,15 @@
   </nav>
 </header> -->
 
-<nav id="docs-subnavbar" class="docs-subnavbar py-2 px-3 d-flex justify-content-between" aria-label="Secondary navigation">
-{%- if theme_disable_search is not sameas true %}
+<nav id="docs-subnavbar" class="docs-subnavbar py-2 px-3 d-flex justify-content-between"
+  aria-label="Secondary navigation">
+  {%- if theme_disable_search is not sameas true %}
   <!-- Form for input, onSubmit="return false" to prevent reloading the page when pressing enter -->
   <form id="searchInput" class="col-lg-3 col-md-6 col-10" onsubmit="return false">
     <div class="input-group" id="searchInputGroup">
-      <input id="searchbox" class="form-control delete-right-border" placeholder="Type here to search" onfocus="addBoxShadow(event)" onfocusout="removeBoxShadow(event)" oninput="returnValue(event)" onkeyup="onEnter(event)">
+      <input id="searchbox" class="form-control delete-right-border" placeholder="Type here to search"
+        onfocus="addBoxShadow(event)" onfocusout="removeBoxShadow(event)" oninput="returnValue(event)"
+        onkeyup="onEnter(event)">
       <span class="input-group-text delete-search-text d-none" onclick="deleteEnterResults()" id="DeleteSearchText">
         <i class="fa fa-close"></i>
       </span>
@@ -464,44 +294,24 @@
 
     <ul class="dropdown-menu overflow-hidden" style="max-width:90%" id="searchDropdown"></ul>
   </form>
-{%- endif %}
+  {%- endif %}
 
-  <button
-    class="btn docs-sidebar-toggle d-md-none py-0 px-1 ms-3 order-3 navbar-toggler collapsed col-1"
-    type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#docs-sidebar-nav"
-    aria-controls="docs-sidebar-nav"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      class="bi bi-expand"
-      fill="currentColor"
-      viewBox="0 0 16 16"
-    >
+  <button class="btn docs-sidebar-toggle d-md-none py-0 px-1 ms-3 order-3 navbar-toggler collapsed col-1" type="button"
+    data-bs-toggle="collapse" data-bs-target="#docs-sidebar-nav" aria-controls="docs-sidebar-nav" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-expand" fill="currentColor"
+      viewBox="0 0 16 16">
       <title>Expand</title>
-      <path
-        fill-rule="evenodd"
-        d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zM7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10z"
-      ></path>
+      <path fill-rule="evenodd"
+        d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zM7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10z">
+      </path>
     </svg>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      class="bi bi-collapse"
-      fill="currentColor"
-      viewBox="0 0 16 16"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-collapse" fill="currentColor"
+      viewBox="0 0 16 16">
       <title>Collapse</title>
-      <path
-        fill-rule="evenodd"
-        d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707l-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z"
-      ></path>
+      <path fill-rule="evenodd"
+        d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707l-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z">
+      </path>
     </svg>
   </button>
 </nav>
