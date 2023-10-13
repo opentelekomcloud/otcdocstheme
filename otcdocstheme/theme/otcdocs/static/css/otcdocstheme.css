@@ -280,7 +280,7 @@ docs-book-wrapper .ul-breadcrumbs {
     border-color: var(--telekom-color-background-surface-highlight);
     color: var(--telekom-color-text-and-icon-standard);
   }
-  
+
   #spansearchbutton {
     background-color: var(--telekom-color-background-surface-highlight);
     border-color: var(--telekom-color-background-surface-highlight);
@@ -1146,7 +1146,7 @@ div.highlight {
   .page-link {
     border-color: var(--telekom-color-background-surface-highlight);
   }
-  
+
   .page-link:hover {
     border-color: var(--telekom-color-background-surface-highlight);
   }
