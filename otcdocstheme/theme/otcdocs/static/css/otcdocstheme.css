@@ -525,7 +525,7 @@ bold.service-doc-title {
 @media (min-width: 768px) {
   .docs-sidebar-toc {
     position: sticky;
-    top: 10px;
+    top: 5rem;
     display: block !important;
     overflow-y: auto;
   }
@@ -770,7 +770,7 @@ code.docutils.literal.notranslate {
 @media (min-width: 768px) {
   .docs-toc {
     position: sticky;
-    top: 10px;
+    top: 5rem;
     right: 0;
     z-index: 2;
     height: calc(100vh - 10rem);
