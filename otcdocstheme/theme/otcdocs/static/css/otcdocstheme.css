@@ -1126,10 +1126,30 @@ div.highlight {
 
 .page-link {
   color: var(--dt-color-black);
+  background-color: var(--telekom-color-background-surface);
 }
 
 .page-link:hover {
   color: var(--telekom-color-primary-standard);
+  background-color: var(--telekom-color-background-surface-subtle);
+}
+
+.page-item.disabled .page-link {
+  background-color: var(--telekom-color-background-canvas-subtle);
+}
+
+@media (prefers-color-scheme: dark) {
+  .page-item.disabled .page-link {
+    border-color: var(--telekom-color-background-surface-highlight);
+  }
+
+  .page-link {
+    border-color: var(--telekom-color-background-surface-highlight);
+  }
+  
+  .page-link:hover {
+    border-color: var(--telekom-color-background-surface-highlight);
+  }
 }
 
 /* END: Bottom Navigation */
