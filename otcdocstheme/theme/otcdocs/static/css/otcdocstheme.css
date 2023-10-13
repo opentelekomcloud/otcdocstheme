@@ -326,8 +326,8 @@ docs-book-wrapper .ul-breadcrumbs {
   font-weight: 500;
 }
 
-.path-green {
-  color: var(--dt-color-olive-80);
+.path-accent {
+  color: var(--telekom-color-text-and-icon-additional);
 }
 
 .nobullets {
@@ -761,39 +761,6 @@ code.docutils.literal.notranslate {
   word-wrap: break-word;
 }
 
-@media (min-width: 992px) {
-  .docs-main {
-    /*
-     * those comments are from a successful attempt to use grid layout
-     * it is now dropped in favor of columns, which are easier to do truly flexible,
-     * but anytime can come back
-     * */
-
-    /*grid-template-areas: "title toc" "content toc" "footer toc";
-    grid-template-columns: var(--docs-grid-columns);
-    grid-template-rows: auto 1fr;*/
-  }
-}
-
-@media (min-width: 768px) {
-  /*.docs-main {
-    display: grid;
-    gap: inherit;
-  }*/
-}
-
-.docs-toc {
-  /*grid-area: toc;*/
-  font-weigth: 300;
-  color: var(--dt-color-grey-60);
-}
-.docs-content {
-  /*grid-area: content;*/
-}
-
-.docs-toc nav {
-}
-
 @media (min-width: 768px) {
   .docs-toc {
     position: sticky;
@@ -846,11 +813,6 @@ code.docutils.literal.notranslate {
 /* Hide link in toc to doc itself */
 #TableOfContents a[href="#"] {
   display: none;
-}
-
-/* Make body title disappear - it is included in titlerow */
-.docs-body h1 {
-  /*  display: none;*/
 }
 
 p.sidebar-title {
@@ -1314,23 +1276,29 @@ dl table {
 
 .accordion-button:hover {
   color: var(--telekom-color-primary-standard);
-  background-color: var(--background-button-hover);
+  background-color: var(--telekom-color-background-surface-subtle);
 }
 
 .accordion-button:focus {
   border-color: none;
   box-shadow: none;
-  background-color: var(--background-button-hover);
+  background-color: var(--telekom-color-background-surface-subtle);
 }
 
 .accordion-button:not(.collapsed) {
     color: var(--telekom-color-primary-standard);
-    background-color: var(--background-button-hover);
+    background-color: var(--telekom-color-background-surface-subtle);
 }
 
 .accordion-button:not(.collapsed)::after {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%%23012529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
   transform: rotate(-180deg);
+}
+
+@media (prefers-color-scheme: dark) {
+  .accordion-button::after {
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(298deg) brightness(106%) contrast(106%);
+  }
 }
 
 /* Checkbox */

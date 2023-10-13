@@ -329,7 +329,7 @@ const createMainResultList = (response, div) => {
         // Shorten the URL string so that it isn't too long
         hit_doc_url = shortenString(`${hit._source.doc_url}${hit._source.current_page_name}`, 80)
         // Create meta string and add it
-        meta_string = `<bold class="service-doc-title">${hit._source.service_title} - ${hit._source.doc_title}</bold> | <path class=path-green>${hit_doc_url}</path>`
+        meta_string = `<bold class="service-doc-title">${hit._source.service_title} - ${hit._source.doc_title}</bold> | <path class=path-accent>${hit_doc_url}</path>`
         div_url.innerHTML = meta_string
         div_2.innerHTML = cleanupString(hit.highlight.body[0])
 
