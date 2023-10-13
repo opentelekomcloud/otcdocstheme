@@ -3,8 +3,14 @@
 /* Own Definitions */
 body {
   --background-button-hover: hsla(0, 0%, 0%, 0.07);
-  --dt-color-switch-background: #dfdfe1;
+  --dt-color-switch-background: var(--telekom-color-ui-regular);
   --shadow-thumb: 0 0 2px 0 rgba(0, 0, 0, 0.24), 0 2px 4px 0 rgba(0, 0, 0, 0.24), 0 4px 12px 0 rgba(0, 0, 0, 0.26);
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --dt-color-switch-background: var(--telekom-color-background-surface-highlight);
+  }
 }
 
 body {
@@ -1301,9 +1307,13 @@ dl table {
   }
 }
 
+#collapseServiceFilter {
+  background: var(--telekom-color-background-surface);
+}
+
 /* Checkbox */
 .form-check:hover {
-  background-color: var(--dt-color-background-light);
+  background-color: var(--telekom-color-background-surface-subtle);
 }
 .form-check-input:checked {
   background-color: var(--telekom-color-primary-standard);
