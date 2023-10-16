@@ -41,15 +41,21 @@ body a:active {
 
 
 /* CONTAINER */
-/* Sizing */
-/* force using full screen */
-.container-xxl {
-  max-width: unset !important;
+.scl-container {
+  display: flex;
+  justify-content: center;
+  margin-left: 2rem;
+  margin-right: 2rem;
 }
 
-/* END: Sizing */
+.scl-container-width {
+  width: 100%;
+  max-width: var(--scl-grid-max-width);
+}
 
-/* Make the container larger on XXL Screens */
+.flex-content {
+  display: flex;
+}
 
 /* CONTAINER END */
 
@@ -57,10 +63,6 @@ body a:active {
 .docs-navbar {
   padding: 0 0 0.75rem 0 !important;
   background: var(--telekom-color-primary-standard);
-  /*display: flex;*/
-  /*height: 72px;
-  max-width: unset;
-  top: -68px;*/
 }
 
 @media (min-width: 768px) {
@@ -186,9 +188,8 @@ body a:active {
 .docs-subnavbar {
   position: relative;
   /*#  z-index: 1020;*/
-  background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -564,8 +565,6 @@ div.docs-sidebar-toc li.toctree-l1 > a {
 .docs-sidebar-section-title {
   display: block;
   width: 100%;
-  padding-right: 20px;
-  padding-left: 20px;
   padding-top: 0px;
   padding-bottom: 10px;
 }
@@ -590,9 +589,7 @@ div.docs-sidebar-toc li.toctree-l1 > a {
 #table-of-contents.docs-sidebar-section {
   background-color: transparent;
 }
-#table-of-contents.docs-sidebar-section ul {
-  padding-left: 20px;
-}
+
 #table-of-contents.docs-sidebar-section ul {
   list-style: none;
 }
