@@ -44,14 +44,14 @@
 
         {%- block sidebar1 %}{{ sidebar1() }} {% endblock %}
 
-        <div class="row flex-start py-md-4">
+          <div class="flex-main">
           {%- block relbar3 %}{{ relbar1() }}{% endblock %}
           {%- if theme_sidebar_mode == 'toctree' and theme_display_toc %}
-          <main class="docs-main col-12 col-xl-9" role="main">
+          <main class="docs-main" role="main">
             {% else %}
-            <main class="docs-main col-12 col-xl-11" role="main">
+            <main class="docs-main" role="main">
               {% endif %}
-              <div id="docs-content" class="docs-content ps-lg-4">
+              <div id="docs-content" class="docs-content">
                 {% block body %}{% endblock %}
                 <div id="bottom-navigation" class="py-5">
                   <nav>
