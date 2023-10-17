@@ -58,6 +58,12 @@ body a:active {
   gap: 1rem;
 }
 
+@media (max-width: 768px) {
+  .flex-content {
+    flex-direction: column;
+  }  
+}
+
 /* CONTAINER END */
 
 /* NAVBAR */
@@ -191,6 +197,8 @@ body a:active {
   /*#  z-index: 1020;*/
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-around;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -546,6 +554,7 @@ bold.service-doc-title {
 @media (max-width: 767.98px) {
   .docs-sidebar {
     margin: 0 -0.75rem 1rem;
+    min-width: 100%;
   }
   .docs-sidebar-toc ul {
     padding: 1.5rem 0.75rem;

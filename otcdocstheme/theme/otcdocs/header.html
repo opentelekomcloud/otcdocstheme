@@ -146,10 +146,11 @@
 
 <div class="scl-container">
   <div class="scl-container-width">
+    <scale-text-field id="text-field" label="Type here to Search"></scale-text-field>
     <nav id="docs-subnavbar" class="docs-subnavbar" aria-label="Secondary navigation">
       {%- if theme_disable_search is not sameas true %}
       <!-- Form for input, onSubmit="return false" to prevent reloading the page when pressing enter -->
-      <form id="searchInput" class="col-lg-3 col-md-6 col-10" onsubmit="return false">
+      <form id="searchInput" class="" onsubmit="return false">
         <div class="input-group" id="searchInputGroup">
           <input id="searchbox" class="form-control delete-right-border" placeholder="Type here to search"
             onfocus="addBoxShadow(event)" onfocusout="removeBoxShadow(event)" oninput="returnValue(event)"
@@ -165,7 +166,8 @@
         <ul class="dropdown-menu overflow-hidden" style="max-width:90%" id="searchDropdown"></ul>
       </form>
       {%- endif %}
-
+      
+      <!-- Kack toggle button -->
       <button class="btn docs-sidebar-toggle d-md-none py-0 px-1 ms-3 order-3 navbar-toggler collapsed col-1"
         type="button" data-bs-toggle="collapse" data-bs-target="#docs-sidebar-nav" aria-controls="docs-sidebar-nav"
         aria-expanded="false" aria-label="Toggle navigation">
