@@ -718,8 +718,16 @@ main h1, h2, h3, h4, h5 {
   text-decoration-line: none;
 }
 
+.table {
+  color: var(--telekom-color-text-and-icon-standard);
+}
+
+table > caption {
+  color: var(--telekom-color-text-and-icon-additional);
+}
+
 table.docutils thead {
-  border: 1px solid #666666;
+  border: 1px solid var(--telekom-color-ui-subtle);
 }
 
 th {
@@ -730,13 +738,12 @@ th.head > p {
   margin-bottom: 0px;
 }
 
-table.docutils th {
-  color: #ffffff !important;
+/* table.docutils th {
   background-color: #666666;
   border-bottom-color: #666666;
   border-bottom-style: solid;
   border-bottom-width: 1px;
-}
+} */
 
 /* Rounded corner for first table-header element */
 
@@ -761,21 +768,32 @@ table.docutils td {
 }
 
 table.docutils th {
-  background-color: var(--dt-color-grey-70);
-  color: #edf2f7;
+  background-color: var(--telekom-color-background-surface);
+  color: var(--telekom-color-text-and-icon-standard);
 }
 
 table.docutils td {
-  border: 1px solid #ddd;
+  border: 1px solid var(--telekom-color-ui-regular);
 }
 
-table.docutils tr.row-even {
-  background-color: var(--dt-color-grey-0);
+table.docutils tr {
+  background-color: var(--telekom-color-background-surface-subtle);
 }
 
-table.docutils tr.row-odd {
+@media (prefers-color-scheme: dark) {
+  table.docutils tr {
+    background-color: var(--telekom-color-background-surface);
+  }
+}
+
+table.docutils thead {
+  border-top: 2px solid var(--telekom-color-ui-strong) !important;
+  border-bottom: 2px solid var(--telekom-color-ui-strong) !important;
+}
+
+/* table.docutils tr.row-odd {
   background-color: var(--dt-color-grey-10);
-}
+} */
 
 table.docutils caption {
   caption-side: top;
@@ -802,8 +820,10 @@ code.docutils.literal.notranslate {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
   align-content: flex-start;
   column-gap: 1rem;
+  width: 100%;
 }
 
 .docs-main {
