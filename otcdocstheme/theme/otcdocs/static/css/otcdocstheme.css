@@ -10,6 +10,7 @@ body {
 @media (prefers-color-scheme: dark) {
   body {
     --dt-color-switch-background: var(--telekom-color-background-surface-highlight);
+    background-color: var(--telekom-color-background-canvas-subtle);
   }
 }
 
@@ -20,7 +21,6 @@ body {
 /* START: GLOBAL a-tag BEHAVIOR */
 
 body {
-  background-color: var(--telekom-color-background-canvas-subtle);
   color: var(--telekom-color-text-and-icon-standard)
 }
 
