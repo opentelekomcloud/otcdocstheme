@@ -738,13 +738,6 @@ th.head > p {
   margin-bottom: 0px;
 }
 
-/* table.docutils th {
-  background-color: #666666;
-  border-bottom-color: #666666;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-} */
-
 /* Rounded corner for first table-header element */
 
 table th:first-child {
