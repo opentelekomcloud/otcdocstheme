@@ -197,14 +197,6 @@ body a:active {
   /*#  z-index: 1020;*/
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-  display: flex;
-  justify-content: space-around;
-}
-
-@media (prefers-color-scheme: dark) {
-  .docs-subnavbar {
-    background-color: var(--telekom-color-background-surface-subtle);
-  }
 }
 
 .docs-subnavbar div {
@@ -264,6 +256,30 @@ docs-book-wrapper .ul-breadcrumbs {
 /* END: Breadcrumbs */
 
 /* SEARCH */
+
+#SearchIconScaleNavBar {
+  height: 100%;
+}
+
+#SearchIconScaleNavBar:hover {
+  color: var(--telekom-color-text-and-icon-primary-hovered);
+  cursor: pointer;
+}
+
+#SearchIconScaleNavBar:hover:after {
+  content: '';
+  width: 20px;
+  height: var(--telekom-spacing-composition-space-02);
+  background: var(--telekom-color-text-and-icon-primary-hovered);
+  display: block;
+  position: relative;
+  margin-left: -20px;
+  align-self: end;
+}
+
+#SearchIconScaleNavBar > svg {
+  align-self: center;
+}
 
 #searchResultsEnter a:hover {
   text-decoration: none;
