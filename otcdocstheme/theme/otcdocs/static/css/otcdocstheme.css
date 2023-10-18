@@ -61,7 +61,7 @@ body a:active {
 @media (max-width: 768px) {
   .flex-content {
     flex-direction: column;
-  }  
+  }
 }
 
 /* CONTAINER END */
@@ -798,7 +798,7 @@ code.docutils.literal.notranslate {
 
 /* Main body */
 
-.flex-main {  
+.flex-main {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
