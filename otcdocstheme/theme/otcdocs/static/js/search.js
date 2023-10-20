@@ -386,15 +386,16 @@ const createMainResult = async (response) => {
     // If it does not exist create it
     else {
         // Search for content div, hide it and add search results
-        let contentDiv = document.getElementById('docs-content')
+        let contentDiv = document.getElementById('docs-main')
         contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter' class='overflow-hidden'></div>");
         contentDiv.classList.add('nodisplay')
         // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
         if (document.getElementById('right-sidebar') == undefined) {
-            document.getElementById('left-sidebar').classList.add('not-visible')
+            document.getElementById('left-sidebar').classList.add('nodisplay')
         } else {
-            document.getElementById('left-sidebar').classList.add('not-visible')
-            document.getElementById('right-sidebar').classList.add('not-visible')
+            document.getElementById('left-sidebar').classList.add('nodisplay')
+            document.getElementById('right-sidebar').classList.add('nodisplay')
+            document.getElementById('right-sidebar').classList.remove('d-xl-block')
             document.getElementById('breadcrumbs').classList.add('d-none')
         }
         div = document.getElementById('searchResultsEnter')
@@ -583,11 +584,12 @@ const deleteEnterResults = () => {
     // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
     if (document.getElementById('right-sidebar') == undefined) {
         document.getElementById('docs-content').classList.remove('nodisplay');
-        document.getElementById('left-sidebar').classList.remove('not-visible')
+        document.getElementById('left-sidebar').classList.remove('nodisplay')
     } else {
         document.getElementById('docs-content').classList.remove('nodisplay');
-        document.getElementById('left-sidebar').classList.remove('not-visible')
-        document.getElementById('right-sidebar').classList.remove('not-visible')
+        document.getElementById('left-sidebar').classList.remove('nodisplay')
+        document.getElementById('right-sidebar').classList.remove('nodisplay')
+        document.getElementById('right-sidebar').classList.add('d-xl-block')
         document.getElementById('breadcrumbs').classList.remove('d-none')
     }
     document.getElementById('DeleteSearchText').classList.add("d-none");
