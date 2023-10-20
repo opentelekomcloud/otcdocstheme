@@ -586,7 +586,7 @@ const deleteEnterResults = () => {
         document.getElementById('docs-content').classList.remove('nodisplay');
         document.getElementById('left-sidebar').classList.remove('nodisplay')
     } else {
-        document.getElementById('docs-content').classList.remove('nodisplay');
+        document.getElementById('docs-main').classList.remove('nodisplay');
         document.getElementById('left-sidebar').classList.remove('nodisplay')
         document.getElementById('right-sidebar').classList.remove('nodisplay')
         document.getElementById('right-sidebar').classList.add('d-xl-block')
