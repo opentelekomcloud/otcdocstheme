@@ -87,11 +87,13 @@
                   >Database</a
                 >
               </li>
+              {%- if otcdocs_search_environment == "hc_de" %}
               <li>
                 <a class="dropdown-item" href="{{base_url}}/data_analysis.html"
                   >Big Data and Data Analysis</a
                 >
               </li>
+              {% endif %}
             </ul>
           </li>
           <li class="nav-item dropdown me-2 col-12 col-md-auto">
