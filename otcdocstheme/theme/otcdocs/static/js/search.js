@@ -7,6 +7,60 @@ let currentServiceTitle = ''
 let currentDocType = ''
 let currentServiceType = ''
 
+const createSearchPage = async () => {
+    let contentDiv = document.getElementById('docs-main')
+    // Check if we are already on the Search Page if this is the case skip the Page Creation
+    if (document.getElementById('searchResultsEnter') == undefined) {
+        contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter' class='overflow-hidden'></div>");
+        contentDiv.classList.add('nodisplay')
+    
+        // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
+        if (document.getElementById('right-sidebar') == undefined) {
+            document.getElementById('left-sidebar').classList.add('nodisplay')
+        } else {
+            document.getElementById('left-sidebar').classList.add('nodisplay')
+            document.getElementById('right-sidebar').classList.add('nodisplay')
+            document.getElementById('right-sidebar').classList.remove('d-xl-block')
+            document.getElementById('breadcrumbs').classList.add('nodisplay')
+        }
+    
+        // Create Search Input Field
+        let searchInput = document.createElement('scale-text-field')
+        searchInput.setAttribute('id', 'searchbox')
+        searchInput.setAttribute('label', 'Search')
+        searchInput.setAttribute('scale-input', 'getSearchResults(event)')
+        let flexContentParent = document.getElementById('flex-content').parentElement
+        flexContentParent.insertBefore(searchInput, flexContentParent.firstChild);
+
+        // Create Results Headline
+        let h1 = document.createElement('h1')
+        h1.setAttribute('id', 'searchResultsCount')
+        h1.innerHTML = "Search Results: 0"
+        h1.setAttribute('style', 'font-size: 1.5rem')
+    
+        // Search Results Close Button
+        let close = document.createElement('scale-icon-action-close')
+        close.classList.add('closeSearchIcon')
+        close.setAttribute('accessibility-title', 'close Search Results')
+        close.setAttribute('onclick', 'deleteEnterResults()')
+        h1.appendChild(close)
+    
+        // Get Search Results div
+        let div = document.getElementById('searchResultsEnter')
+        div.appendChild(h1)
+    
+        // Create Filter List
+        // Check whether the serviceAccordion div already exists
+        let div_service_accordion = document.getElementById('searchAccordions')
+        if (div_service_accordion === null) {
+            let filters = await addFilters()
+            createSearchFilter()
+            addFiltersToAccordion(filters)
+        }
+    }
+
+}
+
 // Remove special characters and HTML from code blocks
 const cleanupString = (text) => {
     text = text.replace(/¶/, " ");
@@ -384,45 +438,46 @@ const createMainResult = async (response) => {
     }
     // If it does not exist create it
     else {
-        // Search for content div, hide it and add search results
-        let contentDiv = document.getElementById('docs-main')
-        contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter' class='overflow-hidden'></div>");
-        contentDiv.classList.add('nodisplay')
-        // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
-        if (document.getElementById('right-sidebar') == undefined) {
-            document.getElementById('left-sidebar').classList.add('nodisplay')
-        } else {
-            document.getElementById('left-sidebar').classList.add('nodisplay')
-            document.getElementById('right-sidebar').classList.add('nodisplay')
-            document.getElementById('right-sidebar').classList.remove('d-xl-block')
-            document.getElementById('breadcrumbs').classList.add('nodisplay')
-        }
+
+        // // Search for content div, hide it and add search results
+        // let contentDiv = document.getElementById('docs-main')
+        // contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter' class='overflow-hidden'></div>");
+        // contentDiv.classList.add('nodisplay')
+        // // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
+        // if (document.getElementById('right-sidebar') == undefined) {
+        //     document.getElementById('left-sidebar').classList.add('nodisplay')
+        // } else {
+        //     document.getElementById('left-sidebar').classList.add('nodisplay')
+        //     document.getElementById('right-sidebar').classList.add('nodisplay')
+        //     document.getElementById('right-sidebar').classList.remove('d-xl-block')
+        //     document.getElementById('breadcrumbs').classList.add('nodisplay')
+        // }
         div = document.getElementById('searchResultsEnter')
     }
 
     // Remove old search results
     div.textContent = ""
 
-    // Create Search Input Field
-    let searchInput = document.createElement('scale-text-field')
-    searchInput.setAttribute('id', 'searchbox')
-    searchInput.setAttribute('label', 'Search')
-    searchInput.setAttribute('scale-input', 'getSearchResults(event)')
+    // // Create Search Input Field
+    // let searchInput = document.createElement('scale-text-field')
+    // searchInput.setAttribute('id', 'searchbox')
+    // searchInput.setAttribute('label', 'Search')
+    // searchInput.setAttribute('scale-input', 'getSearchResults(event)')
 
-    // Create Results Headline
-    let h1 = document.createElement('h1')
-    h1.setAttribute('id', 'searchResultsCount')
-    h1.innerHTML = "Search Results: " + response.hits.hits.length
-    h1.setAttribute('style', 'font-size: 1.5rem')
+    // // Create Results Headline
+    // let h1 = document.createElement('h1')
+    // h1.setAttribute('id', 'searchResultsCount')
+    // h1.innerHTML = "Search Results: " + response.hits.hits.length
+    // h1.setAttribute('style', 'font-size: 1.5rem')
 
-    // Search Results Close Button
-    let close = document.createElement('scale-icon-action-close')
-    close.classList.add('closeSearchIcon')
-    close.setAttribute('accessibility-title', 'close Search Results')
-    close.setAttribute('onclick', 'deleteEnterResults()')
-    h1.appendChild(close)
-    div.appendChild(searchInput)
-    div.appendChild(h1)
+    // // Search Results Close Button
+    // let close = document.createElement('scale-icon-action-close')
+    // close.classList.add('closeSearchIcon')
+    // close.setAttribute('accessibility-title', 'close Search Results')
+    // close.setAttribute('onclick', 'deleteEnterResults()')
+    // h1.appendChild(close)
+    // div.appendChild(searchInput)
+    // div.appendChild(h1)
 
 
     // Create Main Result List
@@ -464,6 +519,7 @@ async function addFilters() {
 const addFiltersToAccordion = (filters) => {
     let serviceDiv = document.getElementById('serviceFilterBody')
     let docDiv = document.getElementById('docFilterBody')
+    let searchbox = document.getElementById("searchbox");
     let services = filters['services']
     let doc_types = available_doc_types
     let all_docs = filters['docs']
@@ -491,7 +547,6 @@ const addFiltersToAccordion = (filters) => {
                 for (child of docdivservice.children) {
                     child.children[0].children[0].checked = true
                 }
-                searchMainResult()
             } else {
                 // Remove the element from the array
                 active_service_search_filters = (
@@ -499,6 +554,8 @@ const addFiltersToAccordion = (filters) => {
                 );
                 // Remove the doc filter UI for that service
                 document.getElementById(`filter-service-doc-div-${service["service_type"]}`).classList.add("nodisplay")
+            }
+            if (searchbox.value) {
                 searchMainResult()
             }
         })
@@ -540,10 +597,11 @@ const addFiltersToAccordion = (filters) => {
                 if (e["target"].checked) {
                     // Add element to the array
                     active_service_search_filters = updateDocTypes(active_service_search_filters, service["service_type"], doc["type"], false, doc_types)
-                    searchMainResult()
                 } else {
                     // Remove the element from the array
                     active_service_search_filters = updateDocTypes(active_service_search_filters, service["service_type"], doc["type"], true, doc_types)
+                }
+                if (searchbox.value) {
                     searchMainResult()
                 }
             })
@@ -572,7 +630,9 @@ const addFiltersToAccordion = (filters) => {
                     active_doc_search_filters.splice(doc_type_index, 1)
                 }
             }
-            searchMainResult()
+            if (searchbox.value) {
+                searchMainResult()
+            }
         })
     })
 

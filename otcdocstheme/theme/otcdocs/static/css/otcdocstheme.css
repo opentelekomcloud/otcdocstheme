@@ -82,7 +82,7 @@ body a:active {
   gap: 1rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .flex-content {
     flex-direction: column;
   }
@@ -217,9 +217,13 @@ scale-telekom-header::part(container) {
 
 /* END: NAVBAR */
 
-/* subnavbar */
+/* START: subnavbar for small devices */
 
-
+@media (min-width: 768px) {
+  #docs-subnavbar {
+    display: none;
+  }
+}
 
 .docs-subnavbar {
   position: relative;
@@ -233,7 +237,7 @@ scale-telekom-header::part(container) {
 }
 /* END: subnavbar */
 
-/* Breadcrumbs */
+/* START: Breadcrumbs */
 
 .related {
   width: 100%;
@@ -585,7 +589,7 @@ bold.service-doc-title {
   }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 767px) {
   .docs-sidebar {
     margin: 0 -0.75rem 1rem;
     min-width: 100%;
@@ -629,12 +633,6 @@ div.docs-sidebar-toc li.toctree-l1 > a {
   font-weight: 400;
   font-size: 1.4rem;
   margin-top: 0;
-}
-
-@media (max-width: 768px) {
-  .docs-sidebar-section-title > h4 {
-    margin-top: 1rem;
-  }
 }
 
 #TableOfContents {
