@@ -213,44 +213,44 @@ async function searchRequest(val, request_size, highlight_size) {
     return response
 };
 
-function createResultList(response) {
-    let ul = document.getElementById('searchDropdown');
-    // Remove older search results
-    ul.textContent = "";
-    if (response.hits.hits.length > 0) {
-        ul.classList.add('show');
-        for (index in response.hits.hits) {
-            let hit = response.hits.hits[index];
+// function createResultList(response) {
+//     let ul = document.getElementById('searchDropdown');
+//     // Remove older search results
+//     ul.textContent = "";
+//     if (response.hits.hits.length > 0) {
+//         ul.classList.add('show');
+//         for (index in response.hits.hits) {
+//             let hit = response.hits.hits[index];
 
-            // Create li, a, div elements
-            let li = document.createElement('li');
-            let a = document.createElement('a');
-            let div_1 = document.createElement('div');
-            let div_2 = document.createElement('div');
+//             // Create li, a, div elements
+//             let li = document.createElement('li');
+//             let a = document.createElement('a');
+//             let div_1 = document.createElement('div');
+//             let div_2 = document.createElement('div');
 
-            // Add text and classes
-            a.setAttribute('href', hit._source.base_url + hit._source.doc_url + hit._source.current_page_name + '.html');
-            a.classList.add("dropdown-item");
-            li.classList.add("border-bottom")
-            div_1.classList.add("fw-bolder");
-            if (typeof hit.highlight.title == 'undefined') {
-                div_1.innerHTML = hit._source.title;
-            } else {
-                div_1.innerHTML = hit.highlight.title[0];
-            }
-            div_2.innerHTML = cleanupString(hit.highlight.body[0]);
+//             // Add text and classes
+//             a.setAttribute('href', hit._source.base_url + hit._source.doc_url + hit._source.current_page_name + '.html');
+//             a.classList.add("dropdown-item");
+//             li.classList.add("border-bottom")
+//             div_1.classList.add("fw-bolder");
+//             if (typeof hit.highlight.title == 'undefined') {
+//                 div_1.innerHTML = hit._source.title;
+//             } else {
+//                 div_1.innerHTML = hit.highlight.title[0];
+//             }
+//             div_2.innerHTML = cleanupString(hit.highlight.body[0]);
 
-            // Append as childs to structure ul > li > a > div/div
-            a.appendChild(div_1);
-            a.appendChild(div_2);
-            li.appendChild(a);
-            ul.appendChild(li);
-        }
-    }
-    else {
-        document.getElementById('searchDropdown').classList.remove('show');
-    }
-};
+//             // Append as childs to structure ul > li > a > div/div
+//             a.appendChild(div_1);
+//             a.appendChild(div_2);
+//             li.appendChild(a);
+//             ul.appendChild(li);
+//         }
+//     }
+//     else {
+//         document.getElementById('searchDropdown').classList.remove('show');
+//     }
+// };
 
 const shortenString = (str, maxLength) => {
     if (str.length <= maxLength) {
@@ -372,10 +372,9 @@ const createMainResultList = (response, div) => {
     }
 }
 
+// DELETES SEARCH AS YOU TYPE RESULTS AND HIDES SIDEBARS AND CONTENT
 const createMainResult = async (response) => {
     // Function to generate result list on main content
-    // Remove search as you type results
-    document.getElementById('searchDropdown').classList.remove('show');
 
     let div = document.getElementById('searchResultsEnter')
     // Check whether the searchResultsEnter div already exists
@@ -396,7 +395,7 @@ const createMainResult = async (response) => {
             document.getElementById('left-sidebar').classList.add('nodisplay')
             document.getElementById('right-sidebar').classList.add('nodisplay')
             document.getElementById('right-sidebar').classList.remove('d-xl-block')
-            document.getElementById('breadcrumbs').classList.add('d-none')
+            document.getElementById('breadcrumbs').classList.add('nodisplay')
         }
         div = document.getElementById('searchResultsEnter')
     }
@@ -404,21 +403,27 @@ const createMainResult = async (response) => {
     // Remove old search results
     div.textContent = ""
 
+    // Create Search Input Field
+    let searchInput = document.createElement('scale-text-field')
+    searchInput.setAttribute('id', 'searchbox')
+    searchInput.setAttribute('label', 'Search')
+    searchInput.setAttribute('scale-input', 'getSearchResults(event)')
+
     // Create Results Headline
     let h1 = document.createElement('h1')
+    h1.setAttribute('id', 'searchResultsCount')
     h1.innerHTML = "Search Results: " + response.hits.hits.length
     h1.setAttribute('style', 'font-size: 1.5rem')
-    h1.classList.add('ps-3')
-    h1.classList.add('d-flex')
-    h1.classList.add('justify-content-between')
 
     // Search Results Close Button
-    let i = document.createElement('i')
-    i.classList.add('fa')
-    i.classList.add('fa-close')
-    i.setAttribute('onclick', 'deleteEnterResults()')
-    h1.appendChild(i)
+    let close = document.createElement('scale-icon-action-close')
+    close.classList.add('closeSearchIcon')
+    close.setAttribute('accessibility-title', 'close Search Results')
+    close.setAttribute('onclick', 'deleteEnterResults()')
+    h1.appendChild(close)
+    div.appendChild(searchInput)
     div.appendChild(h1)
+
 
     // Create Main Result List
     createMainResultList(response, div)
@@ -573,10 +578,14 @@ const addFiltersToAccordion = (filters) => {
 
 }
 
+const deleteResults = () => {
+    document.getElementById('ul_div').textContent = ""
+    document.getElementById('searchResultsCount').innerHTML = "Search Results: 0"
+}
+
 // REMOVES RESULTS ON MAIN CONTENT END REMOVES ALSO THE SEARCH FILTER
 const deleteEnterResults = () => {
     document.getElementById('searchbox').value = ""
-    document.getElementById('searchDropdown').classList.remove('show');
     let div = document.getElementById('searchResultsEnter')
     if (div) {
         div.parentNode.removeChild(div)
@@ -590,9 +599,8 @@ const deleteEnterResults = () => {
         document.getElementById('left-sidebar').classList.remove('nodisplay')
         document.getElementById('right-sidebar').classList.remove('nodisplay')
         document.getElementById('right-sidebar').classList.add('d-xl-block')
-        document.getElementById('breadcrumbs').classList.remove('d-none')
+        document.getElementById('breadcrumbs').classList.remove('nodisplay')
     }
-    document.getElementById('DeleteSearchText').classList.add("d-none");
 
     // Remove Search Filter
     active_service_search_filters = []
@@ -759,47 +767,27 @@ const pagination = (element) => {
     document.getElementById('ul_' + page_number.toString()).classList.remove('nodisplay')
 }
 
-// Remove Dropdown once the user clicks somewhere else on the page
-document.getElementsByTagName('body')[0].onclick = function(e) {
-    if(e.target != document.getElementById('searchInput')) {
-        document.getElementById('searchDropdown').classList.remove('show');
-    }
-}
-
 // REPRESENTATION OF SEARCH RESULT ON MAIN CONTENT PAGE INSTEAD OF DROPDOWN
 const searchMainResult = async () => {
     let response = await searchRequest(document.getElementById('searchbox').value, 100, 300);
     createMainResult(response)
 }
 
-
-// FUNCTION WHICH STARTS SEARCH FUNCTIONALITY AFTER USING ENTER BUTTON
-async function onEnter(event) {
-    // keyCode 13 === Enter
-    if (event.which == 13 || event.keyCode == 13) {
-        searchMainResult()
-    }
-};
-
 // TIMER WHICH STARTS THE SEARCH RESULT LIST AFTER TIMEOUT HAS BEEN REACHED
 function timer(el) {
     id = setTimeout(async () => {
         if (el.value) {
-            // Check whether main Result is opened
-            if (document.getElementById("searchResultsEnter") === null) {
-                let response = await searchRequest(el.value, 5, 100);
-                createResultList(response);
-            }
+            let response = await searchRequest(document.getElementById('searchbox').value, 100, 300);
+            createMainResult(response)
         } else {
-            deleteEnterResults()
+            deleteResults();
         };
     }, 250);
 };
 
 // FUNCTION WHICH STARTS THE TIMER EVENT AFTER THE KEY UP EVENT
-const returnValue = async (event) => {
+const getSearchResults = async (event) => {
     clearTimeout(id);
     const el = document.getElementById('searchbox');
-    document.getElementById('DeleteSearchText').classList.remove("d-none");
     timer(el);
 };

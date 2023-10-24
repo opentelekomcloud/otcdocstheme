@@ -78,7 +78,7 @@
         </a>
     </scale-telekom-nav-item>
     <scale-telekom-nav-item>
-      <scale-icon-action-search id="SearchIconScaleNavBar" accessibility-title="Search" />
+      <scale-icon-action-search id="SearchIconScaleNavBar" accessibility-title="Search" onclick="searchMainResult()" />
     </scale-telekom-nav-item>
     <scale-telekom-nav-item class="burger-item">
       <button>
@@ -153,21 +153,13 @@
     <nav id="docs-subnavbar" class="docs-subnavbar" aria-label="Secondary navigation">
       {%- if theme_disable_search is not sameas true %}
       <!-- Form for input, onSubmit="return false" to prevent reloading the page when pressing enter -->
-      <form id="searchInput" class="col-lg-3 col-md-6 col-10" onsubmit="return false">
+      <!-- <form id="searchInput" class="col-lg-3 col-md-6 col-10" onsubmit="return false">
         <div class="input-group" id="searchInputGroup">
           <input id="searchbox" class="form-control delete-right-border" placeholder="Type here to search"
-            onfocus="addBoxShadow(event)" onfocusout="removeBoxShadow(event)" oninput="returnValue(event)"
-            onkeyup="onEnter(event)">
-          <span class="input-group-text delete-search-text d-none" onclick="deleteEnterResults()" id="DeleteSearchText">
-            <i class="fa fa-close"></i>
-          </span>
-          <span class="input-group-text add-left-border" id="spansearchbutton" onclick="searchMainResult()">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </span>
+            oninput="getSearchResults(event)">
         </div>
-
         <ul class="dropdown-menu overflow-hidden" style="max-width:90%" id="searchDropdown"></ul>
-      </form>
+      </form> -->
       {%- endif %}
 
       <!-- Kack toggle button -->
