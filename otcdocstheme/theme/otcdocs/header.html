@@ -67,10 +67,10 @@
       </a>
     </scale-telekom-nav-item>
     <scale-telekom-nav-item>
-      {% if otcdocs_search_environment != 'hc_swiss' %}
+      {% if otcdocs_search_environment == 'hc_swiss' %}
       <a href="https://console.sc.otc.t-systems.com/">
-        {% else %}
-        <a href="https://console.otc.t-systems.com/">
+      {% else %}
+      <a href="https://console.otc.t-systems.com/">
           {% endif %}
           <scale-badge no-dot label="Console">
             <scale-icon-device-computer accessibility-title="console" />
