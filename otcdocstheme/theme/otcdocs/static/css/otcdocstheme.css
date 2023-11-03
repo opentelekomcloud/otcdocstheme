@@ -298,6 +298,11 @@ docs-book-wrapper .ul-breadcrumbs {
   margin-bottom: 2rem;
 }
 
+#searchbox input:focus {
+  outline: unset;
+  outline-offset: unset;
+}
+
 @media (min-width: 768px) {
   #searchbox > div {
     margin-left: calc(20% + 1rem);
