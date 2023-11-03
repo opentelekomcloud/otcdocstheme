@@ -643,7 +643,6 @@ const createSearchFilter = () => {
     let filter = document.createElement('div')
     filter.setAttribute('id', 'accordions')
     filter.classList.add('docs-sidebar')
-    filter.classList.add('py-md-4')
     filter.insertAdjacentHTML("beforeend", `
         <div class="accordion" id="searchAccordions">
             <div class="accordion-item">
@@ -792,15 +791,11 @@ function timer(el) {
 };
 
 // FUNCTION WHICH STARTS THE TIMER EVENT AFTER THE KEY UP EVENT
-const getSearchResults = async (event) => {
+const getSearchResults = async () => {
     clearTimeout(id);
     const el = document.getElementById('searchbox');
     timer(el);
 };
-
-const consoleOutput = () => {
-    console.log('miau')
-}
 
 const createSearchPage = async () => {
     let contentDiv = document.getElementById('docs-main')
@@ -820,12 +815,13 @@ const createSearchPage = async () => {
         }
     
         // Create Search Input Field
-        let searchInput = document.createElement('scale-text-field')
-        searchInput.setAttribute('id', 'searchbox')
-        searchInput.setAttribute('label', 'Search')
-        searchInput.setAttribute('scale-input', 'console.log("muh")')
-        let flexContentParent = document.getElementById('flex-content').parentElement
-        flexContentParent.insertBefore(searchInput, flexContentParent.firstChild);
+        let flexContent = document.getElementById('flex-content')
+        flexContent.insertAdjacentHTML("beforebegin", `
+            <scale-text-field id="searchbox" label="Search"></scale-text-field>
+        `)
+        document.getElementById('searchbox').addEventListener('scale-input', (event) => {
+            getSearchResults();
+        });
 
         // Create Results Headline
         let h1 = document.createElement('h1')
