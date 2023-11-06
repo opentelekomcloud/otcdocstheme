@@ -286,7 +286,6 @@ docs-book-wrapper .ul-breadcrumbs {
 
 .breadcrumb-arrow {
   font-size: 0.7rem;
-  color: var(--dt-color-grey-50);
   padding-left: 0.2rem;
   padding-right: 0.2rem;
 }
@@ -343,21 +342,27 @@ docs-book-wrapper .ul-breadcrumbs {
   width: 100%;
 }
 
+#searchResultsCount {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
 @media (min-width: 1500px){
   #searchResultsEnter {
     width: 75%;
   }
+  #searchResultsCount {
+    width: 75%;
+  }
+
 }
 
 #searchResultsEnter a:hover {
   text-decoration: none;
 }
-
-#searchResultsCount {
-  display: flex;
-  justify-content: space-between;
-}
-
 
 @media (prefers-color-scheme: dark) {
   #DeleteSearchText {
@@ -406,8 +411,8 @@ docs-book-wrapper .ul-breadcrumbs {
 }
 
 .page-item.active .page-link {
-  background-color: var(--dt-color-primary-active);
-  border-color: var(--dt-color-primary-active);
+  background-color: var(--telekom-color-ui-state-fill-hovered);
+  border-color: var(--telekom-color-primary-standard);
 }
 
 .page-link {
@@ -415,7 +420,7 @@ docs-book-wrapper .ul-breadcrumbs {
 }
 
 .page-link:hover {
-  color: var(--dt-color-primary-hover)
+  color: var(--telekom-color-primary-standard)
 }
 
 .pagination a:hover {
@@ -514,7 +519,7 @@ bold.service-doc-title {
 }
 
 .item-sbv a {
-  color: var(--dt-color-text-standard);
+  color: var(--telekom-color-text-and-icon-standard);
 }
 
 .item-sbv h4 {
@@ -620,7 +625,7 @@ div.docs-sidebar-toc li.toctree-l1 > a {
   padding-bottom: 10px;
 }
 .docs-sidebar-section-title h4:hover {
-  color: var(--dt-color-primary-hover)
+  color: var(--telekom-color-text-and-icon-primary-standard)
 }
 .docs-sidebar-section-title > h4 {
   font-weight: 400;
@@ -701,7 +706,7 @@ div.docs-sidebar-toc li.toctree-l1 > a {
 
 /* Chapters include normally invisible (P) symbol */
 a {
-  color: var(--dt-color-blue-60);
+  color: var(--telekom-color-text-and-icon-link-standard);
 }
 
 a.headerlink {
@@ -715,7 +720,7 @@ a.headerlink {
 }
 
 a.headerlink:hover {
-  color: var(--dt-color-blue-60);
+  color: var(--telekom-color-text-and-icon-link-standard);
 }
 
 .docs-content
@@ -727,7 +732,7 @@ h5 {
 }
 
 main h1, h2, h3, h4, h5 {
-  color: var(--dt-color-grey-70);
+  color: var(--telekom-color-text-and-icon-standard);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -977,7 +982,6 @@ img {
 }
 
 pre {
-  border: 1px solid var(--dt-color-grey-10);
   overflow: auto;
   margin: 0 0 10px;
   padding: 20px 30px;
@@ -1195,11 +1199,11 @@ pre .cl {
 }
 
 .docs-byline {
-  border-top: 1px solid #edf2f7;
-  border-bottom: 1px solid #edf2f7;
+  border-top: 1px solid var(--telekom-color-ui-faint);
+  border-bottom: 1px solid var(--telekom-color-ui-faint);
   padding: 10px;
   font-size: 10px;
-  color: #9eb5c3;
+  color: var(--telekom-color-text-and-icon-disabled);
   text-transform: uppercase;
 }
 
@@ -1242,9 +1246,18 @@ div.highlight {
 
 /* START: Bottom Navigation */
 
+#bottom-navigation {
+  padding-bottom: 3rem;
+  padding-top: 3rem;
+}
+
 .page-link {
-  color: var(--dt-color-black);
+  color: var(--telekom-color-text-and-icon-standard);
   background-color: var(--telekom-color-background-surface);
+}
+
+.page-item.active .page-link {
+  color: var(--telekom-color-primary-standard);
 }
 
 .page-link:hover {
@@ -1280,7 +1293,7 @@ footer a:hover {
 }
 
 .docs-footer {
-  background: var(--dt-color-grey-90);
+  background: var(--telekom-color-background-surface-highlight);
   display: flex;
 }
 
@@ -1321,10 +1334,6 @@ footer a:hover {
 }
 
 /* END: Page footer */
-
-.btn-info {
-  background-color: var(--dt-color-teal-30);
-}
 
 /* START: Scroll to top */
 .to-top {

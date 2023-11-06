@@ -189,8 +189,6 @@ async function searchRequest(val, request_size, highlight_size) {
         final_query = request_docs_filtered
     }
 
-
-
     // Get the value search_environment out of this script's html description of the footer section
     let this_js_script = $('script[src*=search]');
 
@@ -212,45 +210,6 @@ async function searchRequest(val, request_size, highlight_size) {
 
     return response
 };
-
-// function createResultList(response) {
-//     let ul = document.getElementById('searchDropdown');
-//     // Remove older search results
-//     ul.textContent = "";
-//     if (response.hits.hits.length > 0) {
-//         ul.classList.add('show');
-//         for (index in response.hits.hits) {
-//             let hit = response.hits.hits[index];
-
-//             // Create li, a, div elements
-//             let li = document.createElement('li');
-//             let a = document.createElement('a');
-//             let div_1 = document.createElement('div');
-//             let div_2 = document.createElement('div');
-
-//             // Add text and classes
-//             a.setAttribute('href', hit._source.base_url + hit._source.doc_url + hit._source.current_page_name + '.html');
-//             a.classList.add("dropdown-item");
-//             li.classList.add("border-bottom")
-//             div_1.classList.add("fw-bolder");
-//             if (typeof hit.highlight.title == 'undefined') {
-//                 div_1.innerHTML = hit._source.title;
-//             } else {
-//                 div_1.innerHTML = hit.highlight.title[0];
-//             }
-//             div_2.innerHTML = cleanupString(hit.highlight.body[0]);
-
-//             // Append as childs to structure ul > li > a > div/div
-//             a.appendChild(div_1);
-//             a.appendChild(div_2);
-//             li.appendChild(a);
-//             ul.appendChild(li);
-//         }
-//     }
-//     else {
-//         document.getElementById('searchDropdown').classList.remove('show');
-//     }
-// };
 
 const shortenString = (str, maxLength) => {
     if (str.length <= maxLength) {
@@ -372,34 +331,44 @@ const createMainResultList = (response, div) => {
     }
 }
 
+// UPDATES SEARCH RESULTS COUNT
+const updateSearchResultsCount = (resultsCount) => {
+    h1 = document.getElementById("searchResultsCount")
+    h1.textContent = ""
+    h1.insertAdjacentHTML("afterbegin", `
+        Search Results: ${resultsCount}
+        <scale-icon-action-close class="closeSearchIcon" accessibility-title="Close Search Results" onclick="deleteEnterResults()"></scale-icon-action-close>
+    `)
+}
+
+
 // DELETES SEARCH AS YOU TYPE RESULTS AND HIDES SIDEBARS AND CONTENT
 const createMainResult = async (response) => {
     // Function to generate result list on main content
 
     let div = document.getElementById('searchResultsEnter')
     // Check whether the searchResultsEnter div already exists
-    if (typeof(div)!= 'undefined' && div != null) {
-        div = document.getElementById('searchResultsEnter')
+    // if (typeof(div)!= 'undefined' && div != null) {
+    //     div = document.getElementById('searchResultsEnter')
+    // }
+    // // If it does not exist create it
+    // else {
 
-    }
-    // If it does not exist create it
-    else {
-
-        // // Search for content div, hide it and add search results
-        // let contentDiv = document.getElementById('docs-main')
-        // contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter' class='overflow-hidden'></div>");
-        // contentDiv.classList.add('nodisplay')
-        // // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
-        // if (document.getElementById('right-sidebar') == undefined) {
-        //     document.getElementById('left-sidebar').classList.add('nodisplay')
-        // } else {
-        //     document.getElementById('left-sidebar').classList.add('nodisplay')
-        //     document.getElementById('right-sidebar').classList.add('nodisplay')
-        //     document.getElementById('right-sidebar').classList.remove('d-xl-block')
-        //     document.getElementById('breadcrumbs').classList.add('nodisplay')
-        // }
-        div = document.getElementById('searchResultsEnter')
-    }
+    //     // // Search for content div, hide it and add search results
+    //     // let contentDiv = document.getElementById('docs-main')
+    //     // contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter' class='overflow-hidden'></div>");
+    //     // contentDiv.classList.add('nodisplay')
+    //     // // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
+    //     // if (document.getElementById('right-sidebar') == undefined) {
+    //     //     document.getElementById('left-sidebar').classList.add('nodisplay')
+    //     // } else {
+    //     //     document.getElementById('left-sidebar').classList.add('nodisplay')
+    //     //     document.getElementById('right-sidebar').classList.add('nodisplay')
+    //     //     document.getElementById('right-sidebar').classList.remove('d-xl-block')
+    //     //     document.getElementById('breadcrumbs').classList.add('nodisplay')
+    //     // }
+    //     div = document.getElementById('searchResultsEnter')
+    // }
 
     // Remove old search results
     div.textContent = ""
@@ -428,6 +397,7 @@ const createMainResult = async (response) => {
 
     // Create Main Result List
     createMainResultList(response, div)
+    updateSearchResultsCount(response.hits.hits.length)
 
     // Create Filter List
     // Check whether the serviceAccordion div already exists
@@ -611,6 +581,12 @@ const deleteEnterResults = () => {
     // Remove Search Filter
     active_service_search_filters = []
     removeSearchFilter()
+    
+    // Remove Search Input
+    document.getElementById("searchbox").remove();
+
+    // Remove SearchResultsCount
+    document.getElementById("searchResultsCount").remove();
 }
 
 const filterCurrentDoc = (e) => {
@@ -824,21 +800,28 @@ const createSearchPage = async () => {
         });
 
         // Create Results Headline
-        let h1 = document.createElement('h1')
-        h1.setAttribute('id', 'searchResultsCount')
-        h1.innerHTML = "Search Results: 0"
-        h1.setAttribute('style', 'font-size: 1.5rem')
+        // let h1 = document.createElement('h1')
+        // h1.setAttribute('id', 'searchResultsCount')
+        // h1.innerHTML = "Search Results: 0"
+        // h1.setAttribute('style', 'font-size: 1.5rem')
     
         // Search Results Close Button
-        let close = document.createElement('scale-icon-action-close')
-        close.classList.add('closeSearchIcon')
-        close.setAttribute('accessibility-title', 'close Search Results')
-        close.setAttribute('onclick', 'deleteEnterResults()')
-        h1.appendChild(close)
+        // let close = document.createElement('scale-icon-action-close')
+        // close.classList.add('closeSearchIcon')
+        // close.setAttribute('accessibility-title', 'close Search Results')
+        // close.setAttribute('onclick', 'deleteEnterResults()')
+        // h1.appendChild(close)
     
         // Get Search Results div
         let div = document.getElementById('searchResultsEnter')
-        div.appendChild(h1)
+        
+        // Create Results Headline
+        div.insertAdjacentHTML("beforebegin", `
+            <h1 id="searchResultsCount">
+                Search Results: 0
+                <scale-icon-action-close class="closeSearchIcon" accessibility-title="Close Search Results" onclick="deleteEnterResults()"></scale-icon-action-close>
+            </h1>
+        `)
     
         // Create Filter List
         // Check whether the serviceAccordion div already exists
