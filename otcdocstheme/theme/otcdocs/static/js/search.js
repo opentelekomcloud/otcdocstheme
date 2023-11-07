@@ -581,7 +581,7 @@ const deleteEnterResults = () => {
     // Remove Search Filter
     active_service_search_filters = []
     removeSearchFilter()
-    
+
     // Remove Search Input
     document.getElementById("searchbox").remove();
 
@@ -779,7 +779,7 @@ const createSearchPage = async () => {
     if (document.getElementById('searchResultsEnter') == undefined) {
         contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter' class='overflow-hidden'></div>");
         contentDiv.classList.add('nodisplay')
-    
+
         // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
         if (document.getElementById('right-sidebar') == undefined) {
             document.getElementById('left-sidebar').classList.add('nodisplay')
@@ -789,7 +789,7 @@ const createSearchPage = async () => {
             document.getElementById('right-sidebar').classList.remove('d-xl-block')
             document.getElementById('breadcrumbs').classList.add('nodisplay')
         }
-    
+
         // Create Search Input Field
         let flexContent = document.getElementById('flex-content')
         flexContent.insertAdjacentHTML("beforebegin", `
@@ -804,17 +804,17 @@ const createSearchPage = async () => {
         // h1.setAttribute('id', 'searchResultsCount')
         // h1.innerHTML = "Search Results: 0"
         // h1.setAttribute('style', 'font-size: 1.5rem')
-    
+
         // Search Results Close Button
         // let close = document.createElement('scale-icon-action-close')
         // close.classList.add('closeSearchIcon')
         // close.setAttribute('accessibility-title', 'close Search Results')
         // close.setAttribute('onclick', 'deleteEnterResults()')
         // h1.appendChild(close)
-    
+
         // Get Search Results div
         let div = document.getElementById('searchResultsEnter')
-        
+
         // Create Results Headline
         div.insertAdjacentHTML("beforebegin", `
             <h1 id="searchResultsCount">
@@ -822,7 +822,7 @@ const createSearchPage = async () => {
                 <scale-icon-action-close class="closeSearchIcon" accessibility-title="Close Search Results" onclick="deleteEnterResults()"></scale-icon-action-close>
             </h1>
         `)
-    
+
         // Create Filter List
         // Check whether the serviceAccordion div already exists
         let div_service_accordion = document.getElementById('searchAccordions')
