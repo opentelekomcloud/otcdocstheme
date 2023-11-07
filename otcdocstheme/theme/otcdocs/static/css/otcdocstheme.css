@@ -79,7 +79,7 @@ body a:active {
 
 .flex-content {
   display: flex;
-  gap: 1rem;
+  column-gap: 1rem;
 }
 
 @media (max-width: 767px) {
@@ -229,16 +229,14 @@ scale-telekom-header::part(container) {
   }
 }
 
-.docs-subnavbar {
-  position: relative;
-  /*#  z-index: 1020;*/
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-}
-
-.docs-subnavbar div {
+#docs-subnavbar {
+  display: flex;
   justify-content: flex-end;
 }
+
+/* .docs-subnavbar div {
+  justify-content: flex-end;
+} */
 /* END: subnavbar */
 
 /* START: Breadcrumbs */
@@ -590,7 +588,6 @@ bold.service-doc-title {
 
 @media (max-width: 767px) {
   .docs-sidebar {
-    margin: 0 -0.75rem 1rem;
     min-width: 100%;
   }
   .docs-sidebar-toc ul {
