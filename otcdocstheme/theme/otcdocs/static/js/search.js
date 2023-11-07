@@ -84,7 +84,7 @@ async function searchRequest(val, request_size, highlight_size) {
                     {
                     "multi_match": {
                         "query": val,
-                        "type": "best_fields",
+                        "type": "bool_prefix",
                         "operator": "and",
                         "fields": ["body", "title^2"]
                     }
@@ -124,7 +124,7 @@ async function searchRequest(val, request_size, highlight_size) {
                     {
                     "multi_match": {
                         "query": val,
-                        "type": "best_fields",
+                        "type": "bool_prefix",
                         "operator": "and",
                         "fields": ["body", "title^2"]
                     }
@@ -156,7 +156,7 @@ async function searchRequest(val, request_size, highlight_size) {
         "query": {
             "multi_match": {
               "query": val,
-              "type": "best_fields",
+              "type": "bool_prefix",
               "operator": "and",
               "fields": [ "body", "title^2" ]
             }
