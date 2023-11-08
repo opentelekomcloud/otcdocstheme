@@ -232,6 +232,9 @@ scale-telekom-header::part(container) {
 #docs-subnavbar {
   display: flex;
   justify-content: flex-end;
+  margin-right: -2rem;
+  margin-top: 1rem;
+  margin-bottom: -2rem;
 }
 
 /* .docs-subnavbar div {
@@ -594,8 +597,13 @@ bold.service-doc-title {
     padding: 1.5rem 0.75rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #e9ecef;
+    background-color: var(--telekom-color-background-surface-subtle);
+    border-bottom: 1px solid var(--telekom-color-ui-strong);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .invert-dark {
+    filter: invert(96%) sepia(100%) saturate(0%) hue-rotate(116deg) brightness(103%) contrast(107%);
   }
 }
 
