@@ -345,55 +345,9 @@ const updateSearchResultsCount = (resultsCount) => {
 // DELETES SEARCH AS YOU TYPE RESULTS AND HIDES SIDEBARS AND CONTENT
 const createMainResult = async (response) => {
     // Function to generate result list on main content
-
     let div = document.getElementById('searchResultsEnter')
-    // Check whether the searchResultsEnter div already exists
-    // if (typeof(div)!= 'undefined' && div != null) {
-    //     div = document.getElementById('searchResultsEnter')
-    // }
-    // // If it does not exist create it
-    // else {
-
-    //     // // Search for content div, hide it and add search results
-    //     // let contentDiv = document.getElementById('docs-main')
-    //     // contentDiv.insertAdjacentHTML("afterend", "<div id='searchResultsEnter' class='overflow-hidden'></div>");
-    //     // contentDiv.classList.add('nodisplay')
-    //     // // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
-    //     // if (document.getElementById('right-sidebar') == undefined) {
-    //     //     document.getElementById('left-sidebar').classList.add('nodisplay')
-    //     // } else {
-    //     //     document.getElementById('left-sidebar').classList.add('nodisplay')
-    //     //     document.getElementById('right-sidebar').classList.add('nodisplay')
-    //     //     document.getElementById('right-sidebar').classList.remove('d-xl-block')
-    //     //     document.getElementById('breadcrumbs').classList.add('nodisplay')
-    //     // }
-    //     div = document.getElementById('searchResultsEnter')
-    // }
-
     // Remove old search results
     div.textContent = ""
-
-    // // Create Search Input Field
-    // let searchInput = document.createElement('scale-text-field')
-    // searchInput.setAttribute('id', 'searchbox')
-    // searchInput.setAttribute('label', 'Search')
-    // searchInput.setAttribute('scale-input', 'getSearchResults(event)')
-
-    // // Create Results Headline
-    // let h1 = document.createElement('h1')
-    // h1.setAttribute('id', 'searchResultsCount')
-    // h1.innerHTML = "Search Results: " + response.hits.hits.length
-    // h1.setAttribute('style', 'font-size: 1.5rem')
-
-    // // Search Results Close Button
-    // let close = document.createElement('scale-icon-action-close')
-    // close.classList.add('closeSearchIcon')
-    // close.setAttribute('accessibility-title', 'close Search Results')
-    // close.setAttribute('onclick', 'deleteEnterResults()')
-    // h1.appendChild(close)
-    // div.appendChild(searchInput)
-    // div.appendChild(h1)
-
 
     // Create Main Result List
     createMainResultList(response, div)
@@ -570,10 +524,12 @@ const deleteEnterResults = () => {
     if (document.getElementById('right-sidebar') == undefined) {
         document.getElementById('docs-content').classList.remove('nodisplay');
         document.getElementById('left-sidebar').classList.remove('nodisplay')
+        document.getElementById('subnavbar-togglebutton').classList.remove('nodisplay')
     } else {
         document.getElementById('docs-main').classList.remove('nodisplay');
         document.getElementById('left-sidebar').classList.remove('nodisplay')
         document.getElementById('right-sidebar').classList.remove('nodisplay')
+        document.getElementById('subnavbar-togglebutton').classList.remove('nodisplay')
         document.getElementById('right-sidebar').classList.add('d-xl-block')
         document.getElementById('breadcrumbs').classList.remove('nodisplay')
     }
@@ -783,8 +739,10 @@ const createSearchPage = async () => {
         // On docsportal starpage we don't have breadcrumbs or sidebar, so check for that
         if (document.getElementById('right-sidebar') == undefined) {
             document.getElementById('left-sidebar').classList.add('nodisplay')
+            document.getElementById('subnavbar-togglebutton').classList.add('nodisplay')
         } else {
             document.getElementById('left-sidebar').classList.add('nodisplay')
+            document.getElementById('subnavbar-togglebutton').classList.add('nodisplay')
             document.getElementById('right-sidebar').classList.add('nodisplay')
             document.getElementById('right-sidebar').classList.remove('d-xl-block')
             document.getElementById('breadcrumbs').classList.add('nodisplay')

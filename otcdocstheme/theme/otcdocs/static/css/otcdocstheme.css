@@ -298,6 +298,12 @@ docs-book-wrapper .ul-breadcrumbs {
   margin-bottom: 2rem;
 }
 
+@media (max-width: 767px) {
+  #searchbox input {
+    margin-top: 2rem;
+  }
+}
+
 #searchbox input:focus {
   outline: unset;
   outline-offset: unset;
@@ -349,6 +355,12 @@ docs-book-wrapper .ul-breadcrumbs {
   font-size: 1.5rem;
   width: 100%;
   margin-bottom: 2rem;
+}
+
+@media (max-width: 767px) {
+  #searchResultsCount {
+    margin-top: 2rem;
+  }
 }
 
 @media (min-width: 1500px){
