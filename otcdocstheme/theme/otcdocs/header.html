@@ -3,197 +3,173 @@
 {% else %}{# a template was rendered directly #}
 <!-- TEMPLATE_NAME: {{pagename}} -->
 {% endif %}
-<button onclick="to_top()" id="scroll-to-top" class="to-top to-top-fixed" title="Go to top" aria-label="Scroll to top"><i class="fa-solid fa-angle-up"></i></button>
-<div class="skippy sticky-top"></div>
+<button onclick="to_top()" id="scroll-to-top" class="to-top to-top-fixed" title="Go to top"
+  aria-label="Scroll to top"><i class="fa-solid fa-angle-up"></i></button>
+<!-- <div class="skippy sticky-top"></div> -->
 {% set base_url = theme_logo_url %}
-<header class="navbar navbar-expand-md docs-navbar">
-  <nav
-    class="navbar container-xxl flex-wrap flex-md-nowrap navbar-light"
-    aria-label="Main navigation"
-  >
-    <div class="container-fluid pe-2">
-      <a class="navbar-brand brand-wide p-0 md-2" href="{{ base_url }}" aria-label="Open Telekom Cloud">
-        <img src="{{pathto('_static/images/dt.svg', 1)}}" />
-      </a>
-      <a class="navbar-brand brand-narrow p-0 md-2" href="{{ base_url }}" aria-label="Open Telekom Cloud">
-        <img src="{{pathto('_static/images/deutsche-telekom-logo.svg', 1)}}" />
-      </a>
-      {% if theme_site_name %}
-      <div class="docs-title justify-content-center">{{ theme_site_name }}</div>
-      {% endif %}
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNav"
-        aria-controls="navbarNav"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <hr class="d-md-none text-white">
-	{%- if theme_disable_global_nav is not sameas true %}
-        <ul class="navbar-nav flex-row flex-wrap docs-navbar-nav pt-2 py-md-0">
-          <li class="nav-item dropdown col-12 col-md-auto me-2">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="dropdownService"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              >Services</a
-            >
-            <ul class="dropdown-menu" aria-labelledby="dropdownService">
-              <li>
-                <a class="dropdown-item" href="{{base_url}}/compute.html"
-                  >Compute</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="{{base_url}}/container.html"
-                  >Container</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="{{base_url}}/network.html"
-                  >Network</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="{{base_url}}/storage.html"
-                  >Storage</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="{{base_url}}/md.html"
-                  >Management And Deployment</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="{{base_url}}/security.html"
-                  >Security</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="{{base_url}}/app.html"
-                  >Application</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="{{base_url}}/database.html"
-                  >Databases</a
-                >
-              </li>
-              {%- if otcdocs_search_environment == "hc_de" %}
-              <li>
-                <a class="dropdown-item" href="{{base_url}}/data_analysis.html"
-                  >Big Data and Data Analysis</a
-                >
-              </li>
-              {% endif %}
+
+<scale-telekom-header app-name="Open Telekom Cloud Docs" logo-href="https://docs.otc.t-systems.com">
+  <!-- meta-nav-aria-label="Meta navigation section" -->
+  <!--  meta-nav-external-aria-label="External navigation section"-->
+  <!--  lang-switcher-aria-label="Language switcher section"-->
+  <!--  main-nav-aria-label="Main navigation"-->
+  section>
+  <!-- main nav (desktop) -->
+  <scale-telekom-nav-list variant="main-nav" slot="main-nav">
+    <scale-telekom-nav-item>
+      <button>Services</button>
+      <scale-telekom-nav-flyout hover>
+        <scale-telekom-mega-menu>
+          <scale-telekom-mega-menu-column>
+            <!--                <scale-icon-home-home slot="icon"></scale-icon-home-home>-->
+            <a href="{{base_url}}/services.html" slot="heading">Services</a>
+            <ul>
+              <li><a href="{{base_url}}/compute.html">Compute</a></li>
+              <li><a href="{{base_url}}/container.html">Container</a></li>
+              <li><a href="{{base_url}}/network.html">Network</a></li>
+              <li><a href="{{base_url}}/storage.html">Storage</a></li>
+              <li><a href="{{base_url}}/md.html">Management and Deployment</a></li>
+              <li><a href="{{base_url}}/security.html">Security</a></li>
+              <li><a href="{{base_url}}/app.html">Application</a></li>
+              <li><a href="{{base_url}}/database.html">Database</a></li>
+              <li><a href="{{base_url}}/data_analysis.html">Big Data and Data Analysis</a></li>
             </ul>
-          </li>
-          <li class="nav-item dropdown me-2 col-12 col-md-auto">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="dropdownDevops"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-              >DevOps</a
-            >
-            <ul class="dropdown-menu" aria-labelledby="dropdownDevops">
-              <li>
-                <a class="dropdown-item" href="{{base_url}}/developer/iac.html"
-                  >Automation</a
-                >
-              </li>
-              <li>
-                <a class="dropdown-item" href="{{base_url}}/developer/sdk.html"
-                  >Software Development Kit</a
-                >
-              </li>
+          </scale-telekom-mega-menu-column>
+        </scale-telekom-mega-menu>
+      </scale-telekom-nav-flyout>
+    </scale-telekom-nav-item>
+    <scale-telekom-nav-item>
+      <button>DevOps</button>
+      <scale-telekom-nav-flyout hover>
+        <scale-telekom-mega-menu>
+          <scale-telekom-mega-menu-column>
+            <a slot="heading">DevOps</a>
+            <ul>
+              <li><a href="{{base_url}}/developer/iac.html">Automation</a></li>
+              <li><a href="{{base_url}}/developer/sdk.html">Software Development Kit</a></li>
               {% if otcdocs_search_environment != 'hc_swiss' %}
-              <li>
-                <a class="dropdown-item" href="https://docs.otc.t-systems.com/blueprints/"
-                  >Blueprints</a
-                >
-              </li>
+              <li><a href="https://docs.otc.t-systems.com/blueprints">Blueprints</a></li>
               {% endif %}
             </ul>
-          </li>
-          <li class="nav-item me-2 col-12 col-md-auto">
-            <a
-              class="nav-link"
-              href="https://community.open-telekom-cloud.com/community"
-              >Community</a
-            >
-          </li>
-        </ul>
-	{%- endif %}
-      </div>
-    </div>
-  </nav>
-</header>
+        </scale-telekom-mega-menu>
+      </scale-telekom-nav-flyout>
+    </scale-telekom-nav-item>
+  </scale-telekom-nav-list>
+  <scale-telekom-nav-list variant="functions" slot="functions" alignment="right">
 
-<nav id="docs-subnavbar" class="docs-subnavbar py-2 px-3 d-flex justify-content-between" aria-label="Secondary navigation">
-{%- if theme_disable_search is not sameas true %}
-  <!-- Form for input, onSubmit="return false" to prevent reloading the page when pressing enter -->
-  <form id="searchInput" class="col-lg-3 col-md-6 col-10" onsubmit="return false">
-    <div class="input-group" id="searchInputGroup">
-      <input id="searchbox" class="form-control delete-right-border" placeholder="Type here to search" onfocus="addBoxShadow(event)" onfocusout="removeBoxShadow(event)" oninput="returnValue(event)" onkeyup="onEnter(event)">
-      <span class="input-group-text delete-search-text d-none" onclick="deleteEnterResults()" id="DeleteSearchText">
-        <i class="fa fa-close"></i>
-      </span>
-      <span class="input-group-text add-left-border" style="background-color: var(--dt-color-white)" onclick="searchMainResult()">
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </span>
-    </div>
+    </scale-telekom-nav-item>
 
-    <ul class="dropdown-menu overflow-hidden" style="max-width:90%" id="searchDropdown"></ul>
-  </form>
-{%- endif %}
+    <scale-telekom-nav-item>
+      <a href="https://community.open-telekom-cloud.com/">
+        <scale-badge no-dot label="Community">
+          <scale-icon-communication-chat accessibility-title="community" />
+        </scale-badge>
+      </a>
+    </scale-telekom-nav-item>
+    <scale-telekom-nav-item>
+      {% if otcdocs_search_environment == 'hc_swiss' %}
+      <a href="https://console.sc.otc.t-systems.com/">
+      {% else %}
+      <a href="https://console.otc.t-systems.com/">
+          {% endif %}
+          <scale-badge no-dot label="Console">
+            <scale-icon-device-computer accessibility-title="console" />
+          </scale-badge>
+        </a>
+    </scale-telekom-nav-item>
+    <scale-telekom-nav-item>
+      <scale-icon-action-search id="SearchIconScaleNavBar" accessibility-title="Search" onclick="createSearchPage()" />
+    </scale-telekom-nav-item>
+    <scale-telekom-nav-item class="burger-item">
+      <button>
+        <!--          <scale-badge>-->
+        <scale-icon-action-menu></scale-icon-action-menu>
+        <!--          </scale-badge>-->
+      </button>
+      <scale-telekom-nav-flyout class="mobile-nav-flyout">
+        <scale-telekom-mobile-flyout-canvas>
+          <!-- main-nav (mobile) -->
+          <scale-telekom-mobile-menu slot="mobile-main-nav">
+            <scale-telekom-mobile-menu-item>
+              <a href="{{base_url}}/services.html">Services</a>
+              <scale-telekom-mobile-menu-item slot="children">
+                <a href="{{base_url}}/services.html">Services</a>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="{{base_url}}/compute.html">Compute</a>
+                </scale-telekom-mobile-menu-item>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="{{base_url}}/container.html">Container</a>
+                </scale-telekom-mobile-menu-item>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="{{base_url}}/network.html">Network</a>
+                </scale-telekom-mobile-menu-item>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="{{base_url}}/storage.html">Storage</a>
+                </scale-telekom-mobile-menu-item>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="{{base_url}}/md.html">Management and Deployment</a>
+                </scale-telekom-mobile-menu-item>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="{{base_url}}/security.html">Security</a>
+                </scale-telekom-mobile-menu-item>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="{{base_url}}/app.html">Application</a>
+                </scale-telekom-mobile-menu-item>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="{{base_url}}/database.html">Database</a>
+                </scale-telekom-mobile-menu-item>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="{{base_url}}/data_analysis.html">Bid Data and Data Analysis</a>
+                </scale-telekom-mobile-menu-item>
+              </scale-telekom-mobile-menu-item>
+            </scale-telekom-mobile-menu-item>
+            <scale-telekom-mobile-menu-item>
+              <a href="{{base_url}}/developer/index.html">DevOps</a>
+              <scale-telekom-mobile-menu-item slot="children">
+                <a href="{{base_url}}/developer/index.html">DevOps</a>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="{{base_url}}/developer/iac.html">Automation</a>
+                </scale-telekom-mobile-menu-item>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="{{base_url}}/developer/sdk.html">Software Development Kit</a>
+                </scale-telekom-mobile-menu-item>
+                {% if otcdocs_search_environment != 'hc_swiss' %}
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="https://docs.otc.t-systems.com/blueprints">Blueprints</a>
+                </scale-telekom-mobile-menu-item>
+                {% endif %}
+              </scale-telekom-mobile-menu-item>
+            </scale-telekom-mobile-menu-item>
+          </scale-telekom-mobile-menu>
+        </scale-telekom-mobile-flyout-canvas>
+      </scale-telekom-nav-flyout>
+    </scale-telekom-nav-item>
+  </scale-telekom-nav-list>
+</scale-telekom-header>
 
-  <button
-    class="btn docs-sidebar-toggle d-md-none py-0 px-1 ms-3 order-3 navbar-toggler collapsed col-1"
-    type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#docs-sidebar-nav"
-    aria-controls="docs-sidebar-nav"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      class="bi bi-expand"
-      fill="currentColor"
-      viewBox="0 0 16 16"
-    >
-      <title>Expand</title>
-      <path
-        fill-rule="evenodd"
-        d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zM7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10z"
-      ></path>
-    </svg>
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      class="bi bi-collapse"
-      fill="currentColor"
-      viewBox="0 0 16 16"
-    >
-      <title>Collapse</title>
-      <path
-        fill-rule="evenodd"
-        d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707l-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z"
-      ></path>
-    </svg>
-  </button>
-</nav>
+<div class="scl-container">
+  <div class="scl-container-width">
+    <!-- <scale-text-field id="text-field" label="Type here to Search"></scale-text-field> -->
+    <nav id="docs-subnavbar" class="docs-subnavbar" aria-label="Secondary navigation">
+
+      <button id="subnavbar-togglebutton" class="btn docs-sidebar-toggle d-md-none navbar-toggler collapsed"
+        type="button" data-bs-toggle="collapse" data-bs-target="#docs-sidebar-nav" aria-controls="docs-sidebar-nav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-expand invert-dark" fill="currentColor"
+          viewBox="0 0 16 16">
+          <title>Expand</title>
+          <path fill-rule="evenodd"
+            d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zM7.646.146a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 1.707V5.5a.5.5 0 0 1-1 0V1.707L6.354 2.854a.5.5 0 1 1-.708-.708l2-2zM8 10a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 14.293V10.5A.5.5 0 0 1 8 10z">
+          </path>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="bi bi-collapse invert-dark" fill="currentColor"
+          viewBox="0 0 16 16">
+          <title>Collapse</title>
+          <path fill-rule="evenodd"
+            d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707l-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z">
+          </path>
+        </svg>
+      </button>
+    </nav>
+  </div>
+</div>
