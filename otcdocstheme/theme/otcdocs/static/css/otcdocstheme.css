@@ -483,6 +483,23 @@ bold.service-doc-title {
   padding-bottom: 1rem;
 }
 
+/* Fix issue with inputs and autofill in Chrome */
+@media (prefers-color-scheme: light) {
+  input:-webkit-autofill {
+    color-scheme: unset !important;
+    background-color: white !important;
+    color: black !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  input:-webkit-autofill {
+    color-scheme: unset !important;
+    background-color: black !important;
+    color: white !important;
+  }
+}
+
 /* END: search */
 
 /* Service-Based-View */
