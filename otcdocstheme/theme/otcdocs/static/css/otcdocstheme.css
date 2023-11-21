@@ -563,11 +563,10 @@ bold.service-doc-title {
   margin-bottom: 1em;
 }
 
-.item-sbv {
+.card {
   background-color: var(--telekom-color-background-surface);
   border: 1px solid var(--telekom-color-ui-regular);
 }
-
 
 /* END: Service-Based-View */
 
