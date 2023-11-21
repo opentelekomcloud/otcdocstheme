@@ -152,7 +152,6 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         git_fqdn = app.config.otcdocs_git_fqdn
         edit_enabled = app.config.otcdocs_edit_enabled
         bug_report_enabled = app.config.otcdocs_bug_report_enabled
-        doc_env = app.config.otcdocs_doc_environment
         doc_link = app.config.otcdocs_doc_link
         doc_title = app.config.otcdocs_doc_title
         doc_type = app.config.otcdocs_doc_type
@@ -163,7 +162,9 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         otcdocs_search_index = app.config.otcdocs_search_index
         otcdocs_search_url = app.config.otcdocs_search_url
         _html_context_data['repository_name'] = repo_name
-        _html_context_data['doc_environment'] = doc_env
+        _html_context_data['otcdocs_doc_environment'] = (
+            app.config.otcdocs_doc_environment
+        )
         _html_context_data['doc_link'] = doc_link
         _html_context_data['doc_title'] = doc_title
         _html_context_data['doc_type'] = doc_type
