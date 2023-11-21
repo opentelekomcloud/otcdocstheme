@@ -6,7 +6,7 @@
     {% endif %}
     {%- if bug_report_enabled == True and url_bug_report|length > 0 %}
       <a href="{{ url_bug_report }}?title={{title}}&body=Issue on page:
-        {{url_source}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa-solid fa-bug me-2"></i>Report Bug</a>
+        {{url_source}}/{{pagename}}{{page_source_suffix}}" target="_blank"><i class="fa-solid fa-bug me-2"></i>Report Documentation Bug</a>
     {% endif %}
 	  {%- if pdf_link %}
     <a id="pdfLink1" href="" target="_blank" title="Download PDF"><i class="fa-solid fa-file-pdf me-2"></i> Download PDF</a>
