@@ -8,7 +8,20 @@
 <!-- <div class="skippy sticky-top"></div> -->
 {% set base_url = theme_logo_url %}
 
-<scale-telekom-header app-name="Open Telekom Cloud Docs" logo-href="https://docs.otc.t-systems.com">
+{% if otcdocs_search_environment == 'hc_swiss' %}
+  {% if otcdocs_doc_environment == 'internal' %}
+    <scale-telekom-header app-name="Swiss Open Telekom Cloud Docs" logo-href="https://docs-swiss-int.otc-service.com/">
+  {% else %}
+    <scale-telekom-header app-name="Swiss Open Telekom Cloud Docs" logo-href="https://docs.sc.otc.t-systems.com/">
+  {% endif %}
+{% else %}
+  {% if otcdocs_doc_environment == 'internal' %}
+    <scale-telekom-header app-name="Open Telekom Cloud Docs" logo-href="https://docs-int.otc-service.com/">
+  {% else %}
+    <scale-telekom-header app-name="Open Telekom Cloud Docs" logo-href="https://docs.otc.t-systems.com/">
+  {% endif %}
+{% endif %}
+
   <!-- meta-nav-aria-label="Meta navigation section" -->
   <!--  meta-nav-external-aria-label="External navigation section"-->
   <!--  lang-switcher-aria-label="Language switcher section"-->
