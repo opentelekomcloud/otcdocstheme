@@ -788,5 +788,7 @@ const createSearchPage = async () => {
             createSearchFilter()
             addFiltersToAccordion(filters)
         }
+
+        document.getElementById("searchbox").children[0].children[1].focus()
     }
 }
