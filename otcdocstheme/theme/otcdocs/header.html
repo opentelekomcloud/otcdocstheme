@@ -69,17 +69,9 @@
     </scale-telekom-nav-item>
   </scale-telekom-nav-list>
   <scale-telekom-nav-list variant="functions" slot="functions" alignment="right">
-
     </scale-telekom-nav-item>
     <scale-telekom-nav-item>
       <scale-icon-action-search id="SearchIconScaleNavBar" accessibility-title="Search" onclick="createSearchPage()" />
-    </scale-telekom-nav-item>
-    <scale-telekom-nav-item>
-      <a href="https://community.open-telekom-cloud.com/">
-        <scale-badge no-dot label="Community">
-          <scale-icon-communication-chat accessibility-title="community" />
-        </scale-badge>
-      </a>
     </scale-telekom-nav-item>
     <scale-telekom-nav-item>
       {% if otcdocs_search_environment == 'hc_swiss' %}
@@ -91,6 +83,13 @@
             <scale-icon-device-computer accessibility-title="console" />
           </scale-badge>
         </a>
+    </scale-telekom-nav-item>
+    <scale-telekom-nav-item>
+      <a href="https://community.open-telekom-cloud.com/">
+        <scale-badge no-dot label="Community">
+          <scale-icon-communication-chat accessibility-title="community" />
+        </scale-badge>
+      </a>
     </scale-telekom-nav-item>
     <scale-telekom-nav-item class="burger-item">
       <button>
