@@ -750,7 +750,7 @@ const createSearchPage = async () => {
         // Create Search Input Field
         let flexContent = document.getElementById('flex-content')
         flexContent.insertAdjacentHTML("beforebegin", `
-            <scale-text-field id="searchbox" label="Search"></scale-text-field>
+            <scale-text-field id="searchbox" label="Type to Search"></scale-text-field>
         `)
         document.getElementById('searchbox').addEventListener('scale-input', (event) => {
             getSearchResults();
@@ -788,5 +788,7 @@ const createSearchPage = async () => {
             createSearchFilter()
             addFiltersToAccordion(filters)
         }
+
+        document.getElementById("searchbox").children[0].children[1].focus()
     }
 }
