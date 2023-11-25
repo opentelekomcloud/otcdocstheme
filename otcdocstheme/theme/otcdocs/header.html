@@ -16,9 +16,17 @@
   {% endif %}
 {% else %}
   {% if otcdocs_doc_environment == 'internal' %}
-    <scale-telekom-header app-name="Open Telekom Cloud Docs" logo-href="https://docs-int.otc-service.com/">
+    {% if service_type == 'blueprints' %}
+        <scale-telekom-header app-name="Open Telekom Cloud Architecture Center" logo-href="https://docs-int.otc-service.com/">
+    {% else %}
+        <scale-telekom-header app-name="Open Telekom Cloud Docs" logo-href="https://docs-int.otc-service.com/">
+    {% endif %}
   {% else %}
-    <scale-telekom-header app-name="Open Telekom Cloud Docs" logo-href="https://docs.otc.t-systems.com/">
+    {% if service_type == 'blueprints' %}
+        <scale-telekom-header app-name="Open Telekom Cloud Architecture Center" logo-href="https://docs.otc-service.com/">
+    {% else %}
+        <scale-telekom-header app-name="Open Telekom Cloud Docs" logo-href="https://docs.otc-service.com/">
+    {% endif %}
   {% endif %}
 {% endif %}
 
@@ -29,44 +37,159 @@
   section>
   <!-- main nav (desktop) -->
   <scale-telekom-nav-list variant="main-nav" slot="main-nav">
-    <scale-telekom-nav-item>
-      <button>Services</button>
-      <scale-telekom-nav-flyout hover>
-        <scale-telekom-mega-menu>
-          <scale-telekom-mega-menu-column>
-            <!--                <scale-icon-home-home slot="icon"></scale-icon-home-home>-->
-            <a href="{{base_url}}/services.html" slot="heading">Services</a>
-            <ul>
-              <li><a href="{{base_url}}/compute.html">Compute</a></li>
-              <li><a href="{{base_url}}/container.html">Container</a></li>
-              <li><a href="{{base_url}}/network.html">Network</a></li>
-              <li><a href="{{base_url}}/storage.html">Storage</a></li>
-              <li><a href="{{base_url}}/md.html">Management and Deployment</a></li>
-              <li><a href="{{base_url}}/security.html">Security</a></li>
-              <li><a href="{{base_url}}/app.html">Application</a></li>
-              <li><a href="{{base_url}}/database.html">Database</a></li>
-              <li><a href="{{base_url}}/data_analysis.html">Big Data and Data Analysis</a></li>
-            </ul>
-          </scale-telekom-mega-menu-column>
-        </scale-telekom-mega-menu>
-      </scale-telekom-nav-flyout>
-    </scale-telekom-nav-item>
-    <scale-telekom-nav-item>
-      <button>DevOps</button>
-      <scale-telekom-nav-flyout hover>
-        <scale-telekom-mega-menu>
-          <scale-telekom-mega-menu-column>
-            <a slot="heading">DevOps</a>
-            <ul>
-              <li><a href="{{base_url}}/developer/iac.html">Automation</a></li>
-              <li><a href="{{base_url}}/developer/sdk.html">Software Development Kit</a></li>
-              {% if otcdocs_search_environment != 'hc_swiss' %}
-              <li><a href="https://docs.otc.t-systems.com/blueprints">Blueprints</a></li>
-              {% endif %}
-            </ul>
-        </scale-telekom-mega-menu>
-      </scale-telekom-nav-flyout>
-    </scale-telekom-nav-item>
+    {% if service_type == 'blueprints' %}
+      <scale-telekom-nav-item>
+        <button>Blueprints</button>
+        <scale-telekom-nav-flyout hover>
+          <scale-telekom-mega-menu>
+            <scale-telekom-mega-menu-column>
+              <a href="https://example.com" slot="heading">Best Practices</a>
+              <ul>
+                <li><a href="https://example.com">Computing</a></li>
+                <li><a href="https://example.com">Storage</a></li>
+                <li><a href="https://example.com">Network</a></li>
+                <li><a href="https://example.com">Security</a></li>
+                <li><a href="https://example.com">Data Analytics</a></li>
+              </ul>
+            </scale-telekom-mega-menu-column>
+            <scale-telekom-mega-menu-column>
+              <a href="https://example.com" slot="heading">By Use Case</a>
+              <ul>
+                <li><a href="https://example.com">Hybrid</a></li>
+                <li><a href="https://example.com">Security & Compliance</a></li>
+                <li><a href="https://example.com">Networking</a></li>
+                <li><a href="https://example.com">Migration</a></li>
+                <li><a href="https://example.com">Data Analytics & AI</a></li>
+              </ul>
+            </scale-telekom-mega-menu-column>
+            <scale-telekom-mega-menu-column>
+              <a href="https://example.com" slot="heading">By Industry</a>
+              <ul>
+                <li><a href="https://example.com">Media</a></li>
+                <li><a href="https://example.com">Automotive</a></li>
+                <li><a href="https://example.com">Education</a></li>
+                <li><a href="https://example.com">Finance</a></li>
+                <li><a href="https://example.com">Healthcare</a></li>
+                <li><a href="https://example.com">Retail</a></li>
+              </ul>
+            </scale-telekom-mega-menu-column>
+          </scale-telekom-mega-menu>
+        </scale-telekom-nav-flyout>
+      </scale-telekom-nav-item>
+      <scale-telekom-nav-item>
+        <button>Cloud Adoption Framework</button>
+        <scale-telekom-nav-flyout hover>
+          <scale-telekom-mega-menu>
+            <scale-telekom-mega-menu-column>
+              <a href="https://example.com" slot="heading">Plan</a>
+              <ul>
+                <li><a href="https://example.com">Cloud Adoption Motivations</a></li>
+                <li><a href="https://example.com">Gap Analysis</a></li>
+                  <li><a href="https://example.com">Cloud Adoption Blueprint</a></li>
+                  <li><a href="https://example.com">Cloud Migration Plan</a></li>
+                  <li><a href="https://example.com">Organisation & Capability Assurance</a></li>
+              </ul>
+            </scale-telekom-mega-menu-column>
+            <scale-telekom-mega-menu-column>
+              <a href="https://example.com" slot="heading">Ready</a>
+              <ul>
+                <li><a href="https://example.com">Landing Zone Construction</a></li>
+                <li><a href="https://example.com">Cloud Architecture Design</a></li>
+              </ul>
+            </scale-telekom-mega-menu-column>
+            <scale-telekom-mega-menu-column>
+              <a href="https://example.com" slot="heading">Adopt</a>
+              <ul>
+                <li><a href="https://example.com">Application Migration</a></li>
+                <li><a href="https://example.com">Data Migration</a></li>
+              </ul>
+            </scale-telekom-mega-menu-column>
+              <scale-telekom-mega-menu-column>
+              <a href="https://example.com" slot="heading">Govern & Manage</a>
+              <ul>
+                <li><a href="https://example.com">Cost Management</a></li>
+                <li><a href="https://example.com">Cost Center</a></li>
+                  <li><a href="https://example.com">Security Compliance & Governance</a></li>
+                <li><a href="https://example.com">Cloud-based OM</a></li>
+              </ul>
+            </scale-telekom-mega-menu-column>
+
+          </scale-telekom-mega-menu>
+        </scale-telekom-nav-flyout>
+      </scale-telekom-nav-item>
+      <scale-telekom-nav-item>
+        <button>Developers</button>
+        <scale-telekom-nav-flyout hover>
+          <scale-telekom-mega-menu>
+            <scale-telekom-mega-menu-column>
+  <!--                <scale-icon-home-home slot="icon"></scale-icon-home-home>-->
+              <a href="https://example.com" slot="heading">APIs</a>
+              <ul>
+                <li><a href="https://example.com">REST API</a></li>
+                <li><a href="https://example.com">API Usage Guidelines</a></li>
+                  <li><a href="https://example.com">Endpoints</a></li>
+              </ul>
+            </scale-telekom-mega-menu-column>
+            <scale-telekom-mega-menu-column>
+  <!--                <scale-icon-home-home slot="icon"></scale-icon-home-home>-->
+              <a href="https://example.com" slot="heading">Automation</a>
+              <ul>
+                <li><a href="https://example.com">Terraform</a></li>
+                <li><a href="https://example.com">Ansible</a></li>
+                <li><a href="https://example.com">Cloud Topology Designer</a></li>
+              </ul>
+            </scale-telekom-mega-menu-column>
+            <scale-telekom-mega-menu-column>
+  <!--                <scale-icon-home-home slot="icon"></scale-icon-home-home>-->
+              <a href="https://example.com" slot="heading">Development</a>
+              <ul>
+                <li><a href="https://example.com">SDKs</a></li>
+                <li><a href="https://example.com">Drivers & Tools</a></li>
+              </ul>
+            </scale-telekom-mega-menu-column>
+          </scale-telekom-mega-menu>
+        </scale-telekom-nav-flyout>
+      </scale-telekom-nav-item>
+    {% else %}
+      <scale-telekom-nav-item>
+        <button>Services</button>
+        <scale-telekom-nav-flyout hover>
+          <scale-telekom-mega-menu>
+            <scale-telekom-mega-menu-column>
+              <!--                <scale-icon-home-home slot="icon"></scale-icon-home-home>-->
+              <a href="{{base_url}}/services.html" slot="heading">Services</a>
+              <ul>
+                <li><a href="{{base_url}}/compute.html">Compute</a></li>
+                <li><a href="{{base_url}}/container.html">Container</a></li>
+                <li><a href="{{base_url}}/network.html">Network</a></li>
+                <li><a href="{{base_url}}/storage.html">Storage</a></li>
+                <li><a href="{{base_url}}/md.html">Management and Deployment</a></li>
+                <li><a href="{{base_url}}/security.html">Security</a></li>
+                <li><a href="{{base_url}}/app.html">Application</a></li>
+                <li><a href="{{base_url}}/database.html">Database</a></li>
+                <li><a href="{{base_url}}/data_analysis.html">Big Data and Data Analysis</a></li>
+              </ul>
+            </scale-telekom-mega-menu-column>
+          </scale-telekom-mega-menu>
+        </scale-telekom-nav-flyout>
+      </scale-telekom-nav-item>
+      <scale-telekom-nav-item>
+        <button>DevOps</button>
+        <scale-telekom-nav-flyout hover>
+          <scale-telekom-mega-menu>
+            <scale-telekom-mega-menu-column>
+              <a slot="heading">DevOps</a>
+              <ul>
+                <li><a href="{{base_url}}/developer/iac.html">Automation</a></li>
+                <li><a href="{{base_url}}/developer/sdk.html">Software Development Kit</a></li>
+                {% if otcdocs_search_environment != 'hc_swiss' %}
+                <li><a href="https://docs.otc.t-systems.com/blueprints">Blueprints</a></li>
+                {% endif %}
+              </ul>
+          </scale-telekom-mega-menu>
+        </scale-telekom-nav-flyout>
+      </scale-telekom-nav-item>
+    {% endif %}
   </scale-telekom-nav-list>
   <scale-telekom-nav-list variant="functions" slot="functions" alignment="right">
     </scale-telekom-nav-item>
@@ -99,62 +222,168 @@
       </button>
       <scale-telekom-nav-flyout class="mobile-nav-flyout">
         <scale-telekom-mobile-flyout-canvas>
-          <!-- main-nav (mobile) -->
-          <scale-telekom-mobile-menu slot="mobile-main-nav">
-            <scale-telekom-mobile-menu-item>
-              <a href="{{base_url}}/services.html">Services</a>
-              <scale-telekom-mobile-menu-item slot="children">
+          {% if service_type == 'blueprints' %}
+            <!-- main-nav (mobile) architecture center-->
+            <scale-telekom-mobile-menu slot="mobile-main-nav">
+              <scale-telekom-mobile-menu-item >
+                <a href="#">Blueprints</a>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="#">Best Practices</a>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Computing</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Storage</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Network</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Security</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Data Analysis</a>
+                  </scale-telekom-mobile-menu-item>
+                </scale-telekom-mobile-menu-item>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="#">By Use Case</a>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Hybrid</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Security & Compliance</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Networking</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Migration</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Data Analytics & AI</a>
+                  </scale-telekom-mobile-menu-item>
+                </scale-telekom-mobile-menu-item>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="#">By Industry</a>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Media</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Automotive</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Education</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Finance</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Healthcare</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Retail</a>
+                  </scale-telekom-mobile-menu-item>
+                </scale-telekom-mobile-menu-item>
+                
+
+              </scale-telekom-mobile-menu-item>
+              <scale-telekom-mobile-menu-item>
+                <a href="#">Cloud Adoption Framework</a>
+              </scale-telekom-mobile-menu-item>
+              <scale-telekom-mobile-menu-item>
+                <a href="#">Developers</a>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="#">APIs</a>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">REST API</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">API Usage Guidelines</a>
+                  </scale-telekom-mobile-menu-item>
+                </scale-telekom-mobile-menu-item>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="#">Automation</a>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Terraform</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Ansible</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Cloud Topology Designer</a>
+                  </scale-telekom-mobile-menu-item>
+                </scale-telekom-mobile-menu-item>
+                <scale-telekom-mobile-menu-item slot="children">
+                  <a href="#">Development</a>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">SDKs</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="#">Drivers & Tools</a>
+                  </scale-telekom-mobile-menu-item>
+                </scale-telekom-mobile-menu-item>
+              </scale-telekom-mobile-menu-item>
+            </scale-telekom-mobile-menu>
+          {% else %}
+            <!-- main-nav (mobile) -->
+            <scale-telekom-mobile-menu slot="mobile-main-nav">
+              <scale-telekom-mobile-menu-item>
                 <a href="{{base_url}}/services.html">Services</a>
                 <scale-telekom-mobile-menu-item slot="children">
-                  <a href="{{base_url}}/compute.html">Compute</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="{{base_url}}/container.html">Container</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="{{base_url}}/network.html">Network</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="{{base_url}}/storage.html">Storage</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="{{base_url}}/md.html">Management and Deployment</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="{{base_url}}/security.html">Security</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="{{base_url}}/app.html">Application</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="{{base_url}}/database.html">Database</a>
-                </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="{{base_url}}/data_analysis.html">Bid Data and Data Analysis</a>
+                  <a href="{{base_url}}/services.html">Services</a>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="{{base_url}}/compute.html">Compute</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="{{base_url}}/container.html">Container</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="{{base_url}}/network.html">Network</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="{{base_url}}/storage.html">Storage</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="{{base_url}}/md.html">Management and Deployment</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="{{base_url}}/security.html">Security</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="{{base_url}}/app.html">Application</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="{{base_url}}/database.html">Database</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="{{base_url}}/data_analysis.html">Bid Data and Data Analysis</a>
+                  </scale-telekom-mobile-menu-item>
                 </scale-telekom-mobile-menu-item>
               </scale-telekom-mobile-menu-item>
-            </scale-telekom-mobile-menu-item>
-            <scale-telekom-mobile-menu-item>
-              <a href="{{base_url}}/developer/index.html">DevOps</a>
-              <scale-telekom-mobile-menu-item slot="children">
+              <scale-telekom-mobile-menu-item>
                 <a href="{{base_url}}/developer/index.html">DevOps</a>
                 <scale-telekom-mobile-menu-item slot="children">
-                  <a href="{{base_url}}/developer/iac.html">Automation</a>
+                  <a href="{{base_url}}/developer/index.html">DevOps</a>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="{{base_url}}/developer/iac.html">Automation</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="{{base_url}}/developer/sdk.html">Software Development Kit</a>
+                  </scale-telekom-mobile-menu-item>
+                  {% if otcdocs_search_environment != 'hc_swiss' %}
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="https://docs.otc.t-systems.com/blueprints">Blueprints</a>
+                  </scale-telekom-mobile-menu-item>
+                  {% endif %}
                 </scale-telekom-mobile-menu-item>
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="{{base_url}}/developer/sdk.html">Software Development Kit</a>
-                </scale-telekom-mobile-menu-item>
-                {% if otcdocs_search_environment != 'hc_swiss' %}
-                <scale-telekom-mobile-menu-item slot="children">
-                  <a href="https://docs.otc.t-systems.com/blueprints">Blueprints</a>
-                </scale-telekom-mobile-menu-item>
-                {% endif %}
               </scale-telekom-mobile-menu-item>
-            </scale-telekom-mobile-menu-item>
-          </scale-telekom-mobile-menu>
+            </scale-telekom-mobile-menu>
+          {% endif %}
         </scale-telekom-mobile-flyout-canvas>
       </scale-telekom-nav-flyout>
     </scale-telekom-nav-item>
+
+    
   </scale-telekom-nav-list>
 </scale-telekom-header>
 
