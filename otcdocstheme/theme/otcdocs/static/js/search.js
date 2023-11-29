@@ -510,7 +510,7 @@ const addFiltersToAccordion = (filters) => {
 
 const deleteResults = () => {
     document.getElementById('ul_div').textContent = ""
-    document.getElementById('searchResultsCount').innerHTML = "Search Results: 0"
+    document.getElementById('searchResultsCount').childNodes[0].nodeValue = "Search Results: 0"
 }
 
 // REMOVES RESULTS ON MAIN CONTENT END REMOVES ALSO THE SEARCH FILTER
