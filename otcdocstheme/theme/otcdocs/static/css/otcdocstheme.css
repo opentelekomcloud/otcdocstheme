@@ -565,7 +565,16 @@ bold.service-doc-title {
 
 .card {
   background-color: var(--telekom-color-background-surface);
-  border: 1px solid var(--telekom-color-ui-regular);
+}
+
+.list-group-item {
+  border: 1px solid var(--telekom-color-ui-faint);
+}
+
+@media (prefers-color-scheme: dark) {
+  .card {
+    border: 1px solid var(--telekom-color-ui-regular);
+  }
 }
 
 /* END: Service-Based-View */
