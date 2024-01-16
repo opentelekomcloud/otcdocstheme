@@ -14,6 +14,13 @@
   display: none !important;
 }
 
+@media (min-width: 1040px) {
+  .nodisplay-mobile {
+    display: none;
+  }
+}
+
+
 .not-visible {
   visibility: hidden !important;
 }
@@ -237,9 +244,7 @@ scale-telekom-header::part(container) {
   margin-bottom: -2rem;
 }
 
-/* .docs-subnavbar div {
-  justify-content: flex-end;
-} */
+
 /* END: subnavbar */
 
 /* START: Breadcrumbs */
