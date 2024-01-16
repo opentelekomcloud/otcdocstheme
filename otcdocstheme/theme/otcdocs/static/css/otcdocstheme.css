@@ -798,6 +798,12 @@ main h1, h2, h3, h4, h5 {
   margin-top: 2rem;
 }
 
+/* change scroll behavior of "Page Contents" navbar on right side */
+
+.docs-content section {
+  scroll-margin-top: 5rem;
+}
+
 .docs-content li > p {
   margin-bottom: 0.5rem;
 }
