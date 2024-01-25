@@ -16,13 +16,13 @@
   {% endif %}
 {% else %}
   {% if otcdocs_doc_environment == 'internal' %}
-    {% if service_type == 'blueprints' %}
+    {% if service_type in ['blueprints', 'ac'] %}
         <scale-telekom-header app-name="Open Telekom Cloud Architecture Center" logo-href="https://docs-int.otc-service.com/">
     {% else %}
         <scale-telekom-header app-name="Open Telekom Cloud Docs" logo-href="https://docs-int.otc-service.com/">
     {% endif %}
   {% else %}
-    {% if service_type == 'blueprints' %}
+    {% if service_type in ['blueprints', 'ac'] %}
         <scale-telekom-header app-name="Open Telekom Cloud Architecture Center" logo-href="https://docs.otc-service.com/">
     {% else %}
         <scale-telekom-header app-name="Open Telekom Cloud Docs" logo-href="https://docs.otc-service.com/">
@@ -37,7 +37,7 @@
   section>
   <!-- main nav (desktop) -->
   <scale-telekom-nav-list variant="main-nav" slot="main-nav">
-    {% if service_type == 'blueprints' %}
+    {% if service_type in ['blueprints', 'ac'] %}
       <scale-telekom-nav-item>
         <button>Blueprints</button>
         <scale-telekom-nav-flyout hover>
@@ -391,7 +391,7 @@
       </button>
       <scale-telekom-nav-flyout class="mobile-nav-flyout">
         <scale-telekom-mobile-flyout-canvas>
-          {% if service_type == 'blueprints' %}
+          {% if service_type in ['blueprints', 'ac'] %}
             <!-- main-nav (mobile) architecture center-->
             <scale-telekom-mobile-menu slot="mobile-main-nav">
               <scale-telekom-mobile-menu-item >
