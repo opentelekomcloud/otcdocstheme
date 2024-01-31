@@ -943,6 +943,7 @@ code.docutils.literal.notranslate {
 
 .docs-main {
   grid-area: main;
+  min-width: 75%;
   max-width: 75%;
 }
 
