@@ -341,8 +341,7 @@ docs-book-wrapper .ul-breadcrumbs {
   height: var(--telekom-spacing-composition-space-02);
   background: var(--telekom-color-text-and-icon-primary-hovered);
   display: block;
-  position: relative;
-  margin-left: -20px;
+  position: absolute;
   align-self: end;
 }
 

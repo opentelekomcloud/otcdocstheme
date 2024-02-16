@@ -363,7 +363,9 @@
   </scale-telekom-nav-list>
   <scale-telekom-nav-list variant="functions" slot="functions" alignment="right">
     <scale-telekom-nav-item>
-      <scale-icon-action-search id="SearchIconScaleNavBar" accessibility-title="Search" onclick="createSearchPage()" />
+      <a id="SearchIconScaleNavBar" onclick="createSearchPage()">
+        <scale-icon-action-search accessibility-title="Search" />
+      </a>
     </scale-telekom-nav-item>
     <scale-telekom-nav-item>
       {% if otcdocs_search_environment == 'hc_swiss' %}
