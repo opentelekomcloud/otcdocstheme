@@ -946,6 +946,10 @@ code.docutils.literal.notranslate {
   max-width: 75%;
 }
 
+#docs-main img {
+  margin-bottom: 2rem;
+}
+
 @media (max-width: 1200px){
   .docs-main {
     max-width: 100%;
@@ -1018,7 +1022,7 @@ p.sidebar-title {
 /* Make figure caption be on top */
 figure {
   display: table;
-  margin: 2rem 0 3rem;
+  margin: 0;
 }
 
 table {
