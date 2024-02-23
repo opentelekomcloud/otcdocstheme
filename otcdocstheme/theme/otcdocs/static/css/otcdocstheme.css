@@ -950,6 +950,10 @@ code.docutils.literal.notranslate {
   margin-bottom: 2rem;
 }
 
+#docs-main figure {
+  margin-top: 2rem;
+}
+
 @media (max-width: 1200px){
   .docs-main {
     max-width: 100%;
