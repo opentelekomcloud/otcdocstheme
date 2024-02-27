@@ -950,6 +950,10 @@ code.docutils.literal.notranslate {
   margin-bottom: 2rem;
 }
 
+.icon-svg {
+  margin-bottom: 0!important;
+}
+
 #docs-main figure {
   margin-top: 2rem;
 }
