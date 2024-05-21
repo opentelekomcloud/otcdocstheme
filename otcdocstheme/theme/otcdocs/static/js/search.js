@@ -194,10 +194,6 @@ async function searchRequest(val, request_size, highlight_size) {
 
     // search_environment => hc_de | hc_swiss
     let search_environment = this_js_script.attr('search_environment');
-    currentDocTitle = this_js_script.attr('search_current_doc_title')
-    currentServiceTitle = this_js_script.attr('search_current_service_title')
-    currentServiceType = this_js_script.attr('search_current_service_type')
-    currentDocType = this_js_script.attr('search_current_doc_type')
 
     // Set the URL for the OpenSearch search correctly
     let search_url = this_js_script.attr('search_url')
@@ -376,6 +372,12 @@ async function addFilters() {
     let this_js_script = $('script[src*=search]');
     let search_url = this_js_script.attr('search_url')
     let search_index = this_js_script.attr('search_index');
+
+    currentServiceTitle = this_js_script.attr('search_current_service_title')
+    currentServiceType = this_js_script.attr('search_current_service_type')
+    currentDocTitle = this_js_script.attr('search_current_doc_title')
+    currentDocType = this_js_script.attr('search_current_doc_type')
+
     let url = `${search_url}${search_index}/_search`
 
     let response = await postRequest(url, request)
