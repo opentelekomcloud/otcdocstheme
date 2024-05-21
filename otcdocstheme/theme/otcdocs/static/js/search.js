@@ -789,6 +789,9 @@ const createSearchPage = async () => {
             addFiltersToAccordion(filters)
         }
 
-        document.getElementById("searchbox").children[0].children[1].focus()
+        // waites 100ms to set the focus on searchbox input field to avoid that the field isn't there
+        setTimeout(function (){
+            document.getElementById("searchbox").children[0].children[1].focus();
+        }, 100)
     }
 }
