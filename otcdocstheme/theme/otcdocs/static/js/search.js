@@ -727,10 +727,7 @@ const getSearchResults = async () => {
     const el = document.getElementById('searchbox');
     timer(el);
 };
-const setFocus = async () => {
-    await delay(1000);
-    document.getElementById("searchbox").children[0].children[1].focus();
-}
+
 const createSearchPage = async () => {
     let contentDiv = document.getElementById('docs-main')
     // Check if we are already on the Search Page if this is the case skip the Page Creation
