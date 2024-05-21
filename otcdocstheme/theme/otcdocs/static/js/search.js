@@ -727,7 +727,10 @@ const getSearchResults = async () => {
     const el = document.getElementById('searchbox');
     timer(el);
 };
-
+const setFocus = async () => {
+    await delay(1000);
+    document.getElementById("searchbox").children[0].children[1].focus();
+}
 const createSearchPage = async () => {
     let contentDiv = document.getElementById('docs-main')
     // Check if we are already on the Search Page if this is the case skip the Page Creation
@@ -789,6 +792,9 @@ const createSearchPage = async () => {
             addFiltersToAccordion(filters)
         }
 
-        document.getElementById("searchbox").children[0].children[1].focus()
+        // waites 100ms to set the focus on searchbox input field to avoid that the field isn't there
+        setTimeout(function (){
+            document.getElementById("searchbox").children[0].children[1].focus();
+        }, 100)
     }
 }
