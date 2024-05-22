@@ -42,6 +42,13 @@
       };
 </script>
 
+<!-- Tracking test for docs-int -->
+{% if otcdocs_doc_environment == 'internal' %}
+    <noscript>
+        <img src="https://shynet.strapi.schreiber-ling.de/ingress/f3f8d596-b9d7-4c54-9cb2-7c8df6757996/pixel.gif">
+    </noscript>
+    <script defer src="https://shynet.strapi.schreiber-ling.de/ingress/f3f8d596-b9d7-4c54-9cb2-7c8df6757996/script.js"></script>
+{% endif %}
 
 <!-- Javascript for page -->
 <script language="JavaScript">
