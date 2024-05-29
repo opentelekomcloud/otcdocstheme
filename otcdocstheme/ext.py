@@ -28,6 +28,14 @@ from sphinx.writers.html5 import HTML5Translator
 from . import version
 from otcdocstheme import paths
 
+import importlib
+
+otc_metadata_de = importlib.import_module("otc_metadata")
+otc_metadata_swiss = importlib.import_module("otc_metadata", "otc_metadata_swiss")
+
+print(otc_metadata_main.__version__)
+print(otc_metadata_swiss.__version__)
+
 _series = None
 _project = None
 _giturl_source = {

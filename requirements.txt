@@ -4,3 +4,5 @@
 
 pbr!=2.1.0,>=2.0.0 # Apache-2.0
 dulwich>=0.15.0 # Apache-2.0
+git+https://gitea.eco.tsi-dev.otc-service.com/infra/otc-metadata.git#egg=otc_metadata
+git+https://gitea.eco.tsi-dev.otc-service.com/infra/otc-metadata-swiss.git
