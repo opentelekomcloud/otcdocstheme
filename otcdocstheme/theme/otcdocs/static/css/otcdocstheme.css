@@ -1592,4 +1592,51 @@ select:-webkit-autofill:focus {
 
 /* END: DELETE CHROME AUTO-FILL */
 
+/* START: card_item directive */
+
+card-item-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.card-item {
+  width: calc(25% - 1.5rem);
+  border-radius: var(--telekom-radius-standard);
+  box-shadow: 0px 8px 32px 0px hsla(0, 0%, 0%, 0.1), 0px 4px 8px 0px hsla(0, 0%, 0%, 0.1);
+  background-color: var(--telekom-color-background-surface);
+}
+
+@media (max-width: 1920px){
+  .card-item {
+    width: calc(33% - 1.5rem);
+  }
+}
+
+@media (max-width: 1200px){
+  .card-item {
+    width: calc(50% - 1.5rem);
+  }
+}
+@media (max-width: 650px){
+  .card-item {
+    width: 100%;
+  }
+}
+
+.card-item:hover {
+  box-shadow: 0px 16px 64px 0px hsla(0, 0%, 0%, 0.1), 0px 8px 16px 0px hsla(0, 0%, 0%, 0.1);
+  transition: 300ms ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  .card-item:hover {
+      box-shadow: 0px 16px 64px 0px hsla(0, 0%, 100%, 0.05), 0px 8px 16px 0px hsla(0, 0%, 100%, 0.05);
+      transition: 300ms ease;
+  }
+}
+
+/* END: card_item directive */
+
 /* data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23012529'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg> */
