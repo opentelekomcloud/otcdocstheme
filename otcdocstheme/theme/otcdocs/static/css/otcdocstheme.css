@@ -1594,7 +1594,7 @@ select:-webkit-autofill:focus {
 
 /* START: card_item directive */
 
-card-item-wrapper {
+.card-item-wrapper {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
