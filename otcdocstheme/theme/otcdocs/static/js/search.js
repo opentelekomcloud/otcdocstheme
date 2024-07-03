@@ -614,12 +614,12 @@ const createSearchFilter = () => {
         const suggestedFilterHTML = `
             <div class="accordion-item">
                 <h2 class="accordion-header" id="suggestedFilter">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSuggestedFilter"
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSuggestedFilter"
                     aria-expanded="true" aria-controls="collapseSuggestedFilter" onclick="removeAllFilters()">
                     Suggested Filters
                     </button>
                 </h2>
-                <div id="collapseSuggestedFilter" class="accordion-collapse collapse" aria-labelledby="suggestedFilter"
+                <div id="collapseSuggestedFilter" class="accordion-collapse collapse show" aria-labelledby="suggestedFilter"
                     data-bs-parent="#searchAccordions" style="">
                     <div class="accordion-body" id="suggestedFilterBody">
                         <div id="searchSelectCurrentValue">
@@ -634,6 +634,10 @@ const createSearchFilter = () => {
             </div>
         `
         document.getElementById("searchAccordions").insertAdjacentHTML("afterbegin",suggestedFilterHTML)
+
+        // Auto selected suggested filters
+        document.getElementById("searchSelectCurrentValueCheckbox").checked = true
+        filterCurrentDoc(document.getElementById("searchSelectCurrentValueCheckbox"))
     }
 }
 
