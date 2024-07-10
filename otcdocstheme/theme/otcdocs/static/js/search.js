@@ -47,9 +47,27 @@ async function postRequest(url, body) {
 
 // Build the request for searching
 async function searchRequest(val, request_size, highlight_size) {
-
+    let search_filter_exact_match = false
     let service_type_query = []
     let service_doc_type_query = []
+
+    function isFirstAndLastCharQuote(str) {
+        if (str.length < 2) {
+            // If the string is less than 2 characters long, it can't have matching first and last characters
+            return false;
+        }
+        // Check if the first and last characters are both double quotes
+        return str[0] === '"' && str[str.length - 1] === '"';
+    }
+
+    function removeFirstAndLastChar(str) {
+        if (str.length <= 2) {
+            // If the string is 2 characters or less, return an empty string
+            return '';
+        }
+        // Use slice to remove the first and last character
+        return str.slice(1, -1);
+    }
 
     if (active_service_search_filters.length != 0) {
         active_service_search_filters.map(item => {
@@ -64,130 +82,177 @@ async function searchRequest(val, request_size, highlight_size) {
         docs_type_query = active_doc_search_filters
     }
 
-    // Request in case filtered by services
-    const request_service_filtered = {
-        "from" : 0, "size" : request_size,
-        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title", "service_title"],
-        "query": {
-            "bool": {
-                "must": [
-                    {
-                        "terms": {
-                          "service_type.keyword": service_type_query
-                        }
-                    },
-                    {
-                        "terms": {
-                          "doc_type.keyword": service_doc_type_query
-                        }
-                    },
-                    {
-                    "multi_match": {
-                        "query": val,
-                        "type": "bool_prefix",
-                        "operator": "and",
-                        "fields": ["body", "title^2"]
-                    }
-                    }
-                ]
-            }
-        },
-        "highlight": {
-            "number_of_fragments": 1,
-            "fragment_size":highlight_size,
-            "pre_tags": [
-                "<span style='color: var(--telekom-color-text-and-icon-primary-standard)'>"
-            ],
-            "post_tags": [
-                "</span>"
-            ],
-            "fields":{
-                "body": {},
-                "title": {}
-            },
-            "require_field_match" : false
-        }
-    };
-
-    // Request in case only filtered by doc types
-    const request_docs_filtered = {
-        "from" : 0, "size" : request_size,
-        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title", "service_title"],
-        "query": {
-            "bool": {
-                "must": [
-                    {
-                        "terms": {
-                          "doc_type.keyword": docs_type_query
-                        }
-                    },
-                    {
-                    "multi_match": {
-                        "query": val,
-                        "type": "bool_prefix",
-                        "operator": "and",
-                        "fields": ["body", "title^2"]
-                    }
-                    }
-                ]
-            }
-        },
-        "highlight": {
-            "number_of_fragments": 1,
-            "fragment_size":highlight_size,
-            "pre_tags": [
-                "<span style='color: var(--telekom-color-text-and-icon-primary-standard)'>"
-            ],
-            "post_tags": [
-                "</span>"
-            ],
-            "fields":{
-                "body": {},
-                "title": {}
-            },
-            "require_field_match" : false
-        }
-    };
-
-    // Default request without filtering
-    const request = {
-        "from" : 0, "size" : request_size,
-        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title", "service_title"],
-        "query": {
-            "multi_match": {
-              "query": val,
-              "type": "bool_prefix",
-              "operator": "and",
-              "fields": [ "body", "title^2" ]
-            }
-        },
-        "highlight": {
-            "number_of_fragments": 1,
-            "fragment_size":highlight_size,
-            "pre_tags": [
-                "<span style='color: var(--telekom-color-text-and-icon-primary-standard)'>"
-            ],
-            "post_tags": [
-                "</span>"
-            ],
-            "fields":{
-                "body": {},
-                "title": {}
-            },
-            "require_field_match" : false
-        }
-    };
-
-    let final_query = {}
-
-    // Check if filters exist and what exactly is being filtered
-    if (active_service_search_filters.length == 0 && active_doc_search_filters.length == 0) {
-        final_query = request
-    } else if (active_service_search_filters != 0) {
-        final_query = request_service_filtered
-    } else if (active_doc_search_filters != 0) {
-        final_query = request_docs_filtered
+    if (isFirstAndLastCharQuote(val)) {
+        search_filter_exact_match = true
+        val = removeFirstAndLastChar(val)
     }
+
+    // Check for exact match
+    if (search_filter_exact_match == true) {
+        // Check if filters exist and what exactly is being filtered
+        if (active_service_search_filters.length == 0 && active_doc_search_filters.length == 0) {
+            // Exact match on either title or body or both
+            opensearch_query_settings = {
+                "bool": {
+                    "should": [
+                        {
+                            "match_phrase": {
+                                "title": {
+                                "query": val
+                                }
+                            }
+                        },
+                        {
+                            "match_phrase": {
+                                "body": {
+                                "query": val
+                                }
+                            }
+                        }
+                    ],
+                    "minimum_should_match": 1
+                }
+            }
+        } else if (active_service_search_filters != 0) {
+            // Exact match on either title or body or both with filtered by service_type and doc_type
+            opensearch_query_settings = {
+                "bool": {
+                    "must": [
+                        {
+                            "terms": {
+                                "service_type.keyword": service_type_query
+                            }
+                        },
+                        {
+                            "terms": {
+                                "doc_type.keyword": service_doc_type_query
+                            }
+                        }
+                    ],
+                    "should": [
+                        {
+                            "multi_match": {
+                                "query": val,
+                                "type": "bool_prefix",
+                                "operator": "and",
+                                "fields": ["body", "title^2"]
+                            }
+                        }
+                    ],
+                    "minimum_should_match": 1
+                }
+            }
+        } else if (active_doc_search_filters != 0) {
+            // Exact match on either title or body or both with filtered by doc_type
+            opensearch_query_settings = {
+                "bool": {
+                    "must": [
+                        {
+                            "terms": {
+                                "doc_type.keyword": docs_type_query
+                            }
+                        }
+                    ],
+                    "should": [
+                        {
+                            "multi_match": {
+                                "query": val,
+                                "type": "bool_prefix",
+                                "operator": "and",
+                                "fields": ["body", "title^2"]
+                            }
+                        }
+                    ],
+                    "minimum_should_match": 1
+                }
+            }
+        }
+    }
+
+    // Not exact matched queries
+    else {
+        // Check if filters exist and what exactly is being filtered
+        if (active_service_search_filters.length == 0 && active_doc_search_filters.length == 0) {
+            // Standard search
+            opensearch_query_settings = {
+                "multi_match": {
+                "query": val,
+                "type": "bool_prefix",
+                "operator": "and",
+                "fields": [ "body", "title^2" ]
+                }
+            }
+        } else if (active_service_search_filters != 0) {
+            // Filtered by service and docs
+            opensearch_query_settings = {
+                "bool": {
+                    "must": [
+                        {
+                            "terms": {
+                            "service_type.keyword": service_type_query
+                            }
+                        },
+                        {
+                            "terms": {
+                            "doc_type.keyword": service_doc_type_query
+                            }
+                        },
+                        {
+                        "multi_match": {
+                            "query": val,
+                            "type": "bool_prefix",
+                            "operator": "and",
+                            "fields": ["body", "title^2"]
+                        }
+                        }
+                    ]
+                }
+            }
+        } else if (active_doc_search_filters != 0) {
+            // Filtered by docs
+            opensearch_query_settings = {
+                "bool": {
+                    "must": [
+                        {
+                            "terms": {
+                            "doc_type.keyword": docs_type_query
+                            }
+                        },
+                        {
+                        "multi_match": {
+                            "query": val,
+                            "type": "bool_prefix",
+                            "operator": "and",
+                            "fields": ["body", "title^2"]
+                        }
+                        }
+                    ]
+                }
+            }
+        }
+    }
+
+    const final_query = {
+        "from" : 0, "size" : request_size,
+        "_source": ["highlight", "current_page_name", "title", "base_url", "doc_url", "doc_type", "doc_title", "service_title"],
+        "query": opensearch_query_settings,
+        "highlight": {
+            "number_of_fragments": 1,
+            "fragment_size":highlight_size,
+            "pre_tags": [
+                "<span style='color: var(--telekom-color-text-and-icon-primary-standard)'>"
+            ],
+            "post_tags": [
+                "</span>"
+            ],
+            "fields":{
+                "body": {},
+                "title": {}
+            },
+            "require_field_match" : false
+        }
+    };
+    
 
     // Get the value search_environment out of this script's html description of the footer section
     let this_js_script = $('script[src*=search]');
