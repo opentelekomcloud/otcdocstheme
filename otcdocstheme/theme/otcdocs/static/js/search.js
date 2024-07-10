@@ -252,7 +252,7 @@ async function searchRequest(val, request_size, highlight_size) {
             "require_field_match" : false
         }
     };
-    
+
 
     // Get the value search_environment out of this script's html description of the footer section
     let this_js_script = $('script[src*=search]');
