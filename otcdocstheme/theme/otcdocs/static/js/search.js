@@ -98,14 +98,16 @@ async function searchRequest(val, request_size, highlight_size) {
                         {
                             "match_phrase": {
                                 "title": {
-                                "query": val
+                                    "query": val,
+                                    "boost": 2
                                 }
                             }
                         },
                         {
                             "match_phrase": {
                                 "body": {
-                                "query": val
+                                    "query": val,
+                                    "boost": 1
                                 }
                             }
                         }
@@ -131,11 +133,19 @@ async function searchRequest(val, request_size, highlight_size) {
                     ],
                     "should": [
                         {
-                            "multi_match": {
-                                "query": val,
-                                "type": "bool_prefix",
-                                "operator": "and",
-                                "fields": ["body", "title^2"]
+                            "match_phrase": {
+                                "title": {
+                                    "query": val,
+                                    "boost": 2
+                                }
+                            }
+                        },
+                        {
+                            "match_phrase": {
+                                "body": {
+                                    "query": val,
+                                    "boost": 1
+                                }
                             }
                         }
                     ],
@@ -155,11 +165,19 @@ async function searchRequest(val, request_size, highlight_size) {
                     ],
                     "should": [
                         {
-                            "multi_match": {
-                                "query": val,
-                                "type": "bool_prefix",
-                                "operator": "and",
-                                "fields": ["body", "title^2"]
+                            "match_phrase": {
+                                "title": {
+                                    "query": val,
+                                    "boost": 2
+                                }
+                            }
+                        },
+                        {
+                            "match_phrase": {
+                                "body": {
+                                    "query": val,
+                                    "boost": 1
+                                }
                             }
                         }
                     ],
