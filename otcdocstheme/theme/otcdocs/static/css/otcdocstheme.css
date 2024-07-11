@@ -940,6 +940,10 @@ code.docutils.literal.notranslate {
   }
 }
 
+#docs-main {
+  width: 100%;
+}
+
 .docs-main {
   grid-area: main;
   min-width: 75%;
