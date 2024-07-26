@@ -416,7 +416,7 @@ const updateSearchResultsCount = (resultsCount) => {
     h1.textContent = ""
     h1.insertAdjacentHTML("afterbegin", `
         Search Results: ${resultsCount}
-        <scale-icon-action-close class="closeSearchIcon" accessibility-title="Close Search Results" onclick="deleteEnterResults()"></scale-icon-action-close>
+        <scale-icon-action-close class="closeSearchIcon" accessibility-title="Close Search Results" size="35" onclick="deleteEnterResults()"></scale-icon-action-close>
     `)
 }
 
@@ -845,19 +845,6 @@ const createSearchPage = async () => {
             getSearchResults();
         });
 
-        // Create Results Headline
-        // let h1 = document.createElement('h1')
-        // h1.setAttribute('id', 'searchResultsCount')
-        // h1.innerHTML = "Search Results: 0"
-        // h1.setAttribute('style', 'font-size: 1.5rem')
-
-        // Search Results Close Button
-        // let close = document.createElement('scale-icon-action-close')
-        // close.classList.add('closeSearchIcon')
-        // close.setAttribute('accessibility-title', 'close Search Results')
-        // close.setAttribute('onclick', 'deleteEnterResults()')
-        // h1.appendChild(close)
-
         // Get Search Results div
         let div = document.getElementById('searchResultsEnter')
 
@@ -865,7 +852,7 @@ const createSearchPage = async () => {
         div.insertAdjacentHTML("beforebegin", `
             <h1 id="searchResultsCount">
                 Search Results: 0
-                <scale-icon-action-close class="closeSearchIcon" accessibility-title="Close Search Results" onclick="deleteEnterResults()"></scale-icon-action-close>
+                <scale-icon-action-close class="closeSearchIcon" accessibility-title="Close Search Results" size="35" onclick="deleteEnterResults()"></scale-icon-action-close>
             </h1>
         `)
 
