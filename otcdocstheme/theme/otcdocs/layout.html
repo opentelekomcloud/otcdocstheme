@@ -17,8 +17,12 @@
 {%- macro relbar1() %}
 <div class="related" role="navigation" aria-label="related navigation">
   <ul id="breadcrumbs" class="ul-breadcrumbs">
-    <li><a href="{{ pathto(master_doc) }}" class="fa-solid fa-house"></a><span
+    <li><a href="../{{ pathto(master_doc) }}" class="fa-solid fa-house"></a><span
         class="fa-solid fa-chevron-right ms-1 breadcrumb-arrow"></span></li>
+    {%- if doc_title != '' %}
+    <li><a href="{{ pathto(master_doc) }}">{{ doc_title }}</a><span
+      class="fa-solid fa-chevron-right ms-1 breadcrumb-arrow"></span></li>
+    {% endif %}
     {%- for doc in parents %}
     <li><a href="{{ doc.link|e }}">{{ doc.title }}</a><span
         class="fa-solid fa-chevron-right ms-1 breadcrumb-arrow"></span></li>
