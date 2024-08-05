@@ -16,14 +16,6 @@ import configparser
 import os
 import subprocess
 import textwrap
-import sys
-
-
-from docutils.parsers.rst import Directive
-from docutils.parsers.rst import directives
-from docutils import nodes
-from otcdocstheme.full_width_table import FullWidthTableDirective
-from sphinx.util.docutils import SphinxDirective
 from docutils.nodes import Element
 import dulwich.repo
 from pbr import packaging
@@ -513,7 +505,6 @@ def setup(app):
         version.version_info.version_string(),
     )
     logger.debug('[otcdocstheme] connecting events')
-    app.add_directive('table', FullWidthTableDirective)
 
     # extensions
     app.connect('config-inited', _config_inited)
