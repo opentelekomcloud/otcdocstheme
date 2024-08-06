@@ -13,6 +13,7 @@
 #    under the License.
 
 import configparser
+import glob
 import os
 import subprocess
 import textwrap
@@ -478,9 +479,13 @@ def _builder_inited(app):
         preamble += latex_elements['preamble']
 
     latex_elements['preamble'] = preamble
+    latex_additional_files = [f'{pdf_theme_path}.sty']
+
+    for file in glob.glob(paths.get_theme_fonts_path(app.config.html_theme) + "/*.ttf"):
+        latex_additional_files.append(file)
 
     app.config.latex_elements = latex_elements
-    app.config.latex_additional_files = [f'{pdf_theme_path}.sty']
+    app.config.latex_additional_files = latex_additional_files
 
     # This hook is invoked when latex builder is already initialized. We loose
     # preamble if we only set it to the config

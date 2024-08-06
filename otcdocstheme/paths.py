@@ -34,3 +34,9 @@ def get_theme_logo_path(theme='otcdocs'):
     """Return the directory containing theme logo for local builds."""
     args = ['theme', theme + '_pdf', 'deutsche-telekom-logo.png']
     return os.path.join(get_pkg_path(), *args)
+
+
+def get_theme_fonts_path(theme='otcdocs'):
+    """Return the directory containing fonts for local builds."""
+    args = ['theme', theme + '_pdf', 'fonts']
+    return os.path.join(get_pkg_path(), *args)
