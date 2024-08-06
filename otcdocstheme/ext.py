@@ -458,12 +458,7 @@ def _builder_inited(app):
 
     theme_logo = paths.get_theme_logo_path(app.config.html_theme)
     pdf_theme_path = paths.get_pdf_theme_path(app.config.html_theme)
-    latex_elements = {
-        'papersize': 'a4paper',
-        'pointsize': '11pt',
-        'figure_align': 'H',
-        'classoptions': ',openany',
-    }
+    latex_elements = {}
 
     if app.config.latex_elements:
         latex_elements.update(app.config.latex_elements)

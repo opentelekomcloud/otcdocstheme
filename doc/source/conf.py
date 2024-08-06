@@ -79,3 +79,10 @@ latex_documents = [
   ('index', 'doc-otcdocstheme.tex', u'Open Telekom Cloud Theme  Documentation',
    u'OpenTelekomCloud Contributors', 'manual'),
 ]
+
+latex_elements = {
+  'papersize': 'a4paper',
+  'pointsize': '12pt',
+  'figure_align': 'H',
+  'sphinxsetup': 'hmargin={10mm,10mm}, vmargin={10mm,30mm}, marginpar=10mm'
+}
