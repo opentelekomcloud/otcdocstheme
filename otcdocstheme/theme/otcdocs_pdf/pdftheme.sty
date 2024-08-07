@@ -10,44 +10,74 @@
 % \usepackage[margin=10mm]{geometry}
 \PassOptionsToPackage{margin=0.1mm}{geometry}
 
+% Font selection (English)
+\usepackage{fontspec}
+% \defaultfontfeatures{Scale=MatchLowercase}
+\setmainfont{TeleNeo Office}[Path = {./}]
+% \setmonofont[SmallCapsFont={Source Code Pro}]{Source Code Pro}'
+\setmonofont{Source Code Pro}[Path = {./}]
+\setsansfont{TeleNeo Office ExtraBold}[Path = {./}]
+\newfontface\otcneoextrabold{TeleNeo Office ExtraBold}[Path = {./}]
+\newfontface\otcneobold{TeleNeo Office Bold}[Path = {./}]
+\newfontface\otcneomedium{TeleNeo Office Medium}[Path = {./}]
+\newfontface\otcneoregular{TeleNeo Office}[Path = {./}]
+\newfontface\otcneothin{TeleNeo Office Thin}[Path = {./}]
+
+\newcommand{\otcfont}[3]{{#1\fontsize{#2*1.5}{#2}\selectfont #3}}
+
 % Defines title page
-\renewcommand{\maketitle}{
-  \begin{titlepage}
-    \begin{flushleft}
-       \includegraphics[width=1.6cm, height=0.8cm]{\otclogo}
-    \end{flushleft}
-    \vskip 6em%
-    \begin{center}
-       % Document title
-       {\Huge \textbf \@title}
-    \end{center}
+\renewcommand{\sphinxmaketitle}{
+   \begin{titlepage}
 
-    \begin{flushright}
-       % Expect align right but center
-       \vskip 2em%
-       % RELEASE VERSION
-       {\osreleasetitle}
-    \end{flushright}
+      \raggedleft
+      \vspace*{5cm}
+      \otcfont{\otcneobold}{18pt}{Open Telekom Cloud Platform Documentation}
+      \vspace*{1em}\\
+      \otcfont{\otcneoextrabold}{50pt}{Cloud Container\\Engine Service}
+      \vspace*{1em}\\
+      \otcfont{\otcneothin}{24pt}{API Reference}
+      \vspace*{1em}\\
+      \otcfont{\otcneomedium}{18pt}{Released February 15, 2024\\Git commit \githash}
+      \vspace*{1em}\\
+      
+      \author{Editorial teams of the Open Telekom Cloud squads\\Contact via
+         Ecosysystem Squad, otc\_ecosystem\_squad@t-systems.com}
+      \date{Compilation time: \today, \thistime}
+   %  \begin{flushleft}
+   %     \includegraphics[width=1.6cm, height=0.8cm]{\otclogo}
+   %  \end{flushleft}
+   %  \vskip 6em%
+   %  \begin{center}
+   %     % Document title
+   %     {\Huge \textbf \@title}
+   %  \end{center}
 
-    \vskip 6em%
+   %  \begin{flushright}
+   %     % Expect align right but center
+   %     \vskip 2em%
+   %     % RELEASE VERSION
+   %     {\osreleasetitle}
+   %  \end{flushright}
 
-    \begin{flushright}
-       % Author
-       {\LARGE \@author}
-       \vskip 20em%
-       % Creation date
-       {\Large \@date}
-    \end{flushright}
-  \end{titlepage}
+   %  \vskip 6em%
+
+   %  \begin{flushright}
+   %     % Author
+   %     {\LARGE \@author}
+   %     \vskip 20em%
+   %     % Creation date
+   %     {\Large \@date}
+   %  \end{flushright}
+   \end{titlepage}
 }
 
 % Customizes page header & footer for otc
 \fancypagestyle{normal}{
-  \fancyhf{}
-  \fancyfoot[LE,RO]{{\py@HeaderFamily\thepage}}
-  \fancyfoot[RE,LO]{{\py@HeaderFamily\nouppercase\rightmark}}
-  \fancyhead[LE,RO]{{\py@HeaderFamily\@title}}
-  \fancyhead[RE,LO]{{\py@HeaderFamily\includegraphics[width=1.6cm, height=0.8cm]{\otclogo}}}
+   \fancyhf{}
+   \fancyfoot[LE,RO]{{\py@HeaderFamily\thepage}}
+   \fancyfoot[RE,LO]{{\py@HeaderFamily\nouppercase\rightmark}}
+   \fancyhead[LE,RO]{{\py@HeaderFamily\@title}}
+   \fancyhead[RE,LO]{{\py@HeaderFamily\includegraphics[width=1.6cm, height=0.8cm]{\otclogo}}}
 }
 
 % Customizes colors
@@ -56,15 +86,4 @@
 % Do not use chapter and section number
 \setcounter{secnumdepth}{-1}
 
-% Font selection (English)
-\usepackage{fontspec}
-% \defaultfontfeatures{Scale=MatchLowercase}
-\setmainfont{TeleNeo Office}[Path = {./}]
-% \setmonofont[SmallCapsFont={Source Code Pro}]{Source Code Pro}'
-\setmonofont{Source Code Pro}[Path = {./}]
-\setsansfont{TeleNeo Office ExtraBold}[Path = {./}]
-% \newfontface\jjja{TeleNeo Office ExtraBold}
-% \newfontface\jjjb{TeleNeo Office Bold}
-% \newfontface\jjjc{TeleNeo Office Medium}
-% \newfontface\jjjd{TeleNeo Office Regular}
-% \newfontface\jjje{TeleNeo Office Thin}
+

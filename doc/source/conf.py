@@ -2,6 +2,8 @@
 #
 # openstackdocstheme documentation build configuration file
 
+import git
+
 # -- General configuration ------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
@@ -80,9 +82,12 @@ latex_documents = [
    u'OpenTelekomCloud Contributors', 'manual'),
 ]
 
+current_git_hash = git.Repo(search_parent_directories=True).head.commit.hexsha[:7]
+
 latex_elements = {
   'papersize': 'a4paper',
   'pointsize': '12pt',
   'figure_align': 'H',
-  'sphinxsetup': 'hmargin={10mm,10mm}, vmargin={10mm,30mm}, marginpar=10mm'
+  'preamble': r'\newcommand{\githash}{' + current_git_hash + '}',
+  'sphinxsetup': 'hmargin={15mm,15mm}, vmargin={20mm,20mm}, marginpar=10mm'
 }
