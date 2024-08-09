@@ -89,5 +89,5 @@ latex_elements = {
   'pointsize': '12pt',
   'figure_align': 'H',
   'preamble': r'\newcommand{\githash}{' + current_git_hash + '}',
-  'sphinxsetup': 'hmargin={15mm,15mm}, vmargin={20mm,20mm}, marginpar=10mm'
+  'sphinxsetup': 'hmargin={15mm,15mm}, vmargin={20mm,30mm}, marginpar=10mm'
 }
