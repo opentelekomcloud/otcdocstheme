@@ -34,7 +34,14 @@
   \LTright\dimexpr\columnwidth-\@totalleftmargin-\linewidth\relax
 <%- endif %>
 \makeatother
-\begin{longtable}<%= table.get_colspec() %>
+<% set total_width = table.colwidths|sum %>
+<% set colspec_parts = [] %>
+<% for width in table.colwidths %>
+  <% set part = 'p{{{:.4f}\\textwidth}}'.format((width * 0.8) / total_width) %>
+  <% set colspec_parts = colspec_parts.append(part) %>
+<% endfor  %>
+<% set colspec_string = ''.join(colspec_parts) %>
+\begin{longtable}{<%= colspec_string %>}
 <%- if table.caption -%>
 \sphinxthelongtablecaptionisattop
 \caption{<%= ''.join(table.caption) %>\strut}<%= labels %>\\*[\sphinxlongtablecapskipadjust]
