@@ -23,7 +23,10 @@
 \sphinxthistablewithnocolorrowsstyle
 <% endif -%>
 \makeatletter
-<%- if table.align in ('center', 'default') %>
+<%- if table.align == 'default' %>
+  \LTleft 0cm
+  \LTright 0cm
+<%- elif table.align == 'center' %>
   \LTleft \@totalleftmargin plus1fill
   \LTright\dimexpr\columnwidth-\@totalleftmargin-\linewidth\relax plus1fill
 <%- elif table.align == 'left' %>
@@ -37,7 +40,7 @@
 <% set total_width = table.colwidths|sum %>
 <% set colspec_parts = [] %>
 <% for width in table.colwidths %>
-  <% set part = 'p{{{:.4f}\\textwidth}}'.format((width * 0.8) / total_width) %>
+  <% set part = 'p{{{:.4f}\\textwidth}}'.format((width * 0.863) / total_width) %>
   <% set colspec_parts = colspec_parts.append(part) %>
 <% endfor  %>
 <% set colspec_string = ''.join(colspec_parts) %>
