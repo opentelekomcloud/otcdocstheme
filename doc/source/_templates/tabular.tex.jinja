@@ -1,4 +1,5 @@
-\begin{savenotes}\sphinxattablestart
+\begin{savenotes}
+\sphinxatlongtablestart
 \sphinxthistablewithglobalstyle
 <% if 'booktabs' in table.styles -%>
 \sphinxthistablewithbooktabsstyle
@@ -21,34 +22,60 @@
 <% if 'nocolorrows' in table.styles -%>
 \sphinxthistablewithnocolorrowsstyle
 <% endif -%>
-<% if table.align -%>
-  <%- if table.align in ('center', 'default') -%>
-  \centering
-  <%- elif table.align == 'left' -%>
-  \raggedright
-  <%- else -%>
-  \raggedleft
-  <%- endif %>
-<%- else -%>
-  \centering
+\makeatletter
+<%- if table.align in ('center', 'default') %>
+  \LTleft \@totalleftmargin plus1fill
+  \LTright\dimexpr\columnwidth-\@totalleftmargin-\linewidth\relax plus1fill
+<%- elif table.align == 'left' %>
+  \LTleft \@totalleftmargin
+  \LTright\dimexpr\columnwidth-\@totalleftmargin-\linewidth\relax plus1fill
+<%- elif table.align == 'right' %>
+  \LTleft \@totalleftmargin plus1fill
+  \LTright\dimexpr\columnwidth-\@totalleftmargin-\linewidth\relax
 <%- endif %>
-<% if table.caption -%>
-\sphinxcapstartof{table}
-\sphinxthecaptionisattop
-\sphinxcaption{<%= ''.join(table.caption) %>}<%= labels %>
-\sphinxaftertopcaption
+\makeatother
+<% set total_width = table.colwidths|sum %>
+<% set colspec_parts = [] %>
+<% for width in table.colwidths %>
+  <% set part = 'p{{{:.4f}\\textwidth}}'.format((width * 0.8) / total_width) %>
+  <% set colspec_parts = colspec_parts.append(part) %>
+<% endfor  %>
+<% set colspec_string = ''.join(colspec_parts) %>
+\begin{longtable}{<%= colspec_string %>}
+<%- if table.caption -%>
+\sphinxthelongtablecaptionisattop
+\caption{<%= ''.join(table.caption) %>\strut}<%= labels %>\\*[\sphinxlongtablecapskipadjust]
 <% elif labels -%>
-\phantomsection<%= labels %>\nobreak
+\noalign{\phantomsection<%= labels %>}%
 <% endif -%>
-\begin{tabular}[t]<%= table.get_colspec() -%>
 \sphinxtoprule
 <%= ''.join(table.header) -%>
 <%- if table.header -%>
 \sphinxmidrule
 <% endif -%>
-\sphinxtableatstartofbodyhook
-<%=- ''.join(table.body) -%>
+\endfirsthead
+
+\multicolumn{<%= table.colcount %>}{c}{\sphinxnorowcolor
+    \makebox[0pt]{\sphinxtablecontinued{\tablename\ \thetable{} \textendash{} <%= _('continued from previous page') %>}}%
+}\\
+\sphinxtoprule
+<%= ''.join(table.header) -%>
+<%- if table.header -%>
+\sphinxmidrule
+<% endif -%>
+\endhead
+
 \sphinxbottomrule
-\end{tabular}
-\sphinxtableafterendhook\par
-\sphinxattableend\end{savenotes}
+\multicolumn{<%= table.colcount %>}{r}{\sphinxnorowcolor
+    \makebox[0pt][r]{\sphinxtablecontinued{<%= _('continues on next page') %>}}%
+}\\
+\endfoot
+
+\endlastfoot
+\sphinxtableatstartofbodyhook
+<%= ''.join(table.body) -%>
+\sphinxbottomrule
+\end{longtable}
+\sphinxtableafterendhook
+\sphinxatlongtableend
+\end{savenotes}

@@ -474,7 +474,7 @@ def _builder_inited(app):
         preamble += latex_elements['preamble']
 
     latex_elements['preamble'] = preamble
-    latex_additional_files = [f'{pdf_theme_path}.sty']
+    latex_additional_files = [f'{pdf_theme_path}.sty', paths.get_pdf_blobs_u1_path(app.config.html_theme), paths.get_pdf_blobs_u4_path(app.config.html_theme)]
 
     for file in glob.glob(paths.get_theme_fonts_path(app.config.html_theme) + "/*.ttf"):
         latex_additional_files.append(file)

@@ -23,25 +23,32 @@
 <% endif -%>
 <% if table.align -%>
   <%- if table.align in ('center', 'default') -%>
-  \centering
+  \raggedleft
   <%- elif table.align == 'left' -%>
-  \raggedright
+  \raggedleft
   <%- else -%>
   \raggedleft
   <%- endif %>
 <%- else -%>
-  \centering
+  \raggedleft
 <%- endif %>
 <% if table.caption -%>
 \sphinxcapstartof{table}
 \sphinxthecaptionisattop
 \sphinxcaption{<%= ''.join(table.caption) %>}<%= labels %>
-\sphinxcaption{<%= table.colwidths %>}<%= labels %>
+\sphinxcaption{<%= table.colwidths|sum %>}<%= labels %>
 \sphinxaftertopcaption
 <% elif labels -%>
 \phantomsection<%= labels %>\nobreak
 <% endif -%>
-\begin{tabulary}{\linewidth}[t]<%= table.get_colspec() -%>
+<% set total_width = table.colwidths|sum %>
+<% set colspec_parts = [] %>
+<% for width in table.colwidths %>
+  <% set part = 'p{{{:.4f}\\textwidth}}'.format((width * 0.8) / total_width) %>
+  <% set colspec_parts = colspec_parts.append(part) %>
+<% endfor  %>
+<% set colspec_string = ''.join(colspec_parts) %>
+\begin{tabularx}{\linewidth}{<%= colspec_string %>}
 \sphinxtoprule
 <%= ''.join(table.header) -%>
 <%- if table.header -%>
@@ -50,6 +57,6 @@
 \sphinxtableatstartofbodyhook
 <%=- ''.join(table.body) -%>
 \sphinxbottomrule
-\end{tabulary}
+\end{tabularx}
 \sphinxtableafterendhook\par
 \sphinxattableend\end{savenotes}
