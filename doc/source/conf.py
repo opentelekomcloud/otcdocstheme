@@ -2,6 +2,8 @@
 #
 # openstackdocstheme documentation build configuration file
 
+import git
+
 # -- General configuration ------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
@@ -67,6 +69,7 @@ html_theme_options = {
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static/css']
+templates_path = ['_templates']
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -78,3 +81,13 @@ latex_documents = [
   ('index', 'doc-otcdocstheme.tex', u'Open Telekom Cloud Theme  Documentation',
    u'OpenTelekomCloud Contributors', 'manual'),
 ]
+
+current_git_hash = git.Repo(search_parent_directories=True).head.commit.hexsha[:7]
+
+latex_elements = {
+  'papersize': 'a4paper',
+  'pointsize': '12pt',
+  'figure_align': 'H',
+  'preamble': r'\newcommand{\githash}{' + current_git_hash + '}',
+  'sphinxsetup': 'hmargin={15mm,15mm}, vmargin={20mm,30mm}, marginpar=10mm'
+}

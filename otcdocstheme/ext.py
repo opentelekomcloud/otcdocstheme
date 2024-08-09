@@ -13,10 +13,10 @@
 #    under the License.
 
 import configparser
+import glob
 import os
 import subprocess
 import textwrap
-
 from docutils.nodes import Element
 import dulwich.repo
 from pbr import packaging
@@ -458,12 +458,7 @@ def _builder_inited(app):
 
     theme_logo = paths.get_theme_logo_path(app.config.html_theme)
     pdf_theme_path = paths.get_pdf_theme_path(app.config.html_theme)
-    latex_elements = {
-        'papersize': 'a4paper',
-        'pointsize': '11pt',
-        'figure_align': 'H',
-        'classoptions': ',openany',
-    }
+    latex_elements = {}
 
     if app.config.latex_elements:
         latex_elements.update(app.config.latex_elements)
@@ -479,9 +474,13 @@ def _builder_inited(app):
         preamble += latex_elements['preamble']
 
     latex_elements['preamble'] = preamble
+    latex_additional_files = [f'{pdf_theme_path}.sty', paths.get_pdf_blobs_u1_path(app.config.html_theme), paths.get_pdf_blobs_u4_path(app.config.html_theme)]
+
+    for file in glob.glob(paths.get_theme_fonts_path(app.config.html_theme) + "/*.ttf"):
+        latex_additional_files.append(file)
 
     app.config.latex_elements = latex_elements
-    app.config.latex_additional_files = [f'{pdf_theme_path}.sty']
+    app.config.latex_additional_files = latex_additional_files
 
     # This hook is invoked when latex builder is already initialized. We loose
     # preamble if we only set it to the config
