@@ -1606,7 +1606,7 @@ select:-webkit-autofill:focus {
   padding-top: 5px;
 }
 
-/* Special boxes for cards */ 
+/* Special boxes for cards */
 .item-docsportal {
   box-shadow: 0px 2px 10px 1px rgba(0,0,0,0.2);
   transition: transform .2s;
@@ -1622,7 +1622,7 @@ select:-webkit-autofill:focus {
   .item-docsportal:hover {
     box-shadow: 0px 2px 15px 1px rgba(255,255,255,0.2);
   }
-} 
+}
 
 .item-docsportal:hover {
   box-shadow: 0px 2px 15px 1px rgba(0,0,0,0.3);
@@ -1666,7 +1666,7 @@ select:-webkit-autofill:focus {
 
 /* A "nice" workaround to let us keep l2 level permanently open
  * but hide child ul's not underneath current selection.
- * The only eventually open issue is that this way the whole child tree is 
+ * The only eventually open issue is that this way the whole child tree is
  * open including all subtrees.
  */
 .docs-sidebar-toc li.toctree-l2:not(.current) > ul {
