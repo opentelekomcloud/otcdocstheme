@@ -1772,7 +1772,6 @@ select:-webkit-autofill:focus {
   flex-direction: column;
   flex-wrap: nowrap;
   align-content: flex-start;
-  /* gap: 0.5rem; */
 }
 
 .card-services:last-child {
@@ -1800,10 +1799,6 @@ select:-webkit-autofill:focus {
   justify-content: flex-start;
   gap: 2rem;
 }
-
-/* .service-entries:hover {
-  background: var(--telekom-color-background-surface-subtle);
-} */
 
 .align-self-center {
   align-self: center;
