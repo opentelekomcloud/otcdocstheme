@@ -1639,6 +1639,18 @@ select:-webkit-autofill:focus {
 
 .card-body {
   padding: 1rem;
+  border-bottom: 1px solid var(--telekom-color-background-surface-subtle);
+}
+
+@media (prefers-color-scheme: dark) {
+  .card-body {
+    border-bottom: 1px solid var(--telekom-color-ui-regular);
+  }
+}
+
+/* Fix behavior for SBV that there is no border under the card-body */
+.item-sbv .card-body {
+  border-bottom: none;
 }
 
 /* on large screen we want card to be approx of the same size */
@@ -1760,11 +1772,24 @@ select:-webkit-autofill:focus {
   flex-direction: column;
   flex-wrap: nowrap;
   align-content: flex-start;
-  gap: 0.5rem;
+}
+
+.card-services:last-child {
+  margin-bottom: 1rem;
+}
+
+.card-services>div {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem
+}
+
+.card-services>div:hover {
+  background: var(--telekom-color-background-surface-subtle);
 }
 
 .service-entries {
   padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 .service-entries {
@@ -1773,14 +1798,6 @@ select:-webkit-autofill:focus {
   flex-wrap: nowrap;
   justify-content: flex-start;
   gap: 2rem;
-}
-
-.service-entries:hover {
-  background: var(--telekom-color-background-surface-subtle);
-}
-
-.card-services:last-child {
-  margin-bottom: 1rem;
 }
 
 .align-self-center {
