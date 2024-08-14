@@ -518,6 +518,16 @@ bold.service-doc-title {
   gap: 1em; /* needs to be substracted from item size */
 }
 
+.item-sbv {
+  background-color: var(--telekom-color-background-surface);
+}
+
+@media (prefers-color-scheme: dark) {
+  .item-sbv {
+    border: 1px solid var(--telekom-color-ui-regular);
+  }
+}
+
 @media (min-width: 768px) {
   .item-sbv {
     flex-basis: calc(50% - 1em); /* needs gap in container-sbv */
@@ -525,7 +535,6 @@ bold.service-doc-title {
     align-self: stretch;
   }
 }
-
 
 @media (max-width: 767.98px) {
   .item-sbv {
@@ -544,7 +553,7 @@ bold.service-doc-title {
   color: var(--telekom-color-primary-standard);
 }
 
-.item-sbv.card:hover {
+.item-sbv:hover {
   border: 1px solid var(--telekom-color-primary-standard);
 }
 
@@ -567,18 +576,8 @@ bold.service-doc-title {
   margin-bottom: 1em;
 }
 
-.card {
-  background-color: var(--telekom-color-background-surface);
-}
-
 .list-group-item {
   border: 1px solid var(--telekom-color-ui-faint);
-}
-
-@media (prefers-color-scheme: dark) {
-  .card {
-    border: 1px solid var(--telekom-color-ui-regular);
-  }
 }
 
 /* END: Service-Based-View */
@@ -1596,7 +1595,201 @@ select:-webkit-autofill:focus {
 
 /* END: DELETE CHROME AUTO-FILL */
 
-/* START: card_item directive */
+/* START: DOCSPORTAL */
+
+/* START: Docsportal Service Overview */
+
+/* Limit image in the card title*/
+.card-img-top {
+  max-width: 4rem;
+  height: 4rem;
+  padding-top: 5px;
+}
+
+/* Special boxes for cards */
+.item-docsportal {
+  box-shadow: 0px 2px 10px 1px rgba(0,0,0,0.2);
+  transition: transform .2s;
+}
+
+@media (prefers-color-scheme: dark) {
+  .item-docsportal {
+    border: 1px solid var(--telekom-color-ui-regular);
+    box-shadow: none;
+    transition: transform .2s;
+  }
+
+  .item-docsportal:hover {
+    box-shadow: 0px 2px 15px 1px rgba(255,255,255,0.2);
+  }
+}
+
+.item-docsportal:hover {
+  box-shadow: 0px 2px 15px 1px rgba(0,0,0,0.3);
+}
+
+/* decorate links in card */
+.item-docsportal a {
+  text-decoration: none;
+}
+
+.card-title {
+  font-weight: unset;
+}
+
+.card-body {
+  padding: 1rem;
+}
+
+/* on large screen we want card to be approx of the same size */
+@media (min-width:768px) {
+  .navigator-container .item-docsportal {
+    min-height: 300px;
+  }
+  /* disable push to bottom on the card */
+  .navigator-container .item-docsportal .card-body {
+    flex: unset;
+  }
+
+}
+
+/* limit icon size in the card li */
+.icon-svg {
+    max-height: 30px;
+    max-width: 30px;
+    min-width: 30px;
+}
+
+.navigator-container .item-docsportal li {
+  padding: 0.2rem 1rem;
+}
+
+/* A "nice" workaround to let us keep l2 level permanently open
+ * but hide child ul's not underneath current selection.
+ * The only eventually open issue is that this way the whole child tree is
+ * open including all subtrees.
+ */
+.docs-sidebar-toc li.toctree-l2:not(.current) > ul {
+    display: none;
+}
+
+/* Card Design */
+
+.container-docsportal {
+  display: flex;
+  align-items: stretch;
+  align-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  gap: 1rem; /* needs to be substracted from item size */
+}
+
+@media (max-width: 768px) {
+  .container-docsportal {
+    row-gap: 1rem;
+    column-gap: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .item-docsportal {
+    flex-basis: 100%;
+    box-sizing: border-box;
+    align-self: stretch;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .item-docsportal {
+    flex-basis: calc(50% - 1rem); /* needs gap in container-docsportal */
+    box-sizing: border-box;
+    align-self: stretch;
+  }
+}
+
+@media (min-width: 1200px) {
+  .item-docsportal {
+    flex-basis: calc(33.333% - 1rem); /* needs gap in container-docsportal */
+    box-sizing: border-box;
+    align-self: stretch;
+  }
+}
+
+@media (min-width: 1600px) {
+  .item-docsportal {
+    flex-basis: calc(25% - 1rem); /* needs gap in container-docsportal */
+    box-sizing: border-box;
+    align-self: stretch;
+  }
+}
+
+.item-docsportal>.list-group:last-child {
+  margin-bottom: 1rem;
+}
+
+.item-docsportal>.card-body {
+  flex: none;
+}
+
+/* End Card-Design */
+
+.item-docsportal {
+  background-color: var(--telekom-color-background-surface);
+}
+
+.item-docsportal li:hover {
+  background: var(--telekom-color-background-surface-subtle);
+}
+
+.list-group-item {
+  background-color: var(--telekom-color-background-surface);
+}
+
+/* More stuff */
+
+.docsportal-main {
+  min-height: 100vh;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.card-services {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: flex-start;
+  gap: 0.5rem;
+}
+
+.service-entries {
+  padding-left: 1rem;
+}
+
+.service-entries {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+.service-entries:hover {
+  background: var(--telekom-color-background-surface-subtle);
+}
+
+.card-services:last-child {
+  margin-bottom: 1rem;
+}
+
+.align-self-center {
+  align-self: center;
+}
+
+/* END: Docsportal Service Overview */
+
+/* START: SBV card_item directive */
 
 .card-item-wrapper {
   display: flex;
@@ -1656,5 +1849,7 @@ select:-webkit-autofill:focus {
 }
 
 /* END: card_item directive */
+
+/* END: DOCSPORTAL */
 
 /* data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23012529'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg> */
