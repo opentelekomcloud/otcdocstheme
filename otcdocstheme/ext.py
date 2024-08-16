@@ -13,17 +13,17 @@
 #    under the License.
 
 import configparser
-import glob
-import os
-import subprocess
-import textwrap
 from docutils.nodes import Element
 import dulwich.repo
+import glob
+import os
 from pbr import packaging
 import sphinx
 from sphinx.ext import extlinks
 from sphinx.util import logging
 from sphinx.writers.html5 import HTML5Translator
+import subprocess
+import textwrap
 
 from . import version
 from otcdocstheme import paths
@@ -474,9 +474,16 @@ def _builder_inited(app):
         preamble += latex_elements['preamble']
 
     latex_elements['preamble'] = preamble
-    latex_additional_files = [f'{pdf_theme_path}.sty', paths.get_pdf_blobs_u1_path(app.config.html_theme), paths.get_pdf_blobs_u4_path(app.config.html_theme)]
 
-    for file in glob.glob(paths.get_theme_fonts_path(app.config.html_theme) + "/*.ttf"):
+    u1_path = paths.get_pdf_blobs_u1_path(app.config.html_theme)
+    u4_path = paths.get_pdf_blobs_u4_path(app.config.html_theme)
+    latex_additional_files = [
+        f'{pdf_theme_path}.sty', u1_path, u4_path
+    ]
+
+    fonts_path = paths.get_theme_fonts_path(app.config.html_theme)
+
+    for file in glob.glob(fonts_path + "/*.ttf"):
         latex_additional_files.append(file)
 
     app.config.latex_elements = latex_elements

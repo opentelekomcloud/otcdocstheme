@@ -41,10 +41,12 @@ def get_theme_fonts_path(theme='otcdocs'):
     args = ['theme', theme + '_pdf', 'fonts']
     return os.path.join(get_pkg_path(), *args)
 
+
 def get_pdf_blobs_u1_path(theme='otcdocs'):
     """Return the directory containing PDF theme for local builds."""
     args = ['theme', theme + '_pdf', 'u1-blobs.pdf']
     return os.path.join(get_pkg_path(), *args)
+
 
 def get_pdf_blobs_u4_path(theme='otcdocs'):
     """Return the directory containing PDF theme for local builds."""
