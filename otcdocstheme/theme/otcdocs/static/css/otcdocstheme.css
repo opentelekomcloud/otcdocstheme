@@ -1635,6 +1635,7 @@ select:-webkit-autofill:focus {
 
 .card-title {
   font-weight: unset;
+  margin-bottom: unset;
 }
 
 .card-body {
@@ -1779,8 +1780,8 @@ select:-webkit-autofill:focus {
 }
 
 .card-services>div {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem
 }
 
 .card-services>div:hover {
