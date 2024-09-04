@@ -103,6 +103,11 @@ scale-telekom-header::part(container) {
   max-width: none;
 }
 
+.padding-slot-heading {
+  padding-left: 16px;
+  padding-right: 32px;
+}
+
 .docs-navbar {
   padding: 0 0 0.75rem 0 !important;
   background: var(--telekom-color-primary-standard);
