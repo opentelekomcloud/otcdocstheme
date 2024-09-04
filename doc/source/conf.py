@@ -2,6 +2,9 @@
 #
 # openstackdocstheme documentation build configuration file
 
+from git import Repo
+from datetime import datetime
+
 # -- General configuration ------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
@@ -78,3 +81,9 @@ latex_documents = [
   ('index', 'doc-otcdocstheme.tex', u'Open Telekom Cloud Theme  Documentation',
    u'OpenTelekomCloud Contributors', 'manual'),
 ]
+
+# Get the Git commit values
+repo = Repo(search_parent_directories=True)
+commit = repo.head.commit
+current_commit_hash = commit.hexsha[:7]
+current_commit_time = commit.committed_datetime.strftime('%Y-%m-%d %H:%M')
