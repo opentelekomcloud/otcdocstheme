@@ -88,7 +88,7 @@
 
                 {%- if theme_display_last_updated %}
                 <div class="row docs-byline bottom">
-                  <div class="docs-updated">last updated: {{ last_updated }}</div>
+                  <div class="docs-updated">last updated: {{ current_commit_time }} UTC - commit: {{ current_commit_hash }}</div>
                 </div>
                 {%- endif %}
               </main>
