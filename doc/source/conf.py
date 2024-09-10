@@ -85,5 +85,5 @@ latex_documents = [
 # Get the Git commit values
 repo = Repo(search_parent_directories=True)
 commit = repo.head.commit
-current_commit_hash = commit.hexsha[:7]
+current_commit_hash = commit.hexsha
 current_commit_time = commit.committed_datetime.strftime('%Y-%m-%d %H:%M')
