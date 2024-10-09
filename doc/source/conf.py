@@ -2,7 +2,8 @@
 #
 # openstackdocstheme documentation build configuration file
 
-import git
+from git import Repo
+from datetime import datetime
 
 # -- General configuration ------------------------------------------------
 
@@ -82,12 +83,16 @@ latex_documents = [
    u'OpenTelekomCloud Contributors', 'manual'),
 ]
 
-current_git_hash = git.Repo(search_parent_directories=True).head.commit.hexsha[:7]
+# Get the Git commit values
+repo = Repo(search_parent_directories=True)
+commit = repo.head.commit
+current_commit_hash = commit.hexsha
+current_commit_time = commit.committed_datetime.strftime('%Y-%m-%d %H:%M')
 
 latex_elements = {
   'papersize': 'a4paper',
   'pointsize': '12pt',
   'figure_align': 'H',
-  'preamble': r'\newcommand{\githash}{' + current_git_hash + '}',
+  'preamble': r'\newcommand{\githash}{' + current_commit_hash + '}',
   'sphinxsetup': 'hmargin={15mm,15mm}, vmargin={20mm,30mm}, marginpar=10mm'
 }
