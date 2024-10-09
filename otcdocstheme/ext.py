@@ -13,17 +13,17 @@
 #    under the License.
 
 import configparser
-import os
-import subprocess
-import textwrap
-
 from docutils.nodes import Element
 import dulwich.repo
+import glob
+import os
 from pbr import packaging
 import sphinx
 from sphinx.ext import extlinks
 from sphinx.util import logging
 from sphinx.writers.html5 import HTML5Translator
+import subprocess
+import textwrap
 
 from . import version
 from otcdocstheme import paths
@@ -466,12 +466,7 @@ def _builder_inited(app):
 
     theme_logo = paths.get_theme_logo_path(app.config.html_theme)
     pdf_theme_path = paths.get_pdf_theme_path(app.config.html_theme)
-    latex_elements = {
-        'papersize': 'a4paper',
-        'pointsize': '11pt',
-        'figure_align': 'H',
-        'classoptions': ',openany',
-    }
+    latex_elements = {}
 
     if app.config.latex_elements:
         latex_elements.update(app.config.latex_elements)
@@ -488,8 +483,19 @@ def _builder_inited(app):
 
     latex_elements['preamble'] = preamble
 
+    u1_path = paths.get_pdf_blobs_u1_path(app.config.html_theme)
+    u4_path = paths.get_pdf_blobs_u4_path(app.config.html_theme)
+    latex_additional_files = [
+        f'{pdf_theme_path}.sty', u1_path, u4_path
+    ]
+
+    fonts_path = paths.get_theme_fonts_path(app.config.html_theme)
+
+    for file in glob.glob(fonts_path + "/*.ttf"):
+        latex_additional_files.append(file)
+
     app.config.latex_elements = latex_elements
-    app.config.latex_additional_files = [f'{pdf_theme_path}.sty']
+    app.config.latex_additional_files = latex_additional_files
 
     # This hook is invoked when latex builder is already initialized. We loose
     # preamble if we only set it to the config

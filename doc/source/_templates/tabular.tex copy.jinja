@@ -1,0 +1,62 @@
+\begin{savenotes}\sphinxattablestart
+\sphinxthistablewithglobalstyle
+<% if 'booktabs' in table.styles -%>
+\sphinxthistablewithbooktabsstyle
+<% endif -%>
+<% if 'borderless' in table.styles -%>
+\sphinxthistablewithborderlessstyle
+<% endif -%>
+<% if 'standard' in table.styles -%>
+\sphinxthistablewithstandardstyle
+<% endif -%>
+<% if 'vlines' in table.styles -%>
+\sphinxthistablewithvlinesstyle
+<% endif -%>
+<% if 'novlines' in table.styles -%>
+\sphinxthistablewithnovlinesstyle
+<% endif -%>
+<% if 'colorrows' in table.styles -%>
+\sphinxthistablewithcolorrowsstyle
+<% endif -%>
+<% if 'nocolorrows' in table.styles -%>
+\sphinxthistablewithnocolorrowsstyle
+<% endif -%>
+<% if table.align -%>
+  <%- if table.align in ('center', 'default') -%>
+  \raggedleft
+  <%- elif table.align == 'left' -%>
+  \raggedleft
+  <%- else -%>
+  \raggedleft
+  <%- endif %>
+<%- else -%>
+  \raggedleft
+<%- endif %>
+<% if table.caption -%>
+\sphinxcapstartof{table}
+\sphinxthecaptionisattop
+\sphinxcaption{<%= ''.join(table.caption) %>}<%= labels %>
+\sphinxcaption{<%= table.colwidths|sum %>}<%= labels %>
+\sphinxaftertopcaption
+<% elif labels -%>
+\phantomsection<%= labels %>\nobreak
+<% endif -%>
+<% set total_width = table.colwidths|sum %>
+<% set colspec_parts = [] %>
+<% for width in table.colwidths %>
+  <% set part = 'p{{{:.4f}\\textwidth}}'.format((width * 0.8) / total_width) %>
+  <% set colspec_parts = colspec_parts.append(part) %>
+<% endfor  %>
+<% set colspec_string = ''.join(colspec_parts) %>
+\begin{tabularx}{\linewidth}{<%= colspec_string %>}
+\sphinxtoprule
+<%= ''.join(table.header) -%>
+<%- if table.header -%>
+\sphinxmidrule
+<% endif -%>
+\sphinxtableatstartofbodyhook
+<%=- ''.join(table.body) -%>
+\sphinxbottomrule
+\end{tabularx}
+\sphinxtableafterendhook\par
+\sphinxattableend\end{savenotes}
