@@ -16,6 +16,7 @@ zlib1g-dev [platform:dpkg]
 inkscape
 texlive-latex-base [platform:dpkg]
 texlive-latex-extra [platform:dpkg]
+texlive-background [platform:rpm]
 texlive-xetex [platform:dpkg]
 texlive-fonts-recommended [platform:dpkg]
 fonts-freefont-otf [platform:dpkg]
