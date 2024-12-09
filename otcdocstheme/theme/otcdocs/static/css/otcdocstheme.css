@@ -527,6 +527,18 @@ bold.service-doc-title {
   background-color: var(--telekom-color-background-surface);
 }
 
+.item-sbv-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pdf-button-sbv {
+  align-self: end;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
 @media (prefers-color-scheme: dark) {
   .item-sbv {
     border: 1px solid var(--telekom-color-ui-regular);
@@ -546,6 +558,12 @@ bold.service-doc-title {
     flex-basis: calc(100% - 1em); /* needs gap in container-sbv */
     box-sizing: border-box;
     align-self: stretch;
+  }
+
+  .pdf-button-sbv {
+    align-self: center;
+    margin-right: unset;
+    margin-bottom: 1rem;
   }
 }
 
