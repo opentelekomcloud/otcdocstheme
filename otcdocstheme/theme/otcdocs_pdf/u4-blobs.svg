@@ -8,7 +8,7 @@
    version="1.1"
    id="svg1"
    inkscape:version="1.4 (86a8ad7, 2024-10-11)"
-   sodipodi:docname="u4_blob.svg"
+   sodipodi:docname="u4-blobs.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,42 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
-     id="defs1" />
+     id="defs1">
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect6"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,21.998047,0,1 @ F,0,0,1,0,18.237029,0,1 @ F,0,0,1,0,19.731581,0,1 @ F,0,0,1,0,23.479297,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+    <inkscape:path-effect
+       effect="fillet_chamfer"
+       id="path-effect5"
+       is_visible="true"
+       lpeversion="1"
+       nodesatellites_param="F,0,0,1,0,0,0,1 @ F,0,0,1,0,21.911163,0,1 @ F,0,0,1,0,0,0,1 @ F,0,0,1,0,0,0,1"
+       radius="0"
+       unit="px"
+       method="auto"
+       mode="F"
+       chamfer_steps="1"
+       flexible="false"
+       use_knot_distance="true"
+       apply_no_radius="true"
+       apply_with_radius="true"
+       only_selected="false"
+       hide_knots="false" />
+  </defs>
   <g
      inkscape:label="Ebene 1"
      inkscape:groupmode="layer"
@@ -49,8 +84,10 @@
        id="path4" />
     <path
        style="fill:#e20074;stroke-width:0.264583"
-       d="m 227.81041,159.35687 c 0,0 -161.252746,27.06662 -185.855019,24.658 C 29.571617,182.80247 25.546554,175.36111 22.817843,158.98885 19.873606,141.32342 6.1705039,48.058929 9.5687731,33.490707 11.615523,24.716384 15.550796,15.227487 45.635688,20.241635 76.550184,25.394051 218.60966,49.684013 218.60966,49.684013 Z"
+       d="M 20.788073,20.557254 197.51617,37.960019 a 19.170606,19.170606 49.194272 0 1 17.26961,20.002995 l -7.00135,144.986366 a 18.823901,18.823901 139.11326 0 1 -20.59371,17.8305 L 45.45448,207.22739 A 29.278232,29.278232 44.189298 0 1 19.186506,181.69245 L 1.6085342,40.231646 A 17.590001,17.590001 134.27031 0 1 20.788073,20.557254 Z"
        id="path5"
-       sodipodi:nodetypes="csssscc" />
+       sodipodi:nodetypes="ccccc"
+       inkscape:path-effect="#path-effect6"
+       inkscape:original-d="M -1.1040892,18.401489 215.66541,39.747212 206.83271,222.658 22.081785,204.99255 Z" />
   </g>
 </svg>
