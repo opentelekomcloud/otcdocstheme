@@ -161,10 +161,14 @@
             <scale-telekom-mega-menu-column>
               <a href="{{base_url}}/network.html" slot="heading" target="_blank" rel="noopener noreferrer">Network</a>
               <ul>
+                {% if otcdocs_doc_environment == 'internal' %}
+                <li><a href="{{base_url}}/cloud-connect/index.html">Cloud Connect</a></li>
+                {% endif %}
                 <li><a href="{{base_url}}/direct-connect/index.html">Direct Connect</a></li>
                 <li><a href="{{base_url}}/domain-name-service/index.html">Domain Name Service</a></li>
                 <li><a href="{{base_url}}/elastic-ip/index.html">Elastic IP</a></li>
                 <li><a href="{{base_url}}/elastic-load-balancing/index.html">Elastic Load Balancing</a></li>
+                <li><a href="{{base_url}}/enterprise-router/index.html">Enterprise Router</a></li>
                 <li><a href="{{base_url}}/nat-gateway/index.html">NAT Gateway</a></li>
                 <li><a href="{{base_url}}/private-link-access-service/index.html">Private Link Access Service</a></li>
                 <li><a href="{{base_url}}/secure-mail-gateway/index.html">Secure Mail Gateway</a></li>
@@ -195,6 +199,9 @@
             <scale-telekom-mega-menu-column>
               <a href="{{base_url}}/app.html" slot="heading" target="_blank" rel="noopener noreferrer">Application Services</a>
               <ul>
+                {% if otcdocs_doc_environment == 'internal' %}
+                <li><a href="{{base_url}}/application-operations-management-2/index.html">Application Operations Management 2.0</a></li>
+                {% endif %}
                 <li><a href="{{base_url}}/application-operations-management/index.html">Application Operations Management</a></li>
                 <li><a href="{{base_url}}/application-performance-management/index.html">Application Performance Management</a></li>
                 <li><a href="{{base_url}}/api-gateway/index.html">API Gateway (APIG)</a></li>
@@ -328,13 +335,13 @@
               </ul>
             </scale-telekom-mega-menu-column>
             {% if not otcdocs_search_environment == 'hc_swiss' %}
-            <scale-telekom-mega-menu-column>
+            <!-- <scale-telekom-mega-menu-column>
               <a href="https://arch.otc-service.com/" target="_blank" rel="noopener noreferrer" slot="heading">Architecture Center</a>
               <ul>
                 <li><a href="https://arch.otc-service.com/docs/best-practices/" target="_blank" rel="noopener noreferrer">Best Practices</a></li>
                 <li><a href="https://arch.otc-service.com/docs/blueprints/" target="_blank" rel="noopener noreferrer">Blueprints</a></li>
               </ul>
-            </scale-telekom-mega-menu-column>
+            </scale-telekom-mega-menu-column> -->
             {% endif %}
             <scale-telekom-mega-menu-column>
               <span class="padding-slot-heading" slot="heading">Other</span>
@@ -482,7 +489,7 @@
                 </scale-telekom-mobile-menu-item>
                 <!-- Remove Architecture Center from Swiss Environment -->
                 {% if not otcdocs_search_environment == 'hc_swiss' %}
-                <scale-telekom-mobile-menu-item slot="children">
+                <!-- <scale-telekom-mobile-menu-item slot="children">
                   <a href="https://arch.otc-service.com/">Architecture Center</a>
                   <scale-telekom-mobile-menu-item slot="children">
                     <a href="https://arch.otc-service.com/docs/best-practices">Best Practices</a>
@@ -490,7 +497,7 @@
                   <scale-telekom-mobile-menu-item slot="children">
                     <a href="https://arch.otc-service.com/docs/blueprints/">Blueprints</a>
                   </scale-telekom-mobile-menu-item>
-                </scale-telekom-mobile-menu-item>
+                </scale-telekom-mobile-menu-item> -->
                 {% endif %}
                 <scale-telekom-mobile-menu-item slot="children">
                   <a href="#">Other</a>
@@ -535,6 +542,11 @@
                 </scale-telekom-mobile-menu-item>
                 <scale-telekom-mobile-menu-item slot="children">
                   <a href="{{base_url}}/network.html" target="_blank" rel="noopener noreferrer">Network</a>
+                  {% if otcdocs_doc_environment == 'internal' %}
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="{{base_url}}/cloud-connect/index.html">Cloud Connect</a>
+                  </scale-telekom-mobile-menu-item>
+                  {% endif %}
                   <scale-telekom-mobile-menu-item slot="children">
                     <a href="{{base_url}}/direct-connect/index.html">Direct Connect</a>
                   </scale-telekom-mobile-menu-item>
@@ -546,6 +558,9 @@
                   </scale-telekom-mobile-menu-item>
                   <scale-telekom-mobile-menu-item slot="children">
                     <a href="{{base_url}}/elastic-load-balancing/index.html">Elastic Load Balancing</a>
+                  </scale-telekom-mobile-menu-item>
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="{{base_url}}/enterprise-router/index.html">Enterprise Router</a>
                   </scale-telekom-mobile-menu-item>
                   <scale-telekom-mobile-menu-item slot="children">
                     <a href="{{base_url}}/nat-gateway/index.html">NAT Gateway</a>
@@ -595,6 +610,11 @@
                 <a href="#">PaaS</a>
                 <scale-telekom-mobile-menu-item slot="children">
                   <a href="{{base_url}}/app.html" target="_blank" rel="noopener noreferrer">Applications Services</a>
+                  {% if otcdocs_doc_environment == 'internal' %}
+                  <scale-telekom-mobile-menu-item slot="children">
+                    <a href="{{base_url}}/application-operations-management-2/index.html">Application Operation Management 2.0</a>
+                  </scale-telekom-mobile-menu-item>
+                  {% endif %}
                   <scale-telekom-mobile-menu-item slot="children">
                     <a href="{{base_url}}/application-operations-management/index.html">Application Operation Management</a>
                   </scale-telekom-mobile-menu-item>
@@ -781,7 +801,7 @@
                 </scale-telekom-mobile-menu-item>
                 <!-- Remove Architecture Center from Swiss Environment -->
                 {% if not otcdocs_search_environment == 'hc_swiss' %}
-                <scale-telekom-mobile-menu-item slot="children">
+                <!-- <scale-telekom-mobile-menu-item slot="children">
                   <a href="https://arch.otc-service.com/">Architecture Center</a>
                   <scale-telekom-mobile-menu-item slot="children">
                     <a href="https://arch.otc-service.com/docs/best-practices">Best Practices</a>
@@ -789,7 +809,7 @@
                   <scale-telekom-mobile-menu-item slot="children">
                     <a href="https://arch.otc-service.com/docs/blueprints/">Blueprints</a>
                   </scale-telekom-mobile-menu-item>
-                </scale-telekom-mobile-menu-item>
+                </scale-telekom-mobile-menu-item> -->
                 {% endif %}
                 <scale-telekom-mobile-menu-item slot="children">
                   <a href="#">Other</a>
