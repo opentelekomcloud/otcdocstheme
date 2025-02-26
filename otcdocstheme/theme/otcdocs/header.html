@@ -9,25 +9,9 @@
 {% set base_url = theme_logo_url %}
 
 {% if otcdocs_search_environment == 'hc_swiss' %}
-  {% if otcdocs_doc_environment == 'internal' %}
-    <scale-telekom-header app-name="Swiss Open Telekom Cloud Docs" logo-href="https://docs-swiss-int.otc-service.com/">
-  {% else %}
-    <scale-telekom-header app-name="Swiss Open Telekom Cloud Docs" logo-href="https://docs.sc.otc.t-systems.com/">
-  {% endif %}
+    <scale-telekom-header app-name="Swiss Open Telekom Cloud Docs" logo-href="{{base_url}}">
 {% else %}
-  {% if otcdocs_doc_environment == 'internal' %}
-    {% if service_type in ['blueprints', 'ac'] %}
-        <scale-telekom-header app-name="Open Telekom Cloud Architecture Center" logo-href="https://docs-int.otc-service.com/architecture-center/">
-    {% else %}
-        <scale-telekom-header app-name="Open Telekom Cloud Docs" logo-href="https://docs-int.otc-service.com/">
-    {% endif %}
-  {% else %}
-    {% if service_type in ['blueprints', 'ac'] %}
-        <scale-telekom-header app-name="Open Telekom Cloud Architecture Center" logo-href="https://docs.otc.t-systems.com/architecture-center/">
-    {% else %}
-        <scale-telekom-header app-name="Open Telekom Cloud Docs" logo-href="https://docs.otc.t-systems.com/">
-    {% endif %}
-  {% endif %}
+    <scale-telekom-header app-name="Open Telekom Cloud Docs" logo-href="{{base_url}}">
 {% endif %}
 
   <!--  meta-nav-aria-label="Meta navigation section" -->
