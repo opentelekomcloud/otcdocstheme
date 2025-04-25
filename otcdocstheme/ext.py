@@ -195,7 +195,12 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         )
 
         # Header automation
-        otcdocs_categories_with_services = METADATA.all_services_with_categories(cloud_environment=otcdocs_cloud_environment,environment=otcdocs_environment)
+        otcdocs_categories_with_services = (
+            METADATA.all_services_with_categories(
+                cloud_environment=otcdocs_cloud_environment,
+                environment=otcdocs_environment
+            )
+        )
         otcdocs_large_categories = [
             {
                 "name": "IaaS",
@@ -267,8 +272,10 @@ def _html_page_context(app, pagename, templatename, context, doctree):
             for i, custom_category in enumerate(otcdocs_large_categories):
                 for j, subcategory in enumerate(custom_category["categories"]):
                     if category["name"] == subcategory["name"]:
-                        otcdocs_large_categories[i]["categories"][j]["services"] = category["services"]
-                        otcdocs_large_categories[i]["categories"][j]["title"] = category["title"]
+                        otcdocs_large_categories[i]["categories"]\
+                            [j]["services"] = category["services"]
+                        otcdocs_large_categories[i]["categories"]\
+                            [j]["title"] = category["title"]
 
         _html_context_data['otcdocs_large_categories'] = (
             otcdocs_large_categories
