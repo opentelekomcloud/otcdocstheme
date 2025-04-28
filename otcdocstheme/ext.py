@@ -195,10 +195,14 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         )
 
         # Header automation
+        if otcdocs_environment == "internal":
+            otcdocs_environment = ["public","internal"]
+        else:
+            otcdocs_environment = ["public"]
         otcdocs_categories_with_services = (
-            METADATA.all_services_with_categories(
+            METADATA.all_services_by_categories(
                 cloud_environment=otcdocs_cloud_environment,
-                environment=otcdocs_environment
+                environments=otcdocs_environment
             )
         )
         otcdocs_large_categories = [
@@ -227,15 +231,24 @@ def _html_page_context(app, pagename, templatename, context, doctree):
                          "services": []
                      },
                      {
-                         "name": "database",
-                         "services": []
-                     },
-                     {
                          "name": "big_data",
                          "services": []
                      },
                      {
                          "name": "container",
+                         "services": []
+                     },
+                     {
+                         "name": "database",
+                         "services": []
+                     }  
+                ]
+            },
+            {
+                "name": "Management",
+                "categories": [
+                     {
+                         "name": "md",
                          "services": []
                      }
                 ]
@@ -245,15 +258,6 @@ def _html_page_context(app, pagename, templatename, context, doctree):
                 "categories": [
                      {
                          "name": "security-services",
-                         "services": []
-                     }
-                ]
-            },
-            {
-                "name": "Management",
-                "categories": [
-                     {
-                         "name": "md",
                          "services": []
                      }
                 ]
