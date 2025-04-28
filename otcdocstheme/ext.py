@@ -655,7 +655,7 @@ def setup(app):
     app.add_config_value('current_commit_time', '', 'env')
 
     # Header automation
-    app.add_config_value('otcdocs_cloud_environment', '', 'env')
+    app.add_config_value('otcdocs_cloud_environment', 'eu_de', 'env')
 
     app.set_translator('html', OTCHTML5Translator)
 
