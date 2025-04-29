@@ -196,7 +196,7 @@ def _html_page_context(app, pagename, templatename, context, doctree):
 
         # Header automation
         if otcdocs_environment == "internal":
-            otcdocs_environment = ["public","internal"]
+            otcdocs_environment = ["public", "internal"]
         else:
             otcdocs_environment = ["public"]
         otcdocs_categories_with_services = (
