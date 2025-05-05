@@ -241,7 +241,7 @@ def _html_page_context(app, pagename, templatename, context, doctree):
                      {
                          "name": "database",
                          "services": []
-                     }  
+                     }
                 ]
             },
             {
