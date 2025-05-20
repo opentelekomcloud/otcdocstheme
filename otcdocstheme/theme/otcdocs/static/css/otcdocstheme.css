@@ -972,16 +972,13 @@ code.docutils.literal.notranslate {
   max-width: 75%;
 }
 
-#docs-main img {
-  margin-bottom: 2rem;
-}
-
 .icon-svg {
   margin-bottom: 0!important;
 }
 
 #docs-main figure {
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 1200px){
