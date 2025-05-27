@@ -28,10 +28,10 @@
           <scale-telekom-mega-menu>
             {% for category in large_category.categories %}
             <scale-telekom-mega-menu-column>
-              <a href="{{base_url}}/{{category.name}}" slot="heading" target="_blank" rel="noopener noreferrer">{{category.title}}</a>
+              <a href="{{base_url}}/{{category.name}}.html" slot="heading" target="_blank" rel="noopener noreferrer">{{category.title}}</a>
               <ul>
               {% for service in category.services %}
-                <li><a href="{{base_url}}/{{service.service_uri}}" target="_blank" rel="noopener noreferrer">{{service.service_title}}</a></li>
+                <li><a href="{{base_url}}/{{service.service_uri}}/index.html" target="_blank" rel="noopener noreferrer">{{service.service_title}}</a></li>
               {%- endfor %}
               </ul>
             </scale-telekom-mega-menu-column>
