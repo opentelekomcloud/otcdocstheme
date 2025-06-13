@@ -165,6 +165,7 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         otcdocs_search_index = app.config.otcdocs_search_index
         otcdocs_search_url = app.config.otcdocs_search_url
         otcdocs_cloud_environment = app.config.otcdocs_cloud_environment
+        otcdocs_service_environment = app.config.otcdocs_service_environment
         otcdocs_environment = app.config.otcdocs_doc_environment
         current_commit_hash = app.config.current_commit_hash
         current_commit_time = app.config.current_commit_time
@@ -186,6 +187,12 @@ def _html_page_context(app, pagename, templatename, context, doctree):
         )
         _html_context_data['otcdocs_search_url'] = (
             otcdocs_search_url
+        )
+        _html_context_data['otcdocs_cloud_environment'] = (
+            otcdocs_cloud_environment
+        )
+        _html_context_data['otcdocs_service_environment'] = (
+            otcdocs_service_environment
         )
         _html_context_data['current_commit_hash'] = (
             current_commit_hash
@@ -644,6 +651,7 @@ def setup(app):
     app.add_config_value('otcdocs_service_title', '', 'env')
     app.add_config_value('otcdocs_service_type', '', 'env')
     app.add_config_value('otcdocs_service_category', '', 'env')
+    app.add_config_value('otcdocs_service_environment', '', 'env')
 
     # search options
     app.add_config_value('otcdocs_search_environment', 'hc_de', 'env')
