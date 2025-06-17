@@ -202,7 +202,7 @@ def _html_page_context(app, pagename, templatename, context, doctree):
             current_commit_time
         )
         _html_context_data['otcdocs_analytics_app'] = (
-            app.config.otcdocs_analytics_app
+            otcdocs_analytics_app
         )
 
         # Header automation
