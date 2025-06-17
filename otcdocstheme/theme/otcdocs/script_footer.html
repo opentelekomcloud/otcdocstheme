@@ -42,7 +42,16 @@
       };
 </script>
 
-{% if (otcdocs_service_environment == 'public' and otcdocs_cloud_environment == 'eu_de') %}
+{% if (otcdocs_analytics_app == 'otcextensions') %}
+<!-- Tracking for OTC Extensions -->
+<script defer src="https://analytics.otc-service.com/script.js" data-website-id="2e445f86-0e94-4c64-b0cc-f4c350ed5555"></script>
+{% elif (otcdocs_analytics_app == 'terraform') %}
+<!-- Tracking for Terraform -->
+<script defer src="https://analytics.otc-service.com/script.js" data-website-id="4ea89659-7394-48fd-8d1f-c2e4e57ef1ed"></script>
+{% elif (otcdocs_analytics_app == 'ansible_modules') %}
+<!-- Tracking for Ansible Modules -->
+<script defer src="https://analytics.otc-service.com/script.js" data-website-id="e54dc2e1-1782-4bac-bdb2-f130bbe19e39"></script>
+{% elif (otcdocs_service_environment == 'public' and otcdocs_cloud_environment == 'eu_de') %}
 <!-- Tracking for eu_de -->
 <script defer src="https://analytics.otc-service.com/script.js" data-website-id="4fbc2ff4-37f2-416e-a734-66752bc187ff"></script>
 {% elif (otcdocs_service_environment == 'internal' and otcdocs_cloud_environment == 'eu_de') %}
@@ -54,6 +63,7 @@
 {% elif (otcdocs_service_environment == 'internal' and otcdocs_cloud_environment == 'swiss') %}
 <!-- Tracking for swiss-internal -->
 <script defer src="https://analytics.otc-service.com/script.js" data-website-id="59c4d063-86a4-4d45-b374-74af125b5e9c"></script>
+
 {%- else %}
 <!-- No tracking enabled -->
 {% endif %}
