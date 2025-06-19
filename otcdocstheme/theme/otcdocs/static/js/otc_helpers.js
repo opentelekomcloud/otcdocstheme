@@ -60,3 +60,21 @@ function addCopyButtonToCode() {
 $(function () {
   addCopyButtonToCode();
 });
+
+// Tracking code for PDF downloads
+document.addEventListener("DOMContentLoaded", function () {
+  const buttons = document.querySelectorAll('[data-umami-event="PDF Download"]');
+
+  buttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const pdfName = button.getAttribute("data-umami-event-pdfname");
+
+      // Check whether umami has been loaded, else just don't do anything
+      if (typeof umami === "object" && typeof umami.track === "function") {
+        umami.track("PDF Download", {
+          pdfname: pdfName
+        });
+      }
+    });
+  });
+});
