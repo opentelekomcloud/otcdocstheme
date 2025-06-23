@@ -342,6 +342,8 @@ const createMainResultList = (response, div) => {
         a.setAttribute('href', hit._source.base_url + hit._source.doc_url + hit._source.current_page_name + '.html');
         a.classList.add("dropdown-item");
         a.classList.add("search-a")
+        a.setAttribute('data-umami-event', 'Searchresult clicked')
+        a.setAttribute('data-umami-event-resultpage', hit._source.doc_url + hit._source.current_page_name + '.html')
         li.classList.add("nobullets")
         li.classList.add("border-bottom")
         li.classList.add("search-result-padding")
