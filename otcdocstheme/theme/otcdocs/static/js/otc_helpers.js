@@ -61,8 +61,10 @@ $(function () {
   addCopyButtonToCode();
 });
 
-// Tracking code for PDF downloads
+
 document.addEventListener("DOMContentLoaded", function () {
+
+  // Tracking code for PDF downloads
   const buttons = document.querySelectorAll('[data-umami-event="PDF Download"]');
 
   buttons.forEach(button => {
@@ -73,6 +75,38 @@ document.addEventListener("DOMContentLoaded", function () {
       if (typeof umami === "object" && typeof umami.track === "function") {
         umami.track("PDF Download", {
           pdfname: pdfName
+        });
+      }
+    });
+  });
+
+  // Tracking code for Search function
+  const searchbuttons = document.querySelectorAll('[data-umami-event="Search opened"]');
+
+  searchbuttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const searchsite = window.location.pathname;
+
+      // Check whether umami has been loaded, else just don't do anything
+      if (typeof umami === "object" && typeof umami.track === "function") {
+        umami.track("Search opened", {
+          searchsite: searchsite
+        });
+      }
+    });
+  });
+
+  // Tracking code for Search function when clicking on a result
+  const searchresultbuttons = document.querySelectorAll('[data-umami-event="Searchresult clicked"]');
+
+  searchresultbuttons.forEach(button => {
+    button.addEventListener("click", () => {
+      const searchresultpage = button.getAttribute("data-umami-event-resultpage");
+
+      // Check whether umami has been loaded, else just don't do anything
+      if (typeof umami === "object" && typeof umami.track === "function") {
+        umami.track("Searchresult clicked", {
+          searchresultpage: searchresultpage
         });
       }
     });
