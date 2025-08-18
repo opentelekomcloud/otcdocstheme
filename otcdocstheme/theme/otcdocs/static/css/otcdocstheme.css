@@ -605,6 +605,95 @@ bold.service-doc-title {
 
 /* END: Service-Based-View */
 
+/* Popular Services */
+
+.container-pop-svc {
+  display: flex;
+  align-items: stretch;
+  align-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-top: 2em;
+  gap: 1em; /* needs to be substracted from item size */
+}
+
+.item-pop-svc {
+  background-color: var(--telekom-color-background-surface);
+}
+
+.item-pop-svc-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media (prefers-color-scheme: dark) {
+  .item-pop-svc {
+    border: 1px solid var(--telekom-color-ui-regular);
+  }
+}
+
+@media (min-width: 768px) {
+  .item-pop-svc {
+    flex-basis: calc(33% - 1em);
+    box-sizing: border-box;
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .item-pop-svc {
+    flex-basis: calc(100% - 1em);
+    box-sizing: border-box;
+    align-self: stretch;
+  }
+}
+
+@media (min-width: 1500px) {
+  .item-pop-svc {
+    flex-basis: calc(50% - 1em);
+  }
+}
+
+.item-pop-svc:hover {
+  color: var(--telekom-color-primary-standard);
+  cursor: pointer;
+}
+
+.item-pop-svc:hover h4 {
+  color: var(--telekom-color-primary-standard);
+}
+
+.item-pop-svc:hover {
+  border: 1px solid var(--telekom-color-primary-standard);
+}
+
+.item-pop-svc:hover a {
+  color: var(--telekom-color-primary-standard);
+  text-decoration: none;
+}
+
+.item-pop-svc a {
+  color: var(--telekom-color-text-and-icon-standard);
+}
+
+.item-pop-svc h4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.item-pop-svc p {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.item-pop-svc header {
+  display: flex;
+  flex-direction: row;
+}
+
+/* END: Popular Services */
+
 /* SIDEBAR */
 
 .docs-sidebar {
