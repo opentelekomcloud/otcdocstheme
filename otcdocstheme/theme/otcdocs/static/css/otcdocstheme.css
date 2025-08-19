@@ -635,7 +635,7 @@ bold.service-doc-title {
 
 @media (min-width: 768px) {
   .item-pop-svc {
-    flex-basis: calc(33% - 1em);
+    flex-basis: calc(50% - 1em);
     box-sizing: border-box;
     align-self: stretch;
   }
@@ -651,7 +651,7 @@ bold.service-doc-title {
 
 @media (min-width: 1500px) {
   .item-pop-svc {
-    flex-basis: calc(50% - 1em);
+    flex-basis: calc(33% - 1em);
   }
 }
 
