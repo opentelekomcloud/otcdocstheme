@@ -693,6 +693,11 @@ bold.service-doc-title {
   column-gap: 1rem;
 }
 
+/* Fix behavior for SBV that there is no border under the card-body */
+.item-pop-svc .card-body {
+  border-bottom: none;
+}
+
 /* END: Popular Services */
 
 /* SIDEBAR */
