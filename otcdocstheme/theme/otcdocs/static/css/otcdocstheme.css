@@ -690,6 +690,7 @@ bold.service-doc-title {
 .item-pop-svc .header {
   display: flex;
   flex-direction: row;
+  column-gap: 1rem;
 }
 
 /* END: Popular Services */
