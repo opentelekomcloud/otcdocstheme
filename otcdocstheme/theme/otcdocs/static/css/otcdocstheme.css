@@ -687,7 +687,7 @@ bold.service-doc-title {
   margin-bottom: 1em;
 }
 
-.item-pop-svc header {
+.item-pop-svc .header {
   display: flex;
   flex-direction: row;
 }
