@@ -1938,6 +1938,31 @@ select:-webkit-autofill:focus {
   background-color: var(--telekom-color-background-surface);
 }
 
+.div-third-party-list {
+  display: flex;
+  background-color: var(--telekom-color-background-surface-highlight);
+  flex-wrap: wrap;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.div-third-party-list:hover {
+  transform: scale(1.05);
+}
+
+.img-third-party-list {
+  width: 20%;
+  margin-bottom: 0 !important;
+}
+
+.text-third-party-list {
+}
+
 @media (max-width: 1920px){
   .card-item {
     width: calc(33% - 1.5rem);
