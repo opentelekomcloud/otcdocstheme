@@ -38,7 +38,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-copyright = u'2017-2021, OpenTelekomCloud Contributors'
+copyright = u'2017-2021, T Cloud Public Contributors'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -80,8 +80,8 @@ templates_path = ['_templates']
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-  ('index', 'doc-otcdocstheme.tex', u'Open Telekom Cloud Theme  Documentation',
-   u'OpenTelekomCloud Contributors', 'manual'),
+  ('index', 'doc-otcdocstheme.tex', u'T Cloud Public Theme Documentation',
+   u'T Cloud Public Contributors', 'manual'),
 ]
 
 # Get the Git commit values

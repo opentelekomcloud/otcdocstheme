@@ -7,12 +7,12 @@ Team and repository tags
 
 .. Change things from this point on
 
-OpenTelekomCloud docs Sphinx Theme
-=========================================
+T Cloud Public docs Sphinx Theme
+================================
 
 Theme and extension support for Sphinx documentation.
 
-Intended for use by OpenTelekomCloud `projects`.
+Intended for use by T Cloud Public `projects`.
 
 ..  `projects`: https://github.com/OpenTelekomCloud
 

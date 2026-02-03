@@ -1,5 +1,5 @@
 =========================================
-OpenTelekomCloud Docs Theme Release Notes
+T Cloud Public Theme Release Notes
 =========================================
 
 .. release-notes::
