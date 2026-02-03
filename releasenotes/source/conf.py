@@ -48,8 +48,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'OpenTelekomClouddocstheme Release Notes'
-copyright = u'2021, OpenTelekomCloud Documentation team'
+project = u'T Cloud Public Docs Theme Release Notes'
+copyright = u'2021, T Cloud Public Documentation team'
 
 # Release notes are version independent.
 # The full version, including alpha/beta/rc tags.
@@ -117,7 +117,7 @@ html_static_path = ['_static']
 html_last_updated_fmt = '%Y-%m-%d %H:%M'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'OpenTelekomcCloudDocsThemeReleaseNotesdoc'
+htmlhelp_basename = 'TCloudPublicDocsThemeReleaseNotesdoc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
@@ -137,8 +137,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ('index', 'OpenTelekomClouddocstheme-ReleaseNotes.tex',
-     u'OpenTelekomClouddocstheme Release Notes Documentation',
+    ('index', 'TCloudPublicdocstheme-ReleaseNotes.tex',
+     u'TCloudPublicdocstheme Release Notes Documentation',
      u'Documentation Team', 'manual'),
 ]
 
@@ -168,8 +168,8 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'opentelekomclouddocstheme-releasenotes',
-     u'OpenTelekomClouddocstheme Release Notes Documentation',
+    ('index', 'TCloudPublicdocstheme-releasenotes',
+     u'T Cloud Public Docs Theme Release Notes Documentation',
      [u'Documentation team'], 1)
 ]
 
@@ -183,9 +183,9 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    ('index', 'OpenTelekomCloudDocsTheme-ReleaseNotes',
-     u'OpenTelekomCloudDocsTheme Release Notes Documentation',
-     u'Documentation Team', 'OpenTelekomCloudDocsTheme-ReleaseNotes',
+    ('index', 'TCloudPublicDocsTheme-ReleaseNotes',
+     u'TCloudPublicDocsTheme Release Notes Documentation',
+     u'Documentation Team', 'TCloudPublicDocsTheme-ReleaseNotes',
      'One line description of project.',
      'Miscellaneous'),
 ]
