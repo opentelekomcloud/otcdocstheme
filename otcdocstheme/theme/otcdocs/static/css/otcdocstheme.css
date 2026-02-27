@@ -1986,3 +1986,136 @@ select:-webkit-autofill:focus {
 /* END: DOCSPORTAL */
 
 /* data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23012529'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg> */
+/* ===== Layout ===== */
+
+.services {
+  padding: 40px 0;
+}
+
+.service-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Service Header ===== */
+
+.service-header {
+  margin-bottom: 24px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 16px;
+}
+
+.service-title {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--telekom-color-primary-standard), #a0005c);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  font-size: 20px;
+}
+
+.service-title h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.service-title p {
+  margin: 4px 0 0 0;
+  color: #666;
+  font-size: 14px;
+}
+
+/* ===== SDK Grid ===== */
+
+.sdk-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2rem;
+}
+
+/* ===== SDK Card ===== */
+
+.sdk-card {
+  /* border: 1px solid #eee; */
+  border-radius: 4px;
+  padding: 20px;
+  transition: all 0.2s ease;
+  background: #ffffff;
+  width: calc((100% / 3) - 2rem);
+  box-shadow: 0 2px 9px 0 rgba(0,0,0,.15);
+}
+
+.sdk-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgb(105 105 105 / 29%);
+  border-color: var(--telekom-color-primary-standard);
+}
+
+.sdk-badge {
+  display: inline-block;
+  background: #fce4f2;
+  color: var(--telekom-color-primary-standard);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.sdk-card h3 {
+  margin: 8px 0;
+}
+
+.sdk-card p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* ===== Buttons ===== */
+
+.sdk-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+}
+
+.btn-primary {
+  background: var(--telekom-color-primary-standard);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background: #a0005c;
+}
+
+.btn-outline {
+  border: 1px solid var(--telekom-color-primary-standard);
+  color: var(--telekom-color-primary-standard);
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.btn-outline:hover {
+  background: #b8b8b8;
+}
