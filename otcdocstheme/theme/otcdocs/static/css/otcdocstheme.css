@@ -1995,17 +1995,30 @@ select:-webkit-autofill:focus {
 .sdk-service-card {
   background: #ffffff;
   border-radius: 12px;
-  padding: 28px;
-  margin-bottom: 40px;
+  padding: 2rem;
+  margin-bottom: 3rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  .sdk-service-card {
+    background: var(--telekom-color-background-surface-subtle);
+    box-shadow: none;
+  }
 }
 
 /* ===== Service Header ===== */
 
 .sdk-service-header {
-  margin-bottom: 24px;
+  margin-bottom: 2rem;
   border-bottom: 1px solid #f0f0f0;
-  padding-bottom: 16px;
+  padding-bottom: 2rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sdk-service-header {
+    border-bottom-color: var(--telekom-color-ui-regular);
+  }
 }
 
 .sdk-service-title {
@@ -2037,6 +2050,17 @@ select:-webkit-autofill:focus {
   font-size: 14px;
 }
 
+@media (prefers-color-scheme: dark) {
+  .sdk-service-title p {
+    color: var(--telekom-color-text-and-icon-additional);
+  }
+}
+
+.sdk-service-title h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 /* ===== SDK Grid ===== */
 
 .sdk-grid {
@@ -2058,10 +2082,22 @@ select:-webkit-autofill:focus {
   box-shadow: 0 2px 9px 0 rgba(0,0,0,.15);
 }
 
+@media (prefers-color-scheme: dark) {
+  .sdk-card {
+    background: var(--telekom-color-background-surface);
+  }
+}
+
 .sdk-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 18px rgb(105 105 105 / 29%);
   border-color: var(--telekom-color-primary-standard);
+}
+
+@media (prefers-color-scheme: dark) {
+  .sdk-card:hover {
+    box-shadow: 0 6px 18px rgb(105 105 105 / 29%);
+  }
 }
 
 .sdk-badge {
@@ -2075,6 +2111,13 @@ select:-webkit-autofill:focus {
   margin-bottom: 10px;
 }
 
+@media (prefers-color-scheme: dark) {
+  .sdk-badge {
+    background: #f6148845;
+    color: var(--telekom-color-text-and-icon-standard);
+  }
+}
+
 .sdk-card h3 {
   margin: 8px 0;
 }
@@ -2082,6 +2125,12 @@ select:-webkit-autofill:focus {
 .sdk-card p {
   font-size: 14px;
   color: #666;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sdk-card p {
+    color: var(--telekom-color-text-and-icon-additional);
+  }
 }
 
 /* ===== Buttons ===== */
