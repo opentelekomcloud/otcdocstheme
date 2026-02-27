@@ -1992,7 +1992,7 @@ select:-webkit-autofill:focus {
   padding: 40px 0;
 }
 
-.service-card {
+.sdk-service-card {
   background: #ffffff;
   border-radius: 12px;
   padding: 28px;
@@ -2002,19 +2002,19 @@ select:-webkit-autofill:focus {
 
 /* ===== Service Header ===== */
 
-.service-header {
+.sdk-service-header {
   margin-bottom: 24px;
   border-bottom: 1px solid #f0f0f0;
   padding-bottom: 16px;
 }
 
-.service-title {
+.sdk-service-title {
   display: flex;
   align-items: center;
   gap: 16px;
 }
 
-.service-icon {
+.sdk-service-icon {
   width: 48px;
   height: 48px;
   background: linear-gradient(135deg, var(--telekom-color-primary-standard), #a0005c);
@@ -2026,12 +2026,12 @@ select:-webkit-autofill:focus {
   font-size: 20px;
 }
 
-.service-title h2 {
+.sdk-service-title h2 {
   margin: 0;
   font-size: 22px;
 }
 
-.service-title p {
+.sdk-service-title p {
   margin: 4px 0 0 0;
   color: #666;
   font-size: 14px;
