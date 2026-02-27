@@ -2028,8 +2028,8 @@ select:-webkit-autofill:focus {
 }
 
 .sdk-service-icon {
-  width: 48px;
-  height: 48px;
+  width: 4rem;
+  height: 4rem;
   background: linear-gradient(135deg, var(--telekom-color-primary-standard), #a0005c);
   color: white;
   display: flex;
@@ -2039,8 +2039,12 @@ select:-webkit-autofill:focus {
   font-size: 20px;
 }
 
+.sdk-service-icon picture {
+  padding: 0.3rem;
+}
+
 .sdk-service-title h2 {
-  margin: 0;
+  margin: 0 !important;
   font-size: 22px;
 }
 
