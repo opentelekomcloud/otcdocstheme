@@ -2061,9 +2061,9 @@ select:-webkit-autofill:focus {
   margin-bottom: 0;
 }
 
-/* ===== SDK Grid ===== */
+/* ===== SDK Flexbox ===== */
 
-.sdk-grid {
+.sdk-flexbox {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
