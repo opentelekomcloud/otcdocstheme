@@ -2030,7 +2030,7 @@ select:-webkit-autofill:focus {
 .sdk-service-icon {
   width: 4rem;
   height: 4rem;
-  background: linear-gradient(135deg, var(--telekom-color-primary-standard), #a0005c);
+  background: var(--telekom-color-primary-standard);
   color: white;
   display: flex;
   align-items: center;
