@@ -1936,6 +1936,8 @@ select:-webkit-autofill:focus {
   border-radius: var(--telekom-radius-standard);
   box-shadow: 0px 8px 32px 0px hsla(0, 0%, 0%, 0.1), 0px 4px 8px 0px hsla(0, 0%, 0%, 0.1);
   background-color: var(--telekom-color-background-surface);
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: 1920px){
@@ -1979,6 +1981,7 @@ select:-webkit-autofill:focus {
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 /* END: card_item directive */
@@ -2140,7 +2143,7 @@ select:-webkit-autofill:focus {
 /* ===== Buttons ===== */
 
 .sdk-actions {
-  margin-top: 16px;
+  margin-top: auto;
   display: flex;
   gap: 10px;
 }
