@@ -2082,11 +2082,22 @@ select:-webkit-autofill:focus {
 .sdk-card {
   /* border: 1px solid #eee; */
   border-radius: 4px;
-  padding: 20px;
+  padding: 1.5rem;
   transition: all 0.2s ease;
   background: #ffffff;
   width: calc((100% / 3) - 2rem);
   box-shadow: 0 2px 9px 0 rgba(0,0,0,.15);
+}
+
+@media (max-width: 1600px){
+  .sdk-card {
+    width: calc(50% - 2rem);
+  }
+}
+@media (max-width: 650px){
+  .sdk-card {
+    width: 100%;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -2146,6 +2157,7 @@ select:-webkit-autofill:focus {
   margin-top: auto;
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .btn-primary {
