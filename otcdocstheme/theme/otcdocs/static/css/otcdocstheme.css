@@ -1522,6 +1522,10 @@ footer a:hover {
   font-size: 0.75rem;
 }
 
+.scale-telekom-footer svg {
+  fill: var(--telekom-color-text-and-icon-standard)
+}
+
 .docs-footer-logo {
   height: 24px;
 }
@@ -2186,4 +2190,21 @@ select:-webkit-autofill:focus {
 
 .btn-outline:hover {
   background: #b8b8b8;
+}
+
+/* External link icon in main content */
+#docs-content a[href^="http://"]::after,
+#docs-content a[href^="https://"]::after {
+  content: "\f08e";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 0.7em;
+  margin-left: 0.3em;
+  vertical-align: super;
+  opacity: 0.6;
+}
+
+#docs-content a.headerlink[href^="http://"]::after,
+#docs-content a.headerlink[href^="https://"]::after {
+  content: none;
 }
