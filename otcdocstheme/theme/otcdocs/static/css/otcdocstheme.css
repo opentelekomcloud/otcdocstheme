@@ -1526,6 +1526,10 @@ footer a:hover {
   height: 24px;
 }
 
+.footer-badge-img {
+  max-height: 20px;
+}
+
 /* END: Page footer */
 
 /* START: Scroll to top */
