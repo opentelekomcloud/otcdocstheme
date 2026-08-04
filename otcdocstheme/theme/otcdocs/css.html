@@ -1,12 +1,19 @@
 <!-- Fonts -->
+<link rel="preload" href="{{pathto('_static/css/fontawesome-all.min.css', 1)}}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link href="{{pathto('_static/css/fontawesome-all.min.css', 1)}}" rel="stylesheet">
 <link rel="preload" href="{{pathto('_static/webfonts/fa-regular-400.woff2', 1)}}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{pathto('_static/webfonts/fa-solid-900.woff2', 1)}}" as="font" type="font/woff2" crossorigin>
 
 <!-- Favicon -->
-<link rel="icon" href="{{pathto('_static/favicon.ico', 1)}}" type="image/x-icon"/>
+<link rel="icon" href="{{pathto('_static/favicon.ico', 1)}}" type="image/x-icon" fetchpriority="high"/>
 
-<!-- Telekom Scale -->
+<!-- Telekom Scale CSS -->
+<link rel="preload" href="{{pathto('_static/scale-components/scale-components.css', 1)}}" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <link href="{{pathto('_static/scale-components/scale-components.css', 1)}}" rel="stylesheet">
+
+<!-- Preload critical TeleNeoWeb fonts -->
+<link rel="preload" href="{{pathto('_static/scale-components/fonts/TeleNeoWeb/TeleNeoWeb-Regular.woff2', 1)}}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{pathto('_static/scale-components/fonts/TeleNeoWeb/TeleNeoWeb-Medium.woff2', 1)}}" as="font" type="font/woff2" crossorigin>
 
 <style>
 body {
